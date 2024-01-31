@@ -1,0 +1,87 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Functions of Bounded Variation.}
+\begin{definition}\label{def:BV}
+    Given a function $ u\in L^{1}(\Omega) $, define the \textit{total variation of $ u $} to be the quantity
+    \[
+        V(u,\Omega) = \sup\left\{ \int_{\Omega} u\div{\phi}\dd{x} : \phi\in[C_{c}^{1}(\Omega,\R)]^{n}, \norm{\phi}_{\infty} \leq 1 \right\}.
+    \]
+    If $ V(u,\Omega) $ is finite, then we say that $ u $ is of \textit{bounded variation} and write $ u\in BV(\Omega) $. 
+\end{definition}
+
+\begin{definition}\label{def:BVloc}
+    Similarly, given $ u\in L^{1}_{loc}(\Omega) $ and $ U\Subset \Omega $, define the \textit{local variation of $ u $ in $ U $} by
+    \[
+        V(u, U) = \sup\left\{ \int_{U} u\div{\phi}\dd{x} : \phi\in[C_{c}^{1}(U,\R)]^{n}, \norm{\phi}_{\infty} \leq 1 \right\}.
+    \]
+    We define the set of functions of \textit{locally bounded variation} to be
+    \[
+        BV_{loc}(\Omega) = \{u\in L^{1}_{loc}(\Omega) : V(u,U)< +\infty \text{ for all } U\Subset \Omega\}.
+    \]
+\end{definition}
+
+An equivalent, and admittedly more transparent, characterization of $ BV_{loc} $ functions can be given as follows. 
+
+\begin{proposition}[Characterization of $ BV_{loc} $]\label{bvchar}
+    Suppose $ u\in BV_{loc}(\Omega) $. Then there exists a Radon measure $ \mu $ on $ \Omega $ and a $ \mu $-measurable $ \sigma:\Omega\to \R^{n} $ with $ | \sigma| = 1$ $ \mu $-a.e. and
+    \[
+        \int_{\Omega} u\div{\phi}\dd{x} = -\int_{\Omega} \phi\cdot \sigma \dd{\mu} \text{ for all } \phi\in C_{c}^{1}(\Omega,\R^{n}).
+    \]
+\end{proposition}
+
+\begin{proof}
+    This is a routine application of the Riesz–Markov–Kakutani representation theorem. To this end, define a linear functional $ L:C_{c}^{1}(\Omega,\R^{n}) \to \R $ by $ L(\phi) = -\int_{\Omega} u\div{\phi}\dd{x} $.
+    
+    For open $ U\Subset \Omega $, the quantity $ c(U):= \sup\{L(\phi) : \phi\in C_{c}^{1}(U,\R^{n}), \norm{\phi}_{\infty} \leq 1\} $ is finite by assumption, whence 
+    \[
+        |L(\phi)| \leq c(U) \norm{\phi}_{\infty} \text{ for all } \phi\in C_{c}^{1}(U,\R^{n}).
+    \]
+    Let $ K\sub \Omega $ be a fixed compact set, and choose open $ U\Subset\Omega $ containing $ K $. Then for $ \phi\in C_{c}(\Omega,\R^{n}) $ with $ \supp(\phi)\sub K $, there exists a sequence $ (\phi_{k})_{k} $ in $ C_{c}^{1}(U,\R^{n}) $ such that $ \phi_{k}\to \phi $ uniformly on $ U $. \\
+
+    Define an extension $ \widetilde{L}:C_{c}(\Omega,\R^{n})\to \R $ of $ L $ by $ \widetilde{L}(\phi) = \lim_{k\to\infty}L(\phi_{k}) $, which exists and is well-defined by the above inequality. Applying the Riesz Representation Theorem to $ \widetilde{L} $ gives the conclusion.
+\end{proof}
+
+\begin{definition}
+    For $ u\in BV_{loc}(\Omega) $, we will write $ \norm{Du} $ for the measure $ \mu $ and 
+    \[
+        d[Du] := \sigma \dd{\norm{Du}}, \text{ i.e } \int\cdot \dd{[Du]} = \int \inp{\cdot}{\sigma}\dd{\norm{Du}}.
+    \]
+    Then the conclusion of Proposition \ref{bvchar} can be rewritten as
+    \[
+        \int u\div{\phi} \dd{x} = -\int \phi \cdot \sigma \dd{\norm{Du}} = -\int \phi \cdot \dd{[Du]} \text{ for all } \phi\in C_{c}^{1}(\Omega,\R^{n}).
+    \]
+\end{definition}
+
+Write $ \phi = (\phi^{1}, \ldots, \phi^{n})\in C_{c}^{1}(\Omega,\R^{n}) $.
+
+\[
+    [Du] = [Du]_{ac} + [Du]_{s}
+\]
+
+
+
+\section{Caccioppoli Sets (i.e. Sets of Locally Finite Perimeter)}
+
+\begin{definition}
+    Given a set $ E\sub \R^{n}$, we say that $ E $ is of \textit{locally finite perimeter in $ \Omega $} if $ \chi_{E}\in BV_{loc}(\Omega) $.
+\end{definition}
+
+%Suppose that $ u\in BV(\Omega) $. For $ 1\leq i\leq n $, we define a linear functional $ L_{i}:C_{c}^{1}(\Omega)\to \R $ by $ L_{i}(\psi) = -\int_{\Omega} u \pdv{\psi}{x_{i}}\dd{x}$.
+%
+%
+%\[
+%     -\int_{\Omega} u \pdv{\psi}{x_{i}}\dd{x} = \inp{\partial_{i}u}{\pi}
+%\]
+%
+%Note that integration by parts gives t
+%
+%Then for $ \psi\in C_{c}^{1}(\Omega,\R) $.
+
+
+
+
+\end{document}

@@ -1,0 +1,274 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\Prob}{Prob}
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7410 Homework 6}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+    Let $ G $ be a finitely generated group with finite generation set $ S $. Suppose that $ S $ is symmetric and contains the identity. We let 
+    \[
+        B_{S}(n)= \{s_{1}\cdots s_{n}: s_{i}\in S   , i=1,\ldots, n\}.
+    \]
+    Suppose that $ G $ has \textit{subexponential growth}, namely $ \limsup_{n\to\infty}|B_{S}(n)|^{1/n}=1 $ (note that this implies that the limit itself is $ 1 $). Show that there is a subsequence $ n_{1}<n_{2}<\cdots $ of natural numbers so that $ (B_{S}(n_{k}))_{k=1}^{\infty} $ is a Folner sequence.
+    \[
+        \liminf_{n\to\infty}\frac{a_{n}}{a_{n-k}} \leq \liminf_{n\to\infty}a_{n}^{k/n}.
+    \]
+    
+    \begin{proof}
+        For $ g\in G $, let $ l_{S}(g) $ be the reduced length of $ g $ when written as an $ S $-word omitting occurrences of the identity and set $ l_{S}(e) = 0 $. Since $ S $ is fixed, for brevity we write $ B(n) = B_{S}(n) $. Note that, for $ g\in G $ we have that $ gB(n),B(n)\sub B(n+l_{S}(g)) $, so 
+        \begin{align*}
+            \frac{|g B(n)\,\Delta\, B(n)|}{|B(n)|} &= \frac{|g B(n) \setminus B(n)|}{|B(n)|} + \frac{|B(n)\setminus gB(n)|}{|B(n)|}\\
+            &\leq \frac{|B(n+l_{S}(g))\setminus B(n)|}{|B(n)|} + \frac{|B(n+l_{S}(g)) \setminus gB(n)|}{|B(n)|} \\
+            &\leq  2\frac{|B(n+l_{S}(g))\setminus B(n)|}{|B(n)|} = 2\frac{|B(n+l_{S}(g))|}{|B(n)|} - 2.
+        \end{align*}
+        Note that, for $ k\in \N $, 
+        \[
+            \liminf_{n\to\infty} \frac{|B(n+k)|}{|B(n)|} \leq \liminf_{n\to\infty}|B(n+k)|^{\frac{k}{n+k}} = 1.
+        \]
+        Choose a subsequence $ (n_{k})_{k=1}^{\infty} $ as follows: choose $ n_{1} $ such that $ \frac{|B(n_{2}+1)|}{|B(n_{1})|}\leq 1+\frac{1}{1} $. Having chosen $ n_{1}<\ldots< n_{k-1} $, choose $ n_{k}>n_{k-1} $ such that $ \frac{|B(n_{k}+k)|}{|B(n_{k})|}\leq 1+\frac{1}{k} $. Then
+        \[
+            \limsup_{k\to\infty}\frac{|B(n_{k}+k)|}{|B(n_{k})|} \leq 1.
+        \]
+        
+        Hence, for $ g\in G $,
+        \begin{align*}
+            \limsup_{k\to\infty}\frac{|gB(n_{k})\Delta B(n_{k})|}{|B(n_{k})|} \leq 2\limsup_{k\to\infty} \frac{|B(n_{k}+l_{S}(g))|}{|B(n_{k})|}-2 &\leq 2\limsup_{k\to\infty} \frac{|B(n_{k}+k)|}{|B(n_{k})|}-2 \leq 0
+        \end{align*}
+    \end{proof}
+    
+    
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ G $ be a countable, discrete group. For $ p\in [1,\infty) $ we say $ (f_{n})_{n=1}^{\infty} $ in $ l^{p}(G) $ are almost invariant vectors if $ \norm{f_{n}}_{p} = 1 $ and if 
+    \[
+        \norm{\lambda_{g}f_{n}-f_{n}}_{p}\xrightarrow{n\to\infty}0  \text{ for all } g\in G.
+    \]
+    
+    \textbf{(a)}: For $ p\in [1,+\infty) $ and $ f\in l^{p}(G) $ prove that $ \norm{\lambda_{g}|f|-|f|}_{p}\leq \norm{\lambda_{g}f-f}_{p} $ for all $ g\in G $.
+
+    \begin{proof}
+        By the reverse triangle inequality, we have that $ |\lambda_{g}|f|-|f||\leq | \lambda_{g}f-f| $ pointwise. Now,
+        \[
+            \norm{\lambda_{g}|f|-|f|}_{p}^{p} = \int |\lambda_{g}|f|-|f||^{p}\dd{\mu}\leq\int | \lambda_{g}f-f|^{p}\dd{\mu}\leq  \norm{\lambda_{g}f-f}_{p}^{p},
+        \]
+        whence the result follows.
+    \end{proof}
+
+    \textbf{(b)}: For $ a,b\in [0,+\infty) $ and $ p\in [1,+\infty) $ prove that $ |a^{1/p}-b^{1/p}|\leq |a-b|^{1/p} $ and 
+    \[
+        |a^{p}-b^{p}|\leq p|a-b|\max(a^{p-1},b^{p-1}) \leq p|a-b| (a^{p-1}+ b^{p-1}).
+    \]
+
+    \begin{proof}
+        The first inequality follows from homework 1 problem 1 part (a). 
+        Note that the second inequality is trivial if $ a $ or $ b $ is zero or if $ p=1 $, so assume $ a,b>0 $ and $ p>1 $. \\
+
+        Consider the polynomial $ f(x) = x^{p}+p(1-x)-1 $ on the interval $ (0,1] $. Computing $ f '(x) = px^{p-1}-p $, the only critical points for $ f $ are at $ x=1 $ whence $ f(x) = 0 $. As $ f ' < 0 $ for all $ x\in (0,1) $ and $ f(0) = p-1 > 0$, it follows that $ f(x) \geq f(1) = 0 $ for all $ x\in (0,1] $.\\
+
+       Without loss of generality, assume $ b\leq a $. Consider $ x = \frac{b}{a}\leq 1 $. By the nonegativity of the above polynomial, 
+       \[
+           1-\frac{b^{p}}{a^{p}} = 1-x^{p} \leq p(1-x) = p \frac{(a-b)a^{p-1}}{a}
+       \]
+       whence the second inequality follows.  
+   \end{proof}
+
+    \textbf{(c)}: Suppose $ p\in[1,+\infty) $. Prove that there are almost invariant vectors in $ l^{p}(G) $ if and only if $ G $ is amenable.
+
+    \begin{proof}\ \\
+        \underline{$ \implies $}: Suppose $ (f_{n})_{n=1}^{\infty} $ is a sequence of almost invariant unit vectors in $ l^{p}(G) $, and fix $ g\in G $. Let $ \mu_{n}:=|f_{n}|^{p} $ and note that $ \mu_{n}\in \Prob(G)\sub l^{1}(G) $. As $ \norm{f_{n}} = 1 $, $ |f_{n}|\geq 0 $, and $ G $ is discrete, it follows that $ |f_{n}|\leq \norm{f_{n}} = 1$. By part $ (a) $, it follows that 
+        \[
+            \norm{\lambda_{g}|f_{n}| - |f_{n}|}_{p} \leq \norm{\lambda_{g}f_{n}-f_{n}}_{p}\xrightarrow{n\to\infty}0.
+        \]
+        Now observe that, applying Holder's inequality with conjugate exponents $ p, \frac{p}{p-1} $,
+        \begin{align*}
+            \norm{\lambda_{g} \mu_{n} - \mu_{n}}_{1} = \int \lrvert{| \lambda_{g}f_{n}|^{p} - |f_{n}|^{p}}\dd{\mu} &\leq p\int \lrvert{| \lambda_{g}f_{n}| - |f_{n}|}\cdot \max\left\{|\lambda_{g}f_{n}|^{p-1}, |f_{n}|^{p-1}\right\}\dd{\mu} \\
+            &\leq p \norm{\lambda_{g}|f_{n}| - |f_{n}|}_{p}\cdot \norm{\max\left\{|\lambda_{g}f_{n}|^{p-1}, |f_{n}|^{p-1}\right\}}_{\frac{p}{p-1}}  \\
+            &\leq p \norm{\lambda_{g}|f_{n}| - |f_{n}|}_{p}\cdot \lr{\int \max\left\{|\lambda_{g}f_{n}|^{p-1}, |f_{n}|^{p-1}\right\}^{\frac{p}{p-1}}}^{\frac{p-1}{p}}\\
+            &\leq p \norm{\lambda_{g}|f_{n}| - |f_{n}|}_{p}\cdot \lr{\int \max\left\{|\lambda_{g}f_{n}|^{p}, |f_{n}|^{p}\right\}}^{\frac{p-1}{p}}\\
+            &\leq p \norm{\lambda_{g}|f_{n}| - |f_{n}|}_{p}\cdot \lr{\int |\lambda_{g}f_{n}|^{p} + |f_{n}|^{p}}^{\frac{p-1}{p}} \\
+            &\leq2^{\frac{p-1}{p}} p \norm{\lambda_{g}|f_{n}| - |f_{n}|}_{p}\xrightarrow{n\to\infty}0
+        \end{align*}
+
+        \underline{$ \impliedby $}: Suppose that $ G $ is amenable and $ p\in [1,+\infty) $. Choose a sequence $ (\mu_{n})_{n=1}^{\infty} $ of almost invariant probability measures for $ G $. Set $ f_{n} = \mu_{n}^{1/p} $. Then $ f_{n}\in l^{p}(G) $ and $ \norm{f_{n}}_{p} = 1 $. So, we compute that
+        \[
+            \norm{\lambda_{g}f_{n} - f_{n}}_{p}^p = \int \lrvert{ \lambda_{g} \mu_{n}^{1/p}-\mu_{n}^{1/p}}^{p}\dd{\mu} \leq \int | \lambda_{g} \mu_{n}-\mu_{n}|\dd{\mu} \xrightarrow{n\to\infty}0
+        \]
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+
+
+\end{document}

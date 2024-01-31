@@ -1,0 +1,100 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+% No indent
+\setlength\parindent{0pt}
+
+%----------------------------
+
+
+%--------Metadata------------
+\title{Algebraic Topology II Homework 2}
+\author{James Harbour}
+%----------------------------
+
+%--------Assignment----------
+% Hatcher 3.2 problems 1,3,7,8,9
+%----------------------------
+
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}[1]
+    Assuming as known the cup product structure on the $ 2 $-torus $ \T^{2} = S^{1}\times S^{1} $, compute the cup product structure in $ H^{*}(M_{g}) $  for $ M_{g} $ the closed orientable surface of genus $ g $ using the quotient map from $ M_{g} $ to a wedge sum of $ g $ tori (see photo).
+\end{homeworkProblem}
+
+\begin{proof}
+    We take as known that the cohomology ring of $ \T^{2} $ with coefficients in a ring $ R $ is given by  the exterior algebra
+    \[
+        H^{*}(\T^{2} ; R) = \Lambda_{R}[ \alpha_{1}, \alpha_{2} ]
+    \]
+    Let $ H $
+
+    % https://q.uiver.app/#q=WzAsNCxbMiwwLCJIXjIoXFxiaWd2ZWVfZyBcXG1hdGhiYntUfV4yKSJdLFsyLDIsIkheMihNX2cpIl0sWzAsMiwiSF4xKE1fZylcXG9wbHVzIEheMShNX2cpIl0sWzAsMCwiSF4xKFxcYmlndmVlX2cgXFxtYXRoYmJ7VH1eMikgXFxvcGx1cyBIXjEoXFxiaWd2ZWVfZyBcXG1hdGhiYntUfV4yKSJdLFswLDFdLFsyLDFdLFszLDBdLFszLDJdLFsyLDFdXQ==
+\[\begin{tikzcd}
+	{H^1(\bigvee_g \mathbb{T}^2) \oplus H^1(\bigvee_g \mathbb{T}^2)} && {H^2(\bigvee_g \mathbb{T}^2)} \\
+	\\
+	{H^1(M_g)\oplus H^1(M_g)} && {H^2(M_g)}
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=3-1, to=3-3]
+\end{tikzcd}\]
+\end{proof}
+
+\begin{homeworkProblem}[3]
+    \textbf{(a)}: Using the cup product structure, show that there is no map $ \R P^{n}\to  \R P^{m} $ inducing a nontrivial map $ H^{1}(\R P^{m} ; \Z_{2})\to H^{1}(\R P^{n} ; \Z_{2}) $ if $ n > m $. What is corresponding result for maps $ \C P^{n}\to \C P^{m} $.\\
+
+    \textbf{(b)}: Prove the Borsuk-Ulam theorem. 
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[7]
+    Use cup products to show that $ \R P^{3} $ is not homotopy equivalent to $ \R P^{2}\vee S^{1} $.
+\end{homeworkProblem}
+
+\begin{homeworkProblem} 
+Let $ X $ be $ \C P^{2} $ with a cell $ e^{3} $ attached by a map $ S^{2}\to \C P^{1} \sub \C P^{2}$ of degree $ p $, and let $ Y:= M(\Z_{p},2)) \vee S^{4} $ . Thus $ X $ and $ Y $ have the smae $ 3 $-skeleton but differ in the way their $ 4$-cells are attached. Show that $ X $ and $ Y $ have isomorphic cohomology rings with coefficients in $ \Z $, but not with $ \Z_{p} $ coefficients.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    Show that if $ H_{n}(X ;\Z) $ free for each $ n $, then $ H^{*}(X ; \Z_{p}) $ and $ H^{*}(X ; \Z) \otimes \Z_{p} $ are isomorphic as rings, so in particular the ring structure with $ \Z $ coefficients determines the ring structure with $ \Z_{p} $ coefficients.
+\end{homeworkProblem}
+
+
+\end{document}

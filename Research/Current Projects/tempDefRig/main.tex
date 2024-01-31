@@ -1,0 +1,1426 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{times}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{pb-diagram}
+\usepackage{xcolor}
+\usepackage{braket}
+\usepackage{mathtools}
+\usepackage[italicdiff]{physics}
+\usepackage{tikz}
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{defrig.bib}
+
+% List spacing 
+\usepackage{enumitem}
+
+
+
+%\usepackage[nosort,nocompress,noadjust]{cite}
+%\renewcommand{\citeleft}{\textcolor{blue!50!black}{[}}
+%\renewcommand{\citeright}{\textcolor{blue!50!black}{]}}
+%\renewcommand{\citepunct}{\textcolor{blue!50!black}{,$\,$}}
+%\renewcommand{\citemid}{\textcolor{blue!50!black}{, }\textcolor{blue!50!black}}
+
+\usepackage[linktocpage=true,bookmarks=false,hyperfootnotes=false,colorlinks,
+    linkcolor={red!60!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}]{hyperref}
+
+\renewcommand{\eqref}[1]{\hyperref[#1]{(\ref{#1})}}
+
+
+\pagestyle{plain}
+
+
+\setlength{\evensidemargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\topmargin}{-20pt}
+\setlength{\footskip}{55pt}
+\setlength{\textheight}{670pt}
+\setlength{\textwidth}{450pt}
+\setlength{\headsep}{10pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1ex plus 0.5ex minus 0.2ex}
+
+
+
+\numberwithin{equation}{section}
+
+{\theoremstyle{definition}\newtheorem{definition}{Definition}[section]
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{comment}[thm]{comment}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{prop}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ex}[thm]{Example}
+\numberwithin{equation}{section}
+\newtheorem{Setting}[thm]{Setting}
+
+
+
+
+\newcommand{\bim}[3]{\mathord{\raisebox{-0.4ex}[0ex][0ex]{\scriptsize $#1$}{#2}\hspace{-0.25ex}\raisebox{-0.4ex}[0ex][0ex]{\scriptsize $#3$}}}
+
+
+
+
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\rG}{\mathcal{G}}
+\def\a{\mathbf{A}}
+\newcommand{\B}{\mathcal{B}} 
+\newcommand{\C}{\mathbb{C}}
+\def\b{\mathbf{B}} 
+\def\c{\mathbf{C}} 
+\newcommand{\h}{\mathcal{H}}
+\newcommand{\EL}{\mathcal{L}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\def\o{\omega}
+\def\O{\Omega}
+\def\te{\theta}
+\def\Te{\Theta}
+\def\N{\mathbb{N}}
+\def\T{\mathbb{T}}
+\def\Z{\mathbb{Z}}
+% \def\E{{\mathscr E}}
+\newcommand{\E}{\mathbb{E}}
+\def\F{\mathscr F}
+\def\H{\mathcal H}
+\def\K{\mathcal K}
+\def\R{\mathbb{R}}
+\def\Z{\mathbb Z}
+
+\def\S{\mathcal S}
+\def\e{{\sf e}}
+\def\m{{\sf m}}
+\def\la{\langle}
+\def\ra{\rangle}
+\def\x{\mathsf{x}}
+\def\y{\mathsf{y}}
+\def\z{\mathsf{z}}
+\newcommand{\ol}[1]{\overline{#1}}
+\newcommand{\Aut}{{\rm Aut}}
+\newcommand{\spn}{{\rm span}}
+\newcommand{\wot}{{\rm wot}}
+\newcommand{\sot}{{\rm sot}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\vN}[1]{\{#1\}''}
+
+
+%%%%%%%% James's Macros %%%%%%%%
+\def\sub{\subseteq}
+\DeclareMathOperator{\Span}{Span}
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\eps}{\epsilon}
+\newcommand{\subwk}{\subset_{\rm{weak}}}
+\makeatletter
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\r{{\rm r}}
+\def\d{{\rm d}}
+
+%\def\({\left(}
+%\def\[{\left[}
+%\def\){\right)}
+%\def\]{\right]}
+
+\def\si{\sigma}
+\def\Si{\Sigma}
+\def\G{{\sf G}}
+\def\trace{{\sf tr}}
+\def\CC{\mathbb C}
+\def\NC{\mathcal N}
+\def\wG{\widehat\G}
+\def\p{\parallel}
+\def\<{\langle}
+\def\>{\rangle}
+\providecommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\newcommand*\cls[1]{\overline{#1}}
+
+
+\numberwithin{equation}{section}
+
+
+
+
+
+
+\begin{document}
+
+\begin{center}
+{\boldmath\LARGE\bf Discrete measured groupoid von Neumann algebras via malleable deformations and $1$-cohomology}
+
+
+\vspace{1ex}
+
+{\sc Felipe Flores, James Harbour}
+
+
+\end{center}
+
+\vspace{2ex}
+
+\begin{abstract}\setlength{\parindent}{0pt}\setlength{\parskip}{1ex}\noindent
+
+Given a probability measure preserving groupoid $\mathcal{G}$, we study properties of the corresponding von Neumann algebra $L(\mathcal{G})$ using the techniques of deformation-rigidity theory. Building on work of Sinclair and Hoff, we extend the Gaussian construction for equivalence relations to general measured groupoids. Using Popa's spectral gap argument, we then obtain structural properties about $L(\mathcal{G})$ including primeness and lack of property $(\Gamma)$. We also generalize results of de Santiago, Hayes, Hoff, and Sinclair to characterize maximal rigid subalgebras of $L(\mathcal{G})$ in terms of the corresponding groupoid $L^2$-cohomology.
+
+\end{abstract}
+
+\section{Introduction}
+
+
+
+\section{Preliminaries}
+\label{preliminaries section}
+
+\subsection{Discrete measured groupoids}\label{meas-group}
+
+We will work with groupoids $\rG$ over a unit space $X\equiv\rG^{(0)}$, identified as small categories in which all the morphisms (arrows) are invertible. 
+The source and range maps are denoted by ${\rm d,r}:\rG\to \rG^{(0)}$ and the family of composable pairs by $\,\rG^{(2)}\!\subset\rG\times\rG$\,.  For $x\in\rG\,,\,A, B\subset\rG$ we use the notations
+\begin{equation}\label{botations}
+AB:=\{ab\,\mid\,a\in A,b\in B,\d(a)=\r(b)\},
+\end{equation}
+\begin{equation}\label{ottations}
+Ax:= A\{x\}\quad \textup{and}\quad xA:=\{x\}A
+\end{equation}
+These sets could be void in non-trivial situations. A subset of the unit space $Y \subset \rG^{(0)}$ is called {\it invariant} if $Y=\r(\rG Y)$. 
+
+
+Suppose that $\rG$ is a groupoid equipped with the structure of a standard Borel space 
+such that the composition and the inverse map are Borel and 
+$\d^{-1}(\{x\})$ is countable for all $x\in\rG^{(0)}$. Then the source and target maps are measurable, $\rG^{(0)}\subset\rG$ is 
+a Borel subset, and $\d^{-1}(\{x\})$ is countable.
+
+
+Now let $\mu$ be a probability measure on 
+the set of units $\rG^{(0)}$. Then, 
+for any measurable subset $A\subset\rG$, the function 
+$\rG^{(0)}\ni x\mapsto \#\bigl (\d^{-1}(x)\cap A\bigr )$ 
+is measurable, and the measure $\mu_\d$ on $\rG$ defined by 
+$$
+\mu_\d(A)=\int_{\rG^{(0)}} \#\bigl (\d^{-1}(x)\cap A\bigr )d\mu (x)=\int_{\rG^{(0)}} \#\bigl (Ax)d\mu (x)
+$$
+is $\sigma$-finite. The measure $\mu_\r$ is defined in an analogous manner, replacing $\d$ by $\r$. 
+
+\begin{prop}\label{invr} Let $i: x\to x^{-1}$ be the inversion map in $\rG$. The following conditions on $\mu$ are equivalent. 
+\begin{enumerate}
+\item $\mu_\d=\mu_\r$, 
+\item $i_*\mu_\d=\mu_\d$, 
+\item for every Borel subset $E\subset\rG$ such that 
+$\d|_{ E}$ and $\r|_{E}$ are injective we have 
+$\mu(\d(E))=\mu(\r(E))$. 
+\end{enumerate}
+\end{prop}
+Such a probability measure is called {\it invariant} and we denote $\mu_\rG=\mu_\r=\mu_\d$.
+
+\begin{defn}\label{measuredgroupoid}
+A discrete, measurable groupoid $\rG$ together with an invariant
+probability measure 
+on $\rG^{(0)}$ is 
+called a {\it discrete measured groupoid}. 
+\end{defn}
+
+For $A\subset\rG^{(0)}$ one uses the standard notations 
+\begin{equation*}\label{faneaka}
+\rG_A\!:={\rm d}^{-1}(A)\,,\quad\rG^A\!:={\rm r}^{-1}(A)\,,\quad\rG_A^A:=\rG_A\cap\rG^A.
+\end{equation*} If $A$ is Borel, then we equip $\rG_A^A$ with the normalized measure $\frac{1}{\mu(A)}\mu|_{A}$, so it becomes 
+a discrete measured groupoid, called the {\it restriction} of 
+$\rG$ to $A$ and is denoted by $\rG|_A$. 
+
+
+
+
+As usual, the set of complex-valued, measurable, essentially bounded 
+functions (modulo almost null functions) 
+on $\rG$ with respect to $\mu_\rG$ is denoted by 
+$L^\infty (\rG,\mu_\rG)$. For a function $\phi:\rG\rightarrow\CC$ and 
+$x\in\rG^{(0)}$ we put 
+\begin{equation*}\begin{aligned}
+S(\phi)(x)&=\#\left\{g\in\rG\mid ~\phi(g)\ne
+  0,s(g)=x\right\},\\ 
+T(\phi)(x)&=\#\left\{g\in\rG\mid~\phi(g)\ne
+  0,t(g)=x\right\}.
+\end{aligned}
+\end{equation*}
+The {\it groupoid ring} $\CC\rG$ of $\rG$ is defined as 
+$$
+\CC\rG=\left\{\phi\in L^\infty(\rG,\mu_\rG)\mid \text{$S(\phi)$ and $T(\phi)$
+    are essentially bounded on $\rG^{(0)}$}\right\}.
+$$
+$\CC\rG$ is a $^*$-algebra containing 
+$L^\infty(\rG^{(0)})\equiv L^\infty(\rG^{(0)},\mu)$ 
+as a subring. Multiplication 
+is given by the convolution product 
+\begin{equation}
+\phi*\eta(x)=\sum_{yz=x}\phi(y)\eta(z)
+\end{equation}
+and the involution is defined by 
+\begin{equation}
+\phi^*(x)=\overline{\phi(x^{-1})}.
+\end{equation}
+The groupoid ring $\CC\rG$ of discrete measured groupoid $\rG$ 
+is a weakly dense $^*$-subalgebra in the {\it von Neumann algebra} $L(\rG)$ of $\rG$. 
+
+The von Neumann algebra $L(\rG)$ has a finite trace
+$\trace_{L(\rG)}$ induced by the invariant measure $\mu$. 
+For $\phi\in\CC\rG\subset L(\rG)$ we have 
+\begin{equation}
+\trace_{L(\rG)}(\phi)=\int_{\rG^{(0)}}\phi(x)d\mu(x).
+\end{equation}
+
+
+\begin{defn}
+  A (Borel) \textit{bisection} of $ \rG $ is a Borel subset $ \sigma\sub \rG $ such that the sets $ \sigma x $ and $ x\sigma $ have at most $ 1 $ element for every $ x\in G^{0} $. Borel bisections form an inverse semigroup with respect to the operation on sets introduced in \ref{botations}.
+  
+  
+  The \textit{full pseudogroup} $ [[\rG]] $ of $ \rG $ is the inverse semigroup consisting of Borel bisections modulo the relation of being equal almost everywhere. The \textit{full group} $ [\rG] $ is the subset of $ [[\rG]] $ consisting of the Borel bisections $ \sigma $ such that $ \sigma\sigma^{-1} = \sigma^{-1}\sigma = \rG^{(0)} $. When $\sigma\in [\rG]$, $ \sigma x $ and $ x\sigma $ have exactly one element, so we identify them with said element.
+\end{defn}
+
+
+
+\begin{ex}\label{transformation}
+Suppose $\G$ is a countable group acting in the standard probability space $(X,\mu)$, denoted by $g\cdot x\equiv g\cdot_\theta x$, for $g\in\G, x\in X$. The {\it transformation groupoid} $\rG:=\G\ltimes_\theta\!X$ has $\G\times X$ as underlying set. The multiplication is $$(g,x)(h,g^{-1}\cdot x):=(gh,x)$$ and inversion reads $$(g,x)^{-1}:=\big(g^{-1}\!,g^{-1}\cdot x\big).$$ So $\rG^{(0)}=\{\e\}\times X$ gets identified with $X$, so $\r(g,x)=x$ and $\d(g,x)=g^{-1}\cdot x$. In this case, $L(\rG)\cong \G\ltimes_\theta\!L^\infty(X)$ with its usual trace. In particular, if $X=\{x_0\}$ is a singleton, this construction gives the group algebra $L(\G)$ again with its usual trace.
+\end{ex}
+
+\begin{ex}\label{equivrel}
+Let $(X,\mu)$ be a standard probability space and $\mathcal R\subset X\times X$ be an equivalence relation which is a measurable subset. $\mathcal R$ becomes a a discrete measured groupoid with the operations 
+$$
+\d(x,y)=(y,y)\,,\quad \r(x,y)=(x,x)\,,\quad (x,y)(y,z)=(x,z)\,,\quad(x,y)^{-1}\!=(y,x)\,.
+$$
+The unit space is $\mathcal R^{(0)}={\sf Diag}(X)$ and we identify it with $X$, via the map $(x,x)\mapsto x$. We say that $\mathcal R$ is measure preserving if the resulting groupoid is a discrete measured groupoid. The algebra $L(\mathcal R)$ introduced here coincides with the usual equivalence relation Von Neumann algebra (typically introduced using the full pseudogroup). See \textcite[Section 2.2]{hoff:16}.
+\end{ex}
+
+
+
+\begin{ex}\label{prodgrpds}
+  Let $ \rG_{1} $, $ \rG_{2} $ be groupoids. We define a groupoid structure on the product $ \rG_{1}\times \rG_{2} $ as follows. The unit space is $ (\rG_{1}\times\rG_{2})^{(0)} = \rG_{1}^{(0)}\times\rG_{2}^{(0)} $, the maps $\r,\d$ are defined by $ \d(g_{1},g_{2}) = (\d(g_{1}),\d(g_{2})) $, $ \r(g_{1},g_{2}) = (\r(g_{1}),\r(g_{2})) $ and the operations are defined pointwise. If $ \rG_{1} $ and $ \rG_{2} $ are discrete measured groupoids, then so is $ \rG_{1}\times \rG_{2} $ by taking the product measure.
+\end{ex}
+
+
+\begin{defn}
+    A discrete measured groupoid $\rG$ is called {\it ergodic} if $\mu(Y)\in\{0,1\}$ for every Borel invariant subset $Y\subset \rG^{(0)}$.
+\end{defn}
+
+We will deal mostly with ergodic groupoids, so it seems convenient to examine when our examples satisfy this condition.
+
+\begin{rem}
+The transformation groupoid introduced in Example \ref{transformation} is ergodic precisely when the action $\theta$ is ergodic. Moreover, note that, for $(g,x)\in \rG$ and $y\in Y$ with $\d(g,x)=y$, we have 
+$$
+\r\big((g,x)(\e,y)\big)=\r\big((g,x)\big)=x=g\cdot_\theta y, 
+$$
+so $\r(\rG Y)=\G\cdot_\theta Y$ and $\G\ltimes_\theta\!X$ is ergodic if and only if $\mu(\G\cdot_\theta Y)\in\{0,1\}$ for every borel subset $Y\subset X$. In particular, every group is an ergodic groupoid.
+\end{rem}
+
+\begin{rem}
+In the case of equivalence relation groupoids $\mathcal R$ (Example \ref{equivrel}), we have $$
+\r\big((x,y)(y,y)\big)=\r(x,y)=x, 
+$$
+so $\r(\rG Y)=\{x\in X\mid x\sim_{\mathcal R} y,\textup{ for some }y\in Y\}=: [Y]_{\mathcal R}$ and $\mathcal R$ is ergodic if $\mu([Y]_{\mathcal R})\in\{0,1\} $, for every Borel subset $Y\subset X$.
+
+\end{rem}
+
+\begin{rem}
+A direct product of discrete measured groupoids $\rG_1\times \rG_2$ is ergodic if and only if both $\rG_1$ and $\rG_2$ are ergodic. 
+\end{rem}
+
+
+
+
+
+
+
+\subsection{Unitary representations and $1$-cohomology}
+
+Given a collection of Hilbert spaces $\{\H_x\}_{x \in X}$, the Hilbert bundle $X \ast \H$ is the set of pairs $X \ast \H = \{(x, \xi_x) : x \in X, \xi_x \in \H_x\}$. 
+A section $\xi$ of $X \ast \H$ is a map $x \mapsto \xi_x \in \H_x$. 
+
+A {\it measurable Hilbert bundle} is a Hilbert bundle $X \ast \H$ endowed with a $\sigma$-algebra generated by the maps $\{(x, \xi_x) \mapsto \<\xi_x, \xi^n_x\>\}_{n = 1}^\infty$ for a {\it fundamental sequence of sections} $\{\xi^n\}_{n = 1}^\infty$ satisfying 
+
+$(i)$ $\H_x = \ol{\spn \{\xi^n_x\}_{n = 1}^\infty}$ for each $x \in X$, and 
+
+$(ii)$ the maps $\{x \mapsto \|\xi^n_x\|\}_{n = 1}^\infty$ are measurable. 
+
+It is a useful fact that the $\sigma$-algebra of any measurable Hilbert bundle can be generated by an {\it orthonormal fundamental sequence of sections}, i.e. sections which moreover satisfy 
+
+$(iii)$ $\{\xi^n_x\}_{n = 1}^{\infty}$ is an orthonormal basis of $\H_x$ for $x \in X$ with $\dim \H_x = \infty$, and if $\dim \H_x < \infty$, the sequence $\{\xi^n_x\}_{n = 1}^{\dim \H_x}$ is an orthonormal basis and $\xi^n_x = 0$ for $n > \dim \H_x$. 
+\\
+
+A {\it measurable section} of $X \ast \H$ is a section $\xi$ such that $x \mapsto (x,\xi_x) \in X \ast \H$ is a measurable map, or equivalently, such that the maps $\{x \mapsto \<\xi_x, \xi^n_x\>\}_{n = 1}^\infty$ are measurable for the fundamental sequence of sections $\{\xi^n\}_{n = 1}^{\infty}$. We let $S(X \ast \H)$ denote the vector space of measurable sections, identifying $\mu$-a.e. equal sections. It is also useful to reserve some notation for the sections with constant norm: 
+$$
+S_1(X \ast \H)=\{\xi\in S(X \ast \H) \mid \norm{\xi_x}_{\H_x}=1 \textup{ a.e.}\}.
+$$ The elements in $S_1(X \ast \H)$ are called {\it normalized } sections. As hinted, wee will often abuse the notation and confuse the map  $x \mapsto (x, \xi_x)$ with $\xi$.  We then consider the {\it direct integral} 
+\begin{align*}
+\int_X^{\oplus} \H_x d\mu(x) = \{\xi \in S(X \ast \H) : \int_X \|\xi(x)\|^2 d\mu(x) < \infty\}
+\end{align*}
+which is a Hilbert space with inner product $\<\xi, \eta\> = \int_X \<\xi_x, \eta_x\> d\mu(x)$. If $a \in L^\infty(X)$ and $\xi \in \int_X^{\oplus} \H_x d\mu(x)$ we denote by $a\xi$ or $\xi a$ the element of $\int_X^{\oplus} \H_x d\mu(x)$ given by $[a\xi](x) = [\xi a](x) = a(x)\xi_x$. If $\{\xi^n\}_{n = 1}^{\infty}$ is an orthonormal fundamental sequence of sections, any $\xi \in \int_X^{\oplus} \H_x d\mu(x)$ has an expansion $\xi = \sum_{n = 1}^\infty a_n\xi^n$ where $a_n\in L^\infty(X)$ is given by $a_n(x) = \<\xi_x, \xi^n_x\>_{\H_x} $. 
+
+\begin{defn}\label{unitaryrep}
+A {\it unitary (resp. orthogonal) representation} of $\rG$ on a complex (real) measurable Hilbert bundle $X \ast \H$, with $X=\rG^{(0)}$ and a map $\rG\ni g\mapsto \pi(g) \in \U(\H_{\d(g)}, \H_{\r(g)})$ (in the real case, $\U(\H, \K)$ denotes the set of orthogonal maps from $\H$ onto $\K$) such that
+$$
+\pi(gh)=\pi(g)\pi(h), \quad\textup{ for almost all } (g,h)\in\rG^{(2)}
+$$
+and such that $\rG\ni g \mapsto \<\pi(g)\xi_{\d(g)}, \eta_{\r(g)}\>$ is a measurable map, for all $\xi, \eta \in S(X \ast \H)$. 
+\end{defn}
+
+\begin{ex}
+Given a measurable Hilbert bundle $X \ast \K$ with orthonormal fundamental sequence $\Xi=\{\xi^n\}_{n=1}^\infty$, one can always define the {\it identity representation} ${\rm id}_\Xi$ by the formula 
+$$
+{\rm id}_\Xi(g)\xi^n_{\d(g)}=\xi^n_{\r(g)},
+$$ for each $g\in\rG$, $n\in\N$.
+\end{ex}
+
+\begin{ex} \label{leftreg}
+The {\it (left) regular representation} $\lambda_\rG$ of $\rG$ is obtained by taking $\H_x = \ell^2(\rG^x)$ for each $x \in X=\rG^{(0)}$, and form the measurable Hilbert bundle $X \ast \H$ with any fundamental sequence such that $S(X \ast \H)=\{\xi\textup{ is a measurable function}\mid \xi_x\in \H_{\r(x)}\}$. The action of $\rG$ is given by 
+$$
+\lambda_\rG(g)\xi(h)=\xi(g^{-1}h),\quad\textup{ for } (g,h)\in\rG^{(2)}. 
+$$  It is obvious that in this case, one has in a natural way $$
+\int_X^\oplus \H_x\dd \mu(x)\cong L^2(\rG,\mu_\rG). 
+$$ 
+More suggestively, for $ g\in \rG $ let $ \delta_{g}\in \ell^{2}(\rG^{\r(g)}) $ be the indicator function of $ \{g\}\sub \rG^{\r(g)}$. Then $ \lambda_\rG(g) \delta_{h} = \delta_{gh} $ for all $ (g,h)\in \rG^{(2)} $. This induces a representation $ [[\lambda_\rG]] $ of $ [[\rG]] $ on $ L^{2}(\rG) $. Then $ L(\rG) $ may also be defined as the von Neumann algebra generated by the elements $ u_{\sigma} := [[\lambda_\rG]](\sigma)\in \mathbb B(L^{2}(\rG)) $.
+\end{ex}
+
+\textcolor{violet}{Introduce tensor product of representations (important for the Fell's absorbtion principle)}
+
+\begin{defn} \label{equiv}
+Given representations $\pi$ on $X \ast \H$ and $\rho$ on $X \ast \K$, we say that $\pi$ and $\rho$ are {\it unitarily equivalent} if there is a family of unitaries $\{U_x \in \U(\H_x, \K_x)\}_{x \in X}$ with 
+$$
+U_{\r(g)}\pi(g) = \rho(g)U_{\d(g)} \quad \text{for all }g \in \rG,
+$$
+and such that $x \mapsto U_x\xi_x$ is in $S(X \ast \K)$ for each $\xi \in S(X \ast \H)$. 
+\end{defn}
+
+\begin{defn}\label{weakcont}
+We say that $\pi$ is {\it weakly contained} in $\rho$, denoted $\pi \prec \rho$, if for any $\epsilon > 0$, $\xi \in S(X \ast \H)$, and $E \subset \rG$ with $\mu_\rG(E) < \infty$, there exists $\{\eta^1, \dots, \eta^m\} \subset S(X \ast \K)$ with
+$$
+\mu_\rG(\{g\in E : |\< \pi(g)\xi_{\d(g)}, \xi_{\r(g)} \> - \sum_{i = 1}^m \< \rho(g)\eta^i_{\d(g)}, \eta^i_{\r(g)} \>| \ge \epsilon\}) < \epsilon  
+$$ 
+\end{defn}
+
+
+
+\begin{defn}\label{weakmixing}
+  We say that a representation $\pi$ of a discrete pmp groupoid $\rG$ on a Hilbert bundle $X\ast \H$ is  \textit{weak mixing} if, for every $\epsilon >0$ and every $n\in \N$, and sections $ \xi_{1},\ldots, \xi_{n}\in S(X\ast\H) $, there exists $ t\in [\rG] $ such that
+\[
+  \int_{\rG^{(0)}} |\langle{\xi_{j,x}}{\pi_{xt}(\xi_{i,\d(xt)})}\rangle| \dd{\mu_{\rG^{(0)}}(x)} \leq \epsilon
+\]
+for every $ i,j = 1,\ldots, n $.
+\end{defn}
+
+
+\begin{defn}\label{invsect}
+   A sequence $ (\xi^{n})_{n=1}^{\infty}$ of normalized sections in $ X\ast\H $ is called \textit{almost invariant} for $ \pi $ if for a.e. $ g\in \rG $,
+   \[
+     \norm{\pi(g) \xi_{d(g)}^{n}- \xi_{r(g)}^{n}} \xrightarrow{n\to\infty}0.
+   \] On the other hand, an \textit{invariant} section is a normalized section $\xi\in S_1(X\ast\H)$ such that for a.e. $ g\in \rG $,
+   \[
+     \pi(g) \xi_{d(g)}= \xi_{r(g)}.
+   \]
+\end{defn}
+
+
+
+
+\begin{defn}
+    A representation $\pi$ on $X \ast \H$ is called {\it mixing} or $c_0$ if 
+for every $\epsilon, \delta > 0$ and every pair of normalized sections $\xi, \eta \in S(X \ast \H)$, there is $E \subset X$ with $\mu(X \setminus E) < \delta$ such that 
+$$
+\left|\{g \in \rG_x^Y : |\<\pi(g)\xi_x, \eta_{\r(g)}\>| > \epsilon\}\right| < \infty  \quad \text{for $\mu$-a.e. $x \in E$.}
+$$
+\end{defn}
+
+
+\begin{defn}\label{cohom}
+    A {\it $1$-cocycle} for a representation $\pi$ on $X \ast \H$ is a measurable map $\rG\ni g \mapsto b(g) \in \H_{\r(g)}\subset X\ast \H$ such that 
+\begin{equation}\label{cocycle} 
+b(gh) = b(g) + \pi(g)b(h) \quad \text{for all } (g,h)\in \rG^{(2)}.
+\end{equation} The $1$-cocycle $b$ is a {\it $1$-coboundary} if there is a measurable section $\xi$ of $X \ast \H$ such that 
+\begin{equation}\label{cobound} 
+b(g) = \xi_{\r(g)} - \pi(g)\xi_{\d(g)} \quad \textup{for  $\mu_\rG$-a.e. $g\in\rG$}.
+\end{equation}
+A pair of $1$-cocycles $b$ and $b'$ are {\it cohomologous} if $b - b'$ is a $1$-coboundary. The set of $1$-cocycles of $\pi$ is denoted $Z^1(\rG,\pi)$ and the set of $1$-coboundaries by $B^1(\rG,\pi)$ the quotient 
+$$
+H^1(\rG,\pi)=Z^1(\rG,\pi)/B^1(\rG,\pi)
+$$ is called the $1$-cohomology group of the representation $\pi$ and it is typically endowed with the quotient topology after giving $Z^1(\rG,\pi)$ the topology of convergence in the measure $\mu$.
+\end{defn}
+
+
+
+The following result is due to \textcite[Theorem 3.19, Lemma 3.20]{anatharaman:05}.
+
+\begin{lem}\label{bound}
+Let $b$ be a 1-coboundary associated to the representation $\pi$ of $\rG$ in $X\ast \H$, then there exists a Borel subset $E\subset X$ of positive measure, such that for every $x\in E$, $\sup\{\norm{b(g)}\mid g\in \rG_E^x\}<\infty$. If $\rG$ is ergodic, both conditions are equivalent and $E$ can be chosen to have measure $1$.
+\end{lem}
+
+\begin{rem}
+    The $1$-cocycles satisfying the second condition of the lemma are often called {\it bounded $1$-cocycles}.
+\end{rem}
+
+
+For certain technical reductions, we construct a generalized Bernoulli shift groupoid action of $ \rG $ with base space $ (K,\kappa) $ \textcolor{violet}{(base space to be determined)}. For now, $ (K,\lambda) $ is a standard probability space.
+
+    Let $ \widetilde{X} = X_K := \{(x,\omega): x\in X, \omega\in K^{\rG^{x}}\} $ with sigma algebra generated by the following maps:
+    \begin{itemize}[noitemsep, topsep=3pt]
+        \item $(x,\omega)\mapsto x$,
+        \item $\forall\ \sigma\in [\rG],\,(x,\omega)\mapsto \omega(\sigma x)$.
+    \end{itemize}
+    Define a probability measure $ \widetilde{\mu}= \mu_{\lambda} $ on $ X_{K} $ by 
+    \[
+        \dd{\mu_{\lambda}(x,\omega)} := \dd{\lambda^{\otimes\rG^{x}}(\omega)}\dd{\mu(x)}
+    \]
+    In the notation of \textcolor{violet}{TODO cite felipe :)}, define a groupoid action $ (\rG, \widetilde{X}, \rho, \theta) $ as follows
+    \begin{itemize}[noitemsep, topsep=3pt]
+        \item $\rho:\widetilde{X}\to X = \rG^{(0)} $ by $ \rho(x,\omega) = x $,
+        \item $\rG \bowtie \widetilde{X} := \{ (g,x,\omega) : d(g) = \rho(x,\omega) = x\}$,
+        \item $ g\cdot_{\theta}(x,\omega) := (r(g), \omega(g^{-1}\cdot) $
+    \end{itemize}
+    Letting $ \widetilde{\rG} $ be the transformation groupoid for this action, we get a groupoid extension $ p: \widetilde{\rG}\to \rG $. As a set, $ \widetilde{\rG} = \{(g,\omega) : g\in \rG, \omega\in K^{\rG^{\r(g)}}\} $. We list the explicit properties of $ \widetilde{\rG} $ below.
+    \begin{align*}
+        &\widetilde{\d}(g,\omega) = (\d(g), g^{-1}\cdot \omega) = (\d(g), \omega(g\bigcdot))\qquad \widetilde{\r}(g,\omega) = (\r(g), \omega)\\
+        &(g,\omega)^{-1} = (g^{-1}, g^{-1}\cdot\omega) = (g^{-1}, \omega(g\bigcdot))\qquad (g,\omega)\cdot(h,\xi) = (gh, \omega).
+    \end{align*}
+    Now suppose that $ \pi:\rG\to Iso(X\ast \H) $ is a groupoid representation and $ b\in Z^{1}(\rG,\pi) $. Define a new Hilbert bundle $ \widetilde{X}\ast \widetilde{\H} $ by $ \widetilde{\H}_{\widetilde{x}} := \H_{p(\widetilde{x})} $. Define $ \widetilde{\pi} $ and $ \widetilde{b} $ by $ \widetilde{\pi} = \pi\circ p $ and $ \widetilde{b} = b\circ p $. Then $ \widetilde{\pi}: \widetilde{\rG}\to Iso(\widetilde{X}\ast \widetilde{\H}) $ is a groupoid representation and $ \widetilde{b}\in Z^{1}(\widetilde{\rG},\widetilde{\pi}) $. 
+\begin{claim}
+    If $ \widetilde{b}\in B^{1}(\widetilde{\rG},\widetilde{\pi}) $, then $ b\in B^{1}(\rG,\pi) $.
+\end{claim}
+\begin{proof}
+    Let $ \eta \in S(\widetilde{X}\ast \widetilde{\H}) $ be such that $ \widetilde{b}(\gamma) = \eta_{\widetilde{\r}(\gamma)}-\widetilde{\pi}(\gamma) \eta_{\widetilde{\d}(\gamma)} $ for $ \gamma\in \widetilde{\rG} $. Fix $ k\in K $ and let $ s:\rG\to \widetilde{\rG} $ be defined by $ s(g):= (g,\omega_{g,k}) $ where $ \omega_{g,k}:\rG^{\r(g)}\to K $ is the constant function with value $ k $. Note that $ s $ is a groupoid homomorphism and $ p\circ s = id_{\rG} $. Define a section $ \xi\in S(X\ast \H) $ by $ \xi_{x} = \eta_{s(x)} $. Then, we compute
+    \begin{align*}
+        b(g) = b(p\circ s (g)) = \widetilde{b}(s(g)) &= \eta_{\widetilde{\r}(s(g))}-\widetilde{\pi}(s(g)) \eta_{\widetilde{\d}(s(g))} \\
+        &=\eta_{s(\r(g))}-\pi(g) \eta_{s(\d(g))} =\xi_{\r(g)} -\pi(g)\xi_{\d(g)},
+    \end{align*}
+    so $ b\in B^{1}(\rG,\pi) $.
+\end{proof}
+
+The following lemma is due to \textcite[Lemmas 2.1, 2.2]{hoff:16}, at least in its form for equivalence relations.
+
+\begin{lem}\label{unbound}      
+    Let $b$ be a 1-coboundary associated to the representation $\pi$ of $\rG$ in $X\ast \H$. Then $ b \in Z^{1}(\rG,\pi)\setminus B^{1}(\rG,\pi) $, i.e. $ b $ is \textit{unbounded} if and only if there exists a $ \delta >0 $ such that for all $ R>0 $ there is a $ \sigma\in [\rG] $ such that 
+    \[
+        \mu(\{x\in X: \norm{b(x\sigma)} \geq R\} > \delta.
+    \]
+\end{lem}
+
+\begin{proof}
+    We seek to reduce to the corresponding lemma for equivalence relations in \cite[Lemma 2.2]{hoff:16}. As such, note that by the above claim, $\widetilde{b}$ is also unbounded.
+\end{proof}
+
+
+
+
+
+
+%\begin{lem}
+%A 1-cocycle $b$ for a representation $\pi$ of $\R$ on $X \ast \H$ is a coboundary if and only if it is bounded.
+%\end{lem}
+
+%\begin{defn}\label{bounded}
+%    The 1-cocycle $b$ is {\it bounded} if there exists a sequence of measurable subsets $\{E_n\}_{n = 1}^\infty$ of $X$ with $\mu(\bigcup_{n = 1}^\infty E_n) = 1$ and $\sup\{\|b(x, y)\|: (x, y) \in \R|_{E_n}\} < \infty$ for each $n \ge 1$.
+%\end{defn}
+
+\subsection{Groupoid actions on measure spaces and tracial von Neumann algebras}
+
+
+
+
+\subsection{Examples from $1$-cohomology}
+
+On this (small) subsection we will provide some examples of both zero and nonzero $1$-cohomology. The example by default of trivial cohomology are the measured groupoids with property $(T)$. 
+
+\begin{defn}
+    A discrete measured groupoid $\rG$ has property $(T)$ is every representation $\pi$ that has an almost invariant sections has an invariant section.
+\end{defn}
+
+Indeed, \textcite[Theorems 4.8, 4.12]{anatharaman:05} characterized property $(T)$ by vanishing of $1$-cohomology:
+
+\begin{thm}[\cite{anatharaman:05}]
+    A discrete measured groupoid $\rG$ has property $(T)$ if and only if $H^1(\rG,\pi)=0$, for every orthogonal representation $\pi$.
+\end{thm}
+
+\begin{ex}
+    Property $(T)$ for discrete groups is a wide area of study with many results and examples (see \cite{Tbook}). On the other side, non-group examples include transformation groupoids of ergodic actions of groups with property $(T)$ \cite[Theorem 2.16]{lupini:18}. 
+\end{ex}
+
+Let us now provide a less restrictive class of examples, at least for the case of the left regular representation. For the group case, the following result appeared in \cite{peterson:06,BeVa}.
+
+
+\begin{lem}[\textcite{peterson:06}]
+  Let $ \Gamma = \Gamma_{1}\times \Gamma_{2} $ be a discrete group with $ \Gamma_{1} $ infinite and $ \Gamma_{2} $ nonamenable. Then $ H^{1}(\Gamma, \lambda) = 0 $.
+\end{lem}
+
+\begin{proof}
+  Let $ c\in Z^{1}(\Gamma, \lambda) $. 
+  Since $ \Gamma_{2} $ is nonamenable, the trivial representation on $ \Gamma_{2} $ is weakly contained in the left regular on $ \Gamma $. Hence, there exists some $ K>0 $ and $ \gamma_{1},\ldots, \gamma_{n}\in \Gamma_{2}$ such that 
+  \[
+    \norm{\xi} \leq K\cdot \sum_{i=1}^{n} \norm{\lambda(\gamma_{i}) \xi - \xi} \text{ for all } \xi\in l^{2} \Gamma.
+  \]
+  Then for $ \gamma\in \Gamma_{1} $, as $ [\Gamma_{1}, \Gamma_{2}] = \{1\} $ it follows that
+  \[
+    \norm{c(\gamma)} \leq K\cdot \sum_{i=1}^{n} \norm{\lambda(\gamma_{i}) c(\gamma) - c(\gamma) } = K\cdot \sum_{i=1}^{n} \norm{\lambda(\gamma) c(\gamma_{i}) - c(\gamma_{i}) } \leq 2 K \cdot \sum_{i=1}^{n} \norm{c(\gamma_{i})},
+  \]
+  whence $ c\vert_{\Gamma_{1}} $ is bounded. Hence we may assume, without loss of generality, that $ c\vert_{\Gamma_{1}} = 0 $. Then the cocycle relation and commutativity of $ \Gamma_{1} $ and $ \Gamma_{2} $ imply that, for all $ \gamma\in \Gamma_{2} $, $ c(\gamma) $ is a $ \lambda\vert_{\Gamma_{1}} $-fixed vector. As $ \Gamma_{1} $ is infinite, $ \lambda\vert_{\Gamma_{1}} $ is mixing so $ c\vert_{\Gamma_{2}}=0 $. If we restrict $\lambda_{}$
+  
+\end{proof}
+
+Now we attempt to generalize the above to products of groupoids.
+
+
+
+
+\begin{thm}
+  Let $ \rG = \rG_{1}\times \rG_{2} $ be countable, discrete pmp groupoids with \textcolor{blue}{$ \rG_{1} $ infinite} and $ \rG_{2} $ nonamenable. Let $X_1$ and $X_2$ be their unit spaces, respectively. Then $ H^{1}(\rG, \lambda_\rG) = 0 $.
+\end{thm}
+
+\begin{proof}
+As $\rG_2$ is nonamenable, by \cite[Theorem 6.1.4]{anatharaman:amenableGrpds}, $\lambda_{\rG_2}$ does not have almost invariant sections, in particular, there must exist a nonnull set $Q\subset \rG_2$ and $\epsilon>0$ such that for every normalized section $x\mapsto\xi_x\in \ell^2(\rG_2^x)$, one has $$
+\norm{\lambda_{\rG_2}(g)\xi_{\d(g)}-\xi_{\r(g)}}_{\ell^2(\rG_2^{\r(g)})}>\epsilon
+$$ for all $g\in Q$ (note that every measure considered is $\sigma$-finite). Now if we consider
+\end{proof}
+
+
+
+\begin{proof}
+  Assumptions
+  \begin{itemize}
+    \item $ \rG_{2} $ nonamenable, hence $ 1_{\rG_{2}}\not\preceq \lambda_{\rG_{2}} $
+    \item The natural action of $ \rG_{1} $ on its unit space $ \rG_{1}^{(0)} $ is weakly mixing. Hence, $ \lambda_{\rG_{1}} $ is weakly mixing.
+  \end{itemize}
+
+  Now by \textcite[Theorem 6.1.4]{anatharaman:amenableGrpds},
+  \begin{align*}
+    1_{\rG_{2}}\not\preceq \lambda_{\rG_{2}} &\implies \not\exists \text{ almost invariant vectors for $ \lambda_{\rG_{2}} $}\\
+    &\implies \not\exists \text{ almost invariant vectors for $ \lambda_{\rG}\vert_{\rG_{2}} $} \quad \text{\textcolor{violet}{TODO: replace with below}}
+  \end{align*}
+
+  \textcolor{violet}{TODO: use idea for $ \lambda_{\rG}\vert_{\rG_{1}^{(0)}\times\rG_{2}} $}
+
+  Take $ \H_{x} = l^{2}(\rG^{x}) $ for $ x\in X = \rG_{1}^{(0)}\times \rG_{2}^{(0)} $
+    
+  % Fix a unit $ e\in G_{1}^{(0)} $, so we embed $ \rG_{2}\hookrightarrow \rG $ by $ g\mapsto (e,g) $.
+
+  % So there is some constant $ K > 0 $ and elements $ g_{1},\ldots, g_{m}\in\rG_{2} $ such that for all $ \xi\in S(X\ast\H) $
+  % \[
+  %   \norm{\xi} \leq K\cdot \sum_{i=1}^{m} \norm{\lambda_{\rG}((e,g_{i})) \xi_{\d(e, g_{i})} - \xi_{\r(e,g_{i})}}
+  % \]
+  Let $ c\in Z^{1}(\rG, \lambda_{\rG}) $. For 
+
+  
+\end{proof}
+
+Let us now give an example of a groupoid with nonzero $1$-cohomology. 
+
+\begin{ex}
+    Let $\rG$ be a discrete measured groupoid and consider its isotropy subgroupoid $$
+    \rG'={\rm Iso}(\rG):=\{g\in\rG\mid \r(g)=\d(g)\}.
+    $$ This is a discrete measured groupoid and can be viewed as a Borel field of discrete countable groups (in the sense of \textcite{sutherland:94}) and let us call $\G_x=\rG_x^x$. Then the left regular representation of $\rG'$ amounts to the left regular representations of $\G_x$ on $\ell^2(\G_x)$, bundled together. In particular, if we assume that 
+    $$\mu(\{H^1(\G_x,\lambda_{\G_x})\ne 0 \})>0.$$  Then $H^1(\rG',\lambda_{\rG'})\ne 0$.
+\end{ex}
+
+\subsection{Examples from Invariant Random Subgroups}
+
+\begin{defn} 
+    Let $ Sub(\Gamma) $ be the space of subgroups of $ \Gamma $ with Borel structure induced by that of $ \{0,1\}^{\Gamma} $. The group $ \Gamma $ naturally acts on $ Sub(\Gamma) $ by conjugation. An \textit{invariant random subgroup} of $ \Gamma $ is a $ \Gamma $-invariant probability measure $ \eta \in Prob(Sub(\Gamma)) $. 
+\end{defn}
+
+Suppose $ N\sub \mathbb{F}_{k} $ is an infinite index, infinite normal subgroup of the free group on $ k $-letters. Then, from (TODO FIND REFERENCE), the induced $ \delta_{N} $-random Bernoulli shift $ \mathbb{F}_k \curvearrowright (\Omega, \mu)$ is an ergodic pmp action with a.e. constant, infinite stabilizers.
+
+So for almost every $ x $ we have that $N= Stab(x) $ . Hence we have an extension $ 1\to N\to \mathbb{F}_{k}\to H \to 1 $, so we may write $ G = N\rtimes_{c} H $ where $ c $ is a $2$-cocycle. From this relation, we have the following isomorphisms
+    \begin{align*}
+        L^\infty(X)\rtimes \Gamma = L(X\rtimes \Gamma) &= L(X\rtimes(N\rtimes_{c}H)) \\
+        &= (L^\infty(X)\rtimes N) \rtimes_{\tilde{c}} H = (L^\infty(X)\cls{\otimes} L(N)) \rtimes_{\tilde{c}} H
+    \end{align*}
+So for almost every $ y $ we have that $N= Stab(x) $ . Hence we have an extension $ 1\to N\to G\to H \to 1 $, so we may write $ G = N\rtimes_{c} H $ where $ c $ is a $2$-cocycle. From this relation, we have the following isomorphism.
+
+
+
+\subsection{Malleable deformations}
+
+In the following we survey the basics of Sorin Popa's deformation rigidity theory as well as various relevant approaches/results from \textcite{dSHH:21} which motivate this paper's main results. \textcolor{olive}{TODO: Add references to Popa's seminal works in def/rig}
+
+The intuitive idea behind deformation/rigidity theory is to study rigidity results for a von Neumann algebra $ M $ which can deformed inside another algebra $ \widetilde{M}\supseteq M $ by an action $ \alpha: \R \to \Aut(\widetilde{M}) $ whilst containing subalgebras which are \textit{rigid} with respect to the deformation.
+
+Let $ (M,\tau) $ be a tracial von Neumann algebra and $ \Aut(M) $ the group of trace-preserving $ * $-automorphism of $ M $. Then we have the following fundamental definition due to Popa.
+
+\begin{defn}[Popa]
+  Let $ \widetilde{M}\supseteq M $ be a trace-preserving inclusion of tracial von Neumann algebras.
+  \begin{enumerate}
+    \item A \textit{malleable deformation $ \alpha $ of $ M $ inside $ \widetilde{M} $} is a strongly-continuous action $ \alpha:\R\to \Aut(\widetilde{M}) $ such that $ \alpha_{t}(x)\xrightarrow{\norm{\cdot}_{2}}x $ as $ t\to 0 $ for every $ x\in \widetilde{M} $.
+    \item An \textit{s-malleable deformation $ (\alpha,\beta) $ of $ M $ inside $ \widetilde{M} $ } is a malleable deformation $ \alpha $ combined with a distinguished involution $ \beta\in\Aut(\widetilde{M}) $ such that $ \beta\vert_{M} = id $ and $ \beta \alpha_{t} = \alpha_{-t} \beta $ for all $ t\in \R $.
+  \end{enumerate}
+\end{defn}
+
+
+On its own, deformations do not give much information about the algebra itself; however, they do provide one with a quantitative way to locate subalgebras with prescribed properties that force them to be \textit{rigid} with respect to the deformation. Explicitly, given a malleable deformation $ \alpha $ of $ M $ inside $ \widetilde{M} $, a subalgebra $ Q\sub M $ is $ \alpha $-\textit{rigid} if the deformation converges uniformly on the unit ball of $ Q $, i.e.
+$$
+  \lim_{t\to 0}\sup_{x\in (Q)_{1}} \norm{\alpha_{t}(x)-x}_{2} =0.
+$$
+
+We now introduce the more recent notion of maximal rigidity for subalgebras studied in \textcite{dSHH:21}.\textcolor{olive}{TODO: Expand upon this and why it helps us}
+
+\begin{defn}[\textcite{dSHH:21} 3.1]
+  Let $ (\alpha,\beta) $ be an $ s $-malleable deformation $ M $ inside $ \widetilde{M} $ where $ M $ and $ \widetilde{M} $ are both assumed to be finite. Then an $ \alpha $-rigid subalgebra $ Q\sub M $ is \textit{maximal $ \alpha $-rigid} if whenever $ P\sub M $ is an $ \alpha $-rigid subalgebra containing $ Q $, it follows that $ P = Q $.
+\end{defn}
+
+
+\begin{defn}
+  Let $ \alpha $ be a malleable deformation of $ M $ inside $ \widetilde{M} $ where $ M$, $\widetilde{M} $ are finite. Suppose that $ Q\sub M $ is an $ \alpha $-rigid subalgebra of $ M $. Then a subalgebra $ P\sub M $ is an \textit{$\alpha$-rigid envelope of $ Q $} if 
+  \begin{itemize}
+    \item $ P $ is $ \alpha $-rigid
+    \item $ P\supseteq Q $
+    \item if $ N \sub M $ is $ \alpha $-rigid and $ N\supseteq Q $, then $ N\sub P $.
+  \end{itemize}
+\end{defn}
+
+One would be justified in being skeptical as to whether rigid envelopes even exist for given subalgebras. Indeed, they do not exist in general; however, some of the main results in \textcite{dSHH:21} show that in many natural cases they do. We shall use these results in crucial ways and thus sketch them here for reference.
+
+\begin{thm}[\textcite{dSHH:21} 1.2] \label{rigenvelope}
+  Let $ (\alpha,\beta) $ be an $ s $-malleable deformation of tracial von Neumann algebras $ M\sub \widetilde{M} $. Then any $ \alpha $-rigid subalgebra $ Q\sub M $ with $ Q^{\prime}\cap \widetilde{M}\sub M $ is contained in a unique maximal $ \alpha $-rigid subalgebra $ P\sub M $.
+\end{thm}
+
+In the following we will utilize Popa's spectral gap argument. We include the relevant definitions for Hilbert bimodules as well. For a presentation of this version of the argument, see \cite[Theorem 3.2]{hoff:16}
+
+\begin{defn}
+    let $ N\subseteq M $ be a von Neumann subalgebra. An $M$-$M$ bimodule $ _M \H_M $ is said to be \textit{mixing relative to $ N $} if for any sequence $ (x_{n})_{n=1}^{\infty} $ in $ (M)_{1} $ such that $ \norm{\E_{N}(yx_{n}z)}_{2} \to 0 $ for every $ y,z\in M $, we have that 
+    \[
+        \lim_{n\to \infty} \sup_{y\in(M)_{1}}|\inp{x_{n} \xi y}{\eta}| = \lim_{n\to \infty} \sup_{y\in(M)_{1}}|\inp{y \xi x_{n} }{\eta}| = 0 \quad \text{ for all } \xi,\eta\in \H
+    \]
+
+\end{defn}
+
+\begin{defn}
+    An $ M $-$ N $ bimodule $ _M\H_N $ is said to be \textit{weakly contained} in an $ M $-$ N $ bimodule $ _M\K_N $, written $ _M\H_N \prec _M\K_N$, if for any $ \epsilon>0 $, finite subsets $ F_{1} \sub M $, $ F_{2}\sub N $, and $ \xi\in \H $, there are $ \eta_{1},\ldots, \eta_{n}\in \K $ such that 
+    \[
+        |\inp{x \xi y}{\xi} - \sum_{j=1}^{n}\inp{x \eta_{j}y }{\eta_{j}} | < \epsilon \quad \text{for all } x\in F_{1}, y\in F_{2}
+    \]
+
+\end{defn}
+
+
+\begin{thm}[Popa's Spectral Gap Argument]\label{popaspectralgap}
+    Let $ (\alpha,\beta) $ be an $ s $-malleable deformation of tracial von Neumann algebras $ M\sub \widetilde{M} $ and assume that $M$ has no amenable direct summands. Suppose further that that the orthocomplement bimodule $_{M} L^2(\widetilde{M}) \ominus L^2(M)_M $ is weakly contained in the coarse $M$-$M$ bimodule and mixing relative to an abelian subalgebra $A\sub M$.
+
+    Then there is a central projection $z\in Z(M)$ such that 
+    \begin{enumerate}
+        \item $ \sup_{x\in (Mz)_{1}} \norm{\alpha_{t}(x)-x}_{2} \xrightarrow{t\to0}0 < +\infty $
+        \item $M(1-z)$ is prime.
+    \end{enumerate}
+    
+    
+\end{thm}
+
+
+
+
+
+
+
+
+
+\section{Gaussian extension of $\rG$ and the $s$-malleable deformation of $L(\rG)$} 
+
+In this section we construct the s-malleable deformation that will be used to prove the main results. Gaussian actions have been used to construct $s$-malleable deformation for group von Neumann algebras in \cite{dSHH:21, ps:12, sinclair:11} and for equivalence relation von Neumann algebras in \cite{hoff:16}. We will follow the same reasoning in our wider context. 
+
+\subsection{The Gaussian extension of $\rG$} 
+Let $ \rG $ be a discrete, pmp Groupoid, $\pi$ an orthogonal representation of $\rG$ on a real Hilbert bundle $X \ast \H$, and let $\{\xi^n\}_{n = 1}^\infty$ be an orthonormal fundamental sequence of sections for $X \ast \H$. For $x\in X$, we consider the measure space
+\begin{equation}
+    (\Omega_x, \nu_x) = \prod_{i = 1}^{\dim \H_x} (\R, \tfrac{1}{\sqrt{2\pi}}e^{-s^2/2}ds),
+\end{equation}
+and define $\omega_x: \spn_\R (\{\xi_x^n\}_{n = 1}^{\dim \H_x}) \to \U(L^\infty(\Omega_x))$ by
+\begin{equation}
+    \omega_x\left(\sum_{n = 1}^{\dim \H_x} a_n\xi_x^{n}\right) = \exp\left({i\sqrt{2}\sum_{n = 1}^{\dim \H_x} a_nS_x^{n}}\right)
+\end{equation} where $S^n_x$ is the $n$th-coordinate function $S_x^n((s_i)_{i = 1}^{\dim \H_x}) = s_n$ for $1\le n \le \dim \H_x$.
+
+Then $\omega_x$ extends to a $\|\cdot\|_{\H_x} - \|\cdot\|_2$ continuous map $\omega_x : \H_x \to \U(L^\infty(\Omega_x))$ satisfying 
+\begin{equation} \label{axioms}
+\tau(\omega_x(\xi)) = e^{-\|\xi\|^2}, \quad \omega_x(\xi + \eta) = \omega_x(\xi)\omega_x(\eta), \quad \omega_x(-\xi) = \omega_x(\xi)^*, \quad \forall\xi, \eta \in\H_x.
+\end{equation}
+
+For $x \in X$, one also has $D_x = \spn_\CC (\{\omega_x(\xi)\}_{\xi \in \H_x})$ has $D_x'' = \ol{D_x}^\wot = L^\infty(\Omega_x)$. Now for every $g\in\rG$, define a $*$-homomorphism $\rho(g): D_{\d(g)} \to L^\infty(\Omega_{\r(g)})$ by 
+$$
+\rho(g)\omega_{\d(g)}(\xi) = \omega_{\r(g)}(\pi(g)\xi),
+$$
+which is well defined and $\|\cdot\|_2$-isometric since \eqref{axioms} implies 
+$$
+\tau(\omega_{\d(g)}(\eta)^*\omega_{\d(g)}(\xi)) = \tau(\omega_{\r(g)}(\pi(g)\eta)^*\omega_{\r(g)}(\pi(g)\xi)) \quad \forall\xi, \eta \in \H_{\d(g)}.
+$$
+So extends $\rho(g)$ extends to a trace-preserving $*$-isomorphism $\rho(g): L^\infty(\Omega_{\d(g)}) \to L^\infty(\Omega_{\r(g)})$.  
+Let $\theta_{g}: \Omega_{\d(g)} \to \Omega_{\r(g)}$ be the induced measure space isomorphism such that $\rho(g)\phi = \phi\circ \theta_{g}^{-1}$ for all $\phi \in L^\infty(\Omega_{\r(g)})$. 
+
+So far, we have constructed an $X$-measurable bundle of abelian Von Neumann algebras $\mathcal B=\{L^\infty(\Omega_{x})\}_{x\in X}$ and note that the maps $\{\rho(g)\}_{g\in \rG}$ give us an action of $\rG$ on $\mathcal B$, so the natural thing to do is to produce a $s$-malleable deformation of $L(\rG)\subset \rG\ltimes_\rho \mathcal B$. And this is indeed the next step, but first we will realize the groupoid crossed product $\rG\ltimes_\rho \mathcal B$ as a groupoid algebra by its own right. \textcolor{violet}{I should justify some of this stuff, but I'm too tired to do it today.}
+
+We consider $\widetilde X\equiv X \ast \Omega$ as a measurable bundle with $\sigma$-algebra generated by the maps $(x, r) \mapsto \omega_x(\sum_{i \in I}a_i\xi^i_x)(r)$ for $I \subset \N$ finite and $a_i \in \R$. The natural measure $\mu \ast \nu$ on $X \ast \Omega$ is given by $[\mu \ast \nu](E) = \int_X \nu_x(E_x)d\mu(x)$, where $E_x = \{s \in \Omega_x: (x, s) \in E\}$. We define the \emph{Gaussian extension of $\rG$} to be the transformation groupoid $\widetilde \rG=\rG\ltimes_\theta (X \ast \Omega)$, explicitly given by 
+\begin{itemize}
+    \item As a set, $\widetilde \rG=\{(g,x,r)\in \rG\times  (X \ast \Omega)  \mid \r(g)=x\}$. The unit space is identified with $X \ast \Omega$
+    \item The groupoid operations are 
+    \begin{align*}
+        \r(g,x,r)=(x,r), \quad &\quad\d(g,x,r)=(\d(g),\theta_g^{-1}(r)) \\
+        (g,x,r)(h,\d(g),\theta_g^{-1}(r))=(gh,x,r), \quad&\quad (g,x,r)^{-1}=\big(g^{-1},\d(g),\theta_g^{-1}(r)\big)
+    \end{align*}
+    \item $\widetilde \rG$ inherits a natural measurable structure as a subset of the product $\rG\times  (X \ast \Omega) $. Lastly, $\mu*\nu$ plays the role of the invariant probability measure on $X \ast \Omega$.
+\end{itemize}
+
+Then we note that $L(\widetilde \rG)\cong \rG \ltimes_\rho \mathcal B$ and that $L(\widetilde \rG)$ contains copies of $L^\infty(\widetilde X,\mu*\nu) $ and $L(\rG)$ such that 
+\begin{equation}\label{generated}
+    L(\widetilde \rG)=  \vN{L^\infty(X \ast \Omega), \{u_\sigma\}_{\sigma\in[\rG]}}=\vN{L^\infty(X \ast \Omega), L(\rG)} \subset \B(L^2(\widetilde \rG)).
+\end{equation} and we have the relation  $u_\sigma \phi u_\sigma^*=\rho(\sigma)\phi$, for $\sigma\in [\rG], \phi\in L^\infty(X\ast \Omega) $, where $\rho$ extends from an action of $\rG$ on $\mathcal B$ to the action of $[\rG]$ on $L^\infty(X\ast \Omega)$ given by \begin{equation}\label{comm}
+    \rho(\sigma)\phi(x,r)=
+\end{equation}
+\textcolor{violet}{Is it that easy?}
+
+
+
+\subsection{$s$-Malleable deformation of $L(\rG)$}
+
+Let $ b $ be a 1-cocycle for the representation $ \pi $ on $ X*\H $. Set $ M = L(\rG) $, $ \widetilde{M}:=L(\widetilde{\rG}) $. For $ t\in\R $, define $ c_{t}:\widetilde{\rG}\to \mathbb S^{1} $ by
+$$
+  c_{t}(g,x,r) = \omega_{x}(tb(g))(r),
+$$ which is a multiplicative function: Given $(g,x,r),(h,\d(g),\theta_g^{-1}(r))\in \widetilde{\rG}$, we see that: 
+\begin{align*}
+    c_t(gh,x,r)&=\omega_{x}(tb(g))(r)\omega_{x}(t\pi(g)b(h))(r) \\
+&=\omega_{x}(tb(g))(r)\big[\rho(g)\omega_{\d(g)}(tb(h))\big](r) \\
+&=\omega_{x}(tb(g))(r)\omega_{\d(g)}(tb(h))\big(\theta_g^{-1}(r)\big) \\
+&=c_t(g,x,r)c_t(h,\d(g),\theta_g^{-1}(r)).
+\end{align*} 
+For $ t\in\R $ and $ \sigma\in [\widetilde{\rG}] $, let $ f_{c_{t},g}\in \mathcal{U}(L^{\infty}(X\ast \Omega)) $ be given by
+$$
+  f_{c_{t},\sigma}(x,r) = \omega_{x}(tb(x\sigma))(r)=c_t(x\sigma, x,r), 
+$$ and so we obtain an SOT-continuous $\mathbb R$-action $ \alpha_{b,t}\in \Aut(\widetilde{M}) $ by 
+$$
+  \alpha_{b,t}(au_{\sigma}) = f_{c_{t},\sigma}au_{\sigma}.
+$$ \textcolor{violet}{Is it clear that this is an automorphism?}
+
+Now we compute
+\begin{align*}
+  \tau(f_{c_{t},\sigma}) &= \int_{X\ast \Omega} f_{c_{t},\sigma} \dd{\mu\ast \nu} = \int_{X} \int_{\Omega_{x}} f_{c_{t},\sigma}(x,r) \dd{\nu_{x}}(r) \dd{\mu(x)} \\
+  &= \int_{X}\int_{\Omega_{x}} \omega_{x}(tb(x\sigma))(r) \dd{\nu_{x}}(r) \dd{\mu(x)} \\
+  %&= \int_{X} \tau(\omega_{x}(tb(x\sigma)))  \dd{\mu(x)} \\
+  &=\int_{X} e^{-t^2\norm{b(x\sigma)}^{2}}  \dd{\mu(x)}.
+\end{align*} So
+\begin{align*}
+  \norm{\alpha_{b,t}(au_{\sigma})-au_{\sigma}}_{2}^{2} &= \norm{f_{c_{t},\sigma}au_{\sigma}-au_{\sigma}}_{2}^2 \leq \norm{a}^{2} \norm{f_{c_{t},\sigma}-1}_{2}^{2}  = 2\norm{a}^{2}(1-\Re \tau(f_{c_{t},\sigma})) \\
+  &= 2\norm{a}^{2}\lr{1-\int_{X} e^{-t^2\norm{b(x\sigma)}^{2}}\dd{\mu(x)}}\xrightarrow{t\to0}0.
+\end{align*}
+And the convergence is uniform if and only if $b$ is bounded. Next, note that defining $\beta_x(\omega_x(\xi))=\omega_x(-\xi)=\omega_x(\xi)^*$ for $x\in X$ gives an $^*$-automorphism of $L^\infty(\Omega_x)$, which leads to $\beta\in\Aut(L^\infty(X\ast \Omega)) $ defined by $\beta(a)(x,r)=\beta_x(a(x,\cdot))(r)$, for $a\in L^\infty(X\ast \Omega)$.
+
+\subsection{Maximal rigid subalgebras of $ L(\widetilde\rG) $}
+
+\textcolor{violet}{Prove that $\pi|_\H$ weakly mixing implies that the koopman representation $\kappa$ of $\rG$ of the action of the gaussian construction.}
+
+\begin{prop} \label{maxrig1}
+  Let $ \rG $ be a discrete measured groupoid and $ \pi $ an orthogonal representation of $ \rG $ on a real Hilbert bundle $ X\ast \H $. Let $ b\in Z^{1}(\rG,\pi) $ be a cocycle and set 
+  $$
+    \mathcal{S} := \{g\in \rG : b(g) = 0\}.
+  $$
+  Then $ \mathcal{S} $ is a wide discrete measured subgroupoid of $ \rG $. Moreover, if $ L(\mathcal{S}) $ is diffuse and $ \pi\vert_{\mathcal{S}} $ is weak mixing, then $ L(\mathcal{S}) $ is a maximal rigid subalgebra for $ \alpha_{b} $.
+\end{prop}
+
+\begin{proof}
+    We will follow the proof of \cite[Proposition 4.3]{dSHH:21}. $\mathcal S$ is easily seen to be a subgroupoid, every unit $x\in X$ satisfies $x^2=x$ and hence the cocycle identity implies $x\in \S$; Showing closedness for multiplication and inverses is easier. Now we note that $\alpha_{b,t}|_{L(\S)}={\rm id}_{L(\S)}$ and let us now show that the conjugation action of $L^2(\widetilde M)\ominus L^2(M)$ has no nonzero invariant vectors. We observe that, for $\sigma\in [\S]\subset [[\rG]]$, $$
+    {\rm Ad}(u_\sigma)\big[ au_\sigma\big]
+    $$
+\end{proof}
+
+\begin{prop} \label{maxrig2}
+  Let $ \rG $ be a discrete measured groupoid and $ \pi $ an orthogonal representation of $ \rG $ on a real Hilbert bundle $ X\ast \H $. Let $ b\in Z^{1}(\rG,\pi) $ be a cocycle and suppose $\mathcal{S}\leq \rG$ is a discrete measured subgroupoid with $L(\mathcal{S})$ diffuse and such that $\pi|_\mathcal{S}$ is weakly mixing and $b|_\mathcal{S}$ is bounded. Let $P$ be the rigid envelope of $L(\mathcal{S})$. Then $P=L(\mathcal{S}')$, where $\mathcal{S}\leq \mathcal{S}'\leq \rG$ and $\mathcal{S}'$ is a maximal subgroupoid satisfying that $b|_{\mathcal{S}'}$ is bounded.
+\end{prop}
+
+\begin{proof}
+    Since $\mathcal S$ is ergodic, Lemma \ref{bound} gives a measurable section $\xi:X\to X\ast \H$, such that $b(g)=\xi_{\r(g)}-\pi(g)\xi_{\d(g)}$, for all $g\in \mathcal S$. Now define $\tilde b(g):=b(g)-\xi_{\r(g)}+\pi(g)\xi_{\d(g)}$ and its associated subgroupoid
+    $$
+    \mathcal S'={\rm Ker}\,\tilde b=\{g\in\rG\mid \tilde b(g)=0\}.
+    $$
+    It follows that $\mathcal S'$ cointains $\mathcal S$ and is maximal under the condition that $b|_{\mathcal{S}'}$ is bounded: if $\mathcal S'\leq \mathcal S''$ and $b(g)=\xi_{\r(g)}'-\pi(g)\xi_{\d(g)}'$ for $g\in \mathcal S''$, then $\xi'-\xi$ is invariant under $\pi|_\mathcal{S}$, contradicting the fact that $\pi|_\mathcal{S}$ is weakly mixing.
+    
+    Now note that $\tilde b-b$ is a coboundary, so there is $E\subset X$ of measure 1 such that
+    $$
+    \sup_{g\in \rG_E^x} \norm{\tilde b(g)-b(g)}<\infty.
+    $$ Let $\alpha_{\tilde b},\alpha_{b}$ be the associated $s$-malleable deformations inside $\widetilde M$. We observe \begin{align*}
+        \norm{(\alpha_{\tilde b,t}-\alpha_{\tilde b,t})\big{|}_M}_{L^2(M)\to L^2(\widetilde M)}^2&\leq \sup_{\sigma\in [\rG]} 2-\tau(\overline{f_{\tilde{c}_t,\sigma}}f_{{c}_t,\sigma}+\overline{f_{{c}_t,\sigma}}f_{\tilde{c}_t,\sigma}) \\ 
+        &\leq 2\sup_{\sigma\in [\rG]} \lr{1-\int_{X} e^{-t^2\norm{\tilde b(x\sigma)-b(x\sigma)}^2}\dd{\mu(x)}} \\ 
+        &\leq 2-2\int_{X} e^{-t^2\sup_{g\in \rG_E^x} \norm{\tilde b(g)-b(g)}^2}\dd{\mu(x)}
+    \end{align*} thus $$
+    \lim_{t\to 0} \norm{(\alpha_{\tilde b,t}-\alpha_{\tilde b,t})\big{|}_M}_{\infty,2}^2=0.
+    $$ So a diffuse subalgebra $Q\leq M$ is $\alpha_{b}$-rigid if and only if is $\alpha_{\tilde b}$-rigid, so by Proposition \ref{maxrig1}, $L(\mathcal S')$ is maximal rigid for $\alpha_b$ and equals $P$ (Theorem \ref{rigenvelope}).
+\end{proof}
+
+
+\section{A primeness result}
+
+%The goal of this section is to prove the following generalization of Theorem A in \textcite{hoff:16}:
+%
+%\begin{thm}[\textcolor{olive}{Conjectural}]
+%  Let $ \rG $ be a discrete, pmp groupoid \textcolor{teal}{with no amenable direct summand} \textcolor{olive}{(TODO: explain what the heck this is)} which admits an unbounded 1-cocycle into a mixing orthogonal representation weakly contained in the regular representation. Then $ L(\rG)\not\equiv N \cls{\otimes} Q $ for any type II von Neumann algebras $ N $ and $ Q $ and \textcolor{teal}{hence
+%  $$\rG \not \equiv \rG_{1} \times \rG_{2} $$ for any pmp $ \rG_{i} $ which have $ x\rG_{i} $ and $ \rG_{i}x $ infinite for a.e. $ x\in \rG_{i}^{(0)} $}
+%
+%  \textcolor{olive}{stuff about ergodic implies prime }
+%\end{thm}
+
+% \begin{rem}
+%   Suppose that $ \rG = G\times \mathcal{R} $ where $ G $ is a countable discrete icc group and $ \mathcal{R} $ is a countable ergodic pmp equivalence relation. Then both $ L(\mathcal{R}) $ and $ L(G) $ are type $ II_{1} $ factors and $ L(\rG) \cong L(G)\cls{\otimes} L(\mathcal{R}) $, so $ L(\rG) $ is not prime.
+
+%   Hence, the naive approach to generalizing Hoff's primeness results via translation into the groupoid setting must fail at some point. Regardless, we follow his various constructions until this point.
+% \end{rem}
+
+In parallel with Hoff's argument, we first analyze the ``transition'' maps $ \rho(g):L^{\infty}(\Omega_{d(g)}) \to L^{\infty}(\Omega_{r(g)}) $ utilized in the construction of the Gaussian extension of $ \rG $.
+
+Since each fiber $ \Omega_{x} $ is a finite measure space, we have that $ \cls{L^{\infty}(\Omega_{x})}^{\norm{\cdot}_{2}} = L^{2}(\Omega_{x}) $, thus we may extend $ \rho(g) $ to an isometry $ \rho(g):L^{2}(\Omega_{d(g)})\to L^{2}(\Omega_{r(g)}) $. Finally, after restricting, we obtain a unitary map
+$$
+  \rho(g): L^{2}(\Omega_{d(g)})\ominus \C \to L^{2}(\Omega_{r(g)})\ominus \C
+$$
+
+Now form the Hilbert bundle $ X\ast \K $ as follows
+\begin{itemize}
+  \item $ \K_{x}:=L^{2}(\Omega_{x})\ominus \C $ for $ x\in X $
+  \item $ \sigma $-algebra determined by fundamental sections $ \omega_{0}(\Span_{\Q}\{\xi^{n}\}_{n=1}^{\infty} $, where $ \{\xi^{n}\}_{n=1}^{\infty} $ as before and 
+    $$
+    [\omega_{0}(\eta)](x) = \omega_{x}(\eta(x)) - \tau(\omega_{x}(\eta(x))) = \omega_{x}(\eta(x)) - e^{-\norm{\eta(x)}^{2}} \text{ for }\eta\in S(X\ast\H).
+    $$
+\end{itemize}
+
+As $ \rho(gh) = \rho(g) \rho(h) $ for all $ (g,h)\in \rG^{2} $, we can consider $ \rho $ as a representation of $ \rG $ on $ X\ast \K $
+
+
+\begin{lem}\label{fockspace}
+  For each $ x\in X $, let $ \widehat{\H}_{x} = \bigoplus_{n=1}^{\infty}(\H_{x}\otimes_{\R}\C)^{\odot n} $. Then the representation $ \rho $ of $ \rG $ on $ X\ast \K $ is unitarily equivalent to the representation $ \widetilde{\pi} = \oplus_{n=1}^{\infty} \pi_{\C}^{\odot n} $ of $ \rG $ on $ X\ast \widehat{\H} $.
+\end{lem}
+
+\begin{proof}
+  For $ x\in X $, set $ U_{x}:D_{x}\to \C\oplus \widehat{\H}_{x} $ by $ \omega_{x}(\xi)\mapsto e^{-\norm{\xi}^{2}}\bigoplus_{n=0}^{\infty}\frac{(i \sqrt{2} \xi)^{\odot n}}{n!} $ for $ \xi\in \H_{x} $. Note that $ U_{x} $ is well-defined and isometric as 
+  $$
+    \inp{e^{-\norm{\xi}^{2}}\bigoplus_{n=0}^{\infty}\frac{(i \sqrt{2} \xi)^{\odot n}}{n!}}{e^{-\norm{\eta}^{2}}\bigoplus_{n=0}^{\infty}\frac{(i \sqrt{2} \xi)^{\odot n}}{n!}} = \tau(\omega_{x}(\eta)^{*} \omega_{x}(\xi)).
+  $$
+
+  Note that $ \C\sub U_{x}(D_{x}) $ as $ z \cdot\omega_{x}(0)\mapsto z $ for all $ z\in \C $. Moreover, one can inductively check that $ \xi_{1}\odot \cdots \odot \xi_{n} \in \cls{U_{x}(D_{x})} $ for all $ \xi_{i}\in \H_{x} $ and $ n\in \N $. Thus, we can extend $ U_{x} $ to a unitary $ U_{x}: L^{2}(\Omega_{x})\to \C\oplus \widehat{\H}_{x} $.\\
+
+  Fix $g\in \rG$. Then $\xi\in \H_{d(g)}$, we have that 
+  \[
+    [id_{\C}\oplus \widehat{\pi}](g) U_{d(g)} [\omega_{d(g)}(\xi)] =  U_{d(g)} \omega_{r(g)}(\pi(g)(\xi)) = U_{d(g)} \rho(g)[\omega_{d(g)}(\xi)].
+  \]
+    Lastly, by density we have for all $f\in L^2(\Omega_{d(g)})$,
+    \[
+        [id_{\C}\oplus \widehat{\pi}](g) U_{d(g)} f =U_{d(g)} \rho(g)f.
+    \]
+    As $U_d(g)$ fixes $\C$, upon restricting to the orthocomplement we obtain a unitary equivalence.
+\end{proof}
+
+\subsection{$ L(\rG) $-$ L(\rG) $ bimodule from representation of $ \rG $}
+
+Let $ M = L(\rG) $ and $ A = L^{\infty}(X) \sub M $. Then a representation $ \pi $ of $ \rG $ on a Hilbert bundle $ X\ast \H $ induces a group representation $ \widetilde{\pi}: [\rG]\to \U\lr{\int_{X}^{\oplus}\H_{x} \dd{\mu(x)}} $ by 
+
+\[
+  (\widetilde{\pi}_{\sigma}(g) \xi)(x) = \pi(r\vert_{\sigma}^{-1}(x)) \ \xi(d\circ r\vert_{\sigma}^{-1}(x))
+\]
+for $ \sigma\in [\rG] $, $ g\in\rG $, $ x\in X $. Utilizing Connes fusion over $ A $, we may form the $ A $-$ L(\rG) $ bimodule
+\[
+  \B(\pi) := \left[ \int_{X}^{\oplus}\H_{x}\dd{\mu(x)}\right] \otimes_{A} L^{2}(\rG).
+\]
+We wish to incorporate the representation $ \pi $ to upgrade $ \B(\pi) $ to an $ M $-$ M $ bimodule.
+
+
+\begin{prop}\label{reptobim}
+    The Hilbert space $ \B(\pi) $ has an $ L(\rG) $-$ L(\rG) $ bimodule structure such that 
+    \[
+        au_{\sigma}\cdot (\xi \otimes \eta) \cdot x = \widetilde{\pi}_{\sigma}(\xi)\otimes au_{\sigma}\eta x
+    \]
+    for $ a\in A $, $ \sigma\in [\rG] $, $ \xi\in \int_{X}^{\oplus}\H_{x} \dd{\mu(x)} $, $ x\in M $, $ \eta\in L^{2}(M) $.
+    Moreover, the following assertions hold true:
+    \begin{enumerate}[noitemsep]
+        \item For all $ \rG $-representations $\pi$ and $\rho$ such that $ \pi \subwk \rho $, we have that
+            \[
+                _M\B(\pi)_M \subwk {}_M\B(\rho)_M.
+            \]
+        \item Whenever $ \pi_{1} $ and $ \pi_{2} $ are $ \rG $-representations, we have that
+            \[
+                _M\B(\pi_{1}\otimes \pi_{2})_M \cong {}_M(\B(\pi_{1})\otimes_M \B(\pi_{2}))_M
+            \]
+        \item If $ \pi $ is a mixing $ \rG $-representation, then the bimodule $ {}_M \B(\pi)_M $ is mixing relative to $ A $.
+    \end{enumerate}
+
+\end{prop}
+
+
+\begin{lem}[Fell's Absorption Principle for Groupoids]
+  Let $ \pi $ be a representation of $ \rG $ on $ X\ast \H $ and $ \lambda_\rG $ the left regular representation of $ \rG $. Then for any orthonormal fundamental sequence of sections $ \Xi=\{\xi^n\}_{n=1}^\infty $ for the bundle $ X\ast \H $, we have that $ \pi\otimes \lambda_\rG $ is unitarily equivalent to $ id_{\Xi}\otimes \lambda_\rG $
+\end{lem}
+
+\begin{proof}
+  Let $ \Xi = \{\xi^{n}\}_{n=1}^{\infty} $ be an orthonormal fundamental sequence of sections for $ X\ast \H $. For $ g,h\in \rG $ and $n, m\in\N $, we compute
+  \begin{align*}
+    \inp{\pi(g) \xi_{\d(g)}^{n}\otimes \delta_{g}}{\pi(h) \xi_{\d(h)}^{m}\otimes \delta_{h}} &= \inp{\pi(g) \xi_{\d(g)}^{n}}{\pi(h) \xi_{\d(h)}^{m}}\cdot \inp{\delta_{g}}{\delta_{h}}\\
+    &= \inp{\pi(g) \xi_{\d(g)}^{n}}{\pi(h) \xi_{\d(h)}^{m}}\cdot \delta_{g=h} \\
+    &= \inp{\pi(g) \xi_{\d(g)}^{n}}{\pi(g) \xi_{\d(g)}^{m}}\cdot \delta_{g=h} \\ &=\delta_{g=h}\cdot \delta_{n=m} \\
+    &= \inp{\xi_{\r(g)}^{n}\otimes \delta_{g}}{\xi_{\r(h)}^{m}\otimes \delta_{h}}
+  \end{align*}
+
+  So, for every $ x\in X $, setting $ U_{x}(\xi_{x}^{n}\otimes \delta_{g}) = \pi(g) \xi_{\d(g)}^{n} \otimes \delta_{g} $ defines a unitary on $ \H_{x}\otimes \ell^{2}(\rG^{x}) $. Now let $(g,h)\in \rG^{(2)}$, $n\in \N$, we see that 
+\begin{align*}
+    U_{\r(g)}\big({\rm id}_\Xi\otimes \lambda_\rG\big)(g)[\xi_{\r(h)}^n\otimes\delta_h]&=U_{\r(g)}(\xi_{\r(g)}^n\otimes\delta_{gh}) \\
+    &=\pi(gh)\xi_{\d(h)}^n\otimes\delta_{gh} \\
+    &=\big(\pi\otimes \lambda_\rG\big)(g)[\pi(h)\xi_{\d(h)}^n\otimes\delta_h] \\
+    &=\big(\pi\otimes \lambda_\rG\big)(g)U_{\d(g)}[\xi_{\r(h)}^n\otimes\delta_h].
+\end{align*} Implying $U_{\r(g)}\big({\rm id}_\Xi\otimes \lambda_\rG\big)(g)=\big({\rm id}_\Xi\otimes \lambda_\rG\big)(g)U_{\d(g)}$, for all $g\in\rG$. The measurability of $x\mapsto U_x$ is obvious. \end{proof}
+
+\textcolor{violet}{TODO: check that weak containment and unitary equivalence of representations of $\rG$ pass to the corresponding bimodules we have defined.\\
+Also Check that $\pi$ Holds in group and equivalence relation setting. Al}
+
+
+
+\begin{thm}\label{prime}
+    Let $\rG$ be a countable discrete pmp groupoid with no amenable direct summand which admits an unbounded 1-cocycle into a mixing orthogonal representation weakly contained in the regular representation. Then $L(\rG) \not \cong N\otimes Q$ for any type II von Neumann algebras $N$ and $Q$. 
+\end{thm}
+
+\begin{proof}
+   Let $\pi$ be such a representation, whence $\widehat{\pi}$ is mixing and weakly contained in $\lambda_\rG$. 
+    \[
+        L^2(X\ast \Omega) \ominus L^2(X) \cong \int_X^\oplus [L^2(\Omega_x) \ominus \C] \dd{\mu(x)} = \int_X^\oplus \K_x \dd{\mu(x)} 
+    \]
+    Tensoring over $A$ with $L^2(\rG)$, we obtain
+    \begin{equation}\label{orthocomp}
+        _M L^2(\widetilde{M}) \ominus L^2(M)_M \cong [L^2(X\ast \Omega) \ominus L^2(X)]\otimes_A L^2(\rG) \cong \B(\rho)
+    \end{equation}
+
+    By Lemmas \ref{fockspace} and \ref{reptobim} \textcolor{violet}{(reference containment part)}, we know that $\B(\rho) \cong \B(\widehat{\pi})$ and $\B(\widehat{\pi}) \subwk \B(\lambda)$ as $M$-$M$ bimodules. Moreover, Lemma \ref{reptobim} \textcolor{violet}{(reference mixing part)} combined with \eqref{orthocomp} imply that $_M L^2(\widetilde{M}) \ominus L^2(M)_M$ is mixing with respect to $A$. By assumption, $\B(\widehat{\pi})\subwk \B(\lambda)$. Observe that, as $M$-$M$ bimodules, 
+
+    \[
+        \B(\lambda) = \int_X^{\oplus} l^2(\rG^x) \dd{\mu(x)} \otimes_A L^2(\rG) \cong L^2(M) \otimes_A L^2(M)
+    \]
+    Since $A$ is amenable, \textcolor{violet}{$L^2(M)\otimes_A L^2(M)$ is weakly contained in the coarse.}\\
+
+
+    As $ b $ is unbounded, there exists a $ \delta>0 $ such that for all $ R>0 $, there is some full group element $ \sigma\in [\rG] $ such that $ \mu(\{\norm{b(x \sigma)}\geq R\}) <\delta $. Without loss of generality assume $ \delta < 8 $.
+
+    Now for $ x\in M $ we compute that,
+    \begin{equation}\label{popatransez}
+        \norm{\alpha_{t}(x) - \E_{M}(\alpha_{t}(x))}_{2} \leq \norm{\alpha_{t}(x) - x}_{2} + \norm{\E_{M}(x - \alpha_{t}(x))}_{2} = 2 \norm{\alpha_{t}(x) - x}_{2}.
+    \end{equation}
+
+    Suppose, for the sake of contradiction, that $ \alpha_{t}\to {\rm id }$ uniformly on $ (M)_{1} $. Choose $ t_{0} > 0 $ such that
+    \[
+        \sup_{x\in (M)_{1}} \norm{\alpha_{t_{0}}(x) - x}_{2} < 2+ \frac{1}{2}\sqrt{16-2\delta} =: \gamma
+    \]
+    i.e. so that $ \gamma^{2}-4\gamma > -\frac{\delta}{2} $. Then, for $ \sigma\in [\rG] $, we apply \eqref{popatransez} and compute
+    \begin{align*}
+        \norm{\E_{M}(\alpha_{t_{0}}(u_{\sigma}))}_{2} &\geq \norm{\alpha_{t_0}(u_{\sigma})}_{2} -\norm{\alpha_{t_0}(u_{\sigma}) - \E_{M}(\alpha_{t_0}(u_{\sigma}))}_{2}\\
+        & \overset{\eqref{popatransez}}{\geq} 1 - 2\norm{\alpha_{t_0}(x) - x}_{2} > 1-2\gamma
+    \end{align*}
+    whence $  \norm{\E_{M}(\alpha_{t_{0}}(u_{\sigma}))}_{2}^{2} > 1-\frac{\delta}{2} $. Choose $ R>>0 $ such that $ e^{-2t_{0}^{2}R^2} < \frac{\delta}{2} $ and $ \sigma\in [\rG] $ with $ \mu(\{\norm{b(x \sigma)}\geq \sqrt{R}\}) < \delta $,
+
+    \begin{align*}
+        1-\frac{\delta}{2} \leq \norm{\E_{M}(\alpha_{t_{0}(u_{\sigma})})}_{2}^{2} &= \norm{f_{c_{t_0},\sigma}u_{\sigma}}_{2}^{2} = \tau ( f_{c_{t_{0}},\sigma} \cls{ f_{c_{t_{0}},\sigma}}) = \int_{X} e^{-2t_{0}^2 \norm{b(x \sigma)}^{2}} \dd{\mu(x)} \\
+        &\leq \int_{\{\norm{b(x \sigma)}^{2}< R\}} \dd{\mu(x)} + \int_{\{\norm{b(x \sigma)}^{2} \geq R\}}e^{2t_{0}^{2}R^{2}}\dd{\mu(x)}\\
+        &\leq \mu(\{\norm{b(x \sigma)}^{2}< R\}) + e^{-2t_{0}^{2}R^{2}} \mu(\{\norm{b(x \sigma)}^{2}\geq R\})  < 1- \frac{\delta}{2}
+    \end{align*}
+    which is absurd. Hence, we may apply Popa's spectral gap argument and conclude that $ M $ cannot be decomposed as a tensor product of two type II von Neumann algebras.
+
+
+\end{proof}
+
+
+\section{Spectral Gap Rigidity (i.e. lack of Property $(\Gamma)$)}
+\subsection{Intertwining-by-bimodules}
+We recall Sorin Popa's incredibly powerful \textit{intertwining-by-bimodules} technique.
+\begin{thm}[\cite{popa:03}]
+    Let $ (M,\tau) $ be a tracial von Neumann algebra and $ P\sub pMp $, $ Q\sub qMq $ von Neumann subalgebras. Let $ \U\sub \U(P) $ be a subgroup which generates $ P $ as a von Neumann algebra. Then the following are equivalent:
+    \begin{enumerate}
+        \item There are projections $ p_{0}\in P $, $ q_{0}\in Q $, a $ * $-homomorphism $ \theta:p_{0}Pp_{0}\to q_{0}Qq_{0} $, and a nonzero partial isometry $ v\in q_{0}Mp_{0} $ such that $ \theta(x)v = vx $ for all $ x\in p_{0}Pp_{0} $.
+        \item There does not exist a sequence $ (u_{n})_{n=1}^{\infty} $ in $ \U $ such that $ \norm{\E_{Q}(xu_{n}y)}_{2}\to0 $ for all $ x,y\in M $.
+    \end{enumerate}
+    If either of above equivalent conditions are satisfied, we write $ P\prec_{M}Q $.
+\end{thm}
+
+The following proposition essentially provides sufficient conditions on $ \rG $ for $ L(\rG) $ to belong to Drimbe's Class $ \mc{M} $ (see \cite[Definition 3.2]{drimbe:21}). 
+
+\begin{prop}
+    Let $\rG$ be a countable discrete pmp groupoid which is strongly ergodic with no amenable direct summand. Assume further that $ \rG $ admits an unbounded 1-cocycle into a mixing orthogonal representation weakly contained in the regular representation. Let $ M = L(\rG) $, $ A = L^{\infty}(\rG^{(0)}) $, and assume $ M $ is a type $ \rm{II}_{1} $-factor.
+
+    Suppose that $ N $ is a tracial von Neumann algebra and $ P\sub p(M\otimes N)p $ is a von Neumann subalgebra such that
+    \begin{itemize}[noitemsep, topsep=1pt]
+        \item $ P^{\prime}\cap p(M\otimes N)p $ is strongly nonamenable relative to $ 1\otimes N $, and
+        \item $ P\prec_{M\otimes N} A\otimes N $.
+    \end{itemize}
+    Then $ P\prec_{M\otimes N} 1\otimes N$.
+\end{prop}
+
+\begin{proof}
+    
+\end{proof}
+
+
+
+The following lemma is an application of Popa's spectral gap principle.
+\textcolor{violet}{Note that strong ergodicity here I think ensures that L(G) has no amenable direct summand but idk}
+\begin{lem}
+    Let $\rG$ be a countable discrete pmp groupoid which is strongly ergodic with no amenable direct summand. Assume further that $ \rG $ admits an unbounded 1-cocycle into a mixing orthogonal representation weakly contained in the regular representation. Let $ M = L(\rG) $ and assume $ M $ is a type $ \rm{II}_{1} $-factor.
+
+    Suppose that $ P\sub pMp $ is a von Neumann subalgebra that is strongly nonamenable relative to $ \C1 $ (\textcolor{violet}{I think i can just say strongly nonamenable}). Then $ \alpha_{t}\to id $ uniformly on $ (P^{\prime}\cap pMp)_{1} $.
+
+    Furthermore, if $ (P^{\prime}\cap pMp)\prec_{M} A $, then $ (P^{\prime}\cap pMp) \prec_{M} \C1 $.
+\end{lem}
+
+\begin{proof}
+    Following the proof of Theorem \ref{prime}, we see that the amenability of $ A $ implies that $ _M L^{2}(\widetilde{M}) \ominus L^{2}(M)_{M} $ is weakly contained in the coarse $ M $-$ M $ bimodule $ _M L^{2}(M)\otimes L^{2}(M)_M $.
+
+    Since $ P $ has is strongly non-amenable relative to $ \C1 $, we see that for any nonzero central projection $ z\in Z(P^{\prime}\cap pMp) $ we have that $ _M L^{2}(M)_{Pz} $ is not weakly contained $ _M L^{2}(M) \otimes L^{2}(M)_{Pz} $, and thus is not weakly contained in $ _M L^{2}(\widetilde{M}) \ominus L^{2}(M)_{Pz} $.
+
+    Let $ \eps>0 $.
+    
+\end{proof}
+
+
+
+
+\section{Meta}
+\subsection{Questions}
+\begin{itemize}
+  \item Where in the world does Hoff's primeness proof for equivalence relations fail in the general setting? Fell absorption works, the fock space stuff works, the $ M $-$ M $ bimodule stuff works. Maybe its Popa's spectral gap argument or some delicate stuff with the coarse $ M $-$ M $ bimodule.
+  \item To what extent can we expect some type of rigidity for groupoids of the form $ \rG \cong G \times \mathcal{R} $.
+  \item Group times relation 
+  \item Look at argument in petersons [paper and see if it puts restrictions on being GtimesR
+  \item if not, what if you assume one of the sides (or both sides) has cocycle property
+  \item can you get unique prime factorization of the form $ L(G) \cls{\otimes } L(\mathcal{R}) $
+  \item Nowhere amenable every nonzero direct summand is nonamenable
+  \item subset of unit space restrict remains nonamenable
+  \item if you have this unbounded 1-cocycle are you a group or a relation
+\end{itemize}
+
+\begin{itemize}
+  \item more examples or why unifying helps
+  \item Drimbes applications generalizable (mixing and matching)
+  \item Question of showing that some equivalence relation is superigid (not isom to vNa)
+  \item Hyperbolic paper of Lewis (implies bi-exactness, weak amenability).
+  \item Amalgamated free product rigidity for equivalence relations
+\end{itemize}
+
+\subsection{Ideas}
+\begin{itemize}
+  \item Groupoid amenability implies weak containment of trivial rep inside left regular. Hence contrapositive is true.
+  \item Not weak containment of trivial rep inside left reg implies not amenable. Then find almost invariant vectors characterization for amenability. The n nonamenability would lead to some type of spectral gap thing. This is what we need in the proof of Peterson's lemma below, so we can probably generalize after using this proof technique.
+\end{itemize}
+
+\section{Random Facts and Proofs}
+
+
+
+
+
+\subsection{Arrays (if we need them)}
+
+\begin{defn}[\textcite{chifan:13}]
+  Let $ \Gamma $ be a countable discrete group, $ \pi: \Gamma\to \mathcal{O}(\H_{\pi}) $ be an orthogonal of $ \Gamma $, and $ \mc{G} $ a family of subgroups of $ \Gamma $. A map $ q: \Gamma\to \H_{\pi} $ is called an \textit{array} if for every finite subset $ F\sub \Gamma $, 
+  \[
+    \sup_{\gamma\in F,\, \delta\in \Gamma} \norm{\pi_{\gamma}(q(\delta))-q(\gamma \delta)} < + \infty.
+  \]
+  An array $ q $ is said to be:
+  \begin{itemize}
+    \item \textit{proper with respect to $ \rG $} if the map $ \gamma\mapsto \norm{q(\gamma)} $ is proper with respect to the family $ \rG $. 
+    \item \textit{symmetric} if $ \pi_{\gamma}(q(\gamma^{-1})) = q(\gamma) $ for all $ \pi\in \Gamma $
+    \item \textit{anti-symmetric} if $ \pi_{\gamma}(q( \gamma^{-1})) = -q(\gamma) $ for all $ \gamma\in \Gamma $.
+  \end{itemize}
+   
+\end{defn}
+
+
+\begin{rem}
+  One advantage to working with arrays as opposed to cocycles is that there is a well-defined notion of a tensor product.
+\end{rem}
+
+\begin{prop}[\textcite{chifan:13}]
+  Let $ \Gamma $ be a countable discrete group. Let $ (\pi_{i},\H_{i}) $ be orthogonal representations for $ i=1,2 $, and let $ q_{i} $ be an array for $ \pi_{i} $. Denote by
+  \[
+    \kappa(\gamma) = \max_{i=1,2} \norm{q_{i}(\gamma)} + 1
+  \]
+  for all $ \gamma\in \Gamma $. 
+\end{prop}
+
+
+
+\printbibliography
+
+\end{document}
+
+
+\section{Discrete measured groupoids, cocycle actions and crossed products}\label{sec.groupoids}
+
+In this section, we summarize some of the basic terminology and well known results on discrete measured groupoids and their actions. Recall that a \emph{discrete measured groupoid} $\cG$ is a groupoid with the following extra structure. This concept goes back to \cite{mackey63}.
+
+\begin{itemlist}
+\item $\cG$ is a standard Borel space and the units $\cG^{(0)} \subset \cG$ form a Borel subset.
+\item The source and target maps $s,t : \cG \recht \cG^{(0)}$ are Borel and countable-to-one.
+\item Defining $\cG^{(2)} = \{(g,h) \in \cG \times \cG \mid s(g) = t(h)\}$, the multiplication map $\cG^{(2)} \recht \cG : (g,h) \mapsto gh$ is Borel. The inverse map $\cG \recht \cG : g \mapsto g^{-1}$ is Borel.
+\item $\cG^{(0)}$ is equipped with a probability measure $\mu$ such that, denoting by $\mu_s$ and $\mu_t$ the $\si$-finite measures on $\cG$ given by integrating the counting measure over $s,t : \cG \recht \cG^{(0)}$, we have that $\mu_s \sim \mu_t$.
+\end{itemlist}
+
+We say that $\cG$ is probability measure preserving (pmp) if $\mu_s = \mu_t$. To every discrete measured groupoid $\cG$ is associated the countable nonsingular equivalence relation $\cR$ on $(\cG^{(0)},\mu)$ given by
+$$\cR = \{(t(g),s(g)) \mid g \in \cG \} \; .$$
+Note that $\cG$ is pmp if and only if $\cR$ is a pmp equivalence relation. We say that $\cG$ is ergodic if the associated equivalence relation $\cR$ is ergodic.
+
+
+\begin{remark}
+In this paper, we only work in the measurable context, discarding sets of measure zero whenever useful. By von Neumann's measurable selection theorem (see e.g.\ \cite[Theorem 18.1]{kechris-book}), we therefore never have problems choosing measurable sections. Also, all isomorphisms between measure spaces, fields of von Neumann algebras, measured groupoids, are defined up to sets of measure zero. Whenever we write \emph{for all}, this should be interpreted as \emph{for almost every}, whenever appropriate.
+
+Using \cite[Sections 1 and 2]{Sutherland85}, we may consider measurable fields of any kind of `separable structures': von Neumann algebras with separable predual, standard probability spaces, countable groups, Polish spaces, Polish groups, etc. In particular, by \cite[Theorem 2.5]{Sutherland85}, all natural definitions of such measurable fields are equivalent.
+\end{remark}
+
+Fix a discrete measured groupoid $\cG$ and write $X = \cG^{(0)}$. Define $\cG^{(2)}$ as above and similarly define $\cG^{(3)}$.
+
+\begin{definition}\label{def.cocycle-action}
+A \emph{cocycle action} $(\al,u)$ of $\cG$ on a measurable field $(B_x)_{x \in X}$ of von Neumann algebras with separable predual is given by
+\begin{itemlist}
+\item a measurable field of $*$-isomorphisms $\cG \ni g \mapsto \al_g : B_{s(g)} \recht B_{t(g)}$,
+\item a measurable field of unitaries $\cG^{(2)} \ni (g,h) \mapsto u(g,h) \in \cU(B_{t(g)})$,
+\end{itemlist}
+satisfying
+\begin{align*}
+\al_g \circ \al_h = \Ad(u(g,h)) \circ \al_{gh} &\quad\text{for all $(g,h) \in \cG^{(2)}$,}\\
+\al_g(u(h,k)) \, u(g,hk)) = u(g,h) \, u(gh,k) &\quad\text{for all $(g,h,k) \in \cG^{(3)}$,}\\
+\al_g = \id  &\quad\text{when $g \in \cG^{(0)}$,}\\
+u(g,h) = 1 &\quad\text{when $g \in \cG^{(0)}$ or $h \in \cG^{(0)}$.}
+\end{align*}
+\end{definition}
+
+An automorphism $\al$ of a von Neumann algebra $B$ is said to be free (or properly outer) if the only element $v \in B$ satisfying $v x = \al(x) v$ for all $x \in B$ is the zero element $v=0$. When $B$ is a factor, an automorphism $\al$ is free if and only if it is outer, meaning that there is no unitary element $v \in \cU(B)$ such that $\al = \Ad v$.
+
+Denote by $\Gamma_x = \{g \in \cG \mid s(g) = t(g) = x\}$ the isotropy groups of $\cG$. The cocycle action $(\al,u)$ is said to be free if for almost every $x \in X$ and all $g \in \Gamma_x$ with $g \neq e$, the $*$-automorphism $\al_g : B_x \recht B_x$ is free.
+
+The cocycle actions $(\al,u)$ of $\cG$ on $(B_x)_{x \in X}$ and $(\be,\Psi)$ of $\cG$ on $(D_x)_{x \in X}$ are said to be \emph{cocycle conjugate} if there exists a measurable field of $*$-isomorphisms $X \ni x \mapsto \theta_x : B_x \recht D_x$ and a measurable field of unitaries $\cG \ni g \mapsto w_g \in \cU(D_{t(g)})$ satisfying
+\begin{align*}
+\theta_{t(g)} \circ \al_g \circ \theta_{s(g)}^{-1} = \Ad w_g \circ \be_g &\quad\text{for all $g \in \cG$,}\\
+\theta_{t(g)}(u(g,h)) = w_g \, \be_g(w_h) \, \Psi(g,h) \, w_{gh}^* &\quad\text{for all $(g,h) \in \cG^{(1)}$.}
+\end{align*}
+
+The \emph{cocycle crossed product construction} associates to every cocycle action $(\al,u)$ a regular inclusion of von Neumann algebras $B \subset M$ together with a faithful normal conditional expectation $E : M \recht B$. The cocycle crossed product $M$ can be easily defined by first considering the \emph{full pseudogroup} $[[\cG]]$ of $\cG$ consisting of all Borel sets $\cU \subset \cG$ with the property that the restrictions to $\cU$ of the source map $s$ and the target map $t$ are injective, and identifying $\cU,\cU'$ if they differ by a set of measure zero. The composition of $\cU,\cV \in [[\cG]]$ is defined as
+$$\cU \cdot \cV = \{g h \mid g \in \cU, h \in \cV , s(g) = t(h) \} \; .$$
+For every $\cU \in [[\cG]]$, define the Borel map $\vphi_\cU : s(\cU) \recht t(\cU) : \vphi_\cU(s(g)) = t(g)$ for all $g \in \cU$.
+
+Writing
+$$B = \int^{\oplus}_{X} B_x \; d\mu(x) \; ,$$
+the cocycle action $(\al,u)$ of $\cG$ on $(B_x)_{x \in X}$ can be reinterpreted as follows in terms of $[[\cG]]$. To every $\cU \in [[\cG]]$, there corresponds a $*$-isomorphism $\al_\cU : B 1_{s(\cU)} \recht B 1_{t(\cU)}$ given by
+$$(\al_\cU(b))(t(g)) = \al_g(b(s(g))) \quad\text{for all $b \in B 1_{s(\cU)}$, $g \in \cU$.}$$
+To every $\cU,\cV \in [[\cG]]$, there corresponds a unitary element $u(\cU,\cV) \in B 1_{t(\cU \cdot \cV)}$ given by
+$$u(\cU,\cV)_{t(gh)} = u(g,h) \quad\text{for all $g \in \cU$ and $h \in \cV$ with $s(g) = t(h)$.}$$
+Then, the cocycle crossed product $M$ is generated by $B$ and partial isometries $u(\cU)$ for all $\cU \in [[\cG]]$ satisfying the following properties.
+\begin{align*}
+& u(\cU)^* u(\cU) = 1_{s(\cU)} \quad\text{and}\quad u(\cU) u(\cU)^* = 1_{t(\cU)} \; ,\\
+& u(\cU) \, u(\cV) = u(\cU,\cV) \, u(\cU \cdot \cV) \; ,\\
+& u(\cU) b u(\cU)^* = \al_\cU(b) \quad\text{for all $b \in B 1_{s(\cU)}$,}\\
+& E(u(\cU)) = 1_{\cU \cap \cG^{(0)}} \; .
+\end{align*}
+Note that $B' \cap M = L^\infty(X)$ if and only if almost every $B_x$ is a factor and the cocycle action is free.
+
+Conversely, whenever $M$ is a von Neumann algebra with separable predual and $B \subset M$ is a regular von Neumann subalgebra with a faithful normal conditional expectation $E : M \recht B$ and $B' \cap M = \cZ(B)$, there is a canonical discrete measured groupoid $\cG = \cG_{B \subset M}$ and a cocycle action of $\cG$ on the field of factors given by the central decomposition of $B$, such that $B \subset M$ is isomorphic with the cocycle crossed product inclusion. To see this, define $\cP$ as the set of partial isometries $v \in M$ such that the projections $p = v^* v$ and $q = v v^*$ belong to $\cZ(B)$ and $v B v^* = B q$. Define the equivalence relation $\sim$ on $\cP$ by $v \sim w$ if and only if $v \in B w$. Using the usual correspondence between groupoids and inverse semigroups, one identifies $\cP / \mathord{\sim}$ with the full pseudogroup $[[\cG]]$ of an essentially unique discrete measured groupoid $\cG$ with space of units $\cG^{(0)}$ satisfying $L^\infty(\cG^{(0)}) = \cZ(B)$.
+
+Writing $X =\cG^{(0)}$ and writing $B$ as the direct integral of factors $(B_x)_{x \in X}$, the above relation between $\cP$ and the full pseudogroup $[[\cG]]$ provides a cocycle action of $\cG$ on $(B_x)_{x \in X}$. By construction, $B \subset M$ is isomorphic with the cocycle crossed product inclusion.
+
+Two such cocycle crossed product inclusions are isomorphic if and only if the corresponding measured groupoids are isomorphic and their cocycle actions are cocycle conjugate through this isomorphism of groupoids. This bijective correspondence between regular inclusions $B \subset M$ and cocycle crossed products can be viewed in different ways. In \cite{DFP18}, this is interpreted in the language of inverse semigroups, where cocycle actions of groupoids become extensions of inverse semigroups.
+
+Note that the cocycle crossed product of a free cocycle action of $\cG$ on a field $(B_x)_{x \in X}$ of factors admits a faithful normal tracial state if and only if each $B_x$ admits such a faithful normal tracial state and $X = \cG^{(0)}$ admits an invariant probability measure that is equivalent with $\mu$. So, when $(M,\tau)$ is a tracial von Neumann algebra and $B \subset M$ is a regular von Neumann subalgebra satisfying $B' \cap M = \cZ(B)$, we can decompose $M$ as the cocycle crossed product of a cocycle action of a pmp discrete measured groupoid $\cG$ on a field of tracial factors. We get that $M$ is a factor if and only if $\cG$ is ergodic.
+
+Recall from \cite[Section 3.2]{AR00} the notion of amenability for discrete measured groupoids. Also recall from \cite[Section 5.3]{AR00} that $\cG$ is amenable if and only if the countable equivalence relation $\cR$ is amenable and almost all isotropy groups $\Gamma_x$ are amenable.
+
+
+
+
+
+
+Let $X\ast\mathcal{H}$ be a Hilbert bundle and set $\mathbb B ( \mathcal{H} )=\bigsqcup_{x\in X} \mathbb B(\mathcal{H}_x)$, which is a standard Borel space over $X$. The Borel structure on $\mathbb B ( \mathcal{H} )$ is generated by the functions $(T\in \mathbb B(\mathcal{H}_x)) \mapsto x$ and $(T\in \mathbb B(\mathcal{H}_x)) \mapsto \langle \sigma _{n,x},T(\sigma _{m,x})\rangle $ for $n,m\in \mathbb{N}$ and is canonically endowed with the following fibered functions: norm, composition, adjoint, sum, and scalar multiplication.
+
+
+\begin{defn}
+A {\it tracial von Neumann bundle} over the standard Borel space $X$ is a Borel subset $\mathcal{M}$ of $\mathbb B ( \mathcal{H} ) $ together with a Borel function $\tau \colon \mathcal{M}\to \mathbb{C}$ such that, for every $x\in X $, the corresponding fiber $\mathcal{M}_{x}=\mathbb B ( \mathcal{H}_{x} )\cap \mathcal{M} $ is a von Neumann algebra and the restriction $\tau _{x}:=\tau|_{{\mathcal M}_x}$ is a faithful tracial state, and for which there exists a sequence of sections $( a^{n} ) _{n\in \mathbb{N}}$ of $\mathcal{M}$ such that $( a^n_{x} ) _{n\in \mathbb{N}}$ is a subset of the unit ball of $\mathcal{M}_{x}$ that generates a $^*$-subalgebra of $\mathcal{M}_{x}$ whose operator-norm unit ball is dense in the operator-norm
+unit ball of $\mathcal{M}_{x}$ with respect to the $2$-norm $\| a
+\|_{2}=\tau _{x} ( a^{\ast }a ) ^{1/2}$, and there exists a sequence of
+sections $( \xi ^{n} ) _{n\in \mathbb{N}}$ of $\mathcal{H}$ such that $\tau_{x} ( a ) =\sum_{n\in \mathbb{N}} \langle \xi ^n_{x},a(\xi ^n_{x} )\rangle_{\H_x}$ for $x\in X$ and $a\in \mathcal{M}_{x}$. We also denote
+the bundle $( \mathcal{M},\tau ) $ by $\bigsqcup_{x\in X} ( \mathcal{M}%
+_{x},\tau _{x} ) $. We say that $( \mathcal{M},\tau ) $ is \emph{abelian} if
+$\mathcal{M}_{x}$ is an abelian von Neumann algebra for almost every $x\in X$%
+, .
+\end{defn}
+
+Let $\mathcal{M}$ be a tracial von Neumann bundle over a standard
+probability space $(X,\mu )$. We let $L^{2}(\mathcal{M},\tau )$ be the
+Hilbert bundle $\bigsqcup_{x\in X}L^{2}(\mathcal{M}_{x},\tau _{x})$ over $X$%
+. Given $a\in \mathcal{M}_{x}$, we let $|a\rangle $ be the corresponding
+element of $L^{2}(\mathcal{M}_{x},\tau _{x})$. We identify $\mathcal{M}_{x}$
+with a subalgebra of $B(L^{2}(\mathcal{M}_{x},\tau _{x}))$, by identifying $%
+a\in \mathcal{M}_{x}$ with its associated multiplication operator. We define
+$L^{\infty }(X,\mathcal{M})$ to be the algebra of essentially bounded
+sections of $\mathcal{M}$, which is a tracial von Neumann algebra with
+respect to the normal tracial state $\tau =\int_{X}\tau _{x}d\mu _{X}(x)$.
+Thus the inclusion $L^{\infty }(X)\subseteq L^{\infty }(X,\mathcal{M})$ is a
+trace-preserving embedding. The GNS construction $L^{2}(L^{\infty }(X,%
+\mathcal{M}),\tau )$ associated with $\tau $ can be identified with the
+space $L^{2}(X,L^{2}(\mathcal{M},\tau ))$ associated with the Hilbert bundle
+$L^{2}(\mathcal{M},\tau )$. We will denote this space simply by $L^{2}(X,%
+\mathcal{M},\tau )$.
+
+The GNS representation of $L^{\infty } ( X,\mathcal{M} ) $ on $L^{2} ( X,%
+\mathcal{M},\tau ) $ maps an element $a\in L^{\infty } ( X,\mathcal{M} ) $
+to the corresponding \emph{decomposable operator} on $L^{2} ( X,\mathcal{M}%
+,\tau ) $ defined by $a(\xi)= ( a_{x}\xi _{x} ) _{x\in X}$ for $\xi=( \xi
+_{x} ) _{x\in X}$. The canonical conditional expectation $E_{L^{\infty } ( X
+) }\colon L^{\infty } ( X,\mathcal{M} ) \to L^{\infty } ( X ) $ is given by $%
+E_{L^{\infty } ( X ) }(a)=( \tau _{x} ( a_{x} ) ) _{x\in X}$, for $%
+a=(a_x)_{x\in X}$. This gives to $L^{\infty } ( X,\mathcal{M} )$ the
+structure of pre-C*-module over $L^{\infty } ( X ) $.
+
+A\emph{\ von Neumann sub-bundle} of a von Neumann bundle $( \mathcal{M},\tau
+) $ over a standard Borel space $X$ is a Borel subset $\mathcal{N}\subseteq
+\mathcal{M}$ such that $\mathcal{N}_{x}$ is a w*-closed subalgebra of $%
+\mathcal{M}_x$, for all $x\in X$. For every $x\in X$, the unique
+trace-preserving conditional expectation $\mathcal{M}_{x}\to \mathcal{N}_{x}$
+is denoted by $E_{\mathcal{N}_{x}}$. This defines a trace-preserving
+expectation $E_{\mathcal{N}}\colon L^{\infty } ( X,\mathcal{M} )\to
+L^{\infty } ( X,\mathcal{N} ) $, given by $E_{\mathcal{N}}(a )=( E_{\mathcal{%
+N}_{x}} ( a_{x} ) ) _{x\in X}$.
+
+
+Let $\mathcal{N}$ be a von Neumann sub-bundle of a von Neumann bundle $%
+\mathcal{M}$. We let $L^{2} ( \mathcal{M},\tau ) \cap \mathcal{N}^{\perp}$
+be the sub-bundle $\bigsqcup_{x\in X}(L^{2} ( \mathcal{M}_{x},\tau _{x} )
+\cap \mathcal{N}_{x}^{\bot })$. Given a subalgebra $A$ of $L^{\infty } ( X,%
+\mathcal{M} ) $, we let $L^{2} ( X,\mathcal{M},\tau ) \cap A^{\bot }$ be the
+orthogonal complement of $A$ inside $L^{2} ( X,\mathcal{M},\tau ) $, where $%
+A $ is canonically identified with a subspace of $L^{2} ( X,\mathcal{M},\tau
+) $.
+
+
+A particular example of a von Neumann sub-bundle is the \emph{trivial
+sub-bundle }$\bigsqcup_{x\in X}\mathbb{C}1_{x}$, where $1_{x}$ is the unit
+of $\mathcal{M}_{x}$. We define the \emph{center} of $\mathcal{M}$ to be the
+sub-bundle $Z ( \mathcal{M} ) =\bigsqcup_{x\in X}Z ( \mathcal{M}_{x} )$.
+
+
+
+\begin{defn}
+Similarly, given a tracial von Neumann bundle $(\mathcal{M},\tau )$, its
+\emph{automorphism groupoid} is
+\begin{equation*}
+\mathrm{Aut}(\mathcal{M},\tau )=\{\alpha \colon \mathcal{M}_{x}\rightarrow
+\mathcal{M}_{y}\mbox{ trace preserving $\ast$-isomorphism, for }x,y\in X\}.
+\end{equation*} With unit space $X$ and obvious operations.
+\end{defn}
+
+
+\begin{rem}
+The automorphism groupoid of a C*-bundle $\mathcal{A}$ is naturally a
+standard Borel groupoid, endowed with the standard Borel structure generated
+by the source and range maps together with the functions $( \alpha :%
+\mathcal{A}_{x}\rightarrow \mathcal{A}_{y}) \mapsto \left\Vert \alpha
+(a_{n,x})\right\Vert $ for $n\in \mathbb{N}$, where $( a_{n})
+_{n\in \mathbb{N}}$ are the sections of $\mathcal{A}$ as in the definition
+of a C*-bundle.\ The same applies to $\mathrm{Aut}( \mathcal{M},\tau
+) $ for a tracial von Neumann bundle $( \mathcal{M},\tau ) $
+when one replaces the operator norm with the $2$-norm defined by $\tau $.
+\end{rem}
+
+\begin{defn}
+An \emph{action} of a discrete pmp groupoid $G$ with unit space $X$ on a
+tracial von Neumann bundle $(\mathcal{M},\tau )$ over $X$ is a homomorphism $%
+\alpha \colon G\rightarrow \mathrm{Aut}(\mathcal{M},\tau )$ that fixes the
+unit space. The action $\alpha $ induces a (group) action $[\alpha ]\colon
+\lbrack G]\rightarrow \mathrm{Aut}( (L^{\infty }(X,\mathcal{M}),\tau
+)) $ defined by
+\begin{equation*}
+\lbrack \alpha ]_{t}(a)=(\alpha _{xt}(a_{s(xt)})_{x\in G^{0}})
+\end{equation*}%
+for $t\in \lbrack G]$ and $a=(a_{x})_{x\in G^{0}}\in L^{\infty }(G^{0},%
+\mathcal{M})$. It also induces an action of $[[G]]$, defined similarly.
+\end{defn}
+
+
+
+%The following lemma is proved similarly to Lemma \ref{Lemma:fixed-point-representation}.
+
+%\begin{lemma}
+%\label{Lemma:fixed-point-action} let $\alpha $ is an action of a
+%discrete pmp groupoid on $G$ on a tracial von Neumann bundle $\mathcal{M}$.
+%For an element $a= ( a_{x} ) _{x\in
+%G^{0}}$ of $L^{\infty } ( G^{0},\mathcal{M} ) $, the following
+%assertions are equivalent:
+
+%\begin{enumerate}
+%\item $a$ belongs to the fixed point algebra $L^{\infty } ( G^{0},\mathcal{M} )^{[\alpha]}$ of $[\alpha]$;
+
+%\item there exists a countable subset $S\subseteq [ G ] $ that covers $%
+%G$ and such that $ [ \alpha  ] _{t}(a)=a$ for every $t\in S$;
+
+%\item $\alpha _{\gamma } ( a_{s(\gamma )} ) =a_{r(\gamma )}$ for
+%almost every $\gamma \in G$.
+%\end{enumerate}
+%\end{lemma}
+
+
+Let $\rG$ be a discrete pmp groupoid, $( Y,\nu ) $
+be a standard probability space fibered over $X$ and $( \nu _{x} )
+_{x\in X }$ be the disintegration of $\nu $ with respect to $\mu$.
+Then $\bigsqcup_{x\in G^{0}}L^{2} ( Z_{x},\nu _{x} ) $ is a Hilbert
+bundle over $X$, and $\bigsqcup_{x\in G^{0}} ( L^{\infty } ( Z_{x} )
+,\nu _{x} ) $ is a tracial von Neumann bundle over $G^0$
+
+\begin{defn}
+\label{Definition:pmp-action} A \emph{pmp action} of a discrete pmp groupoid
+$G$ on a standard probability space $( Z,\nu ) $ fibered over $G^{0}$ is
+an action of $G$ on the tracial von Neumann bundle $( \mathcal{M},\tau )
+=\bigsqcup_{x\in G^{0}}(L^{\infty } ( Z_{x} ) ,\nu _{x})$.
+%The action $\alpha$ is \emph{%
+%atomless} if $ ( Z_{x},\nu _{x} ) $ is an
+%atomless standard probability space for almost every $x\in G^0$.
+\end{defn}
+
+\begin{rem}
+The automorphism groupoid $\mathrm{Aut} \left( \bigsqcup_{x\in G^{0}} (
+L^{\infty } ( Z_{x} ) ,\tau _{x} ) \right) $ can be identified with the
+groupoid $\mathrm{Aut} \left( \bigsqcup_{x\in G^{0}} ( Z_{x},\nu _{x} )
+\right)$ consisting of all Borel isomorphisms $\eta \colon Z_{s}\to Z_{t}$,
+for $s,t\in G^0$, satisfying $\eta _{\ast } ( \nu _{s} ) =\nu _{t}$.
+Thus, a pmp action of $G$ on $( Z,\nu ) $ can be seen as a Borel
+groupoid homomorphism $G\to \mathrm{Aut} ( \bigsqcup_{x\in G^{0}} (
+Z_{x},\nu _{x} ) ) $ fixing the unit space.
+\end{rem}
+
+
+
+%We close this subsection with an easy observation which will be needed later.
+
+%\begin{lemma}\label{lma:OE}
+%Let $G$ be an ergodic discrete pmp groupoid, and let $\Gamma$ be a
+%subgroup of $[G]$ which covers $G$. Let $(Z,\nu)$ be a standard
+%probability space, and let $\alpha$ be an action of $G$ on $Z$.
+%Denote by $\theta$ the restriction of $[\alpha]$ to $\Gamma$.
+%Then $\Gamma\curvearrowright Z$ and $G\curvearrowright Z$ generate the
+%same orbit equivalence relation. In particular, when $\alpha$ is free,
+%then both actions have isomorphic crossed products.
+%\end{lemma}
+%\begin{proof}
+%Using that $\Gamma$ covers $G$, it is immediate to see that the
+%orbit equivalence relations $R_G$ and $R_\Gamma$ of $\alpha$ and
+%$\theta=[\alpha]_{\Gamma}$, respectively, agree. When $\alpha$ is free,
+%then $\theta$ is also free, and the von Neumann algebras of $R_G$
+%and $R_\Gamma$ are canonically isomorphic to their respective crossed
+%products.
+%\end{proof}
+
+
+\textcolor{violet}{ Is this section going to be important? Sadly, I just realized that probably not :(}
+

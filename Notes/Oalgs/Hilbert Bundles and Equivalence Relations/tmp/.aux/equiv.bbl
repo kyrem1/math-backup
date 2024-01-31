@@ -1,0 +1,57 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nty/global//global/global}
+    \entry{borelequivnotes}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=464f4e389b93f6c64353eed7bbc9b5b7}{%
+           family={Thomas},
+           familyi={T\bibinitperiod},
+           given={Simon},
+           giveni={S\bibinitperiod}}}%
+        {{hash=625c68a1c0e8f4ee722b3e2893d790bc}{%
+           family={Schneider},
+           familyi={S\bibinitperiod},
+           given={Scott},
+           giveni={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{eb68073e702c29099c01de277d7e92d5}
+      \strng{fullhash}{eb68073e702c29099c01de277d7e92d5}
+      \strng{bibnamehash}{eb68073e702c29099c01de277d7e92d5}
+      \strng{authorbibnamehash}{eb68073e702c29099c01de277d7e92d5}
+      \strng{authornamehash}{eb68073e702c29099c01de277d7e92d5}
+      \strng{authorfullhash}{eb68073e702c29099c01de277d7e92d5}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Countable Borel Equivalence Relations}
+      \field{year}{2007}
+      \verb{urlraw}
+      \verb https://www.math.cmu.edu/~eschimme/Appalachian/ThomasNotes.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.math.cmu.edu/~eschimme/Appalachian/ThomasNotes.pdf
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

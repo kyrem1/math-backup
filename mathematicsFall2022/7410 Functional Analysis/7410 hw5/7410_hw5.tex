@@ -1,0 +1,297 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+\newcommand{\D}{\mathbb{D}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\ext}{ext}
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7410 Homework 5}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+
+\begin{homeworkProblem}  
+    Let $ \N $ have the discrete topology. Let $ \{r_{n}:n\in\N\} $ be an enumeration of the rational numbers in $ [0,1] $. Let $ S = \Q\cap [0,1] $ and for each $ s\in S $ let $ \{r_{n}: n\in N_{s}\} $ be a subsequence such that $ s = \lim\{r_{n}: n\in N_{s}\} $.\\
+
+    \textbf{(a)}: Show that, if $ s,t\in S $ and $ s\neq t $, then $ N_{s} \cap N_{t} $ is finite. 
+
+    \begin{proof}
+        Choose $ \eps>0 $ small enough such that $ B_{\eps}(s)\cap B_{\eps}(t) = \emptyset $. Let $ A = \{n\in N_{s}: r_{n}\not\in B_{\eps}(s)\} $ and $ B = \{n\in N_{t}: r_{n}\not\in B_{\eps}(t)\} $. By assumption, $ A,B $ are both finite. Suppose that $ n\in N_{s}\cap N_{t} $ and $ n\not\in A $. Then $ r_{n}\in B_{\eps}(s) $, whence $ r_{n}\not\in B_{\eps}(t) $ and thus $ n\in B $. Hence we have shown that $ N_{s}\cap N_{t}\sub A\cup B $, which is finite.
+    \end{proof} 
+
+    \textbf{(b)}: If for each $ s\in S $, $ \cls{N_{s}} $ in $ \beta\N $ and $ A_{s} = \cls{N_{s}}\setminus \N $, show that $ \{A_{s}: s\in S\} $ are pairwise disjoint subsets of $ \beta\N\setminus\N $ that are both open and closed.
+
+    \begin{proof}
+        Throughout this proof we identify $ \beta\N = \Sigma(l^{\infty}(\N)) $. Suppose first that $ h\in A_{s}\cap A_{t} $. Then there exist nets $ (n_{\alpha})_{\alpha} $ in $ N_{s} $ and $ (m_{\beta})_{\beta} $ in $ N_{t} $ such that $ \widehat{n_{\alpha}}\xrightarrow{wk^{*}}h $ and $ \widehat{m_{\beta}}\xrightarrow{wk^{*}}h $. Considering $ r $ as a function $ r:\N\to S $, it follows that $ r\in l^{\infty}(\N) $ so 
+        \[
+            s = \lim_{\alpha} r_{n_{\alpha}} = \lim_{\alpha} \widehat{n_{\alpha}}(r) = h(r) = \lim_{\beta} \widehat{m_{\beta}}(r) = \lim_{\beta}r_{m_{\beta}} = t,
+        \]
+        and thus $ s=t $. By contraposition, it follows that all of the sets $ A_{s} $ are pairwise disjoint.\\
+
+        To see that $ A_{s} $ is closed in $ \beta\N\setminus\N $, note that $ A_{s} = \cls{N_{s}}\setminus\N = \cls{N_{s}}\cap (\beta\N\setminus\N) $ and appeal to the definition of the subspace topology. On the other hand, consider the function $ f:\N\to \{0,1\} $ givem by $ f=\ind_{N_{s}} $. This function is continuous and $ \{0,1\} $ is compact, so by universality there is some continuous $ \widetilde{f}: \beta\N\to\{0,1\} $ extending $ f $. Now by continuity, as $ \widetilde{f}^{-1}(1)\supseteq N_{s} $ it follows that $ \widetilde{f}^{-1}(1) \supseteq \cls{N_{s}} $. Hence, by disjointness of the two inverse images of the separate points, $ \widetilde{f}^{-1}(1) = \cls{N_{s}} $ and $ \widetilde{f}^{-1}(0) = \beta\N\setminus \cls{N_{s}} $. Thus, $ \widetilde{f} = \ind_{\cls{N_{s}}} $. Since $ \widetilde{f} $ is continuous and $ \{1\} $ is open, $ \cls{N_{s}} = \widetilde{f}^{-1}(1) $ is also open.
+
+
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    Show that $ Ball(l^{1}) $ is the norm closure of the convex hull of its extreme points.
+
+    \begin{proof}
+        %% TODO handle case where \F = \C. Apply problem 3
+        By problem 3, $ ext(K) = \{\alpha \delta_{n}: n\in\N, \alpha\in\D\} $. 
+        Let $ K = Ball(l^{1}) $.
+        Now suppose $ f\in Ball(l^{1}) $. Set $ f_{n} = \sum_{i=1}^{n}f(i) \delta_{i} $, so $ f_{n}\to f $ in norm.
+        Let $ S_{n} = \sum_{i=1}^{n}|f(i)| $. Then we compute that
+        \[
+            f_{n} = \sum_{i=1}^{n}|f(i)|\lr{\frac{f(i)}{|f(i)|}\delta_{i}} = \sum_{i=1}^{n}|f(i)|\lr{\frac{f(i)}{|f(i)|}\delta_{i}} + \frac{1-S_{n}}{2} \delta_{n+1} + \frac{1-S_{n}}{2}(- \delta_{n+1} )
+        \]
+        and $ \sum_{i=1}^{n}|f(i)| + \frac{1-S_{n}}{2} + \frac{1-S_{n}}{2} = 1$, so $ f_{n}\in co(ext(K)) $ for all $ n\in \N $. 
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    If $ (X,\Sigma,\mu) $ is a $ \sigma $-finite measure space, the set of extreme points of $ Ball(L^{1}(\mu)) $ is $ \{\alpha\ind_{E}: E\text{ is an atom of }\mu, \alpha\in\F, \text{ and } | \alpha| = \mu(E)^{-1}\} $. 
+
+    \begin{lemma}
+        Measurable functions are constant a.e. on atoms.
+    \end{lemma}
+
+    \begin{proof}[Proof of lemma]
+        Let $ E\sub X $ be an atom and $ f:E\to \C $ measurable. Without loss of generality assume that $ \mu(supp(f))>0 $, as otherwise we would be done. Fix $ N\in \N $, and choose a sequence $ (y_{N, n})_{n=1}^{\infty} $ in $ \C $ such that $ \C = \bigcup_{n=1}^{\infty}B_{\frac{1}{N}}(y_{N,n}) $. Then 
+        \[
+            supp(f) = \bigcup_{n=1}^{\infty}\{x\in E: f(x)\in B_{\frac{1}{N}}(y_{N,n})\} = \bigcup_{n=1}^{\infty}f^{-1}(B_{\frac{1}{N}}(y_{N,n})),
+        \]
+        so by assumption it follows that there is some $ n = n(N)\in \N $ such that $ \mu(f^{-1}(B_{\frac{1}{N}}(y_{N,n})) > 0 $. Write $ x_{N} = y_{N,n} $ for brevity. We claim that the sequence $ (x_{n})_{n\in \N} $ is Cauchy. Fix $ \eps > 0 $ and choose $ N\in \N $ such that $ \frac{1}{N} < \frac{\eps}{2} $. Fix $ e\in E $. Then for all $ n,m\geq N $,
+        \[
+            |x_{n}-x_{m}| \leq |x_{n}-f(e)| + |f(e)-x_{m}| \leq \frac{1}{n}+\frac{1}{m} < \eps.
+        \]
+        By completeness there is some $ x\in \C $ such that $ x_{n}\to x $. We claim that $ f = x $ a.e.\\
+
+        Fix $ e\in E $. Then $ |f(e)-x| = \lim |f(e) - x_{n}| = 0 $, so $ f(e) = x $.
+    \end{proof}
+
+    \begin{proof}
+        On one hand, suppose that $ E\sub X $ is an atom of $ \mu $, $ \alpha\in\F $, $ |\alpha|=\mu(E)^{-1} $, and $ f=\alpha\ind_{E} $. Suppose that $ g,h \in Ball(L^{1}(\mu)) $ and $ t\in [0,1] $ are such that $ f = (1-t)\cdot g + t\cdot h $. If $ g=0 $ or $ h = 0 $, then by the fact that $ \norm{f}=1 $, it would follow that $ t = 0,1 $ and we would be done. Hence, assume $ g,h\neq 0 $. Since $ \supp(f)\sub E $, 
+        \[
+            f = f\ind_{E} = (1-t)g\ind_{E} + th\ind_{E}.
+        \]
+        now we compute that 
+        \[
+            1 = \norm{f} \leq (1-t)\norm{g\ind_{E}} + t \norm{h\ind_{E}} \implies \norm{g\ind_{E}},\norm{h\ind_{E}} = 1
+        \]
+        as we have assumed $ g,h\in Ball(L^{1}(\mu)) $. Thus $ \norm{g} = \norm{g\ind_{E}} $ and $ \norm{h}=\norm{h\ind_{E}} $, so $ g,h=0 $ a.e. on $ X\setminus E $. Setting $ N(f) = \{x:f(x)\neq 0\} $, it follows that $ N(g),N(h)\sub E $. Now note that $ E = N(f) \sub N(g)\cup N(h) $, whence it follows that 
+        \[
+            E = (E\cap N(g))\cup (E\cap N(h)) = N(g)\cup N(h).
+        \]
+        Since $ E $ is an atom, it follows that $ \mu(N(g)),\mu(N(h))\in \{0,\mu(E)\} $. As we have assumed $ g,h\neq 0 $, $ \mu(N(g)) = \mu(E) = \mu(N(h)) $.
+
+        % TODO show claims below
+        % C0: above given functions are extreme points
+        % TODO show that we can reduce to assuming every atom has finite measure.
+        
+
+        Let $ f\in K $,  and suppose for the sake of contradiction that $ N(f) $ is an atom but $ f\not\in ext(K) $. Then $ f = (1-t)g + th $ with $ t\in (0,1) $, $ g,h\neq f $. Since $ N(f) $ is atomic and $ g,h\neq f $, it follows that $ \mu(N(f)\setminus(N(g)\cup N(h))) = 0 $.
+        \[
+            0 = f\ind_{X\setminus N(f)} = ((1-t)g + th)\ind_{X\setminus N(f)}  
+        \]
+        hence restricting to $ N(f) $ we compute that
+        \[
+            f = (1-t)g+th = ((1-t)g+th)\ind_{N(f)} 
+        \]
+        Note that, as $ N(f) $ is an atom, all measurable function are constant a.e. on $ N(f) $, whence there are some $ \alpha,\beta,\gamma\in \C $ such that 
+        \[
+            f\ind_{N(f)} = \alpha,\quad  g\ind_{N(f)} = \beta \quad, h\ind_{N(f)} = \gamma.
+        \]
+        By definition, $ \alpha\neq 0 $, hence $ \alpha = (1-t) \beta + t \gamma $ implies that at least one of $ \beta, \gamma $ must be nonzero. Let $ a = \frac{\beta}{\alpha} $ and $ b=\frac{\gamma}{\alpha} $. Then $ g\ind_{N(f)} = af\ind_{N(f)} $ and $ h\ind_{N(f)} = bf\ind_{N(f)} $. Note that this implies $ |a|,|b|\leq 1 $ as $ f,g,h\in K $. Now
+        \[
+            f\ind_{N(f)} = (1-t)g\ind_{N(f)} + th\ind_{N(f)} = (1-t) \alpha f\ind_{N(f)} + t \beta f\ind_{N(f)} \implies 1 = (1-t)a+tb,
+        \]
+        which has no solution for $ a,b\in \cls{\mathbb{D}}$ as $ 1 $ is an extreme point for the closed unit disk. Now we have shown that if $ f\in K $ and $ N(f) $ is an atom, then $ f\in ext(K) $.\\
+
+        Suppose that $ E $ is an atom, $ \alpha\in\F $, $ |\alpha|=\mu(E)^{-1} $, and $ f=\alpha\ind_{E} $. Then $ f\in K $ and $ N(f) = E $ is an atom, so $ f\in ext(K) $. \\\
+
+        On the other hand, suppose that $ f\in K $ is an extreme point, and suppose for the sake of contradiction that $ E = N(f) $ is non-atomic. Then there exist measurable $ A,B\sub E $ such that $ A\cap B = \emptyset $, $ 0<\mu(A),\mu(B)<\mu(E) $, and $ \norm{f\ind_{A}}, \norm{f\ind_{B}}>0 $. Let $ g = \frac{1}{\norm{f\ind_{A}}}f\ind_{A} $ and $ h = \frac{1}{\norm{f\ind_{B}}}f\ind_{B}$.Then $ g,h\in K $, $ g,h\neq 0 $. Note by extremality of $ f $ that $ 1 = \norm{f} = \norm{f\ind_{E}} $. Then, observe  setting $ t=\norm{f\ind_{A}}\in (0,1) $, it follows that 
+        \[
+            f = f\ind_{E} = f\ind_{A} + f\ind_{B} = \norm{f\ind_{A}}g + \norm{f\ind_{B}}h = tg + (1-t)h,
+        \]
+        contradicting that $ f $ is an extreme point.
+
+        Now we have that if $ f\in ext(K) $ then $ N(f) $ is an atom. However then by Lemma 1, f is constant a.e. on $ N(f) $, so there is some $ \alpha\in \C $ such that $ f = \alpha $ on $ N(f) $. Outside of $ N(f) $, $ f=0 $ so $ f = \alpha\ind_{N(f)} $. Moreover, as $ f\in ext(K) $, we have that $ \norm{f} = 1 $ whence $ | \alpha| = \mu(N(f))^{-1} $.
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+
+
+\end{document}
+

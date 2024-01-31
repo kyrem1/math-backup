@@ -1,0 +1,13 @@
+\begin{thebibliography}{1}
+
+\bibitem{deephedge}
+Hans Buehler, Lukas Gonon, Josef Teichmann, and Ben Wood.
+\newblock Deep hedging.
+\newblock {\em Quantitative Finance}, 19(8):1271--1291, 2019.
+
+\bibitem{pfhedge}
+Masanori Hirano.
+\newblock pfhedge.
+\newblock https://github.com/pfnet-research/pfhedge, 2023.
+
+\end{thebibliography}

@@ -1,0 +1,285 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7410 Homework 2}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+    Let $ L:\R^n\to\R^m $ be a linear map. For any $ p\in\R^n $, there is a canonical identification $ T_p(\R^n)\to \R^n $ given by 
+    \[
+        \sum a^i \pdv{x^i}\vert_p\mapsto a = (a^1,\ldots, a^n)
+    \]
+
+    Show that the differential $ L_{*,p}:T_p(R^n)\to T_{L(p)}(R^m) $ is the map $ L:\R^n\to \R^m $ itself, with the identification of the tangent spaces as above.
+
+    \begin{proof}
+        Fix the standard basis $ \{\eta_{i}\} $, $ \{\xi_{j}\} $ of $ \R^n $ and $ \R^m $ respectively. For $ f \in C_p ^\infty (\R^m)$, $ v = \sum_{i=1}^{n} v^i \pdv{x_i} \eval_p  $, 
+        \[
+            \dd{(L)}_{p}(v)(f) = \sum_{i=1}^{n} v^{i} \pdv{(f\circ L)}{x_i} = 
+        \]
+        Let $ (a_{ij}) $ be the matrix corresponding to $ L $ with respect to the standard bases.
+        For $ 1\leq j\leq m $ let $ L_j:\R^n\to \R $ be given by $ L_j(\sum_{i=1}^{n}c^i\eta_{i})=\sum_{i=1}^{n}c^{i} a_{ij} $. So, in coordinates, $ L = (L_{1},\ldots,L_{m}) $. Now, for $ f \in C_p ^\infty (\R^m)$ and $ 1\leq i\leq n $,
+        \[ 
+            \pdv{(f\circ L)}{x_i} \eval_p = \pdv{x_{i}} f\lr{L_{1},\ldots,L_{n}}\eval_p = \sum_{j=1}^{m}\pdv{f}{y_j} \eval_{L(p)} \pdv{y_{j}}{x_{i}}\eval_p = \sum_{j=1}^{m} \pdv{f}{y_{j}} \eval_{L(p)} \pdv{L_{j}}{x_{i}} \eval_{p} = 
+            \sum_{j=1}^{m}a_{ij} \pdv{f}{y_{j}} \eval_{L(p)} 
+        \]
+        so it follows that $ \dd{L}_{p}(\pdv{x_{i}}\eval_p) = \sum_{j=1}^{m}a_{ij}\pdv{y_{j}} \eval_{L(p)} $. Thus, under the aforementioned identification, by linearity $ \dd{L}_{p}=L$.
+
+    \end{proof}
+
+\end{homeworkProblem}
+
+    
+
+\begin{homeworkProblem}
+    If $ M $ and $ N  $ are manifolds, let $ \pi_1:M\times N\to M $ and $ \pi_2:M\times N \to N $ be the two projections. Prove that for $ (p,q)\in M\times N $,
+    \[
+        (\dd{(\pi_{1})}_{(p,q)},\dd{(\pi_{2*})}_{(p,q)}): T_{(p,q)}(M\times N) \to T_p M \times T_q N
+    \]
+    is an isomorphism.
+    
+    \begin{proof}
+        Let $ \iota_{1}: M\hookrightarrow M\times N $ and $ \iota_{2}: N\hookrightarrow M\times N $ be given by $ \iota_{1}(m)=(m,q) $ and $ \iota_{2}(n)=(p,n) $, the natural inclusions. Then $ \pi_{1}\circ \iota_{1}=id_M $, $ \pi_{2}\circ\iota_{2}=id_N $, $ \pi_{2}\circ \iota_{1}=q $, $ \pi_{1}\circ \iota_{2}=p$. 
+        Taking differentials with respect to $ p $ and $ q $ and applying the chain rule, we compute that
+        \begin{align*}
+            \dd{(\pi_{1})}_{(p,q)} \circ \dd(\iota_{1})_{p} &= id_{T_p M} \quad \quad& \dd{(\pi_{2})}_{(p,q)} \circ \dd(\iota_{2})_{q} = id_{T_q M} \\
+            \dd{(\pi_{2})}_{(p,q)} \circ \dd(\iota_{1})_{p} &= 0 \quad \quad& \dd{(\pi_{1})}_{(p,q)} \circ \dd(\iota_{2})_{q} =0.
+        \end{align*}
+        Define a map $ F:T_p M\times T_qN\to T_{(p,q)}(M\times N) $ by $ F(X_p,Y_q) = \dd{(\iota_{1})}_p (X_p) + \dd{(\iota_{2})}_q (Y_q) $. Then we compute
+        \begin{align*}
+            (\dd{(\pi_{1})}_{(p,q)},\dd{(\pi_{2*})}_{(p,q)})\circ F &= ( \dd{(\pi_{1})}_{(p,q)}\dd{(\iota_{1})}_{p} +  \dd{(\pi_{1})}_{(p,q)}\dd{(\iota_{2})}_{q},\,\,  \dd{(\pi_{2})}_{(p,q)}\dd{(\iota_{1})}_{p} +  \dd{(\pi_{2})}_{(p,q)}\dd{(\iota_{2})}_{q}) \\
+            &= (id_{T_p M},id_{T_q N}) = id_{T_{p}M\times T_{q}N}.
+        \end{align*}
+        Thus the desired map is right invertible and hence surjective. As the map is linear and the dimensions of the domain and target space are finite and equal, this map is in fact an isomorphism.
+    \end{proof}
+    
+
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ G $ be a Lie group with multiplication map $ \mu: G\times G\to G $, 
+    inverse map $ \iota:G\to G $, and identity element $ e $. \\
+
+    \textbf{(a)}: Show that the differential at the identity of the multiplication
+    map $ \mu $ is addition: 
+    \begin{align*}
+        \mu_{*,(e,e)}:T_e G \times T_e G\to T_e G, \\
+        \mu_{*,(e,e)}(X_e,Y_e) = X_e + Y_e.
+    \end{align*} 
+    (\emph{Hint}: First, compute $ \mu_{*,(e,e)}(X_e,0) $ and $ \mu_{*,(e,e)}(0,Y_e) $ using Proposition 8.18). \\
+    
+    \begin{proof}
+        Let $ X_e, Y_e\in T_e G $ and choose curves $\alpha_1,\alpha_2:
+        (-\epsilon,\epsilon)\to G  $ such that $\alpha_{1}(0)=\alpha_{2}(0)= 
+        e $ and $\dv{\alpha_1}{t}\vert_0=X_e $, $\dv{\alpha_{2}}{t} \vert_0= Y_e$.
+        Consider $ \beta_{1},\beta_{2} $ given by $ \beta_1(t) = (\alpha_{1}(t),e)$ and $ \beta_{2}(t) = (e,\alpha_{2}(t))$. Then $ \dv{\beta_{1}}{t}\vert_0=(X_e,e) $, $\dv{\beta_{2}}{t} \vert_0=(e,Y_e)$.\\
+
+        Now we compute, by Proposition 8.18, that
+        \[
+            \mu_{*,(e,e)}(X_e,0) = \dv{(\mu\circ\beta_{1})}{t}\eval_0 = \dv{\alpha_{1}}{t}\eval_0 = X_e.
+        \]
+        Likewise $ \mu_{*,(e,e)}(0,Y_e) = Y_e $. So by linearity of the differential, the claim follows. 
+    \end{proof}
+
+    \textbf{(b)}: Show that the differential at the identity of $\iota$ is the negative:
+    \begin{align*}
+        \iota_{*,e}:T_e G\to T_e G\\ 
+        \iota_{*,e}(X_e) = -X_e.
+    \end{align*}
+
+    (\emph{Hint}: Take the differential of $ \mu(c(t), (t\circ c)(t)) = e $.)
+    
+    \begin{proof}
+        Let $ X_e\in T_{e}G $ and choose smooth $ \alpha:(-\eps,\eps)\to G $ such that $ \alpha(0)=e $ and $ \dv{\alpha}{t} \eval_0 = X_e $. Consider the map $ (-\eps,\eps) \to G $ given by $ t\mapsto \mu(\alpha(t),(\iota\circ\alpha)(t))=e$. This is a constant smooth map and 
+        \[
+            0 = \dv{\mu(\alpha(t),(\iota\circ\alpha)(t))}{t}\eval_0 = X_e + \dv{(\iota\circ\alpha)}{t}\eval_0 = X_e + \iota_{*,e}(X_e),    
+        \] 
+        whence the claim follows.
+    \end{proof}
+
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    Show that $ T_p^1 M\sub T_p^2 M $.
+
+    \begin{proof}
+        Fix $ p\in M $ and choose a chart $ (U,\phi) $ on $ \R^n $ adapted to $ M = M^k $ containing $ p $. Let $ \alpha: (-\epsilon,\epsilon)\to M $ be a smooth curve such that $ \alpha(0)=p $ and without loss of generality assume that $ \alpha((-\epsilon,\epsilon))\sub U \cap M $. Define $ \beta = \phi\vert_{\phi(M\cap U)}\circ \alpha $, so $ \beta $ is a curve in $ \R^k $. It follows by the chain rule that 
+        \[
+            \dot{\alpha} (0) = \dv{t}  \phi^{-1}\vert_{\phi(U\cap M}\circ \beta\eval_0 = d_{\phi(p)}(\phi^{-1}\vert_{\phi(U\cap M)}) ( \dot{\beta}(0)) \in   d_{\phi(p)}(\phi^{-1}\vert_{\phi(U\cap M)}) = T_{p}^{2}M
+        \]
+        thus proving the claim.
+    \end{proof}
+\end{homeworkProblem}
+
+
+\end{document}

@@ -1,0 +1,253 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7820 Homework 4}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+    Show that the degree (mod $ 2 $) of a composition of two smooth maps $ f $ and $ g $ equals 
+    \[
+        \deg_{2}(f)\cdot \deg_{2}(g)\,(\text{mod}\,2).
+    \]
+    
+    \begin{proof}
+        Let $ f:x\to Y $ and $ g:Y\to Z $. We must assume $ X,Y $ are compact, $ Y,Z $ are connected, and $ \dim(X) = \dim(Y) = \dim(Z) = n$ for all values above to be defined. Let $ z\in Z $ be a regular value of $ g\circ f $ and $ \{x_{1},\ldots,x_{k}\}=(g\circ f)^{-1}(z) = f^{-1}(g^{-1}(z)) $. 
+        Fix $ 1\leq i \leq k $. As $ \dim T_{x_{i}}X = \dim T_{f(x_{i})}Y = n$ and $ d_{x_{i}}(g\circ f) = (d_{f(x_{i})}g)(d_{x_{i}}f) $ is surjective, it follows that both $d_{f(x_{i})}g  $ and $ d_{x_{i}}f $ are surjective. Thus, each $ y_{i}= f(x_{i}) $ is a regular point of $ g $ as well as a regular value of $ f $ with corresponding regular point $ x_{i} $.\\
+
+        By well definedness of degree mod 2, for each $ y_{i} $, $ |f^{-1}(y_{i})| (\text{mod } 2) =\deg_{2}(f)$. Hence, we compute
+        \[
+            \deg_{2}(g\circ f) \equiv |f^{-1}(g^{-1}(z))| = \sum_{i=1}^{k}|f^{-1}(y_{i})| \equiv \sum_{i=1}^{k}\deg_{2}(f)\,\,(\text{mod }2) = \deg_{2}(f)\cdot \deg_{2}(g).
+        \]
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Give an example of manifolds $ M,N $, and of a smooth function $ F:M\to N $ with a regular value which is a limit point of critical values.
+
+    \begin{proof}[Example]
+        Consider $ f:\R\to \R $ given by $ f(x)=e^{-x}\sin(x) $. Then $ f '(x) = e^{-x}(\cos(x)-\sin(x)) $. 
+        \[
+             0 = f '(x) = e^{-x}(\cos(x)-\sin(x)) \iff \cos(x)=\sin(x),
+        \]
+        so the critical points of $ f $ are $ x_{k}=\frac{\pi}{4}+\pi k $ for $ k\in \Z $. These critical points correspond to the critical values
+        \[
+            f(x_{k}) = e^{\frac{-\pi}{4}-\pi k}\lr{\cos(\frac{-\pi}{4}-\pi k) + \sin(\frac{-\pi}{4}-\pi k)} \begin{dcases*}
+            \sqrt{2}e^{-\frac{\pi}{4}-\pi k} & when $k$ is even\\
+            -\sqrt{2}e^{-\frac{\pi}{4}-\pi k}& when $k$ is odd
+            \end{dcases*}.
+        \]
+        Note $ \pm\sqrt{2}e^{-\frac{\pi}{4}-\pi k}\xrightarrow{k\to\infty}0 $, thus $ 0 $ is a limit point of the critical values $ \{f(x_{k}\}_{k\in\Z} $, but $ 0 $ is not a critical value of $ f $ as $ x_{k}\neq 0 $ for all $ k\in\Z $, so $ 0 $ is a regular value of $ f $ which is a limit point of critical values of $ f $.
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    If two smooth maps $ f,g $ from a manifold $ M $ to the unit sphere $ S^{k} $ satisfy 
+    \[
+        \norm{f(x)-g(x)}<2  
+    \]
+    for all $ x\in M $, prove that $ f $ is smoothly homotopic $ g $.
+
+    \begin{proof}
+        Fix $ t\in [0,1] $ and $ x\in M $. If $ t=0,1 $, then $ \norm{(1-t)f(x)+tg(x)} = 1 \neq 0 $. If $ t\in (0,1) $, then we compute 
+        \[
+            \norm{(1-t)f(x)+tg(x)}= \norm{t(f(x)-g(x))-f(x)} \geq t \norm{f(x)-g(x)} -\norm{f(x)} \geq 2t-1 >0.
+        \]
+        Thus, we may define the function $ H:M\times [0,1] \to S^{k}$ by
+        \[
+            H(x,t) = \frac{(1-t)f(x) + tg(x)}{\norm{(1-t)f(x) + tg(x)}}.
+        \]
+        This map is clearly continuous as, for each $ t\in [0,1], $ the map $ x\mapsto H(x,t) $ is smooth by smoothness of $ f $ and $ g $ and the fact that addition and scalar multiplication are smooth. Moreover, as $ f,g $ both map into the unit sphere already, $ H(x,0) = f(x) $ and $ H(x,1) = g(x) $.
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Consider a simple closed curve $ C $ in $ \R^{2}\setminus \{(0,0)\} $, and let $ f:C\to \R $ be the distance to the origin: $ f(x,y) = \sqrt{x^{2}+y^{2}} $. Prove that the critical points of $ f $ are precisely the points where the curve $ C $ is tangent to some circle centered at the origin. \\
+
+    \textit{Hint}: It may be helpfuls to consider the square of the function, and you may assume the curve $ C $ is parameterized, $ x=x(t),y=y(t),a\leq t\leq b $.
+
+    \begin{proof}
+        Let $ \gamma:[a,b]\to C $ parameterize $ C $ bijectively and let $ \gamma(t) = (x(t),y(t)) $. For any open subset $ U\sub C $, $ (U,\gamma^{-1}) $ is a chart. Suppose $ p\in C $ is a critical point. Write $ p = \gamma(s) $. Then 
+        \[
+            0 = 2 (f\circ\gamma)(s)\cdot (f\circ\gamma) '(s) = \dv{t}\vert_{t=s}f\circ\gamma = 2x(s)x '(s) + 2y(s) y '(s),
+        \]
+        so $ \inp{\gamma(s)}{\gamma '(s)} = 0 $, whence $ \gamma $ is tangent to the circle of radius $ \norm{\gamma(s)} $ at the point $ \gamma(s) $. \\
+
+        On the other hand, suppose that $ p\in C $ is tangent to some circle centered at the origin. Then it must be true that the circle has radius $ \norm{p} $. Write $ p = \gamma(s) $. Then, as before, 
+        \[
+            (f\circ\gamma) '(s) = \frac{\inp{\gamma(s)}{\gamma '(s)}}{(f\circ\gamma)(s)} = 0,
+        \]
+        so $ p $ is a critical point of $ f $.
+    \end{proof}
+\end{homeworkProblem}
+
+
+\end{document}

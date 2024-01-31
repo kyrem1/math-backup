@@ -1,0 +1,330 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+\usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\GL}{GL}
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7820 Homework 7} 
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+    
+\begin{homeworkProblem}
+    Let $ (U,\phi) = (U, x^{1}, \ldots, x^{n}) $ be a chart on a manifold $ M $, and let 
+    \[
+        (\pi^{-1}U,\widetilde{\phi}) = (\pi^{-1}U, \cls{x}^{1}, \ldots, \cls{x}^{n}, c_{1}, \ldots, c_{n})
+    \]
+    be the induced chart on the cotangent bundle $ T^{*}M $, Find a formula for the Liouville form $ \lambda $ on $ \pi^{-1}U $ in terms of the coordinates 
+    $ \cls{x}^{1}, \ldots, \cls{x}^{n}, c_{1}, \ldots, c_{n} $. 
+
+    \begin{proof}
+        Recall that $ \cls{x}^{i} = x^{i}\circ \pi $ and the $ c_{i} $ are given by $ \alpha = \sum_{j=1}^{n}c_{j}(\alpha)\dd{x_{i}}\eval_{p} $ for all $ \alpha\in T_{p}^{*} $. First, fix $ 1\leq i\leq n $. Noting that $\pi^{*}(\dd{x^{i}}\eval_{p}) = \pi^{*}(\dd{x_{i}})_{\omega_{p}} $  We compute that 
+        \begin{align*}
+            \pi^{*}(\dd{x^{i}})_{\omega_{p}}\lr{\pdv{\cls{x}^{k}}\eval_{\omega_{p}} } &= (\dd{x^{i}})_{p}\lr{\dd{\pi}_{\omega_{p}}\lr{\pdv{\cls{x}^{k}} \eval_{\omega_{p}}}} \\
+            &= (\dd{x^{i}})_{p}\lr{\sum_{j=1}^{n}\pdv{\pi^{j}}{\cls{x}^{k}} \eval_{\omega_{p}} \pdv{x^{j}} \eval_{p}} = (\dd{x^{i}})_{p}\lr{\pdv{\cls{x}^{k}} \eval_{p}} = \delta_{ki}
+        \end{align*}
+        so $ \pi^{*}(\dd{x^{i}}\eval_{p}) = \dd{\cls{x}^{i}} \eval_{\omega_{p}}  $. Hence, for $ \omega = \omega_{p}\in T_{p}^{*}M $, writing $ \omega_{p} = \sum_{i=1}^{n}c_{i}(\omega_{p})\dd{x^{i}}\eval_{p} $ and using linearity of the pushforward, we compute that
+        \[
+            \lambda_{\omega_{p}} = \pi^{*}(\omega_{p}) = \sum_{i=1}^{n}c_{i}(\omega_{p}) \pi^{*}(\dd{x^{i}}\vert_{p}) = \sum_{i=1}^{n} c_{i}(\omega_{p}) \dd{\cls{x}^{i}} \vert_{\omega_{p}}.
+        \]
+        
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ F:\R^{2}\to\R^{2} $ be given by 
+    \[
+        F(x,y) = (x^{2}+y^{2}, xy).
+    \]
+    If $ u,v $ are the standard coordinates on the target $ \R^{2} $, compute $ F^{*}(u \dd{u} + v \dd{v}) $.
+
+    \begin{proof}[Solution]
+        For $ p= (x,y)\in\R^{2} $, we compute that 
+        \begin{align*}
+            \dd{F}_{p}\lr{\pdv{x}\eval_{p}} = \pdv{F^{1}}{x}(p)\pdv{u}\eval_{F(p)}+\pdv{F^{2}}{x}(p)\pdv{v}\eval_{F(p)} = 2x \pdv{u} \eval_{F(p)} + y \pdv{v} \eval_{F(p)} \\
+            \dd{F}_{p}\lr{\pdv{y}\eval_{p}} = \pdv{F^{1}}{y}(p)\pdv{u}\eval_{F(p)}+\pdv{F^{2}}{y}(p)\pdv{v}\eval_{F(p)} = 2y \pdv{u} \eval_{F(p)} + x \pdv{v} \eval_{F(p)} 
+        \end{align*}
+        Let $ \omega = u \dd{u} + v \dd{v} $. As $ u(F(p)) = x^{2}+y^{2} $ and $ v(F(p)) = xy$, we have that 
+        \begin{align*}
+            (F^{*} \omega)_{p}\lr{\pdv{x} \eval_{F(p)}} &= \omega_{F(p)}\lr{2x \pdv{u} \eval_{F(p)} + y \pdv{v} \eval_{F(p)}}\\
+            &= (x^{2}+y^{2})\dd{u}_{F(p)}\lr{2x\pdv{u} \eval_{F(p)}} + (xy)\dd{v}_{F(p)}\lr{\pdv{v}y \eval_{F(p)}}\\
+            &=2x^{3}+2xy^{2} + xy^{2} = 2x^{3}+3xy^{2}\\
+            (F^{*} \omega)_{p}\lr{\pdv{y} \eval_{F(p)}} &= \omega_{F(p)}\lr{2y \pdv{u} \eval_{F(p)} + x \pdv{v} \eval_{F(p)}}\\
+            &= (x^{2}+y^{2})\dd{u}_{F(p)}\lr{2y\pdv{u} \eval_{F(p)}} + (xy)\dd{v}_{F(p)}\lr{\pdv{v}x \eval_{F(p)}}\\
+            &=2x^{2}y+2y^{3} + x^{2}y = 3x^{2}y+2y^{3}.
+        \end{align*}
+        whence it follows that
+        \[
+            F^{*}(u \dd{u} + v \dd{v}) = (2x^{3}+2xy^{2})\dd{x} + (3x^{2}y+2y^{3})\dd{y}.
+        \]
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    A $ 2 $-covector $ \alpha $ on a $ 2n $-dimensional vector space $ V $ is said to be \textit{nondegenerate} if $ \alpha^{n} $ is not the zero $ 2n $-covector. A $ 2 $-form $ \omega $ on a $ 2n $-dimensional manifold $ M $ is said to be \textit{nondegenerate} if at every point $ p\in M $, the $ 2 $-covector $ \omega_{p} $ is nondegenerate on the tangent space $ T_{p}M $. \\
+
+    Prove that on $ \C^{n} $ with real coordinates $ x^{1}, y^{1}, \ldots, x^{n}, y^{n} $, the $ 2 $-form
+    \[
+        \omega = \sum_{j=1}^{n} \dd{x^{j}}\wedge \dd{y^{j}}
+    \]
+    is nondegenerate.
+
+    \begin{proof}
+        By the multinomial theorem
+        \[
+            \omega^{n} = \sum_{k_{1}+\cdots+k_{n} = n} \binom{n}{k_{1},\ldots, k_{n}} (\dd{x^{1}}\wedge \dd{y^{1}})^{k_{1}}\wedge\cdots\wedge(\dd{x^{n}}\wedge \dd{y^{n}})^{k_{n}}.
+        \]
+        Note that all of the terms with at least one $ k_{i}\geq 2$ are equal to zero as there are repeats of terms in the wedge product, thus in fact,
+        \[
+            \omega^{n} = n \cdot \dd{x^{1}}\wedge \dd{y^{1}}\wedge\cdots\wedge\dd{x^{n}}\wedge \dd{y^{n}}
+        \]
+        which is necessarily nonzero since it is a nonzero multiple of the top form of the basis for the top forms. 
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ x,y,z $ be the standard coordinates on $ \R^{3} $. A plane in $ \R^{3} $ is \textit{vertical} if it is defined by $ ax+by=0 $ for some $ (a,b)\neq(0,0)\in \R^{2} $. Prove that restricted to a vertical plane, $ \dd{x}\wedge \dd{y} = 0 $.
+
+    \begin{proof}
+        Let $ P\sub \R^{3} $ denote the given plane and consider the function $ F: P \to \R $ given by $ F(x,y) = ax+by $ where $ x,y $ are the standard coordinates on the submanifold such that its embedding into $ \R^{3} $ has coordinates $ (x,y,0) $. It follows then that $ F = 0 $, so $ dF_{p}= a \dd{x} + b \dd{y} = 0 $. Without loss of generality, assume that $ b\neq 0 $, so it follows that $ \dd{y} = -\frac{a}{b}\dd{x} $. Now 
+        \[
+            \dd{x}\wedge \dd{y} = -\frac{a}{b}\dd{x}\wedge \dd{x} = 0.
+        \]
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    \textbf{(a)}: Let $ f(x,y) $ be a $ C^{\infty} $ function on $ \R^{2} $ and assume that $ 0 $ is a regular value of $ f $. By the regular level set theorem, the zero set $ M $ of $ f(x,y) $ is a one-dimensional submanifold of $ \R^{2} $. Construct a $ C^{\infty}$ nowhere-vanishing $ 1 $-form on $ M $.
+
+    \begin{proof}
+        Let $ U = \{p\in M: f_{x}(p) \neq 0\} $ and $ V = \{p\in M: f_{y}(p)\neq 0\} $. Since $ f_{x},f_{y} $ are continuous, $ U,V $ are open. Regularity of $ 0 $ for $ f $ implies that $ M = U\cup V $. Define 
+        \begin{equation*} 
+            \omega_{p} = \begin{cases}
+                \frac{1}{f_{x}(p)} \dd{y}\vert_{p} \text{ if } p\in U\\
+                -\frac{1}{f_{y}(p)} \dd{x}\vert_{p} \text{ if } p\in V.
+            \end{cases}
+        \end{equation*}
+        To show that $ \omega $ is well defined, suppose that $ p\in U\cap V $. As $ M = f^{-1}(0) $, the exterior derivative on $ M $ of $ f $ is 
+        \[
+            0 = \dd{f} = f_{x} \dd{x} + f_{y}\dd{y}.
+        \]
+        Manipulating this expression and using that $ f_{x}(p),f_{y}(p) \neq 0$ gives that the two definitions of $ \omega_{p} $ agree. This one-form is nowhere vanishing and smooth.
+    \end{proof}
+
+    \textbf{(b)}: Let $ f(x,y,z) $ be a $ C^{\infty} $ function on $ \R^{3} $ and assume that $ 0 $ is a regular value of $ f $. By the regular level set theorem, the zero set $ M $ of $ f(x,y,z) $ is a two-dimensional submanifold of $ \R^{3} $. Let $ f_{x}, f_{y}, f_{z} $ be the partial derivatives of $ f  $ with respect to $ x,y,z $ respectively. Show that the equalities 
+    \[
+        \frac{\dd{x}\wedge \dd{y}}{f_{z}} = \frac{\dd{y}\wedge \dd{z}}{f_{x}} = \frac{\dd{z}\wedge \dd{x}}{f_{y}}
+    \]
+    hold on $ M $ whenever they make sense, and therefore the three $ 2 $-forms piece together to give a $ C^{\infty}$ nowhere-vanishing $ 2 $-form on $ M $.  
+    \begin{proof}
+        Note that, by the definition of $ M $, we have that the exterior derivative of $ f $ is $ 0 $, i.e.
+        \[
+            0 = \dd{f} = f_{x} \dd{x} + f_{y}\dd{y}+f_{z}\dd{z}.
+        \]
+       Wedging the above expression with various differentials, we compute that 
+        \begin{align*}
+            0 = f_{y}\dd{y}\wedge \dd{x} + f_{z}\dd{z}\wedge \dd{x} = -f_{y}\dd{x}\wedge \dd{y} + f_{z}\dd{z}\wedge \dd{x}\\
+            0 = f_{x}\dd{x}\wedge \dd{y} + f_{z}\dd{z}\wedge \dd{y} = f_{x}\dd{x}\wedge \dd{y} - f_{z}\dd{y}\wedge \dd{z} \\
+            0 = f_{x} \dd{x}\wedge \dd{z} + f_{y} \dd{y}\wedge \dd{z} = -f_{x}\dd{z}\wedge \dd{x} + f_{y}\dd{y}\wedge \dd{z}.
+        \end{align*} 
+        When the corresponding divisions make sense, the above equalities give the required chain of equalities. Pieceing these equations together and defining on open sets similarly to the previous part by regularity, it follows by the implicit function theorem applied to each of the coordinates when nonzero that such a differential one form is smooth.
+    \end{proof}
+
+    \textbf{(c)}: Generalize this problem to a regular level set of $ f(x^{1},\ldots, x^{n+1}) $ in $ \R^{n+1} $.
+
+    \begin{proof}
+        Define $ U_{i} = \{p\in \R^{n+1}: \pdv{f}{x^{i}}(p) \neq 0 \} $. On $ U_{i} $, we may define $ \omega $ by 
+        \[
+            \omega = (-1)^{i-1}\frac{\dd{x^{1}}\wedge\cdots\wedge \widehat{\dd{x^{i}}}\wedge\cdots\wedge \dd{x^{n+1}}}{\pdv{f}{x^{i}}}
+        \]
+        where the hat denotes omitting the expression from the giving wedge product. By regularity of $ 0 $ with respect to $ f $, it follows that the $ U_{i} $'s cover $ M $. Then observe that, for $ i \leq j $,
+        \begin{align*}
+            0 &= df\wedge \dd{x^{1}}\wedge\cdots\wedge \widehat{\dd{x^{i}}}\wedge\cdots\wedge \widehat{\dd{x^{j}}}\wedge\cdots\wedge\dd{x^{n+1}} \\
+            &= \pdv{f}{x^{i}}(p) \dd{x^{i}}\wedge \dd{x^{1}}\wedge\cdots\wedge \widehat{\dd{x^{i}}}\wedge\cdots\wedge \widehat{\dd{x^{j}}}\wedge\cdots\wedge\dd{x^{n+1}} + \pdv{f}{x^{j}}(p) \dd{x^{j}}\wedge \dd{x^{1}}\wedge\cdots\wedge \widehat{\dd{x^{i}}}\wedge\cdots\wedge \widehat{\dd{x^{j}}}\wedge\cdots\wedge\dd{x^{n+1}} \\
+            &= (-1)^{i-1} \pdv{f}{x^{i}}(p) \dd{x^{1}}\wedge\cdots\wedge \widehat{\dd{x^{j}}}\wedge\cdots\wedge \dd{x^{n+1}}+ (-1)^{j} \pdv{f}{x^{j}}(p)\dd{x^{1}}\wedge\cdots\wedge \widehat{\dd{x^{i}}}\wedge\cdots\wedge \dd{x^{n+1}}
+        \end{align*}
+        whence subtracting and dividing we find that
+        \[
+           (-1)^{i-1}\frac{\dd{x^{1}}\wedge\cdots\wedge \widehat{\dd{x^{i}}}\wedge\cdots\wedge \dd{x^{n+1}}}{\pdv{f}{x^{i}}}
+            = (-1)^{j-1}\frac{\dd{x^{1}}\wedge\cdots\wedge \widehat{\dd{x^{j}}}\wedge\cdots\wedge \dd{x^{n+1}}}{\pdv{f}{x^{j}}}
+        \]
+        Again, by the previous argument, such a one form $ \omega $ is nonzero and smooth.
+
+    \end{proof}
+
+
+
+\end{homeworkProblem}
+
+
+
+
+
+\end{document}

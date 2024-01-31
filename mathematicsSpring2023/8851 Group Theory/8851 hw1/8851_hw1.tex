@@ -1,0 +1,336 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+%\usepackage{quiver}
+%\usepackage{tikz}
+
+\usepackage[linguistics]{forest}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\ilm}[1]{\begin{psmallmatrix} #1 \end{psmallmatrix}}
+\newcommand{\ilmb}[1]{\boxed{\begin{smallmatrix} #1 \end{smallmatrix}}}
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\m}{\mf{m}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\divides}{\bigm|}
+\newcommand{\restr}{\big|}
+
+
+%----Switch phi and varphi
+\let\temp\phi
+\let\phi\varphi
+\let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+\let\O\relax
+\newcommand{\O}{\mathcal{O}}
+\let\p\relax
+\newcommand{\p}{\mathfrak{p}}
+\let\q\relax
+\newcommand{\q}{\mathfrak{q}}
+\let\m\relax
+\newcommand{\m}{\mathfrak{m}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Specm}{Specm}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Fix}{Fix}
+
+
+%----Analysis
+\newcommand{\dd}[2][]{\frac{\partial^{#1}}{\partial {#2}^{#1}}}
+\newcommand{\summ}{\sum\limits}
+\newcommand{\norm}[1]{\left \vert \left \vert #1 \right \vert \right \vert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{Lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{Theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 8851 Homework 1}
+\author{James Harbour}
+\begin{document}
+
+\maketitle
+
+\begin{homeworkProblem}
+    Prove the Schreier Subgroup Lemma (the statement is recalled below) without the extra assumption $1\in T$. {\bf Note:} You just need to slightly adjust the proof from class (where we assumed that $1\in T$).
+
+    \begin{proof}
+        Let $ H\leq G $, $ S\sub G $ a generating set for $ G $, and $ T\sub G$ a right transversal for $ H $ inside $ G $. Set 
+        \[
+            U = U(S,T) = \{ts\cdot \cls{ts}^{-1} : s\in S,\,t\in T\}.
+        \]
+        For $ s\in S, t\in T $, we have that 
+        \[
+            Hts = H \cls{ts} \implies H ts\cdot \cls{ts}^{-1} = H \implies ts\cdot \cls{ts}^{-1} \in H,
+        \]
+        so $ U\sub H $ whence $ \cyclic{U}\leq H $. Thus, it suffices to show the reverse inclusion. First, let $ t = \cls{1}\in T\cap H $. Then Choose $ s_{1} $
+
+
+        Choose $ s_{1},\ldots, s_{n}\in S\cup S^{-1} $ such that $ t = \prod_{i=1}^{n}s_{i} $, and set $ t_{k}:=\cls{\prod_{i=1}^{k}s_{i}} $, $ t_{0} = t $. Then we have 
+        \begin{align*}
+            t = t_{0}^{-1}\lr{\prod_{i=0}^{n-1}t_{i}s_{i+1}t_{i+1}^{-1}}t_{n} =  t^{-1}\lr{\prod_{i=0}^{n-1}t_{i}s_{i+1}t_{i+1}^{-1}}t_{n} \implies t = \prod_{i=0}^{n-1}t_{i}s_{i+1}t_{i+1}^{-1} \in<
+        \end{align*}
+
+
+
+        
+    \end{proof}
+
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    Let $F=F(X)$ for some set $X$ and $H$ a subgroup of $F$. Prove that $H$ always has a Schreier transversal in $F$
+(with respect to $X$) in two different ways as follows:
+\begin{itemize}
+\item[(a)] Using Zorn's lemma
+\item[(b)] Using suitable total order on $F$. 
+\end{itemize}
+{\bf Hint for (b):} Choose an arbitrary total order on $X\sqcup X^{-1}$
+and consider the corresponding lexicographical order on $F$: given two elements $f\neq f'\in F$,
+put $f<f'$ if one of the following holds:
+\begin{itemize}
+\item[(i)] $l(f)< l(f')$, where $l(\cdot)$ is the word length
+\item[(ii)] $l(f)=l(f')$, and if $f$ and $f'$ first differ in $k^{\rm th}$ position,
+then the $k^{\rm th}$ symbol in $f$ is smaller than the $k^{\rm th}$ symbol in $f'$.
+\end{itemize}
+Then form a transversal by choosing the smallest element in each right coset of $H$.
+
+\begin{proof}[Proof (a)]
+    Consider the poset 
+    \[ 
+        \mathscr{S} = \{T\sub F : T\text{ is a Schreier subset},\ Ht \neq Ht '\ \forall t\neq t ' \text{ in }T\} 
+    \]
+    ordered by inclusion. This poset is nonempty as it contains $ \{1\} $. Consider any linear chain $ (T_{\alpha})_{\alpha\in I} $ in $ \mathscr{S} $ and set $ T = \bigcup_{\alpha\in I}T_{\alpha} $. Suppose $ t_{1},t_{2}\in T $ have $ t_{1}\neq t_{2}$. By linearity of the chain, we may choose an $ \alpha\in I $ such that $ t_{1},t_{2}\in T_{\alpha} $ whence by assumption, $ Ht_{1} \neq Ht_{2} $. Now, suppose that $ w $ is a reduced word in $ T $. Again by linearity, there exists some $ \alpha\in I $ such that all of the symbols from $ T $ appearing in the reduced word decomposition for $ w $ actually lie inside $ T_{\alpha} $. Since $ T_{\alpha} $ is Schreier, every initial segment of $ w $ also lies in $ T_{\alpha} $ and thus $ T $. So, $ T\in \mathscr{S} $ is an upper bound for the chain inside $ \mathscr{S} $.\\
+
+    By Zorn's lemma, there exists a maximal element $ T $ of $ \mathscr{S} $. We claim that $ T $ is a right transversal for $ H $. To this end, suppose for the sake of contradiction that $ T $ is not a right transversal for $ H $. Then there is some $ x\in F $ such that $ Hx\neq Ht $ for all $ t\in T $. \\
+    
+    Consider the set $ S $ consisting of all initial segments of reduced words in $ T\sqcup\{x\} $. By construction, $ S\supseteq T $ is a Schreier subset of $ F $. We claim that $ S $ is in fact an element of $ T $.
+    % TODO... this might be bs since im not reducing and such
+    
+\end{proof}
+
+
+\begin{proof}[Proof (b)]
+
+\end{proof}
+
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $F=F(x,y)$ be the free group on two generators. Consider the following two subgroups of $F$:
+\begin{itemize}
+\item[(a)] $H=[F,F]$, the commutator subgroup of $F$
+\item[(b)] $H=\ker\,\pi$ where $\pi$ is the epimorphism from $F$ onto $S_3$ (symmetric group on $3$ letters)
+which sends $x$ to $(12)$ and $y$ to $(23)$.
+\end{itemize}
+For each of these subgroups do the following:
+\begin{itemize}
+\item[(i)] Find a Schreier transversal $T$ for $H$ (with respect to $X=\{x,y\}$).
+\item[(ii)] Draw the Schreier graph $Sch(H\setminus F,X)$ and the maximal tree $\mathcal T$ in $Sch(H\setminus F,X)$ corresponding to $T$
+(we will define the natural bijection between the Schreier transversals and maximal trees in class on Monday, Jan 29)
+\item[(iii)] Use the strong Nielsen-Schreier Theorem (the statement is recalled below) to find a free generating set for $H$.
+\end{itemize}
+
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Prove the {\it Schreier index formula}: If $F$ is a free group of finite rank and $H$ a subgroup of $F$ of finite index, then $$\rk(H)-1=(\rk(F)-1)\cdot [F:H].$$ 
+    {\bf Hint:} Count the number of vertices and edges in the Schreier graph $Sch(H\setminus F,X)$ and use the fact that $H\cong \pi_1(Sch(H\setminus F,X))$. 
+ 
+    \begin{proof}
+        Let $ X = \{x_{1}, \ldots, x_{n}\} $ be a free generating set for $ F $ and assume without loss of generality that $ F = F(X) $. 
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Use the Schreier Subgroup lemma to find a generating set with $2$ elements for the alternating group $A_n$. 
+
+    \begin{proof}[Solution]
+        Consider the generating set $ S = \{(12), (12\cdots n)\} $ for $ S_{n} $. The set $ T = \{e, (12)\} $ is a right transversal for $ A_{n} $ inside $ S_{n} $. Note that then, for a given permuation $ \sigma\in S_{n} $,
+        \[
+            \cls{\sigma} = \begin{cases}
+                e & \sigma \text{ is even}\\
+                (12) & \sigma \text{ is odd}.
+            \end{cases}
+        \]
+        If $ n $ is odd, then $ U(S,T) $ consists of 
+        \begin{align*}
+            &e(12) \cls{e(12)}^{-1} = e \\
+            &(12)(12) \cls{(12)(12)}^{-1} = e\\
+            &e(12\cdots n) \cls{e(12\cdots n)}^{-1} = (12\cdots n)\\
+            &(12)(12\cdots n) \cls{(12)(12\cdots n)}^{-1} = (12)(12\cdots n)(12).
+        \end{align*}
+
+        If $ n $ is even, then $ U(S,T) $ consists of 
+        \begin{align*}
+            &e(12) \cls{e(12)}^{-1} = e \\
+            &(12)(12) \cls{(12)(12)}^{-1} = e\\
+            &e(12\cdots n) \cls{e(12\cdots n)}^{-1} = (12\cdots n)(12)\\
+            &(12)(12\cdots n) \cls{(12)(12\cdots n)}^{-1} = (12)(12\cdots n).
+        \end{align*}
+
+        Thus, Schreier Subgroup lemma produces the following $ 2 $-element generating sets for $ A_{n} $
+        \[
+            U(S,T) = \begin{cases}
+                \{(12\cdots n), (12)(12\cdots n)(12)\} & n \text{ is odd}\\
+                \{(12\cdots n)(12), (12)(12\cdots n)\} & n \text{ is even}
+            \end{cases}
+        \]
+    \end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{Lemma}[Schreier Subgroup Lemma] Let $G$ be a group, $H$ a subgroup of $G$, $S$ a generating set for $G$ and $T$ a right transversal for $H$ in $G$.
+Then $H$ is generated by the set
+$$U=U(S,T)=\{ts\cdot{\overline{ts}}^{\,-1}: s\in S, t\in T\}$$
+where $\overline g$ is the unique element of $T$ such that $H\overline g=Hg$.
+\end{Lemma}
+
+
+\begin{Theorem}[Strong Nielsen-Schreier Theorem] Let $H$ a subgroup of $F(X)$, and let $T$ be a (right) Schreier transversal for $H$ (with respect to $X$). For every $x\in X$ and $t\in T$ let $h_{x,t}=xt\cdot {\overline{xt}}^{\,-1}$.
+Let $$I=\{(x,t)\in X\times T: h_{x,t}\neq 1\}.$$ Then the elements $\{h_{x,t}: (x,t)\in I\}$ are all distinct and form a free 
+generating set for $H$.
+\end{Theorem}
+
+\end{document}

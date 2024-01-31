@@ -1,0 +1,22 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Integer Sobolev Spaces}
+
+
+\begin{definition}
+    For $ f\in L^{1}_{loc}(\Omega) $, we say that a function $ g\in L^{1}_{loc}(\Omega) $ is an $ i $-th weak derivative of $ f $ if 
+    \[
+        \int_{\Omega} g \phi \dd{x} = -\int_{\Omega} f \pdv{\phi}{x_{i}} \dd{x} \text{ for all } \phi\in C_{c}^{1}(\Omega).
+    \]
+    Weak derivatives, if they exist, are well defined up to sets of measure zero. Let $ W^{k,p}(\Omega) $ be the set of all locally integrable functions with weak derivatives in $ L^p $ up to order $ k $.
+
+    These spaces are Banach spaces with norm
+    \[
+        \norm{u}_{W^{k,p}(\Omega)} = \lr{\sum_{| \alpha|\leq k}\norm{D^{\alpha}u}_{L^{p}(\Omega)}^{p}}^{\frac{1}{p}}
+    \]
+\end{definition}
+\end{document}

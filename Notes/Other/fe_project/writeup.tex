@@ -1,0 +1,250 @@
+\documentclass{article}
+\usepackage{arxiv}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage[toc]{appendix}
+\hypersetup{%
+  bookmarksnumbered=true,%
+  bookmarks=true,%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  pagecolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH}   
+
+\usepackage{kyrem1sty}
+
+\title{ML4VA Project Proposal}
+
+
+\author{
+  James Harbour \\
+  UVA Math \& CS \\
+  \texttt{gtr8rh@virginia.edu} \\
+  %% examples of more authors
+   \And
+  Deniz Olgun \\
+  UVA Neuroscience \& CS \\
+  \texttt{epv2kz@virginia.edu} \\
+}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+  Dynamic Delta hedging is a \cite{deephedge}
+
+\end{abstract}
+
+\tableofcontents
+
+
+
+\section{Introduction}
+
+
+Suppose that $ S $ is some underlying financial instrument that can be bought and sold at time $ t $ for a per-unit price $ S_{t} $. We are interested in hedging a portfolio of options 
+
+\begin{itemize}
+		\item $S = S_{t}$ Underlying Price at time $t$
+		\item $ V = V(S, t) $ Price of option with underlying price $ S $ at time $ t $
+		\item $T = $ Expiry date  
+		\item $K = $ Strike Price
+		\item $r = $ Risk-free rate	
+		\item $ \sigma = $ volatility, i.e. standard deviation of underlying asset's returns.
+	\end{itemize}	
+
+%TODO talk about delta hedging and why you would do it
+
+\begin{definition}[Delta]
+	The Delta of an option contract is the quantity $ \Delta = \pdv{V}{S} $, which measures the sensitivity of the price of the option with respect to changes in the price of the underlying.
+\end{definition}
+	
+Suppose that a stock option for XYZ shares has a delta of $0.45$, if the underlying stock increases in market price by $\$1$ per share, the option value on it will rise by $\$0.45$ per share, all else being equivalent. 
+
+
+
+\begin{definition}[Delta Hedging]
+	Delta hedging is a strategy used in financial trading to mitigate risk associated with the price movement of an underlying asset, typically used in options trading. The objective is to maintain a delta-neutral position, where the overall delta of the portfolio is zero, thus being insensitive to small movements in the underlying asset's price.
+\end{definition}
+
+To delta hedge, you would take a position in the underlying asset that offsets the delta of the options position. For example, if you own a call option with a delta of 0.5, this means the option's price increases by 0.5 units for every 1 unit increase in the underlying asset's price. To hedge, you would short 0.5 units of the underlying asset.
+
+In this project, we will be analyzing the strategy of \textit{dynamic delta hedging}. The term "dynamic" refers to the need for continuous adjustment of the hedge. As time passes and as the underlying asset's price changes, the delta of the option changes. This requires continual rebalancing of the hedge to maintain delta neutrality.
+
+
+%----------------------------------------------------------------------------------------
+\section{Dynamic Delta Hedging on the Black-Scholes Model}
+
+\subsection{The Black-Scholes Model}
+
+Let $ W_{t} $ be one-dimensional Brownian motion and assume the price of the instrument $ S_{t} $ evolves according to geometric Brownian motion as 
+\begin{equation*}
+	\dd{S_{t}} = \mu S_{t} \dd{t} + \sigma S_{t} \dd{W_{t}},
+\end{equation*}
+where the parameters of the model are given by 
+\begin{itemize}
+	\item $ \mu $ the deterministic drift of the process
+	\item $ \sigma $ the volatility of the process.
+\end{itemize}
+
+Then, the evolution of the price $ V_{t} $ of the option evolves according to the following parabolic partial differential equation
+\[
+	\pdv{V}{t} + \frac{1}{2}\sigma^{2}S^{2} \pdvN{2}{V}{S} + rS \pdv{V}{S} -rV = 0.
+\]
+Under the boundary conditions $ V_{T}^{Call} = \max\{0, S_{T}-K\} $ and $ V_{T}^{Put} = \max\{0, K-S_{T}\} $ corresponding to European call and put options respectively, we obtain the closed-form solutions
+
+
+
+%\begin{itemize}
+%	\item About Risky asset
+%	\begin{itemize}
+%		\item Stock movement follows random walk (geometric Brownian motion)	
+%		\item Volatility is constant
+%		\item Returns are normally distributed
+%		\item There are no dividends
+%	\end{itemize}
+%	\item About Riskless Asset
+%	\begin{itemize}
+%		\item Constant Risk-Free interest rates
+%	\end{itemize}
+%	\item About the Option
+%	\begin{itemize}
+%		\item Option is European-Style (i.e. only exercisable at maturity)
+%	\end{itemize}
+%	\item About the Market
+%	\begin{itemize}
+%		\item No transaction costs
+%		\item Perfect liquidity
+%		\item No restrictions to short selling
+%		\item No arbitrage possible
+%	\end{itemize}
+%\end{itemize}
+		
+	
+	
+\begin{align*}
+	d_1 &= \frac{1}{\sigma \sqrt{T-t}}\left[\ln\left(\frac{S_t}{K}\right) + \left(r + \frac{\sigma^2}{2}\right)(T-t) \right] \\
+	d_2 &= d_1 - \sigma\sqrt{T-t}\\
+	V_{t}^{Call} &= C(S_t, t) = N(d_1)S_t - N(d_2) Ke^{-r(T-t)} \\
+	V_{t}^{Put} &= P(S_{t}, t) = Ke^{-r(T-t)} -S_t + C(S_t,t)
+\end{align*}
+
+
+\subsection{Delta Hedging}
+
+Given a call of value $ V_t = C(S_{t},t) $, we derive the corresponding expression for the delta of this call via the Black-Scholes formulae.
+\begin{align*}
+	\Delta &= \frac{\partial C}{\partial S_t} = \frac{\partial}{\partial S_t} \left[ S_t N(d_1) - Ke^{-r(T-t)} N(d_2) \right].\\
+	&= N(d_1) + S_t \frac{\partial N(d_1)}{\partial S_t} = N(d_{1}). 
+\end{align*}
+Via put-call parity, the delta for a put option of value $ P(S_{t},t) $ is $ N(d_{1})-1 $.
+
+
+%----------------------------------------------------------------------------------------
+\section{Dynamic Delta Hedging on the Heston Model}
+
+\subsection{The Heston Model}
+The Heston model is a popular stochastic volatility model used in financial mathematics to address one of the key limitations of the Black-Scholes model: the assumption of constant volatility. In reality, asset volatilities tend to change over time due to market dynamics and external factors. The Heston model introduces stochastic volatility, which allows for a more realistic representation of how asset prices evolve.
+
+
+Suppose that $ W $ and $ B $ are one-dimensional Browinian motions with correlation $ \rho\in [-1,1] $. The Heston model is given by the following system of stochastic differential equations
+\begin{align}
+	\dd{S_{t}} &= \mu S_{t} \dd{t} + \sqrt{\sigma_{t}} S_{t} \dd{W_{t}} \label{heston:1} \\ 
+	\dd{\sigma_{t}} &= \kappa (\theta - \sigma_{t})\dd{t}  + \nu \sqrt{\sigma_{t}} \dd{B_{t}} \label{heston:2}
+\end{align}
+where the parameters of the model are given by
+\begin{itemize}
+	\item $ \sigma_{0} $, variance at $ t=0 $
+	\item $ \theta $, the long run variance,i .e. $ \E[\sigma_{t}] \xrightarrow{t\to\infty} \theta$
+	\item $ \rho $, the correlation between $ B $ and $ W $
+	\item $ \kappa $, the mean-reversion rate of $ \sigma_{t} $
+	\item $ \nu $, volatility of $ \{\sigma_{t}\}_{t} $.
+\end{itemize}
+
+The main limiting assumption in the Black-Scholes model is that the volatility of the underlying asset is constant.  The Heston model addresses this limitation in the Black-Scholes model by introducing stochastic volatility through Equation \ref{heston:2}. This stochastic volatility allows the model to capture the volatility smile, a phenomenon where options with different strike prices have implied volatilities that deviate from a constant value. In contrast, the Black-Scholes model assumes a constant volatility, which cannot account for this observed market behavior.
+
+By allowing volatility to change over time in a controlled manner, the Heston model provides a more realistic representation of financial markets and is widely used in option pricing and risk management. It allows for better modeling of market dynamics and can produce option prices that align more closely with observed market prices.
+
+In practice, the Heston model's parameters are estimated from market data, and it has been extended and modified in various ways to accommodate additional features and complexities in financial markets.
+
+
+
+\subsection{Delta Hedging}
+
+Following Buehler et al. in \cite{deephedge}, we calibrate our Merton model 
+
+\subsection{Defects}
+The main defect that our hedging strategy runs into is that it is now running on a model of an incomplete market and thus is unable to accurately replicate the delta-neutralizing portfolio at each step. Moreover, this indicates that our model is no longer sufficient to suitably reduce risk, especially with a large batch of securities.
+
+%----------------------------------------------------------------------------------------
+\section{Deep Hedging on the Merton Model}
+
+
+In Buehler et al. in \cite{deephedge}, the authors introduce a new approach to this problem called \textit{deep hedging}. This involves modeling the trading decisions in the strategy as neural networks. By discretizing time and creating a recurrent neural network which takes in the previous basket policy at each timestep, the authors essentially model the human decision making process of a portfolio manager.
+
+This strategy has a clean implementation in the PYTHON package pfhedge \cite{pfhedge}. We use this package to benchmark this notion of deep hedging against our faulty Merton model hedging.
+	
+
+
+		
+
+%----------------------------------------------------------------------------------------
+% APPENDIX
+%----------------------------------------------------------------------------------------
+
+
+\appendix
+\section{Basic Options Definitions}
+\begin{definition}[Call Option]
+	A call option for $S$ at time $T$ and at a strike price $K$ gives the buyer of the option the right (but not the obligation) to buy a unit of S from the seller of the option at price $K$ at time $T$.
+\end{definition}
+
+\begin{definition}[Put Option]
+	A put option for $S$ at time $T$ and at a strike price $K$ gives the buyer of the option the right (but not the obligation) to sell a unit of S to the seller of the option at price $K$ at time $T$.
+\end{definition}
+
+
+
+\section{Notation}
+\begin{itemize}
+		\item $S = S_{t}$ Underlying Price at time $t$
+		\item $ V = V(S, t) $ Price of option with underlying price $ S $ at time $ t $
+		\item $T = $ Expiry date  
+		\item $K = $ Strike Price
+		\item $r = $ Risk-free rate	
+		\item $ \sigma = $ volatility, i.e. standard deviation of underlying asset's returns.
+\end{itemize}	
+
+
+\bibliographystyle{plain}
+\bibliography{references} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+

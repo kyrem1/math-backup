@@ -1,0 +1,196 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+\addbibresource{/home/kyrem1/Mathematics/bibs/comborefs.bib}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{Intro Math Research Hw2}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Reading Comments}
+
+\subsection*{Pak Reading}
+
+
+\subsection*{Godsil Reading}
+
+
+\newpage
+
+\section{Symmetric Polynomials/Functions Exposition}
+
+%\textbf{Assignment}: Write two pages about symmetric polynomials, confining yourself to what
+%we learned in class (definition of the algebra, the monomial basis, and partitions). The only new material should be a discussion on the homogenous
+%symmetric functions.
+
+\subsection*{Preliminary Considerations} 
+Throughout this article, fix a (unital) commutative ring $ R $ and a field $ k $. For simplicity, we work over vector spaces instead of general modules.
+
+\begin{notation*}
+  Let $ X $ be a set such that $ X = \{x_{i}\}_{i\in I} $ for some indexing set $ I $. By $ k[X] $ and $ k\llbracket X \rrbracket $, we denote the rings of (commutative) polynomials and power series (resp.) in indeterminates $ \{x_{i}\} $. We utilize multi-index notation throughout. Hence for $ \alpha_{\bigcdot}:I\to \N\cup\{0\} $ finitely supported, we write $ x_{\alpha} = \Pi_{i\in I}x_{i}^{\alpha_{i}} $ (where $ x_{i}^0 := 1 $ formally).
+\end{notation*}
+
+\subsection{Algebraic Background}
+
+Many common algebraic objects possess both a vector space structure and an internal product structure. For example, the set of $ n\times n $ matrices over $ k $, denoted $ M_{n}(k) $, has a product given by matrix multiplication and is also a vector space under addition and scalar multiplication by $ k $. 
+
+\begin{definition}\label{def:kalg}
+  Let $ A $ be a $ k $-vector space equipped with a map $ \cdot: A\times A\to A $ (written $ (x,y)\mapsto x\cdot y $). The pair $ (A,\cdot) $ is a \textit{$ k $-algebra} if, for $ x,y,z\in A $ and $ a,b\in k $, the following hold:
+  \begin{itemize}
+    \item $(x+y)\cdot z = x\cdot z + y\cdot z$,
+    \item $z\cdot (x+y) = z\cdot x + z\cdot y$,
+    \item $(a x) \cdot (b y) = (a b)(x\cdot y)$.
+  \end{itemize}
+\end{definition}
+%We abuse notation and often write $ xy $ for the product $ x\cdot y $. This is standard and usually clear from context. 
+%Observe that we did not assume the binary operation $ \cdot $ is associative. We will mainly focus on associative algebras; however, some non-associative examples (for culture) include Lie algebras, the Octonions, and $ \R^{3} $ equipped with the vector cross product.
+
+\begin{keyexample*}\label{ex:poly}
+  For $ X= \{x_{i}\}_{i\in I} $, the rings $ k[X] $ and $ k\llbracket X \rrbracket $ form the prototypical example of $ k $-algebras.
+\end{keyexample*}
+
+Often in algebra, elements of a given object may be decomposed into a sum of simpler elements which are, in a sense, ``homogenous.'' For example, any polynomial in $ n $-variable may be decomposed into a sum of simpler polynomials each of which are futher sums of monomials of the same total degree.  In this way, a polynomial is split into a sum of homogenous parts. This behavior is codified in the notion of \textit{grading}.
+
+\begin{definition}\label{def:gralg}
+A \textit{graded $ k $-algebra} is a $ k $-algebra $ A $ together with a direct sum decomposition
+\[
+  A = \bigoplus_{i=0}^{\infty} A_{i}
+\]
+with $ A_{0},A_{1},\ldots $ vector spaces such that $ A_{i}\cdot A_{j}\sub A_{i+j} $ for all $ i,j\in \N\cup\{0\} $. For fixed $ i $, elements of $ A_{i} $ are called \textit{homogenous}. The choice of such a direct sum decomposition is a \textit{grading} for $ A $.
+\end{definition}
+
+%TODO insert exposition
+
+\begin{keyexample*}
+  As before, for $ X = \{x_{i}\}_{i\in I} $, we may give the ring $ k[X] $ a canonical grading by declaring $ A_{0}:=k $ and
+  \[
+    A_{n} := \Span_{k}\{x_{\alpha}: \alpha \text{ multi-index such that } \sum_{i\in I} \alpha_{i} = n\}.
+  \]
+\end{keyexample*} 
+The reader is cautioned that not every $ k $-algebra has a nontrivial grading. In fact, it can be shown that the ring of formal power series $ k\llbracket x \rrbracket $ does not have a nontrivial grading.
+%\begin{claim}
+%  The algebra $ k\llbracket x \rrbracket $ does not possess a nontrivial grading.
+%\end{claim}
+%\begin{proof}[Proof of Claim]
+%  Suppose 
+%\end{proof}
+
+
+
+\subsection{Symmetric Polynomials}
+
+\begin{definition}\label{def:sympoly}
+  The permutation group $ S_{n} $ acts naturally on the polynomial ring $ k[x_{1},\ldots,x_{n}] $ by defining $ \sigma \cdot x_{i_{1}}^{\alpha_1}\cdots x_{i_l}^{\alpha_{l}} := x_{\sigma(i_{1})}^{\alpha_{1}}\cdots x_{\sigma(i_{l})}^{\alpha_{l}}$ and extending by linearity. The ring of \textit{symmetric polynomials} in $ n $ indeterminates is the fixed points of this action, namely $ k[x_{1},\ldots, x_{n}]^{S_{n}} $.
+\end{definition}
+
+\subsection{Compositions and Partitions}
+\begin{definition}\label{def:comp}\ 
+  \begin{itemize}
+    \item A \textit{partition} of $ n\in \N $ is a set $ \alpha=\{\alpha_{1},\ldots, \alpha_{l}\} $ of positive integers which sum to $ n $. We denote the set of partitions of $ n $ by $ \Par(n) $. We denote the statement $ [\lambda\in \Par(n)] $ by $ \lambda\vdash n $. Also, we write $ \Par:=\bigcup_{n\geq0}\Par(n) $.
+    \item A \textit{weak composition} of $ n\in \N $ is a (finitely supported) sequence $\alpha=(\alpha_{i})_{i=1}^{\infty}\in (\N\cup\{0\})^{\N}$ such that $ \sum_{i} \alpha_{i} = n $. The length of a weak composition $ \alpha $ is given by
+  \[
+    l(\alpha) :=\max\{i\in \N: \alpha_{i}\neq 0\}.
+  \]
+  \end{itemize}
+
+  
+\end{definition}
+
+\subsection{Symmetric Functions}
+
+\begin{definition}[pg. 308 in \cite{stanley2}]\label{def:symfunc}
+    The ring $ \Lambda_{k} $ of symmetric functions over a field $ k $ is the subring of all $ f\in k\llbracket x_{1}, x_{2}, \ldots\rrbracket $ such that
+    \[
+      f(x_{\sigma(1)}, x_{\sigma(2)},\ldots) = f(x_{1},x_{2},\ldots) \text{ for all } \sigma\in \Sym(\N).
+    \]
+\end{definition}
+\begin{remark}
+    For the algebraically-minded, there is a more natural construction of $ \Lambda_{k} $ by viewing the ring as the colimit of a certain directed system of inclusions of symmetric polynomial rings
+    \[
+      k[x_{1},\ldots,x_{n}]^{S_{n}} \xhookrightarrow{\phi_{n}} k[x_{1},\ldots,x_{n+1}]^{S_{n+1}}.
+    \]
+    The construction of these inclusions $ \phi_{n} $ is somewhat involved. This does justify the intuition that a symmetric function is simply taking a symmetric polynomial and adding more data, as any element of a direct limit of inclusions is faithfully represented by an element of one of the constituent objects.
+
+\end{remark}
+\begin{definition}
+    A symmetric function $ f\in \Lambda_{k} $ is homogenous of degree $ n $ if 
+    \[
+      f(x) = \sum_{\alpha\text{ weak composition of }n}c_{\alpha} x^{\alpha},
+    \]
+    where the $ c_{\alpha} $ are elements of $ k $. The set of degree $ n $ homogenous symmetric functions is denoted $ \Lambda_{k}^{n} $. these subspaces give $ \Lambda_{k} $ the structure of a graded $ k $-algebra, namely:
+\end{definition}
+
+\begin{itemize}
+  \item Each $ \Lambda_{k}^{n} $ is a $ k $-vector space,
+  \item $ \Lambda_{k}^{i} \Lambda_{k}^{j}\sub \Lambda_{k}^{i+j} $,
+  \item $ \Lambda_{k}=\bigoplus_{n=0}^{\infty} \Lambda_{k}^{n} $ as $ k $-vector spaces.
+\end{itemize}
+The first interesting basis of $ \Lambda_{k} $ is the \textit{monomial symmetric functions}. Given $ \lambda\vdash n $, define $ m_{\lambda}\in \Lambda_{k}^{n} $ by 
+\[
+  m_{\lambda}:= \sum_{\alpha} x^{\alpha}
+\]
+where the sum is over all distinct permutations of the entries of $ \lambda $. The set $ \{m_{\lambda}: \lambda\vdash n\} $ forms a basis for $ \Lambda_{k}^{n} $, whence $\bigcup_{n\geq0} \{m_{\lambda}: \lambda\vdash n\} = \{m_{\lambda}: \lambda\in\Par\} $ forms a basis for $ \Lambda_{k} $.
+
+\subsection{Complete Homogenous Symmetric Functions}
+
+From the monomial symmetric functions, we may form another interesting basis for $ \Lambda_{k} $ called the \textit{complete homogenous symmetric functions} $ h_{\lambda} $ by setting 
+\[
+  h_{\lambda}:=\prod_{i=1}^{\infty} \sum_{\nu\vdash \lambda_{i}} m_{\nu}.
+\]
+where $ \lambda = (\lambda_{1},\lambda_{2},\ldots) $. Again, the set $ \{h_{\lambda}: \lambda\vdash n\} $ is a basis for $ \Lambda_{k}^{n} $ and the set $ \{h_{\lambda}: \lambda\in\Par\} $ is a basis for $ \Lambda_{k} $.
+\end{document}

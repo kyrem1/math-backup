@@ -1,0 +1,264 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+\usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7820 Homework 5}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+    \item A manifold $ M $ is \emph{oriented} if for all $ x\in M $ there is a choice of orientation on $ T_{x}M $ such that there is some chart $ (U,\phi) $ around $ x $ such that $ d_{\phi(x)} \phi^{-1} $ carries the standard orientation on $ \R^{n} $ to the chosen orientation on $ T_{x} M $.
+\end{itemize}
+
+\begin{homeworkProblem}
+    In class we discussed the induced orientation of the tangent space $ T_{x}(\partial M) $ of the boundary $ \partial M $ of an oriented manifold $ M $, at each $ x\in \partial M $. Prove that this is in fact an orientation of $ \partial M $ i.e. that it depends smoothly on the point $ x\in \partial M $.
+
+    \begin{proof}
+        Choose an orientaton for $ M $. We can induce an orientation on $ \partial M $ by for each $ p\in \partial M $ choosing a positively oriented basis for $ T_{p}M $ $ (v_{1},\ldots, v_{n}) $ such that $ \{v_{2},\ldots, v_{n}\}\sub T_{p}(\partial M) $ and $ v_{1} $ points inwards. There exists an open $ U\sub M $ about $ p $ and a diffeomorphism $ \phi:U\to \phi(U)\sub H^{n} $ such that $ d_{\phi(x)} \phi^{-1}(e_{i}) = v_{i} $ where $ \{e_{1},\ldots, e_{n}\} $ is the standard oreintation on $ \R^{n} $.
+
+        %TODO adjust to definition Krushkal gave
+
+        Since $ \dim T_{p}(\partial M) = n-1 $ and $ v_{i}\in T_{p}(\partial M) $ for $ i\geq 2 $, it follows that $ (v_{2}, \ldots, v_{n}) $ is an ordered basis for $ T_{p}(\partial M) $. Now let $(U, \phi) $ be a chart around $ p $ satisfying the property above. Let $ \widetilde{\phi}:= \phi\vert_{U\cap \partial M} $. Then $ (U\cap \partial M, \widetilde{\phi}) $ is a chart on $ \partial M $ around $ p $. 
+        Observe that, for $ i\geq 2 $
+        \[
+            (d_{\widetilde{\phi(p)}}\widetilde{\phi}^{-1}) (e_{i}) = d_{\widetilde{\phi(p)}} \phi^{-1}\vert_{\phi(U\cap\partial M)}(e_{i}) = d_{\phi(p)} \phi^{-1} \circ d_{\phi(p)}\iota_{\phi(U\cap\partial M)\hookrightarrow \phi(U)} (e_{i}) = d_{\phi(p)} \phi^{-1} \mqty(I_{n}\vert 0) e_{i} = d_{\phi(p)} \phi^{-1}(e_{i}) = v_{i},
+        \]
+        thus giving an orientation on $ \partial M $.
+
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Show that the tangent bundle $ TM $ of any (orientable or not) manifold $ M $ is orientable. 
+
+    \begin{proof}
+        Let $ (U_{\alpha}, \phi_{\alpha})_{\alpha} $ be an atlas on $ R^{n} $ adapted to $ M $. Then $ (V_{\alpha},\Phi_{\alpha})_{\alpha} $ given by $ V_{\alpha} = U\times \R^{n} $ and $ \Phi(p,v) = (\phi(p), d_{p}(v)) $. Suppose that $ U_{\alpha}\cap U_{\beta} \neq \emptyset $. Let $ T = \Phi_{\beta}\circ \Phi_{\alpha}^{-1} $ and $ t = \phi_{\beta}\circ \phi_{\alpha}^{-1} $. Fix $ (x,y) = \Phi_{\alpha}(p,v)\in \Phi_{\alpha}(V_{\alpha}) $. Then we compute
+        \[
+            T(x,y) = \Phi_{\beta}(p,v) = (\phi_{\beta}(p), d_{p} \phi_{\beta}(v)) = (t(x), d_{p} \phi_{\beta} d_{x} \phi_{\alpha}^{-1}(y)) = (t(x), d_{x}t(y)).
+        \]
+        Note that with respect to the standard basis, $ d_{x}t(y) $ does not depend on $ y $ and is a linear map, so by our previous homework $ J(d_{x}t(y)) = d_{x}t(y) = J(t)(x) $. Thus $ J(T)(x,y) = \mqty(J(t)(x) & \cdot \\ \cdot & J(t)(x)) $, which has positive determinant as it is the square of the determinant of $ J(t)(x) $. Thus this atlas is a positive atlas for $ TM $, which implies that $ TM $ is orientable.
+    \end{proof}
+
+    % Use Cech cocyle identity.
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Given disjoint manifolds $ M^{m}, N^{n} $ in $ \R^{k+1} $, the linking map $ \lambda: M\times N \to S^{k} $ is defined by
+    \[
+        \lambda(x,y) = \frac{x-y}{|x-y|}.
+    \]
+    If $ M,N $ are compact, oriented, and without boundary, and $ m+n = k $, then the integer valued degree of $ \lambda $ is called the \textit{linking number} $ l(M,N) $. Prove that 
+    \[
+        l(N,M) = (-1)^{(m+1)(n+1)}l(M,N).
+    \]
+    If $ M $ bounds an oriented compact manifold $ W $ disjoint from $ N $, prove that $ l(M,N)=0 $.
+
+
+    \begin{proof}
+        Note that the orientations on $ M $ and $ N $ induce orientations on $ M\times N $. Let $ \tau:N\times M \to M\times N $ be the transposition map, $ A:S^{k}\to S^{k} $ the antipodal map, and $ \lambda ' $ the linking map on $ N\times M $. Then the following diagram commutes:
+\[\begin{tikzcd}
+	{N\times M} && {S^k} \\
+	\\
+	{M\times N} && {S^k}
+	\arrow["A"', from=3-3, to=1-3]
+	\arrow["\lambda"', from=3-1, to=3-3]
+	\arrow["\tau"', from=1-1, to=3-1]
+	\arrow["{\lambda'}", from=1-1, to=1-3]
+\end{tikzcd}\]
+        Note that, by previous homework, $ \deg(\lambda ') = \deg(A)\deg(\tau)\deg(\lambda) $. We compute the degree of $ \tau $. As $ \tau $ is a bijection and every point is regular, for fixed $ p = (y,x)\in N\times M $ we have that $ \deg(\tau) = \sgn(d_{p}\tau) $. Given orientations for $T_{p} N $ and $T_{p} M $, we patch them together to an orientation for $T_{p}( N\times M) $. Consider the corresponding basis for $ T_{p}(M\times N) $. Under these bases, $ d_{p}\tau $ is represented by the matrix $ \mqty(0_{m\times n} & I_{m}\\I_{n} & 0_{n\times m}) $. This matrix has determinant $ (-1)^{m\cdot n} $, so $ \deg(\tau) = (-1)^{m\cdot n} $
+        Thus, 
+        \[
+            l(N,M) = \deg(\lambda ') = \deg(A)\deg(\tau)l(M,N) = (-1)^{k+1}(-1)^{m\cdot n}l(M,N) = (-1)^{(m+1)(n+1)}l(M,N).
+        \]
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Given an integer $ n $, construct a smooth map $ f:S^{1}\times S^{1} \to  S^{1}\times S^{1}$ such that $ \deg(f) = n $. (integer-valued degree).
+
+    \begin{proof}[Solution]
+        Define $ f(\theta,\phi) = (n\cdot \theta \text{ mod } 2\pi, \phi) $. Note that $ (0,0)) $ is a regular value for $ f $, so 
+        \[
+            \deg(f) = \sum_{k=0}^{n} d_{(\frac{2\pi k}{n},0)}f = n
+        \]
+        as each restriction to $ S^{1} $ is orientation preserving.
+        % NOTE degree is sum over points in inverse image of regular value of sign of determinant of differential at that point
+
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+\end{document}

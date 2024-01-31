@@ -1,0 +1,340 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7820 Homework 3}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+    Is the solution set to the system of equations 
+    \[
+        x^3 + y^{3}+ z^{3} = 1, \quad z=xy
+    \]
+    in $ \R^{3} $ a smooth manifold? Prove your answer.
+
+    \begin{proof}
+        Let $ S\sub \R^{3} $ be the solution set to the above system of equations. 
+        Define $ F:\R^{3}\to\R^{2} $ by $(u,v) = F(x,y,z) = (x^{3}+y^{3}+z^{3}, xy-z) $. Then $ S = F^{-1}((1,0)) $. By the regular set theorem, it suffices to show that $ F^{-1}((1,0)) $ is a regular set. Hence, we must show that $ d_{p}F $ is surjective for all $ p\in S $, or equivalently, that $ \rank(J(F)_{p}) = 2$ for all $ p\in S $ where $ J(F) $ denotes the Jacobian of $ F $. We initially compute that
+        \[
+            J(F) = \begin{pmatrix}
+                u_{x}&u_{y}& u_{z}\\ v_{x}&v_{y}&v_{z}
+            \end{pmatrix} = 
+            \begin{pmatrix}
+                3x^{2} &3y^{2} & 3z^{2} \\ y & x & xy
+            \end{pmatrix}
+        \]
+
+        Now, suppose $ p = (a,b,c)\in S $ is a critical point of $ F $, i.e. $ \rank(J(F)_{p}) <2 $. Then $ a^{3}+b^{3}+c^{3}=1 $ and $ c = ab $, so 
+        \[
+            J(F)_{p} = \mqty( 3a^{2} &3b^{2} & 3c^{2} \\ b & a & ab) = \mqty( 3a^{2} &3b^{2} & 3(ab)^{2} \\ b & a & ab). 
+        \]
+        If $ c = 0 $, then either $ a $ or $ b $ is $ 0 $, forcing the other to be $ 1 $, whence we obtain one of the following matrices,
+        \[
+            \begin{pmatrix}
+                3&0&0\\0&1&0
+            \end{pmatrix}, \quad
+            \begin{pmatrix}
+                0&3&0\\1&0&0
+            \end{pmatrix},
+        \]
+        which are both of full rank contradicting the the criticality of $ p $. Thus, $ c\neq 0 $, so $ a,b\neq 0 $.
+        Now by standard linear algebra, criticality of $ p $ is equivalent to the statement that all $ 2\times 2 $-minors of $ J(F)_{p} $ vanish. Thus, we have that 
+        \[
+            \det\begin{pmatrix}
+                3a^{2}& 3b^{2} \\ b & a
+            \end{pmatrix} = 0, 
+            \qquad
+            \det\begin{pmatrix}
+                3a^{2}& 3a^{2}b^{2} \\ b & ab 
+            \end{pmatrix} = 0,
+            \qquad
+            \det\begin{pmatrix}
+                3b^{2}& 3a^{2}b^{2} \\ a & ab
+            \end{pmatrix},
+        \]
+        whence we obtain the relations,
+        \begin{equation*}
+             \left.\begin{aligned}
+                0&=3a^{3}-3b^{3}\\
+                0&=3a^{3}b-3a^{2}b^{3}\\
+                0&=3ab^{3}-3a^{3}b^{2}\\
+            \end{aligned}\right\}\overset{a,b\neq0}{\implies}
+            \left.\begin{aligned}
+                0&=a^{3}-b^{3}\\
+                0&=b-a^{2}\\
+                0&=a-b^{2}\\
+            \end{aligned}\right\}.
+        \end{equation*} 
+        Now, as $ b = a^2 $, it follows that $ 0 = a - b^2 = a-a^4$ whence $ a\neq 0 $ implies that $ a^{3}=1 $. As $ a\in \R $, it follows that $ a = 1 $ and consequently $  b=1 $,$ c=1 $. However, this contradicts the fact that $ p\in S $ as $3 =  1+1+1 = a^3 +b^3+c^3 \neq 1 $. Thus every point in $ S $ is regular, so $ F^{-1}((1,0)) $ is a regular level set whence by the regular set theorem $ S $ is a smooth manifold.
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    A $ C^{\infty} $ map $ f: N\to M $ is said to be \textit{transversal} to a submanifold $ S\sub M $ if for every $ p\in f^{-1}(S) $, 
+    \[
+        f_{*}(T_{p}N) + T_{f(p)}S = T_{f(p)}M.  
+    \]
+    The goal of this exercise is to prove the \textit{transversality theorem}: if a $ C^{\infty} $ map $ f:N\to M $ is transversal to a regular submanifold $ S $ of codimension $ k $ in $ M $, then $ f^{-1}(S) $ is a regular submanifold of codimension $ k $ in $ N $.\\
+
+    When $ S $ consists of a single point $ c $, transversality of $ f $ to $ S $ simply means that $ f^{-1}(c) $ is a regular level set. Thus the transversality theorem is a generalization of the regular level set theorem. It is especially useful in giving conditions under which the intersection of two submanifolds is a submanifold.\\
+
+    Let $ p\in f^{-1}(S)$ and $ (U, x^{1}, \ldots,x^{n}) $ be an adapted chart centered at $ f(p) $ for $ M $ relative to $ S $ such that $ U\cap S = Z(x^{m-k+1},\ldots, x^{m})$, the zero set of the functions $ x^{m-k+1},\ldots, x^{m} $. Define $ g:U\to\R^{k} $ to be the map 
+    \[
+        g = (x^{m-k+1},\ldots, x^{m}).
+    \]
+    
+    \textbf{(a)}: Show that $ f^{-1}(U)\cap f^{-1}(S) = (g\circ f)^{-1}(0) $.
+
+    \begin{proof}
+        Observe that 
+        \begin{align*}
+            q\in (g\circ f)^{-1}(0)& \iff g(f(q)) = 0  \iff x^{i}(f(q)) = 0 \text{ for }i=m-k+1,\ldots,m \\
+                                   &\iff f(q)\in Z(x^{m-k+1},\ldots, x^{m}) = U\cap S \iff q\in f^{-1}(U\cap S) = f^{-1}(U)\cap f^{-1}(S).
+        \end{align*}
+    \end{proof}
+
+    \textbf{(b)}: Show that $ f^{-1}(U)\cap f^{-1}(S) $ is a regular level set of the function $ g\circ f : f^{-1}(U)\to \R^{k} $.
+
+    \begin{proof}
+        Fix $ p\in f^{-1}(S) \cap f^{-1}(U) = (g\circ f)^{-1}(0)$. We wish to show that $ p $ is a regular point for $ g\circ f $. Suppose that $ a\in T_{0}\R^{k} $. Then, noting that $ \dd{g}_{f(p)} $ is surjective, there exists a $ w\in T_{f(p)}M $ such that $ \dd{g}_{f(p)}(w)=a $. Then, by transversality of $ f $ with respect to $ S $, there exist $ u\in T_{p}N $, $ v\in T_{f(p)}S $ such that $ w = \dd{f}_{p}(u) + v = w $. Now, note that $ g(U\cap S) = 0 $, so it follows that $ \dd{g}_{f(p)}(T_{f(p)}(S)) = 0 $. Hence, we compute
+        \[
+            a = \dd{g}_{f(p)}(w) = \dd{g}_{f(p)}(\dd{f}_{p}(u)+v) = \dd{g\circ f}_{p}(u) + \dd{g}_{f(p)}(v) = \dd{g\circ f}_{p}(u),
+        \]
+        so $ p $ is a regular point for $ g\circ f $ as its differential is surjective.
+    \end{proof}
+
+    \textbf{(c)}: Prove the transversality theorem.
+    
+    \begin{proof}
+        By the regular level set theorem, $ f^{-1}(U)\cap f^{-1} (S)$ is a codimension $ k $ submanifold of $ N $. For $ q\in S$, choose a chart $ (V_{q},\phi_{q}) $ adapted to $ q $. Then $ f^{-1}(V_{q}\cap S) \sub f^{-1}(S) $ and $ f^{-1}(S) = \bigcup_{q\in S}f^{-1}(V_{q}\cap S)$, whence $ f^{-1}(S) $ is also a codimension $ k $ submanifold of $ N $, as desired.
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    \textbf{(a)}: Consider the "height map" $ h:S^{2}\to\R $. Here $ S^{2 } $ is the unit sphere in $ \R^{3} $ and $ h(x,y,z) = z $. Find the critical points and critical values for this map.
+
+    \begin{proof}
+        First suppose $ p=(a,b,c)\in S^{2} $ with $ c>0 $. Consider the chart $ (U,\phi) $ on $ S^{2} $ given by $ U = \{(x,y,z)\in S^{2}: z>0\} $ and $ \phi(x,y,z) = (x,y) $. Let $ \widetilde{h}:\phi(U)\to \R $ be the coordinate representation of $ h $ with respect to this chart. Then $ \widetilde{h}(x,y) = (h\circ \phi^{-1})(x,y) = h(x,y,\sqrt{1-x^{2}-y^{2}}) = \sqrt{1-x^{2}-y^{2}}$, whence 
+        \[
+            \dd{\widetilde{h}}_p = \mqty(\frac{-x}{\sqrt{1-x^{2}-y^{2}}} & \frac{-y}{\sqrt{1-x^{2}-y^{2}}}),
+        \]
+        which has rank $ 0 $ if and only if $ x,y = 0 $, whence $ p=(0,0,1) $. Thus $ p=(0,0,1) $ is the only critical point of $ h $ in $ U $ and has critical value $ 1 $. \\
+
+        If $ p=(a,b,c)\in S_{2} $ with $ c<0 $, then we have a similar situation except that $ \widetilde{h}(x,y) = -\sqrt{1-x^{2-y^{2}}} $ and our chart is $ (V,\psi) $ where $ V = \{(x,y,z)\in S^{2}: z<0\} $ and $ \psi^{-1}(x,y) = (x,y,-\sqrt{1-x^{2}-y^{2}}) $. Thus, again $ \dd{\widetilde{h}}_{p} $ has rank $ 0 $ if and only if $ x,y=0 $. So, in this case $ p = \psi^{-1}(0,0) = (0,0,-1) $ is the only critical point of $ h $ in $ V $ and has critical value $ -1 $.\\
+
+        Now must check points on the equator $ E = \{(x,y,z)\in S^{2}: z=0\} $. Consider points $ p $ in the chart $ (W,\rho) $ with $ W = \{(x,y,z)\in S^{2}: y>0\} $ and $ \rho(x,y,z)= (x,z) $. We compute that the coordinate representation of $ h $ is then given by $ \widetilde{h}(x,z) = z $, whence $ \dd{F}_{p}= \mqty(0&1) $ for all $ p\in W$, so no points in $ W $ can be critical. Similarly, no points in $ W ' = \{(x,y,z)\in S^{2}: y<0\} $ can be critical either (identical calulation).\\
+
+        Thus, it remains to check the points $ (1,0,0) $ and $ (-1,0,0) $. Consider the chart $ (K,\gamma) $ given by $ K= \{x>0\} $ and $ \gamma(x,y,z) = (y,z) $. Then again, $ \widetilde{h}(y,z) = z $, whence no points in $ K $ can be critical. Similarly, no points in $ K '= \{(x,y,z)\in S^2 : x>0\} $ can be critical either (by the same calculation).
+    \end{proof}
+
+    \textbf{(b)}: Show that any map $ f:S^{2}\to \R $ has at least two critical points. Generalize this proof from $ S^{2} $ to any $ n $-dimensional compact manifold.
+
+    \begin{proof}
+
+        
+        Since $ f $ is continuous and $ S^{2} $ is compact, it follows that there exist $ p,q\in S^{2} $ such that $ f(p)\leq f(x) \leq f(q) $ for all $ x\in S^{2} $ and $ p\neq q $. Thus $ p,q $ are global minima/maxima of the function $ f $. Choose a chart $ (U,\phi) $ on $ S^{2} $ such that $ p,q\in U $. Then the function $ \widetilde{f}:\phi(U)\to \R $ given by $ \widetilde{f}= f\circ \phi^{-1} $ is smooth as a function from $ \R^2\to R $ and has global minima/maxima $ p,q $. Thus, by calculus 3, 
+         \[ 
+            \pdv{\widetilde{f}}{x}(p) = \pdv{\widetilde{f}}{y} (p) = \pdv{\widetilde{f}}{x} (q) = \pdv{\widetilde{f}}{y} (q) = 0,
+        \] 
+        whence $ \dd{f}_{p} $ has rank $ 0 $ at both $ p $ and $ q $, so $ p $ and $ q $ are critical points of $ f $.\\
+
+        Now suppose that $ F:M\to \R $ is a smooth map from an $ n $-dimensional compact manifold $ M $. Again, by continuity, there exist $ p,q\in M $ such that $ f(p)\leq f(x)\leq f(q) $ for all $ x\in M $ and $ p\neq q $. Again, choose a chart $ (U,\phi) $ containing both $ p $ and $ q $. Then $ \widetilde{F} = F\circ \phi^{-1} $ is a smooth function from $ \phi(U)\sub \R^n $ to $ \R $ with global minima/maxima $ p,q $. Again, for $ i=1,\ldots, n $, it follows that
+        \[
+            \pdv{\widetilde{F}}{x_{i}} (p) = \pdv{\widetilde{F}}{x_{i}}(q) =0,
+        \]
+        whence the jacobian of $ \widetilde{F} $ at $ p $ and at $ q $ has rank $ 0 $, making $ p,q $ critical points of $ F $.
+
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Consider a submanifold $ M^{n}\sub\R^{k} $ and let $ TM\sub \R^{k}\times\R^{k} $ be the set of all pairs $ (x,v) $ where $ x $ is a point in $ M $ and $ v\in T_{x}M $. Show that $ TM $ is a smooth $ 2n $-dimensional submanifold of $ \R^{2k} $.
+
+    \begin{proof}
+        Fix $ (x,v)\in TM $ and let $ (U,\phi) $ be a chart on $ \R^{k} $ adapted to $ M $ about $ p $. Set $ V = U\cap M $, $ \widetilde{U} = U\times \R^{k} $, and $ \widetilde{V} = \bigsqcup_{y\in V}(\{y\}\times T_{y}M) \sub TM$. Let $ \widetilde{\phi}:\widetilde{U}\to \R^k\times \R^k$ be given by $ \widetilde{\phi}(y,w) = (\phi
+        (y), \dd{\phi}_{y}(w)) $. Note that, after identifying $ T_y M \cong R^n\sub \R^k$ for each $ y\in U $, we have that $ \widetilde{V} = \widetilde{U}\cap TM $. . As $ (U,\phi) $ is adapted to $ M $, by definition $ \phi(U) = \phi(U\cap M)\times\{0\} \sub \R^n\times\R^{k-n}$. Now compute that
+        \begin{align*}
+            \widetilde{\phi} (\widetilde{U}) &= \{ (\phi(p), \dd{\phi}_{p}(v)) : p\in V, v\in\R^n\} \\
+            &= \{(\phi\vert_{V}, 0, \ldots, 0, \dd{\phi\vert_{V}}(v), 0, \ldots, 0)\in \R^k\times\R^k: p\in V, v\in T_{p}M \} \\
+            &= \widetilde{\phi}(\widetilde{U}\cap TM)\times \R^{2(k-n)}.
+        \end{align*}
+        Hence, it suffices to show that if $ (U,\phi), (V,\psi)$ are two charts on $ \R^k $ adapted to $ M $, that the transition maps $ \widetilde{\phi}\vert\circ \widetilde{\psi}^{-1}$ is smooth (the other direction would follow since the charts chosen are arbitrary). Let $ p\in \psi(U\cap V), v\in \R^{k} $. Then 
+        \[
+            \widetilde{\phi}\vert\circ \widetilde{\psi}^{-1} (p,v) = (\phi\circ \psi^{-1}(p), \dd{\phi}_{\psi^{-1}(p)}\circ \dd{\psi}^{-1}_{p}(v)) = (\phi\circ \psi^{-1}(p), \dd{(\phi\circ \psi^{-1})}_{p}(v)),
+        \]
+        which is smooth as the jacobian smoothly depends upon $ p,v $.
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+
+\end{document}

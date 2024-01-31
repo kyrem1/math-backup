@@ -1,0 +1,86 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Subfiles Setup-------
+\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{Topological $ K $-Theory Talk Outline}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+\section{References}
+\begin{itemize}
+    \item Karoubi, \textit{K-theory: an introduction}
+    \item \textcolor{blue}{\href{http://math.uchicago.edu/~may/REU2021/REUPapers/Martins.pdf}{UChicago Reu Papers}}
+\end{itemize}
+
+\section{Outline}
+\begin{itemize}
+    \item Define category $ Vect_{\F}(X) $ for compact Hausdorff space $ X $ and $ \F\in \{\R, \C\} $. 
+    \item Define Whitney sum on $ \Vect_{\F}(X)/\sim $
+    \item Define Grothendieck completion $ Gr: \bold{AbMon}\to\bold{Ab} $
+        \[
+            \Hom_{Ab}(Gr(M), A) \cong \Hom_{AbMon}(M, UA)
+        \]
+
+    \item Define $ K^{0}(X) $ (and maybe $ KO^{0}(X) $)
+    \item Define $ \widetilde{K}^{0}(X) $ for pointed $ X $.
+    \begin{itemize}
+        \item $ \widetilde{K}^{0}(X/A) \to \widetilde{K}^{0}(X) \to \widetilde{K}^{0}(A) $
+        \item $ K^{-n}(X) := \widetilde{K}^{0}(\Sigma^{n}X) $ for $ n\in\N $
+    \end{itemize}
+
+    \item Compute $ K^{0}(\{\text{pt}\}) $
+    
+
+    \item Talk about Bott Periodicity
+    \item Talk about
+        \[
+            K^{0}(-) \simeq [-, BU\times \Z],\quad KO^{0}(-)\simeq [-, BO\times \Z]
+        \]
+    \item Talk about Serre-Swan Theorem to motivate $ K^{0}(R) $
+        \[
+            \Vect_{\C}(X) \simeq \{\text{f.g. projective } \C(X)\text{-modules}\}
+        \]
+    \item Mention that we dont have suspensions to define $ K^{n}(R) $ so its much harder.
+\end{itemize}
+
+
+\end{document}

@@ -1,0 +1,20 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\begin{definition}\label{def:iro}
+    Let $ \Gamma $ be a countable discrete group. Denote by $ \Ord(\Gamma) $ (resp. $ \pOrd(\Gamma) $) the set of total (resp. partial) orders on $ \Gamma $. We may view 
+    \[
+        \Ord(\Gamma)\sub \pOrd(\Gamma) \sub \{0,1\}^{\Gamma\times \Gamma},
+    \]
+    whence the set of total orders forms a closed subset of the set of partial orders on $ \Gamma $. Then $ \Gamma\times \Gamma\acts \Ord(\Gamma) $ by
+    \[
+        [(\gamma, \delta) \cdot \rho] (x,y) = \rho(\gamma^{-1}x \delta, \gamma^{-1}y \delta).
+    \]
+    Viewing $ \Gamma = \Gamma\times\{e\}\sub \Gamma\times \Gamma $, we get an action $ \Gamma\acts \Ord(\Gamma) $. An \textit{invariant random order} (IRO) on $ \Gamma $ is then a $ \Gamma $-invariant Borel probability measure on $ \Ord(\Gamma) $.
+\end{definition}
+
+
+\end{document}

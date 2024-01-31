@@ -1,0 +1,541 @@
+\documentclass[12pt]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+\usepackage{hyperref}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+\usepackage[backend=biber]{biblatex}
+\addbibresource{/home/kyrem1/Mathematics/bibs/defrig.bib}
+
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+%--------Page Setup--------
+
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\Prob}{Prob}
+\DeclareMathOperator{\graph}{graph}
+\DeclareMathOperator{\Aut}{Aut}
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\acts}{\curvearrowright}
+
+
+%--------Theorem environments--------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[]
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\newtheorem{proposition}{Proposition}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{Measured Equivalence Relations}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+\section{Preliminary Definitions}
+
+
+\begin{definition}[Measured Equivalence Relations]
+    $ (X,\mu) $ standard probability space. $ \mc{R}\sub X\times X $ measurable equivalence relation .
+    \begin{itemize}
+        \item $[\mc{R}] = \{\phi\in\Aut(X) : \graph(\phi)\sub \mc{R}\}$
+        \item $ \mathcal{R} $ is \textit{probability measure preserving (pmp)} if $ \mu\circ \phi = \mu $ for all $ \phi\in[\mathcal{R}] $
+        \item A pmp $ [\mathcal{R}] $ is \textit{ergodic} if $ \mu(E) \in\{0,1\} $ whenever $ \mu(E\setminus \phi(E)) = 0  $ for all $ \phi\in [\mathcal{R}] $.
+    \end{itemize}
+
+    Given a positive measure subset, let $ \mathcal{R}\vert_{E} $ denote the measured equivalence relation on $ (E,\mu/\mu(E)) $ given by $ \mathcal{R}\vert_{E} = \mathcal{R}\cap(E\times E) $ 
+
+    Measured equivalence relations $ \mathcal{R}_{i} $ on $(X_{i},\mu_{i}) $ for $ i=1,2 $ are \textit{isomorphic} if there are full measure subsets $ E_{i}\sub X_{i} $ which admit a measure space isomorphism $ \phi:(E_{1},\mu_{1}\vert_{E_{1}})\to(E_{2},\mu_{2}\vert_{E_{2}}) $ such that
+    \[
+        (x,y) \in \mathcal{R}_{1}\vert_{E_{1}} \iff (\phi(x),\phi(y)) \in \mathcal{R}_{2}\vert_{E_{2}}.
+    \]
+
+    From now on, $ \mathcal{R} $ is a countable pmp equivalence relation on a standard probability space $ (X,\mu) $. Endow $ \mathcal{R} $ with a measure $ m $ given by 
+    \[
+        m(E) = \int_{X} |\{y\in [x]_{\mathcal{R}} : (x,y) \in E\}| \dd{\mu(x)} \text{ for all measurable } E\sub \mathcal{R}
+    \]
+    
+    % TODO Notion of restriction of equivalence relations
+\end{definition}
+
+\begin{definition}[Equivalence Relation vNas]
+    \begin{align*}
+        g\in[\mathcal{R}] \rightsquigarrow u_{g}\in \mathcal{U}(L^{2}(\mathcal{R},m)) \text{ by } [u_{g}f](x,y) = f(g^{-1}x,y)) \\
+        a\in L^{\infty}(X) \rightsquigarrow a\in B(L^{2}(\mathcal{R},m)) \text{ by } [af](x,y) = a(x)f(x,y) 
+    \end{align*}
+    The von Neumann algebra of the equivalence relation $ \mathcal{R} $ is defined to be 
+    \[
+        L(\mathcal{R}) = (L^{\infty}(X)\cup \{u_{g}:g\in[\mathcal{R}]\})^{\prime\prime} \sub B(L^{2}(\mathcal{R},m))
+    \]
+    $ L(\mathcal{R}) $ has a faithful normal trace given by $ \tau(x) = \inp{x\ind_{D}}{\ind_{D}} $ where $ \ind_{D}\in L^{2}(\mathcal{R},m)$ is the indicator of the diagonal $ D = \{(x,x): x\in X\} $.\\
+
+    Let $ Z^{1}(\mathcal{R}, S^{1}) $ denote the group of $ S^{1} $-valued multiplicative $ 1 $-cocyles on $ \mathcal{R} $, i.e. the group of measurable maps $ c:\mathcal{R}\to S^{1} $ such that for $ \mu $-a.e. $ x\in X $,
+    \[
+        c(x,z) = c(x,y)c(y,z) \text{ for all }  (x,y), (y,z)\in \mathcal{R}.
+    \]
+
+    Given $ c\in Z^{1}(\mathcal{R},S^{1}) $ and $ g\in[\mathcal{R}] $, let $ f_{c,g}\in \mathcal{U}(L^{\infty}(X)) $ be given by $ f_{c,g}(x) = c(x,g^{-1}x) $. Can check that the formula 
+    \[
+        \psi_{c}(au_{g}) = f_{c,g}au_{g} \text{ for all } a\in L^{\infty}(X), g\in [\mathcal{R}]
+    \]
+    gives rise to a well defined *-isomorphism $ \psi_{c}\in \Aut(L(\mathcal{R})) $. Moreover, $ c\mapsto \psi_{c} $ defines an action $ \psi:Z^{1}(\mathcal{R},S^{1}) \to \Aut(L(\mathcal{R})) $.
+\end{definition}
+
+
+\begin{definition}[Hilbert Bundles]
+    Given $ \{\H_{x}\}_{x\in X} $ collection of Hilbert spaces, define the Hilbert bundle
+    \[
+        X\ast \H = \{(x,\xi_{x}) : x\in X, \xi_{x}\in\H_{x}\}.
+    \]
+    \begin{itemize}
+        \item A \textit{section} $ \xi $ of the bundle $ X\ast \H $ is a map $ x\mapsto \xi_{x}\in \H_{x} $.
+        \item \textit{Fundamental sequence of sections} $ \{\xi_{n}\}_{n=1}^{\infty} $ satisfy
+        \begin{itemize}
+            \item $ \H_{x} = \cls{\Span\{\xi_{n}(x)\}_{n=1}^{\infty}} $ for each $ x\in X $, and
+            \item the maps $ \{x\mapsto \norm{\xi_{n}(x)}\}_{n=1}^{\infty} $ are measurable.
+        \end{itemize}
+        \item \textit{Orthonormal fundamental sequence of sections} $ \{\xi_{n}\}_{n=1}^{\infty} $ is a fundamental sequence of sections such that
+        \begin{itemize}
+            \item $ \{\xi_{n}(x)\}_{n=1}^{\infty} $ is an ONB of $ \H_{x} $ for $ x\in X $ with $ \dim(\H_{x}) = \infty $, and if $ \dim(\H_{x})<\infty $, the sequence $ \{\xi_{n}(x)\}_{n=1}^{\dim(\H_{x})} $ is an ONB and $ \xi_{n}(x) = 0 $ for $ n>\dim(\H_{x}) $.
+        \end{itemize}
+    \end{itemize}
+    Now for measurable stuff
+    \begin{itemize}
+        \item \textit{Measurable Hilbert bundle} $ X\ast \H $ has $ \sigma $-algebra generated by maps $ \{(x,\xi_{x}) \mapsto \inp{\xi(x)}{\xi_{n}(x)}\}_{n=1}^{\infty} $.
+        \item A \textit{measurable section} of $ X\ast \H $ is a section $ \xi $ such that $ x\mapsto (x,\xi(x)) \in X\ast \H $ is a measurable map, or equivalently, such that the maps $ \{x\mapsto \inp{\xi(x)}{\xi_{n}(x)}\}_{n=1}^{\infty} $ are measurable.
+        \item $ S(X\ast\H) $ is the vector space of measurable sections up to $ \mu $-a.e. equivalence.
+        \item The \textit{direct integral}
+            \[
+                \int_{X}^{\oplus} \H_{x}\dd{\mu(x)} = \{\xi\in S(X\ast\H) : \int_{X}\norm{\xi(x)}^{2}\dd{\mu(x)}<\infty\}
+            \]
+        is a Hilbert space with inner product $ \inp{\xi}{\eta} = \int_{X}\inp{\xi(x)}{\eta(x)}\dd{\mu(x)} $.
+        \item If $ a\in A = L^{\infty}(X) $ and $ \xi\in\int_{X}^{\oplus}\H_{x}\dd{\mu(x)} $ we denote by $ a \xi $ or $ \xi a $ the element of $ \int_{X}^{\oplus}\H_{x}\dd{\mu(x)} $ given by $ [a \xi](x) = [\xi a](x) = \xi(x)a(x) $.
+        \item If $ \{\xi_{n}\}_{n=1}^{\infty} $ orthonormal fundamental sequence of sections, any $ \xi\in\int_{X}^{\oplus}\H_{x}\dd{\mu(x)} $ has an expansion $ \xi = \sum_{n=1}^{\infty}a_{n} \xi_{n} $ where $ a_{n} = \inp{\xi(\cdot)}{\xi_{n}(\cdot)}\in A $.
+    \end{itemize}
+\end{definition}
+
+\subsection{Representations}
+\begin{definition}[Representations of Equivalence Relations]
+    A \textit{unitary (resp. orthogonal)} representation of $ \mathcal{R} $ on a complex (resp. real) measurable Hilbert bundle $ X\ast \H $ is a map $ (x,y)\mapsto \pi(x,y)\in \mathcal{U}(\H_{y},\H_{x}) $ on $ \mathcal{R} $ such that for $ \mu $-a.e. $ x\in X $, we have 
+    \[
+        \pi(x,z) = \pi(x,y) \pi(y,z) \text{ for all } (x,y),(y,z)\in \mathcal{R},
+    \]
+    and such that $ (x,y)\mapsto \inp{\pi(x,y) \xi(y)}{\eta(x)} $ is a measurable map on $ \mathcal{R} $ for all $ \xi,\eta\in S(X\ast\H) $.
+
+    \begin{itemize}
+        \item \textit{Identity representation}: Given orthonormal fundamental sequence of sections $ \mathcal{S} = \{\xi_{n}\}$, can form the \textit{identity representation} $ id_{\mathcal{S}} $ of $ \mathcal{R} $ on $ X\ast\H $ by 
+            \[
+                id_{S}(x,y) \xi_{n}(y) = \xi_{n}(x) \text{ for all } (x,y)\in \mathcal{R} \text{ and } \xi_{n} \in \mathcal{S}.
+            \]
+        \item \textit{Regular representation}: Take $ \H_{x} = l^{2}([x]_{\mathcal{R}}) $ for each $ x\in X $ and form $ X\ast \H $ with fundamental sequence of sections $ \{\xi_{g}\}_{g\in \Gamma} $ where 
+            \begin{itemize}
+                \item $ \xi_{g}(x) = \ind_{g^{-1}x} $ for all $ x\in X $, and
+                \item $ \Gamma $ is a countable subgroup of $ [\mathcal{R}] $ which generates $ [\mathcal{R}] $ (FM75a showed this exists).
+            \end{itemize}
+        The \textit{regular representation} of $ \mathcal{R} $ is the representation $ \lambda $ on $ X\ast\H $ given by $ \lambda(x,y) = id $ for all $ (x,y)\in \mathcal{R} $.
+    \end{itemize}
+    
+
+    We say representations $ \pi $ on $ X\ast \H $ and $ \rho $ on $ X\ast\K $ are \textit{unitarily equivalent} if there is a family of unitaries $ \{U_{x} \in \mathcal{U}(\H_{x},\K_{x})\}_{x\in X} $ with
+    \[
+        U_{x} \pi(x,y) = \rho(x,y) U_{y} \text{ for all } (x,y)\in \mathcal{R},
+    \]
+    and such that $ x\mapsto U_{x} \xi(x) $ is in $ S(X\ast\K) $ for each $ \xi\in S(X\ast\H) $.
+
+    % TODO weak containment of representations
+    % TODO mixing of representations
+\end{definition}
+
+\subsection{Cohomology}
+
+\begin{definition}[1-cohomology]\ \\
+    \begin{itemize}
+        \item A \textit{1-cocycle} for a representation $ \pi $ on $ X\ast\H $ is a map $ (x,y)\mapsto b(x,y)\in \H_{x} $ on $ \mathcal{R} $ such that for $ \mu $-a.e. $ x\in X $,
+        \[
+            b(x,z) = b(x,y) + \pi(x,y)b(y,z) \text{ for all } (x,y), (y,z) \in \mathcal{R},
+        \]
+        and such that $ (x,y)\mapsto(x,b(x,y))\in X\ast\H $ is measurable.
+        \item A 1-cocycle $ b $ is a \textit{coboundary} if there is a $ \xi\in S(X\ast\H) $ such that 
+        \[
+            b(x,y) = \xi(x)-\pi(x,y) \xi(y) \text{ for }  m\text{-a.e. } (x,y)\in \mathcal{R}.
+        \]
+        \item A pair of 1-cocycles $ b,b ' $ are \textit{cohomologous} if $ b-b ' $ is a coboundary.
+        \item A 1-cocycle is $ bounded $ if there exists a sequence of measurable subsets $ (E_{n})_{n=1}^{\infty} $ of $ X $ with 
+        \[
+            \mu\lr{\bigcup_{n=1}^{\infty}E_{n}} = 1\,\,\,\text{and}\,\,\, \sup\{\norm{b(x,y)}: (x,y)\in \mathcal{R}\vert_{E_{n}}\} < \infty \text{ for each } n\geq 1.
+        \]
+    \end{itemize}
+\end{definition}
+
+
+\begin{lemma}
+    A 1-cocycle $ b $ for a representation $ \pi $ of $ X\ast\H $ is a coboundary if and only if it is bounded.
+\end{lemma}
+
+\begin{lemma}[Characterization for unboundedness]
+    A 1-cocycle $ b $ for a representation $ \pi $ of $ X\ast\H $ is unbounded if and only if there is a $ \delta>0 $  such that for any $ R>0 $ there is a $ g\in[\mathcal{R}] $ with $ \mu(\{x\in X: \norm{ b(x,g^{-1}x)}>R\}) \geq \delta $.
+\end{lemma}
+
+\subsection{Orbit Equivalence Relations}
+
+\begin{definition}[OE Relation]
+    Given countable group $ \Gamma $ and pmp action $ \Gamma\acts X $, the \textit{orbit equivalence relation} $\mathcal{R}(\Gamma\acts X)$ is defined by
+    \[
+        (x,y)\in \mathcal{R}(\Gamma\acts X)\quad\iff\quad y = gx \text{ for some } g\in \Gamma,
+    \]
+    and two group actions are \textit{orbit equivalent} (OE) if and only if they have isomorphic orbit equivalence relations.
+    
+
+    % TODO insert stuff about group measure space construction
+\end{definition}
+
+Recall that $ \Gamma\acts(X,\mu) $ is \textit{free} if $ \mu(\{x\in X: gx = x\}) = 0 $ for each nonidentity $ g\in \Gamma $.\\
+
+If $ \mathcal{R} = \mathcal{R}(\Gamma\acts X) $ for a free pmp action of a countable group $ \Gamma $, then any group representation $ \pi $ gives rise to a representation $ \pi_{\mathcal{R}} $ of $ \mathcal{R} $, and any 1-cocyle $ b $ for $ \pi $ gives rise to a 1-cocycle $ b_{\mathcal{R}} $ for $ \pi_{\mathcal{R}} $. Note that
+\[
+    E_{0} := \{x\in X: gx = x \text{ for some } g\in \Gamma\setminus\{e\}\} = \bigcup_{g\in \Gamma\setminus\{e\}}Stab_{X}(g)
+\]
+is null since $ \Gamma $ is countable and the action is (essentially) free. Then the representation and cocycle are given as follows
+
+\begin{itemize}
+    \item $ \pi_{\mathcal{R}}(x,g^{-1}x) = \pi(g) $ for all $ g\in \Gamma $
+    \item $ b_{\mathcal{R}}(x,g^{-1}x) = b(g) $ for all $ g\in \Gamma $, $ x\not\in E_{0} $,
+\end{itemize}
+and since $ \mu(E_{0}) = 0 $, for $ x\in E_{0} $ take $ \pi(x,y) = id $ and $ b(x,y) = 0 $. Can check that $ \pi_{\mathcal{R}} $ is mixing if and only if $ \pi $ is mixing and $ b_{\mathcal{R}} $ is unbounded if and only if $ b $ is unbounded. This association also respects weak containment. When $ \pi $ is either left or right regular representation, $ \pi_{\mathcal{R}} $ is unitarily equivalent to the regular representation $ \lambda $.
+
+\section{Gaussian Construction}
+
+$ \pi $ orthogonal representation of $ \mathcal{R} $ on a real Hilbert bundle $ X\ast\H $, $ \{\xi_{n}\}_{n=1}^{\infty} $ orthonormal fundamental sequence of sections.
+\[
+    (\Omega_{x},\nu_{x}) := \prod_{i=1}^{\dim(\H_{x})} \lr{\R, \frac{1}{\sqrt{2\pi}}e^{-s^{2}/2}\dd{s}}
+\]
+Define $ \omega_{x}:\Span(\{\xi_{i}\}_{i=1}^{\dim(\H_{x})})\to \mathcal{U}(L^{\infty}(\Omega_{x})) $ by 
+\[
+    \omega_{x}\lr{\sum_{n=1}^{k}a_{n} \xi_{i_{n}}(x)} = \exp\lr{i \sqrt{2}\sum_{n=1}^{k}a_{n}S_{i_{n}}^{x}},
+\]
+where $ S^{x}_{j} $ is the $ j $-th coordinate function for $ j\leq \dim(\H_{x}) $. Then $ \omega_{x} $ extends to $ \omega_{x}:\H_{x}\to \mathcal{U}(L^{\infty}(\Omega_{x})) $ such that 
+
+\begin{itemize}
+    \item $ \tau(\omega_{x}(\xi)) = e^{-\norm{\xi}^{2}} $ 
+    \item $ \omega_{x}(\xi+\eta) = \omega_{x}(\xi) \omega_{x}(\eta) $
+    \item $ \omega_{x}(\xi)^{*} = \omega_{x}(-\xi) $.
+\end{itemize}
+
+$ D_{x}:=\Span_{\C}(\{\omega_{x}(\xi)\}_{\xi\in\H_{x}}) $ has $ D_{x}^{\prime\prime} = \cls{D_{x}}^{WOT} = L^{\infty}(\Omega_{x}) $.\\
+
+For $ (x,y)\in \mathcal{R} $, define a *-homomorphism $ \rho(x,y):D_{y}\to L^{\infty}(\Omega_{x}) $ by 
+\[
+    \rho(x,y) \omega_{y}(\xi) = \omega_{x}(\pi(x,y) \xi),
+\]
+which is well defined and $ \norm{\cdot}_{2} $-isometric since 
+\[
+    \tau(\omega_{y}(\eta)^{*} \omega_{y}(\xi)) = \tau(\omega_{x}(\pi(x,y)\eta)^{*} \omega_{x}(\pi(x,y) \xi))
+\]
+as seen below. 
+
+\begin{align*}
+    \tau(\omega_{x}(\pi(x,y)\eta)^{*} \omega_{x}(\pi(x,y) \xi)) &= \tau(\omega_{x}(-\pi(x,y)\eta) \omega_{x}(\pi(x,y) \xi)) = \tau(\omega_{x}(-\pi(x,y)\eta+ \pi(x,y) \xi))\\
+    &= \tau(\omega_{x}(\pi(x,y)(\xi-\eta)) = e^{-\norm{\pi(x,y)(\xi-\eta)}^{2}} = e^{-\norm{\xi-\eta}^{2}} = \cdots = \tau(\omega_{y}(\eta)^{*} \omega_{y}(\xi)) 
+\end{align*}
+
+Now $ \rho(x,y) $ extends to a $ * $-isomorphism $ \rho(x,y): L^{\infty}(\Omega_{y})\to L^{\infty}(\Omega_{x}) $. Let $ \theta_{(x,y)}:\Omega_{y}\to \Omega_{x} $ be the corresponding measure space isomorphism.
+
+
+Consider the measurable bundle $ X\ast \Omega $ with $ \sigma $-algebra generated by the maps $ (x,r)\mapsto \omega_{x}\lr{\sum_{n\in I}a_{n} \xi_{n}(x)}(r) $ for all finite subsets $ I\sub \N $ and $ a_{n}\in\R $.
+
+Define a measure $ \mu\ast \nu $ on $ X\ast \Omega $ by 
+\[
+    (\mu\ast \nu)(E) := \int_{X} \nu_{x}(E_{x}) \mu(x)
+\]
+where $ E_{x} := \{s\in \Omega_{x}:(x,s)\in E\} $.
+
+\begin{definition}
+    The \textit{Gaussian} extension of $ \mathcal{R} $ is the equivalence relation $ \widetilde{\mathcal{R}} $ on $ (X\ast \Omega, \mu\ast \nu) $ given by 
+    \[
+        ((x,r),(y,s)) \in \widetilde{\mathcal{R}} \iff (x,y)\in \mathcal{R} \text{ and } \theta_{(y,x)}(r) = s.
+    \]
+    This is a countable pmp equivalence relation.
+\end{definition}
+
+For $ g\in [R] $, define $ \widetilde{g}\in [\widetilde{\mathcal{R}}] $ by
+\[
+    \widetilde{g}(x,r) = (gx, \theta_{(gx, x)}(r))
+\]
+Then we can embed $ L(\mathcal{R}) $ into $ L(\widetilde{\mathcal{R}}) $ by $ au_{g}\mapsto au_{\widetilde{g}} $. From now on, identify $ u_{g} $ and $ u_{\widetilde{g}} $.\\
+
+Note $ \widetilde{\mathcal{R}} = \bigcup_{g\in[\mathcal{R}]}\graph(\widetilde{g})$, whence
+\[
+    L(\widetilde{\mathcal{R}}) = (L^{\infty}(X\ast \Omega)\cup \{u_{\widetilde{g}}: g\in [\mathcal{R}]\})^{\prime\prime} =  (L^{\infty}(X\ast \Omega)\cup L(\mathcal{R}))^{\prime\prime} \sub B(L^{2}(\widetilde{R}))
+\]
+
+\subsection{Gaussian Deformation}
+
+$ b $ a 1-cocycle for $ \pi $ on $ X\ast \H $. Set $ M:=L(\mathcal{R}) $, $ \widetilde{M}:=L(\widetilde{\mathcal{R}}) $.\\
+
+Consider
+\[
+    c_{t}((x,r),(y,s)) := \omega_{x}(tb(x,y))(r)
+\]
+This defines a family $ \{c_{t}\}_{t\in\R}\sub Z^{1}(\widetilde{\mathcal{R}},S^{1}) $.
+
+Given $ t\in \R $ and $ g\in [R] $, let $ f_{c_t,g}\in \mathcal{U}(L^{\infty}(X\ast \Omega)) $ be given by
+\[
+    f_{c_t,g}(x,r) = c_{t}((x,r),\widetilde{g}^{-1}(x,r)) = c_{t}((x,r),(g^{-1}x,\theta_{(g^{-1}x,x)}(x))) = \omega_{x}(tb(x,g^{-1}x))(r).
+\]
+ Then consider $ \psi_{c_t}\in \Aut(\widetilde{M})$ given by 
+ \[
+     \psi_{c_{t}}(au_{\widetilde{g}}) = f_{c_t,g}au_{\widetilde{g}} \text{ for all } a\in L^{\infty}(X\ast \Omega), g\in [\mathcal{R}].
+ \]
+Write $ \alpha_{t}:=\psi_{c_{t}}\in \Aut(\widetilde{M}) $. 
+
+
+\begin{align*}
+    \tau(f_{c_{t},g}) &= \int_{X\ast \Omega}f_{c_{t},g}\dd{\mu\ast \nu} = \int_{X}\int_{\Omega_{x}}\omega_{x}(tb(x,g^{-1}x))(r)\dd{\nu_{x}(r)}\dd{\mu(x)} \\
+    &=\int_{X} \tau(\omega_{x}(tb(x,g^{-1}x)))\dd{\mu(x)} = \int_{X} e^{-\norm{tb(x,g^{-1}x)}^{2}}\dd{\mu(x)} 
+\end{align*}
+
+So,
+\begin{align*}
+    \norm{\alpha_{t}(au_{g})-au_{g}}_{2}^{2}& = \norm{f_{c_{t},g}au_{g}-au_{g}}_{2}^{2}\leq \norm{a}^{2} \norm{f_{c_{t},g}-1}_{2^{2}} = 2\norm{a}^{2}(1-\Re(\tau(f_{c_{t},g})) \\
+    &= 2\norm{a}^{2}\lr{1-\int_{X} e^{-\norm{tb(x,g^{-1}x)}^{2}}\dd{\mu(x)}}\xrightarrow{t\to0}0,
+\end{align*}
+whence $ \alpha $ is a malleable deformation of $ M\sub \widetilde{M} $.
+
+
+
+
+\section{Facts}
+
+Note that given a representation $ \pi $ of $ \mathcal{R} $, we can get a group representation $ \widetilde{\pi}:[\mathcal{R}]\to \mathcal{U}\lr{\int_{X}^{\oplus}\H_{x}\dd{\mu(x)}} $ by 
+\[
+    [\widetilde{\pi}(g) \xi](x) := \pi(x,g^{-1}x) \xi(g^{-1}x)
+\]
+
+\begin{itemize}
+    \item According to \url{https://ncatlab.org/nlab/show/measurable+field+of+Hilbert+spaces}, the category of measurable Hilbert bundles on $ (X,\Sigma, N) $ is equivalent to the category of Hilbert $ L^{\infty}(X,\Sigma, N) $-modules. I assume this is through the direct integral being an $ L^\infty $-module.
+    \item \textcolor{violet}{TODO} Try to encode representations of $ L(\mathcal{R}) $ in this framework.
+\end{itemize}
+
+\section{Explorative arguments}
+\subsection{Utilizing Hopf Algebra structure}
+
+\begin{definition}
+    Let $ \mathcal{R} $ be a countable pmp equivlence relation on a standard probability space $ (X,\mu) $. A subequivalence relation $ \mathcal{S}\sub \mathcal{R} $ is called \textit{full} if $ (x,x)\in \mathcal{S} $ for all $ x\in X $, i.e. $ \mathcal{S} $ is also an equivalence relation over $ X $.
+\end{definition}
+
+\begin{definition}[\textcite{borelequivnotes}]
+    A countable pmp equivalence relation $ \mathcal{R} $ on a standard probability space $ (X,\mu) $ is \textit{free} if there exists a countable group $ \Gamma $ with a free pmp action $ \Gamma \acts X $ such that $ \mathcal{R} = \mathcal{R}(\Gamma\acts X) $.
+\end{definition}
+
+\begin{definition}[\textcite{borelequivnotes}]
+    A countable pmp equivalence relation $ \mathcal{R} $ on a standard probability space $ (X,\mu) $ is \textit{essentially free} if there exists a free countable pmp equivalence relation $ \mathcal{S} $ which is isomorphic to $ \mathcal{R} $.
+\end{definition}
+
+\begin{lemma}[essentially free implies action of full group is essentially free]
+    Let $ \mathcal{R} $ be an essentially free countable pmp equivalence relation on a standard probability space $ (X,\mu) $. Then for all $ g\in [R]\setminus \{e\} $, we have that $ \mu(\{x\in X: gx = x\}) = 0 $.
+\end{lemma}
+
+\begin{proof}
+    \textcolor{violet}{TODO prove this}.
+\end{proof}
+
+\begin{proposition}
+    \textcolor{violet}{TODO adjust for only essentially free case since proof doesn't work in general.}
+    Let $ \mathcal{R} $ be a countable pmp equivlence relation on a standard probability space $ (X,\mu) $, and $ N\sub L(\mathcal{R}) $ a unital von Neumann subalgebra such that $ L^{\infty}(X)\sub N $. Consider the relative coproduct on $ L(\mathcal{R}) $ given by
+    \begin{align*}
+        \Delta : L(\mathcal{R})&\to L(R)\cls{\otimes}L(R)\\
+        au_{g} &\mapsto au_{g}\otimes u_{g}.
+    \end{align*}
+    Then $ \Delta (N)\sub N \cls{\otimes} N $ if and only if there exists a (full?) subequivalence relation $ \mathcal{S}\sub \mathcal{R} $ such that $ N = L(\mathcal{S}) $.
+\end{proposition}
+
+\begin{proof}
+    Note that for $ g\in [R] $,
+    \begin{align*}
+        \tau(u_{g}) &= \inp{u_{g}\ind_{D}}{\ind_{D}} = \int_{\mathcal{R}} (u_{g}\ind_{D})\cls{\ind_{D}} \dd{m(x,y)}\\
+        &=\int_{\mathcal{R}} \ind_{D}(g^{-1}x,y)\ind_{D}(x,y) \dd{m(x,y)} = m(\{(x,y):g^{-1}x = y \text{ and } x = y\}) = \mu(\{x: g^{-1}x = x\}).
+    \end{align*}
+
+    Suppose $ n\in N $ and write $ n = \sum_{h\in[\mathcal{R}]}a_{h}u_{h} $ where $ a_{h}\in L^{\infty}(X) $ and all sums converge in $ \norm{\cdot}_{2} $-norm. Fix $ g\in [\mathcal{R}] $. Then $ \tau(nu_{g}^{*}) = a_{g} $ whence under the identification of $ a_{h}u_{h}\otimes u_{e} = a_{h}u_{h} $, we have that
+    \[
+        (id \otimes \tau u_{g}^{*}) \Delta(n) = \sum_{h\in [R]}a_{h}u_{h} \otimes \tau(u_{g}^{*}u_{h})u_{e} = a_{g}u_{g} \otimes u_{e} = \tau(nu_{g}^{*})u_{g}
+    \]
+    \underline{$ \implies $}: Suppose that $ \Delta(N)\sub N \cls{\otimes} N $. Let 
+    \[
+        \mathscr{S} = \{g\in [\mathcal{R}]: \exists\, n\in N \text{ such that } \tau(nu_{g}^{*}) \neq 0\}.
+    \]
+    If $ g\in [\mathcal{R}] $ and $ n\in N $, then again under the aforementioned identification,
+    \[
+       \tau(nu_{g}^{*} )u_{g} = (id \otimes \tau u_{g}^{*}) \Delta(n) \in (id \otimes \tau u_{g}^{*})(N \otimes N) \sub N.
+    \]
+    Now, for $ g\in \mathscr{S} $ there is some $ n\in N $ such that $ \tau(nu_{g}^{*})\neq 0 $, whence the above identity implies that $ u_{g}\in N $. Conversely, if $ u_{g}\in N $, then $ \tau(u_{g}u_{g}^{*}) = 1 \neq 0 $ so $ g\in \mathscr{S} $. Thus for $ g\in[\mathcal{R}] $ we have the following equivalence:
+    \[
+        u_{g}\in N \iff g\in \mathscr{S}.
+    \]
+    In other words, $ \mathcal{U}(N) = \mathcal{U}(L^{\infty}(X))\cup \{u_{g}: g\in \mathscr{S}\} $.
+    Let $ \mathcal{S} $ be the equivalence relation generated by $ \bigcup_{g\in \mathscr{S}} \graph(g) $. Note that $ \mathcal{S} $ is a full countable pmp measured subequivalence relation of $ \mathcal{R} $ over $ X $, so $ L(\mathcal{S})\sub L(\mathcal{R}) $.\\
+
+    By construction, $ \mathscr{S} \sub [\mathcal{S}] $, so $ N\sub L(\mathcal{S}) $. For equality, it suffices to show that $ \mathscr{S} = [\mathcal{S}] $. \\
+
+    Suppose, for the sake of contradiction, that there is some $ g\in [\mathcal{S}]\setminus \mathscr{S} $. Then $ \graph(g)\sub \mathcal{S} $. Consider the equivalence relation $ \mathcal{T} $ generated by $ \graph(g)\cup\bigcup_{h\in \mathscr{S}}\graph(h) $. \textcolor{violet}{TODO finish this}\\
+
+
+    \underline{$ \impliedby $}: Suppose that $ N = L(\mathcal{S}) $ for some full subequivalence relation $ \mathcal{S}\sub \mathcal{R} $. Then for $ a\in L^{\infty}(X) $ and $ g\in [S] $, $ \Delta (au_{g}) = au_{g} \otimes u_{g}\in L(\mathcal{S}) \cls{\otimes }L(\mathcal{S}) $. Thus by linearity and continuity, $ \Delta (L(\mathcal{S}))\sub L(\mathcal{S}) \cls{\otimes }L(\mathcal{S}) $.
+    
+\end{proof}
+
+
+\printbibliography
+
+\end{document}

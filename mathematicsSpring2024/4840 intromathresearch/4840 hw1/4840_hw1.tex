@@ -1,0 +1,36 @@
+\documentclass{article}
+
+% Personal sty
+\usepackage{kyrem1sty}
+
+% Bib
+\usepackage[backend=biber,maxnames=10]{biblatex}
+\addbibresource{defrig.bib}
+
+\title{Intro Math Research HW1}
+\author{James Harbour}
+\date{January 2024}
+
+\begin{document}
+
+\maketitle
+
+\section{Definitions}
+
+\begin{definition}
+    Let $ R $ be a ring. The ring of \textit{symmetric polynomials} in $ n $ variables is the subring $ R_{s}(n)\sub R[x_{1}, \ldots, x_{n}] $ consisting of all polynomials $ f $ such that 
+    \[
+        f(\sigma(x_{1}),\ldots, \sigma(x_{n})) = f(x_{1},\ldots, x_{n}) \text{ for all } \sigma\in S_{n}.
+    \]
+\end{definition}
+
+\section*{3 Facts}
+
+\begin{itemize}
+    \item (Very cool fact) These polynomials arise as precisely the characters for $ Irr(GL_{n}(\C)) $ (finite dimensional reps only).
+    \item These polynomials form a basis for the ring of symmetric polynomials. 
+    \item These polynomials are parameterized by partitions.
+\end{itemize}
+
+\end{document}
+

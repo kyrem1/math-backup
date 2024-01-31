@@ -1,0 +1,338 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\ran}{ran}
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\Prob}{Prob}
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7410 Homework 4}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+    Let $ X $ be a normed space and $ x_{n} $ a sequence in $ X $ such that $ x_{n}\to x $ weakly. Show that there is a sequence $ y_{n} $ such that $ y_{n}\in co\{x_{1},\ldots,x_{n}\} $ and $ \norm{y_{n}-x}\to 0. $
+
+    \begin{proof}
+        Let $ C_{n} = co\{x_{1},\ldots,x_{n}\} $ and $ C = \bigcup_{n=1}^{\infty}C_{n} $. Note that $ C = co\{x_{i}: i\in \N\} $ is convex. Thus $ x\in \cls{C}^{wk} = \cls{C}^{\norm{\cdot}} $, whence there is some sequence $ (z_{n})_{n=1}^{\infty} $ in $ C $ such that $ \norm{z_{n} - x} \to 0 $. Let $ k_{n}\in \N $ be such that $ z_{n}\in C_{k_{n}} $. \\
+
+        Note that a sequence $ a_{n} $ in $ X $ converges to $ 0 $ in norm if and only if for every $ \eps > 0 $, the set $ \{n\in\N: \norm{a_{n}} \geq \eps\} $ is finite. This condition is invariant under rearrangements, so without loss of generality we may take the sequence $ (k_{n})_{n\in\N} $ to be nondecreasing. Construct a new sequence $ (y_{m})_{m\in\N} $ as follows. For $ m < k_{1} $, set $ y_{m} = 0 $. For $ n\in\N $ and $ k_{n}\leq m < k_{n+1} $, set $ y_{m} = z_{n} $. \\
+
+        The sequence $ y_{m}-x $ still has the condition that for all $ \eps>0 $ the set of indices whose corresponding elements have norm at least $ \eps $  is finite, as we have only added a finite number of elements to this set. Thus $ y_{n}\in C_{n} $ for all $ n\in \N $ and $ \norm{y_{n}-x}\to 0 $.
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    If $ \mc{H} $ is a Hilbert space and $ h_{n} $ is a sequence in $ \mc{H} $ such that $ h_{n}\to h $ weakly and $ \norm{h_{n}}\to \norm{h} $, show that $ \norm{h_{n}-h}\to 0 $.
+
+    \begin{proof}
+        
+        By weak convergence, we have that $ \inp{h_{n}}{h}\to \inp{h}{h} = \norm{h}^{2} $, whence
+        \[
+            \norm{h_{n}-h}^{2} = \norm{h_{n}}^{2} + \norm{h}^{2} - 2\Re(\inp{h_{n}}{h}) \xrightarrow{n\to\infty} \norm{h}^{2}  + \norm{h}^{2} - 2\norm{h}^{2} = 0
+        \]
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    If $ X $, $ Y $ are Banach spaces and $ B\in B(Y^{*},X^{*}) $, then $ B = A^{*} $ for some $ A\in B(X,Y) $ if and only if $ B $ is $ wk^* $-continuous.
+
+    \begin{proof}\ \\
+        \underline{($\implies$)}: Suppose that $ B = A^{*} $ for some $ A\in B(X,Y) $ and let $ (\psi_{\alpha})_{\alpha\in I} $ be a net in $ Y^{*} $ such that $ \psi_{\alpha}\to \psi\in Y^{*} $ $ \text{weak}^{*}$. Fix $ x\in X $. Then
+        \[
+            B(\psi_{\alpha})(x) = A^{*}(\psi_{\alpha})(x) = \psi_{\alpha}(Ax) \xrightarrow{\alpha\in I} \psi(Ax) = B(\psi)(x),
+        \]
+        so $ B(\psi_{\alpha})\to B(\psi) $ $ \text{weak}^{*} $, i.e. $ B $ is $ \text{weak}^{*} $-continuous.\\
+
+        \underline{($\impliedby$)}: Suppose that $ B $ is $ wk^{*} $-continuous. Let $ \iota_{X},\iota_{Y} $ be the canonical injections into the corresponding double-duals. For shorthand, we may write $ \hat{x}:=\iota_{X}(x) $ and similarly for $Y$.
+        Noting that $ B^{*}\in B(X^{**},Y^{**}) $ we investigate what occurs when $ B^{*} $ is restricted to the image of $ X $ inside its double dual. \\
+
+        Fix $ x\in X $. We claim that $ B^{*}(\hat{x})\in (Y^{*},wk^{*})^{*} $. To this end, let $ (\phi_{\alpha})_{\alpha\in I} $ be net in $ Y^{*} $ such that $ \phi_{\alpha}\to \phi\in Y^{*} $ $\text{weak}^{*}$. Then,
+        \[
+            B^{*}(\hat{x})(\phi_{\alpha}) = \hat{x}(B(\phi_{\alpha})) = B(\phi_{\alpha})(x)\to B(\phi)(x) = B^{*}(\hat{x})(\phi),
+        \]
+        so $ B^{*}(\hat{x}) $ is $ \text{weak}^{*} $-continuous, whence there exists some $ y\in Y $ such that $ B^{*}(\hat{x}) = \hat{y} $. Define $ A:X\to Y $ by $ Ax = y $.
+
+        \begin{itemize}
+            \item (Uniqueness of $ y $): Suppose that $ y_{0}\in Y $ also has that $ \widehat{y_{0}} = B^{*}(\widehat{x}) = \widehat{y} $. Then by injectivity of $ \iota_{Y} $, it follows that $ y_{0} = y $.
+            \item ($ A $ is a bounded operator): Suppose that $ \norm{x}\leq 1 $. Then
+                \[
+                    \norm{Ax} = \norm{y} = \norm{\widehat{y}} = \norm{B^{*}(\widehat{x})} \leq \norm{B^{*}} = \norm{B} < +\infty. 
+                \]
+            \item ($ B = A^{*} $): Let $ \phi\in Y^{*}$, $ x\in X $. Then we compute
+                \[
+                    A^{*}(\phi)(x) = \phi(Ax) = \widehat{Ax}(\phi) = B^{*}(\widehat{x})(\phi) = \widehat{x}(B(\phi)) = B(\phi)(x).
+                \]
+        \end{itemize}
+    \end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ X, Y $ be Banach spaces over $ \F\in \{\C,\R\} $. For $ C\sub B(X,Y) $ convex and $ F\sub X $ finite, set $ C_{F} = \{(Tx)_{x\in F}:T\in C\}\sub Y^{\oplus F} $. Equip $ Y^{\oplus F} $ with the norm 
+    \[
+        \norm{(y_{x})_{x\in F}} = \sum_{x\in F} \norm{y_{x}}.
+    \]
+    \textbf{(a)}: Let $ C\sub B(X,Y) $ be convex. Show that $ T\in \cls{C}^{SOT} $ if and only if for every $ F\sub X $ finite, we have that $ (Tx)_{x\in F}\in \cls{C_{F}}^{\norm{\cdot}} $. Show that $ T\in \cls{C}^{WOT} $ if and only if for every $ F\sub X $ finite, we have that $ (Tx)_{x\in F}\in \cls{C_{F}}^{weak}$. 
+
+    \begin{proof}\ \\
+        \underline{$ \implies $}: Suppose $ T\in \cls{C}^{SOT} $, so there is some net $ (T_{\alpha})_{\alpha\in I} $ in $ C $ such that $ T_{\alpha}\to T $ SOT. Let $ F\sub X $ finite. Then $ \norm{T_{\alpha}x - Tx}\to 0 $ for every $ x\in F $. Since $ F $ is finite,
+        \[
+            \norm{(T_{\alpha}x)_{x\in F}-(Tx)_{x\in F}} = \sum_{x\in F}\norm{T_{\alpha}x-Tx} \xrightarrow{\alpha\in I} 0
+        \]
+        so $ T\in \cls{C}^{\norm{\cdot}} $. \\
+
+        \underline{$ \impliedby $}: By assumption, for all $ \eps>0 $ and finite $ F\sub X $, there exists some $ T^{F,\eps}\in C $ such that $ \sum_{x\in F}\norm{Tx-T^{F,\eps}x} < \eps $. Define an ordering on $ P(X)_{fin}\times (0,+\infty) $ by 
+        \[
+            (F,\eps) \leq (F ',\eps ') \iff F\sub F ' \text{ and } \eps ' \leq \eps.
+        \]
+        Note that this defines a directed set. Fix $ x\in X $ and consider the net $ (T^{F,\eps}x)_{(F,\eps)} $ in $ Y $. Fix $ \eps > 0 $. Then for all $ (F, \delta)\geq (\{x\},\eps) $, it follows that 
+        \[
+            \norm{Tx - T^{F,\delta}x} < \delta \leq \eps.
+        \]
+        Thus the net $ T^{F,\eps}x \to Tx $, so by definition $ T\in \cls{C}^{SOT} $. \\
+
+        \underline{$ \implies $}: Suppose that $ T\in \cls{C}^{WOT} $. Then there is some net $ (T_{\alpha})_{\alpha\in I} $ in $ C $ such that $ T_{\alpha}\to T $ WOT. Let $ F\sub X $ finite. Then $ | \phi(T_{\alpha}x) - \phi(Tx)|\to 0 $ for every $ x\in F $ and $ \phi\in Y^{*} $. Suppose $ \psi = \sum_{x\in F} \phi_{x}\in (Y^{\oplus F})^{*} $ where $ \phi_{x}\in Y^{*} $. Then
+        \[
+            | \psi((T_{\alpha}x)_{x\in F}) - \psi((Tx)_{x\in F}) |\leq \sum_{x\in F} | \phi_{x}(T_{\alpha}x) - \phi_{x}(Tx) | \xrightarrow{\alpha\in I} 0 
+        \]
+        so $ T\in \cls{C_{F}}^{weak} $.\\
+
+        \underline{$ \impliedby $}: Define an ordering on $ P(X)_{fin}\times \ms{T}_{weak} $ by 
+        \[
+            (F,U)\leq (F ', U ') \iff F\sub F ' \text{ and } U ' \sub U \times B(X,Y)^{\oplus F ' \setminus F}.
+        \]
+        Then for all $ F\sub X $ finite and $ U $ weak-neighborhood of $ (Tx)_{x\in F} $, there is some $ T^{F,U}\in C$ such that $ (T^{F,U}x)_{x\in F} \in U $. This gives a net. Now, letting $ V $ be an SOT neighborhood of $ T $, there is some finite set $ F $ and weakly open $ U $ such that $ T^{F ',U '}\in V $ for all $ (F ', U ') \geq (F,U) $.
+
+    \end{proof}
+
+    \textbf{(b)}: Suppose that $ C\sub B(X,Y) $ is convex. Show that $ \cls{C}^{WOT} = \cls{C}^{SOT} $. 
+
+    \begin{proof}
+        Fix $ F \sub X $ finite. Since $ C $ is convex, it follows that $ C_{F} $ is convex, whence $ C_{F}^{\norm{\cdot}} = C_{F}^{weak} $. Thus by part (a), the result follows.
+    \end{proof}
+
+    \textbf{(c)}: If $ \phi:B(X,Y)\to \F $ is linear, show that $ \phi $ is WOT-continuous if and only if it is SOT-continuous.
+
+    \begin{proof}
+       Note that $ \ker(\phi) $ is convex by linearity. By part (b), we have the following equivalences
+       \[
+           \phi \text{ WOT-continuous } \iff \ker(\phi) \text{ WOT-closed } \iff \ker(\phi) \text{ SOT-closed } \iff \phi \text{ SOT-continuous}.
+       \]
+    \end{proof}
+
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    Let $ I $ be a set and $ \mc{M} $ be the set of all $ m\in l^{\infty}(I)^{*} $ such that :
+    \begin{itemize}
+        \item $ m(f) \geq 0 $ for all $ f\geq 0 $,
+        \item $ m(1) = 1 $.
+    \end{itemize}
+    Identify $ \Prob(I) $ with $ \{f\in l^{1}(I): f\geq 0, \norm{f}_{1}= 1\} $ and view $ l^{1}(I) \sub l^{\infty}(I)^{*} $ by $ f\mapsto \phi_{f} $ where $ \phi_{f}(g) = \sum_{i\in I} f(i) g(i) $. Show that $ \Prob(I) $ is $ \text{weak}^{*} $-dense in $ \mc{M} $. 
+
+    \begin{proof}
+        Suppose, for the sake of contradiction, that there is some $ m\in \mc{M}\setminus\cls{\Prob(I)}^{wk^{*}} $.\\
+
+        By separating Hahn-Banach, there is some $ wk^{*} $-continuous linear functional $ L:l^{\infty}(I)^{*}\to\F $ and $ \alpha < \beta $ such that for all $ \mu\in \Prob(I) $
+        \[
+            \Re(L(\mu)) \leq \alpha < \beta \leq \Re(L(m)).
+        \]
+        As $ (l^{\infty}(I)^{*}, wk^{*})^{*} = l^{\infty}(I) $, there is some $ g\in l^{\infty}(I) $ such that $ L = ev_{g} $.
+        Since $ m \geq 0  $ and linear, for any $ f\in l^{\infty}(I) $, by writing $ \Re(f) $ as a difference of positive functions we see that $ m(\Re(f)) = \Re(m(f)) $.\\
+
+        For $ i\in I$, note that 
+        \[
+            L(\delta_{i}) = L(\phi_{\delta_{i}}) = \sum_{j\in I}g(j) \delta_{i}(j) = g(i),
+        \]
+        so it folows that $ \Re(g(i)) = \Re(L(\delta_{i})) \leq \alpha $ pointwise. On the other hand, by positivity of $ m $, 
+        \[
+            \beta \leq \Re(L(m)) = \Re(m(g)) = m(\Re(g)) \leq \alpha m(1) = \alpha,
+        \]
+        which is absurd.
+    \end{proof}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+    Let $ X $ be a compact, Hausdorff space and let $ \mu $ be a Borel probability measure on $ X $. \\
+
+    \textbf{(a)}: Show that $ C(X) $ is $ wk^{*} $-dense in $ L^{\infty}(X,\mu) $.
+
+    \begin{proof}
+        Let $ \phi:L^{\infty}(X,\mu)\to \C $ be weak-star continuous with $ \norm{\phi} = 1 $ and $ \phi\vert_{C(X)} = 0 $. Note that $ \mu\in C(X)^{*} = M(X) $. Moreover, since $ \mu $ is a probability measure, $ L^{\infty}(X,\mu)\hookrightarrow M(X) $. 
+    \end{proof}
+
+    \textbf{(b)}: Show that $ \{f\in C(X): 0\leq f\leq 1\} $ is $ wk^{*} $-dense in $ \{f\in L^{\infty}(X,\mu) : 0\leq f\leq 1 \text{ almost everywhere}\}$.
+\end{homeworkProblem}
+
+
+
+\end{document} 

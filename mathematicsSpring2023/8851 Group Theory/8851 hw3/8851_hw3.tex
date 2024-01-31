@@ -1,0 +1,308 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+%\usepackage{quiver}
+%\usepackage{tikz}
+
+\usepackage[linguistics]{forest}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+
+\newcommand{\incfig}[2][1]{%
+    \def\svgwidth{#1\columnwidth}
+    \import{./figures/}{#2.pdf_tex}
+}
+
+\pdfsuppresswarningpagegroup=1
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\ilm}[1]{\begin{psmallmatrix} #1 \end{psmallmatrix}}
+\newcommand{\ilmb}[1]{\boxed{\begin{smallmatrix} #1 \end{smallmatrix}}}
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\m}{\mf{m}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\divides}{\bigm|}
+\newcommand{\restr}{\big|}
+
+
+%----Switch phi and varphi
+\let\temp\phi
+\let\phi\varphi
+\let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+\let\O\relax
+\newcommand{\O}{\mathcal{O}}
+\let\p\relax
+\newcommand{\p}{\mathfrak{p}}
+\let\q\relax
+\newcommand{\q}{\mathfrak{q}}
+\let\m\relax
+\newcommand{\m}{\mathfrak{m}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Specm}{Specm}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Inn}{Inn}
+
+
+%----Analysis
+\newcommand{\dd}[2][]{\frac{\partial^{#1}}{\partial {#2}^{#1}}}
+\newcommand{\summ}{\sum\limits}
+\newcommand{\norm}[1]{\left \vert \left \vert #1 \right \vert \right \vert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{Lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{Theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 8851 Homework 3}
+\author{James Harbour}
+\begin{document}
+
+\maketitle
+
+
+\begin{homeworkProblem}
+     Let $G=A\ltimes_{\phi}B$ be the (external) semidirect product of groups
+$A$ and $B$ corresponding to some homomorphism $\phi:A\to \Aut(B)$. Suppose
+we are given presentations by generators and relations for both $A$ and $B$:
+$$A=\la X_1 | R_1\ra \qquad B=\la X_2 | R_2\ra. $$
+Find (with proof) a presentation for $G$ in terms of $X_1,X_2,R_1,R_2$ and $\phi$.
+
+{\bf Note:} If you succeeded in proving Hall's Theorem asserting that an extension of finitely presented groups is finitely presented (HW\# 2.2), this problem should be straightforward. If you did not succeed in solving HW\# 2.2, you may want to start with this problem and then come back to HW\# 2.2.
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+     Let $p$ be a prime. Prove that the lamplighter group 
+$G_p=\Z\, wr\, \Z/p\Z$ is not finitely presented.
+
+\begin{proof}
+    By HW\# 2.4(c), $ G_{p} $ admits the following presentation
+    \[
+        \la x,y \mid y^p=1, [y,y^x]=1, [y, y^{x^2}]=1, [y, y^{x^{N-1}}]=1,\ldots\ra.
+    \]
+    Suppose, for the sake of contradiction, that $ G_{p} $ is finitely presented. Then there exists some $ N\in \N $ such that in fact we have the following finite presentation
+    \[
+        \la x,y \mid y^p=1, [y,y^x]=1, [y, y^{x^2}]=1, [y, y^{x^{N-1}}]=1\ra.
+    \]
+    and $ [y,y^{x^{i}}] = 1 $ for all $ i\in \N\cup\{0\} $. \\
+
+
+    % TODO Insert proof of lemma about $ S_M $.
+
+    By von Dyck's theorem, there exists a homomorphism $ \phi: G_{p}\to S_{M} $ such that $ \phi(x) = s,\ \phi(y) = t $. Now, observe that
+    \[
+        1 = \phi(1) = \phi([y,y^{x^{N}}])  = [\phi(y), \phi(y)^{\phi(x)^{N}}] = [t,t^{s^{N}}] \neq 1,
+    \]
+    which is a contradiction.
+\end{proof}
+{\bf Hint:} Now prove that this is impossible as follows. Show that for sufficiently large $M$
+(depending on $N$) the symmetric group $S_M$ contains 2 elements $t$ and $s$
+such that $t^p=1$ and $[t,t^{s^i}]=1$ for all $1\leq i\leq N-1$, but
+$[t,t^{s^N}]\neq 1$. Then apply von Dyck's theorem to get a contradiction.
+
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+ Recall from class that $\Aut^+(F_n)$ is the preimage of $SL_n(\Z)$
+under the natural ``abelianization'' map $\pi: \Aut(F_n)\to GL_n(\Z)$
+(which is surjective, as proved in Lecture~8) and thus 
+$[\Aut(F_n):\Aut^+(F_n)]=2$. The goal of this problem is to prove that $\Aut^+(F_n)$ is generated by the elements $R_{ij}$ and $L_{ij}$
+(recall that $R_{ij}$ sends $x_i$ to $x_i x_j$ and fixes all other $x_k$
+and $L_{ij}$ sends $x_i$ to $x_j x_i$ and fixes all other $x_k$).
+
+Define $H=\la R_{ij},L_{ij}\ra$. Then $H\subseteq \Aut^+(F_n)$, and to prove the equality it suffices to show that $[\Aut(F_n):H]=2$.\\
+
+\textbf{(a)}: Recall that $\Aut(F_n)$ is generated by the elements $R_{ij}$, $L_{ij}$,
+$I_i$ and $P_{\sigma}$, with $\sigma\in S_n$, where $I_i$ inverts $x_i$ and fixes all other $x_k$ and $P_{\sigma}$ sends $x_k$ to $x_{\sigma(k)}$ for all $k$.
+Use this fact to prove that $H$ is normal in $\Aut(F_n)$.
+
+\begin{proof}
+    See paper.
+\end{proof}
+
+\textbf{(b)}: For any $1\leq i\neq j\leq n$ let $Q_{ij}$ be the element
+of $\Aut(F_n)$ given by $x_i\mapsto x_j$, $x_j\mapsto x_i^{-1}$ and $x_k\to x_k$
+for $k\neq i,j$. Prove by direct computation that $Q_{ij}\in \Aut^+(F_n)$.
+
+\begin{proof}
+    
+\end{proof}
+
+\textbf{(c)}: Given $g\in \Aut(F_n)$, let $\overline g$ denote the image of $g$
+in $\Aut(F_n)/H$. Use (b) to show that $\overline{P_{(ij)}}=\overline{I_i}$
+for any $i\neq j$ (here $(ij)$ is the transposition swapping $i$ and $j$). Deduce from this that $|\Aut(F_n)/H|=2$ and thus $[\Aut(F_n):H]=2$.
+\end{itemize}
+
+   
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+ Recall from class that $IA_n$ (also called the Torelli subgroup of $\Aut(F_n)$) is the kernel of $\pi: \Aut(F_n)\to GL_n(\Z)$.
+
+\begin{itemize}
+\item[(a)] Prove that $IA_n$ contains $\Inn(F_n)$, the subgroup of inner automorphsisms of $F_n$.
+\item[(b)] Magnus (1935) proved that $IA_n$ is generated by the elements
+$K_{ij}$ with $1\leq i\neq j\leq n$ and $K_{ijm}$ with $i,j,m$ distinct
+where $K_{ij}$ sends $x_i$ to $x_j^{-1}x_i x_j$ and fixes all other $x_k$
+and $K_{ijm}$ sends $x_i$ to $x_i [x_j,x_m]$ and fixes all other $x_k$.
+Verify that the elements $K_{ij}$ and $K_{ijm}$ indeed lie in $IA_n$.
+\item[(c)] Use (b) to show that $IA_2=\Inn(F_2)$. We will discuss a different
+proof of this result later in the course.
+\end{itemize}
+
+   
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  The proof of the Nielsen reduction theorem (Theorem~7.5) yields a general algorithm
+which, given an $n$-tuple of elements of $F_n$, decides whether these elements
+generate $F_n$ or not. In the case $n=2$ one can answer this question almost
+immediately using the following commutator test.
+\begin{Theorem}[Commutator test] Let $\{x,y\}$ be a free generating set of $F_2$,
+and take any $u,v\in F_2$. Then $u$ and $v$ generate $F_2$ if and only if
+the commutator $[u,v]=u^{-1}v^{-1}uv$ is conjugate (in $F_2$) to
+$[x,y]$ or $[y,x]=[x,y]^{-1}$.
+\end{Theorem}
+\begin{itemize}
+\item[(a)] Prove the `only if' ($\Rightarrow$) part of the commutator test.
+{\bf Hint:} Use Nielsen moves.
+\item[(b)] Now think of how you would prove the `if' part. I do not know
+of a nice short algebraic argument. One possible proof is outlined in the following
+paper of Shpilrain (see Proposition~2.4):
+
+\end{itemize}
+
+  
+\end{homeworkProblem}
+ \end{document}

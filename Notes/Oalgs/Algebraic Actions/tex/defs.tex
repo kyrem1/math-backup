@@ -1,0 +1,44 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Preliminary Definitions}
+
+\begin{definition}\label{def:algact}
+    An \textit{algebraic action} is an action of a countable, discrete group $ G $ on a compact, metrizable group $ X $ by continuous automorphisms. After giving $ X $ the Haar measure $ m_{X} $, the action $ G\acts (X, m_{X}) $ is measure-preserving.
+\end{definition}
+
+Suppose $ G\acts A $ and $ A $ is a discrete abelian group. Then $ A $ has a $ \Z(G) $-module structure given by 
+\[
+    \lr{\sum_{g}a_{g}g} a := \sum_{g} a_{g} \alpha_{g}(a) = \sum_{g}a_{g} (ga)\quad\text{for } a\in A.
+\]
+Note that $ \Z(G)$-modules and actions of $ G $ on discrete abelian groups are equivalent by the above procedure. Fix $ f\in \Z(G) $ and consider the principal $ \Z(G) $-module $ A:= \Z(G)/\Z(G)f $ with $ \Z(G) $-action given by left multiplication. Letting $ X_{f}:=\widehat{A} $ (the space of continuous homomorphisms from $ A $ to $ \R/\Z $), we have an induced action $ G \acts X_{f} $ given by
+\[
+    [g\chi](a):= \chi(g^{-1}a) \quad \text{for } \chi\in \widehat{A},\, a\in A.
+\]
+This is an example of an algebraic action since $ X_{f} $ is a compact, metrizable group. Such algebraic actions are called \textit{principal}.
+
+
+\begin{definition}
+    An element $ f = \sum a_{g}g\in\Z(G)  $ is \textit{semi-lopsided} if 
+    \[
+        \sum_{g\in G\setminus {e}} |a_{g}| \leq a_{e},
+    \]
+    and is \textit{lopsided} if the above inequality is strict.
+    
+\end{definition}
+
+\begin{definition}
+    A \textit{harmonic model} is a principal algebraic action $ X_{f} $ where $ f\in \Z(G) $ is of the form 
+    \[
+        f = m\lr{1 - p}
+    \]
+    where $ m\in \Z $, $ p\in \Q(G) $ and $ p=\sum_{g\in G} \mu_{g}g$ with $ \mu\in Prob(G) $ is finitely supported.
+\end{definition}
+
+
+
+
+\end{document}

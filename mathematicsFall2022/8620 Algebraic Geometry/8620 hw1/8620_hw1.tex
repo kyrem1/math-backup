@@ -1,0 +1,284 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+\usepackage{quiver}
+\usepackage{tikz}
+
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\ilm}[1]{\begin{psmallmatrix} #1 \end{psmallmatrix}}
+\newcommand{\ilmb}[1]{\boxed{\begin{smallmatrix} #1 \end{smallmatrix}}}
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\m}{\mf{m}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\divides}{\bigm|}
+%----Switch phi and varphi
+\let\temp\phi
+\let\phi\varphi
+\let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Specm}{Specm}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Fix}{Fix}
+
+
+%----Analysis
+\newcommand{\dd}[2][]{\frac{\partial^{#1}}{\partial {#2}^{#1}}}
+\newcommand{\summ}{\sum\limits}
+\newcommand{\norm}[1]{\left \vert \left \vert #1 \right \vert \right \vert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 8620 Homework 1}
+\author{James Harbour}
+
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+
+\textbf{(a)}: Let $A$ be the ring $C[0,1]$. Show that for any proper ideal $\mf{a}\subsetneq A$ there exists $p_0\in I$ such that $f(p_0) = 0$ for all $f\in \mf{a}$.
+
+\begin{proof}
+  Let $V(\mf{a}) = \{p\in I: f(p)=0 \text{ for all }f\in \mf{a}\}$. We proceed by contraposition. Suppose that $V(\mf{a}) = \emptyset$. Then for each $x\in I$, there exists an $f_x\in \mf{a}$ such that $f_x(x)\neq 0$. By continuity, for each $x\in I$ there is some open neighborhood $U_x\sub I$ of $x$ such that $f_x\not\equiv 0$ on $U_x$. By compactness, there exist $x_1,\ldots, x_n\in I$ such that $\{U_{x_j}\}_{j=1}^{n}$ covers $I$. \\
+
+  Then $f = \sum_{j=1}^n f_{x_j}^2$ does not vanish on $I$, so $f\in \units{A}$. As $f\in\mf{a}$, it follows that $\mf{a}=A$ is not proper. By contraposition, the result follows.
+\end{proof}
+
+\textbf{(b)}:Let $B = C(-\infty,\infty)$. Show that the set $\mf{b}\sub B$ of functions with compact support is a proper ideal of $B$ but there is no point $p\in(-\infty,\infty)$ such that $f(p) = 0$ for all $f\in \mf{b}$.
+
+\begin{proof}
+  Note that the constant function $1\in B$ has support $(-\infty, \infty)$ which is not compact, so $\mf{b}\subsetneq B$. Suppose that $f\in \mf{b}$ and $\phi\in B$. Then $\supp(\phi f)\sub \supp(f)$, whence as a closed subset of a compact set, $\supp(\phi f)$ is itself compact. Also for $f,g\in \mf{b}$, $\supp(f+g)\sub \supp(f)\cup\supp(g)$, whence it is similarly compact. So $\mf{b}$ is a proper ideal of $B$. \\
+
+  Suppose, for the sake of contradiction, that there exists a $p\in I$ such that $f(p) = 0$ for all $f\in \mf{b}$. For $f\in B$, as $\mf{b}$ is dense in $B$ with respect to the sup-norm, there exists a sequence $\{ f_n\}_{n=1}^{\infty}$ in $\mf{b}$ such that $\norm{f-f_n}_{\rm{sup}}\xrightarrow{n\to\infty}0$. Then $f_n\to f$ pointwise, so $f(p) = \lim_{n\to\infty}f_n(p) = 0$ by assumption. So every function $f\in B$ vanishes at $p$, which is absurd and contradicts Uryshon's lemma.
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Let $A = C[0,1]$ and $I = [0,1]$. \\
+
+  \textbf{(a)}: Show that for any $p\in I$, the set $\mf{m}_p = \{f\in A : f(p) = 0\}$ is a maximal ideal of $A$.
+
+  \begin{proof}
+    Consider the evaluation map $\eps_p: A\to \R$ given my $\eps_p(f) = f(p)$. By definition, $\ker(\eps_p)=\mf{m}_p$. Clearly $\eps_p$ is surjective as $A$ contains the constant functions. Moreover, $\eps_p$ is a ring homomorphism, so by the first isomorphism theorem $A/\mf{m}_p = A/\ker(\eps_p)\cong \R$. Since $\R$ is a field, it follows that $\mf{m}_p$ is a maximal ideal.
+  \end{proof}
+
+  \textbf{(b)}: Show that the correspondence $p\mapsto\mf{m}_p$ defines a bijection $\theta: I\to \Specm(A)$.
+
+  \begin{proof}
+    On one hand, suppose $\mf{m}\in \Specm(A)$. Then by Problem 1(a) there exists a $p\in I$ such that $f(p)= 0$ for all $f\in \mf{m}$. Thus $\mf{m}_p\sub \mf{m}$, whence by maximality $\mf{m} = \mf{m}_p = \theta(p)$, so $\theta$ is surjective. \\
+
+    On the other hand. Suppose that $p_1\neq p_2$. Choose open $U\sub I$ such that $p_1\in U$ and $p_2\in I\setminus U$. By complete regularity of I, there exists an $f\in A$ such that $f(p_1)=0$ and $f\equiv1$ on $I\setminus U$, whence $f(p_2) = 1$ so $f\in \mf{m}_{p_1}\setminus \mf{m}_{p_2}$ whence $\theta(p_1)= \mf{m}_{p_1}\neq \mf{m}_{p_2}=\theta(p_2)$.
+  \end{proof}
+
+  \textbf{(c)}: Show that if $I$ is given the natural topology and $\Specm(A)$ the topology induced from $\Spec(A)$ then $\theta$ becomes a homeomorphism.
+
+  \begin{proof}
+    On one hand, suppose that $X\sub \Specm(A)$ is closed. Then by definition there is some ideal $\mf{a}\sub A$ such that $X = \Specm(A)\cap V(\mf{a}) = \{\mf{m}\in \Specm(A): \mf{m}\supseteq\mf{a}\}$. Then,
+    \begin{align*}
+      \theta^{-1}(X) &= \{p\in I: \mf{m}_p\in X\} = \{p\in I: \mf{m}_p \supseteq \mf{a}\}\\
+      &= \{p\in I: f(p) = 0 \text{ for all }f\in \mf{a}\} = \bigcap_{f\in \mf{a}}f^{-1}(\{0\})
+    \end{align*}
+    which is closed in $I$ by continuity of each $f\in \mf{a}$.\\
+
+    On the other hand, suppose that $Y\sub I$ is closed and set $\mf{a} = \{ f\in A: f(p) = 0 \text{ for every }p\in Y\}$. We claim that $\theta(Y) = \Specm(A)\cap V(\mf{a})$. On one hand, $\mf{a} = \bigcap_{p\in Y}\mf{m}_p$ so $p\in Y$ implies that $\mf{m}_p\supseteq \mf{a}$ whence $\mf{m}_p\in \Specm(A)\cap V(\mf{a})$. On the other hand, suppose $p\in I\setminus Y$, so $\m_p\not\in \theta(Y)$. By Uryshon's lemma (actually just complete regularity), there exists an $f\in A$ such that $f\vert_{Y}=0$ and $f(p)=1$. Then $f\in \mf{a}$ and $f\not\in \m_p$, whence $\mf{a}\not \subseteq \m_p$ so $\m_p\not\in \Specm(A)\cap V(\mf{a})$.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Let again $A = C[0,1]$. \\
+
+  \textbf{(a)}: Let $\mf{p}\in \Spec(A)$. It follows from Problem 2(b) that there exists $p\in I$ such that $\mf{p}\sub \mf{m}_p$. Show that $\mf{p}$ contains
+  \[
+    \mf{l}_p := \{ f\in A : f = 0 \text{ on some neighborhood of } p\}.
+  \]
+
+  \begin{proof}
+    Let $f\in \mf{l}_p$ and $U\sub I$ an open neighborhood of $p$ such that $f\vert_{U} = 0$. By Uryshon's lemma, there exists a $g\in A$ such that $g\vert_{I\setminus U} = 0$ and $g(p) = 1$. Then $fg=0\in\mf{p}$, whence by primality $f\in \mf{p}$ as $g\not\in \m_p\supseteq \mf{p}$.
+  \end{proof}
+
+  \textbf{(b)}: Show that for $p_1,p_2\in I, p_1\neq p_2$, we have $\mf{l}_{p_1}+\mf{l}_{p_2} = A$. Deduce that every $\mf{p}\in \Spec(A)$ is contained in a \emph{unique} $\mf{m}\in\Specm(A)$. It follows that every closed irreducible subset of $\Spec(A)$ contains a unique closed point.
+
+  \begin{proof}
+    Suppose, for the sake of contradiction, that $\mf{p}\sub \mf{m}_{p_1},\mf{m}_{p_2}$ and $p_1\neq p_2$. Then by part (a), $\mf{l_{p_1}},\mf{l_{p_2}}\sub \mf{p}$, whence $A = \mf{l_{p_1}}+\mf{l_{p_2}}\sub \mf{p}$ contradicting that prime ideals are proper.\\
+
+    Suppose that $X\sub \Spec(A)$ is irreducible and suppose $\mf{p}_1, \mf{m}_2\in X$ are closed points.
+  \end{proof}
+
+  \emph{Question.} Is $A$ Noetherian?
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  \textbf{(a)}: For $A = C[0,1]$, show that every $\mf{m}\in\Specm(A)$ properly contains some $\mf{p}$ and in particular, $\Spec(A)\neq \Specm(A)$.
+
+  \begin{proof}
+    Let $p\in I$ such that $\m_p = \m$. Choose some $f\in\m$ so that $f(q)\neq 0$ for $q\neq p$. Consider the sets $S_1 = A\setminus \m$ and $S_2 = \{ f^k: k\geq 0\}$. Note that $S_1$ is multiplicative as $\m$ is maximal hence prime and $S_2$ is clearly multiplicative. Thus $S=S_1 S_2$ is multiplicative. Consider the poset
+    \[
+      \ms{S} = \{\text{ideals }\mf{a}\sub A : \mf{a}\cap S = \emptyset\}
+    \]
+    ordered by inclusion. Suppose that $(\mf{a}_i)_{i\in J}$ is a chain in $\ms{S}$. By total ordering, $\mf{a}:=\bigcup_{i\in J}\mf{a_i}$ is an ideal and $\mf{a}\cap S = \bigcup_{i\in J}\mf{a_i}\cap S = \emptyset$, so $\mf{a}\in \ms{S}$. Thus $\mf{a}$ is an upper bound in $\ms{S}$ for the chain.\\
+
+    Now by Zorn's lemma, there exists an ideal $\mf{p}\sub A$ maximal with respect to the property that $\mf{p}\cap S = \empty$. We claim that $\mf{p}$ is prime. Suppose, for the sake of contradiction, that $\mf{p}$ is not prime. Then there exist $a,b\in A\setminus\mf{p}$ such that $ab\in\mf{p}$. Let $I_a = (a) + \mf{p}$, $I_b = (b) + \mf{p}$. Then $I_a,I_b\supsetneq \mf{p}$, so by maximality of $\mf{p}$ in the poset $\ms{S}$ there exist $s_1\in I_a\cap S$ and $s_2\in I_b\cap S$. We compute that
+    \[
+      s_1 s_2 \in I_a I_b = ((a)+\mf{p})((b)+\mf{p}) = (ab) + \mf{p} = \mf{p},
+    \]
+    however as $S$ is multiplicative $s_1 s_2\in S$, contradicting that $\mf{p}\cap S = \emptyset$. Thus $\mf{p}\in \Spec(A)$\\
+
+    Noting that $S_1 \sub S$, $\mf{p}\cap S = \emptyset$ implies $\mf{p}\sub A\setminus S \sub A\setminus S_1 = \mf{m}$. Also, $S_2\sub S$ implies that $\mf{p}\cap S_2 = \emptyset$ whence $f\in \mf{m}\setminus\mf{p}$, so $\mf{p}\subsetneq \mf{m}$.
+  \end{proof}
+
+  \textbf{(b)}: Show that $\Specm(A)$ is dense in $\Spec(A)$.
+
+  \begin{proof}
+    First let $X\sub \Spec(A)$ be an arbitrary subset (we shall later set $X = \Spec(A)$). Then we compute
+
+    \begin{align*}
+      \Spec(A)\setminus \cls{X} &= \Spec(A)\setminus \bigcap_{\substack{X\sub V(\mf{a})\\ \mf{a}\sub A}}V(\mf{a}) =  \bigcup_{\substack{X\sub V(\mf{a})\\ \mf{a}\sub A}} \Spec(A)\setminus V(\mf{a})
+    \end{align*}
+
+    Suppose, for the sake of contradiction, that there is some $\mf{p}\in \Spec(A)\setminus\cls{\Specm(A)}$. Then by the above computation, there exists some ideal $\mf{a}\sub A$ such that $\Specm(A)\sub V(\mf{a})$ and $\mf{p}\in \Spec(A)\setminus V(\mf{a})$. However, then $\mf{a}\sub \mf{m}_p$ for all $p\in I$, whence $\mf{a} = 0$. Thus $\mf{p}\in \Spec(A)\setminus V(\mf{a}) = \Spec(A)\setminus V(0) = \emptyset$, which is absurd.
+  \end{proof}
+
+  \textbf{(c)}: It follows from Problem 2(c) that $\Specm(A)$ is compact in the topology induced from $\Spec(A)$. At the same time, it is dense in $\Spec(A)$, which is strictly bigger. So, there appears to be a contradiction with the basic facts from topology. Resolve this contradiction.
+
+  \begin{solution}
+    As the space $\Spec(A)$ with the Zariski topology is non-Hausdorff, compactness does not necessarily imply closedness. Hence, $\Specm(A)$ is compact but not closed in $\Spec(A)$, resolving this problem.
+  \end{solution}
+\end{homeworkProblem}
+
+
+
+\end{document}

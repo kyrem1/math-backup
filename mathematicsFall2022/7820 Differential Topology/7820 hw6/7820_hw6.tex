@@ -1,0 +1,276 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+\usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\GL}{GL}
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7820 Homework 6} 
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+    
+
+\begin{homeworkProblem}
+    Denote the standard coordinates on $ \R^{2} $ by $ x,y $, and let 
+    \[
+        X = -y \pdv{x} +x \pdv{y} \quad\text{ and }\quad Y = x \pdv{x} + y \pdv{y} 
+    \]
+    be vector fields on $ \R^{2} $. Find a $ 1 $-form $ \omega $ on $ \R^{2}\setminus\{(0,0)\} $ such that $ \omega(X) = 1 $ and $ \omega(Y) = 0 $.
+
+    \begin{proof}[Solution]
+        Let $ dx $ and $ dy $ be dual to $ \pdv{x}  $ and $ \pdv{y} $ respectively. Let $ f,g:\R^{2}\setminus \{(0,0)\}\to \R $ be given by 
+        \[
+            f(x,y) = \frac{-y}{x^{2}+y^{2}} \quad\text{ and }\quad g(x,y)=\frac{x}{x^{2}+y^{2}}.
+        \]
+        Now define a $ 1 $-form $ \omega $ by $ \omega = f(x,y)\dd{x}+g(x,y)\dd{y} $. Then we compute that, for $ p=(x,y)\in \R^{2}\setminus \{(0,0)\} $,
+        \[
+            \omega_{p}(X_{p}) = (f(x,y)\dd{x}+ g(x,y)\dd{y})\lr{-y \pdv{x} +x \pdv{y}} = \frac{x^{2}}{x^{2}+y^{2}}+\frac{y_{2}}{x^{2}+y^{2}} = 1,
+        \]
+        \[
+            \omega_{p}(Y_{p}) = (f(x,y)\dd{x}+ g(x,y)\dd{y})\lr{x \pdv{x} +y \pdv{y}} = \frac{-xy}{x^{2}+y^{2}} + \frac{xy}{x^{2}+y^{2}} = 0.
+        \] 
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    Suppose $ (U,x^{1},\ldots,x^{n}) $ and $ (V, y^{1},\ldots,y^{n}) $ are two charts on $ M $ with $ U\cap V\neq \emptyset $. Then a $ C^{\infty} $ 1-form $ \omega $ on $ U\cap V $ has two different local expressions:
+    \[
+        \omega = \sum_{j}a_{j}\dd{x}^{j} = \sum_{i}b_{i} \dd{y}^{i}.
+    \]
+    Find a formula for $ a_{j} $ in terms of $ b_{i} $.
+
+    \begin{proof}
+        Fix $ p\in U\cap V $. For $ 1\leq k\leq n $, there exist $ c_{1}^{k},\ldots, c_{n}^{k}\in\R $ such that 
+        \[
+            \pdv{x^{k}}\eval_{p} = \sum_{l=1}^{n} c_{l}^{k} \pdv{y^{l}}\eval_{p}.
+        \]
+        Now applying both sides of this expression to the coordinate function $ y^{m} $, we see for $ 1\leq m\leq n $ that
+        \[
+            c_{m}^{k} = \sum_{l=1}^{n} c_{l}^{k} \pdv{y^{m}}{y^{l}}\eval_{p} = \pdv{y^{m}}{x^{k}} \eval_{p}.
+        \]
+        Now, we compute
+        \begin{align*}
+            a_{k}(p) &= \omega_{p}\lr{\pdv{x^{k}} \vert_{p}} = \sum_{i}b_{i}(p) (\dd{y^{i}})_{p} \lr{\pdv{x^{k}}\eval_{p}} \\
+            &= \sum_{i}b_{i}(p) (\dd{y^{i}})_{p} \lr{\sum_{l}\pdv{y^{l}}{x^{k}}\eval_{p} \pdv{y^{l}}\eval_{p} } = \sum_{i}b_{i}(p) \pdv{y^{i}}{x^{k}} \eval_{p}.
+        \end{align*}
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    Prove that a vector bundle whose fiber is an $ n $-dimensional vector space is trivial (i.e. is isomorphic to a product bundle) if and only if it admits $ n $ sections $ s_{1},\ldots, s_{n} $ such that $ s_{1}(x),\ldots, s_{n}(x)$ are linearly independent for each point $ x $ in the base.
+    
+    \begin{proof}\ \\
+        \underline{$ \implies $}: Suppose we are given homeomorphisms $ f,g $ as below such that $ f $ is a linear isomorphism on fibers and the following diagram commutes:
+        \[\begin{tikzcd}
+        	E && {B\times\mathbb{R}^n} \\
+        	\\
+        	B && B
+        	\arrow["\pi", from=1-1, to=3-1]
+        	\arrow["g", from=3-1, to=3-3]
+        	\arrow["f", from=1-1, to=1-3]
+        	\arrow["p"{description}, from=1-3, to=3-3]
+        \end{tikzcd}\]
+        Let $ e_{1},\ldots,e_{n}\in \R^{n} $ be the standard basis for $ \R^{n} $, and for $ 1\leq i\leq n $ define $ s_{i}:B\to E $ by $ s_{i}(x) = f^{-1}(g(x),e_{i}) $. Now suppose that $ x\in B $ and $ \lambda_{i}\in \R $ are such that in $ \pi^{-1}(\{x\}) $ we have $ 0 = \sum_{i} \lambda_{i}s_{i}(x)$. Then we use linearity of $ f^{-1} $ on fibers to compute that
+        \[
+            0 = \sum_{i} \lambda_{i} s_{i}(x) = \sum_{i} \lambda_{i} f^{-1}(g(x),e_{i}) = f^{-1}\lr{g(x), \sum_{i} \lambda_{i}e_{i}},
+        \]
+        whence by linearity $ \sum_{i} \lambda_{i}e_{i} = 0 $ in $ p^{-1}(g(x)) $, so by independence $ \lambda_{i}=0 $ for all $ i $. Hence $ s_{1}(x),\ldots, s_{n}(x) $ are linearly independent. \\
+
+        \underline{$ \impliedby $}: For $ x\in B $, let $ \beta(x) $ denote the basis $ \beta(x) = \{s_{i}(x): 1\leq i\leq n\} $. Define a map $ \phi:E\to B\times \R^{n} $ as follows: for $ p\in E $ there exists a unique $ x\in B $ such that $ p\in \pi^{-1}(\{x\}) $, so set $ \phi(p) = (x, [p]_{\beta(x)}) $. Note that, on each fiber, the map $ \phi $ is given by $ p\mapsto [p]_{\beta(x)} $ and is thus a linear isomorphism by assumption. Moreover, the map $ \phi $ satisfies the following commutative diagram:
+        \[\begin{tikzcd}
+        	E && {B\times\mathbb{R}^n} \\
+        	\\
+        	B && B
+        	\arrow["\pi", from=1-1, to=3-1]
+        	\arrow["{id_B}", Rightarrow, no head, from=3-1, to=3-3]
+        	\arrow["\phi", from=1-1, to=1-3]
+        	\arrow["p", from=1-3, to=3-3]
+        \end{tikzcd}\]
+        Now define a map $ \psi:B\times\R^{n}\to E $ by $ \psi(x, v_{1}, \ldots, v_{n}) = \sum_{i}v_{i}s_{i}(x) $. Note that this map is again clearly a linear isomorphism on fibers by assumption. Moreover, it is clear that $ \psi $ is the inverse of $ \phi $, thus giving an isomorphism of vector bundles.
+        
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+    Suppose $ E_{1}\to B $, $ E_{2}\to B $ are two vector bundles over the same base. It may be assumed without loss of generality that they are both trivialized over the same collection of charts $ \{U^{i}\} $ covering $ B $. Denote their transition maps $ \phi_{ij}:U_{i}\cap U_{j} \to \GL_{m}(\R) $, $ \psi_{ij}:U_{i}\cap U_{j}\to \GL_{n}(\R) $. The tensor product of these two bundles is a vector bundle over the same base $ B $, defined by taking the tensor product of the transition maps at each point, with values in $ \GL_{mn}(\R) $.\\
+
+    Carry out this construction in the case of two copies of the non-trivial line bundle over the circle discussed in class, and identify their tensor product.
+
+    \begin{proof}
+        Under the construction in class, we have two sets $ U,V $ covering $ S^{1} $ with intersection two intervals. Moreover, the transition map $ \phi:U\cap V \to \GL_{1}(\R) $ is given sending one interval to $ +1 $ and the other interval to $ -1 $. This line bundle then becomes the Mobius band. Taking the tensor product of this map with itself and then applying the standard isomorphism $ \R\otimes\R\to \R $ given by multiplication, it follows that the new transition map is $ \phi \otimes\phi = \phi \cdot \phi = 1 $, whence the new line bundle simply becomes the trivial bundle.
+    \end{proof}
+\end{homeworkProblem}
+
+
+
+
+\end{document}

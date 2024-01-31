@@ -1,0 +1,255 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7820 Homework 1}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+  Let $S^2$ be the unit sphere in $\R^3$. Define in $S^2$ the six charts cooresponding to the six hemispheres:
+  \[
+    U_1 = \{(x,y,z)\in S^2: x>0\},\, \phi_1(x,y,z) = (y,z),
+  \]
+  and the analogous
+  \[
+    U_2=\{x<0\},\, U_3=\{y>0\},\, U_4 = \{y<0\},\, U_5 = \{z>0\},\, U_6 = \{z<0\}.
+  \]
+  Describe the domain $\phi_4(U_1\cap U_4)$ of $\phi_1\circ\phi_4^{-1}$ and show that $\phi_1\circ\phi_4^{-1}$ is smooth on its domain.
+
+  \begin{solution}
+    We compute that
+    \[
+      \phi_{4} (U_1\cap U_4) = \{\phi_4(x,y,z): x^2 +y^2 +z^2 = 1,\, x>0,\, y<0\} = \{(x,z)\in \R^2:x>0,\, x^2+z^2 < 1\},
+    \]
+    which is a semicircular open disk in the right half $(x,z)$-plane. If $(x,z)\in \phi_{4} (U_1\cap U_4)$, then $\phi_4^{-1}(x,z) = (x,\sqrt{1-x^2-z^2},z)$ whence $\phi_1\circ\phi_4^{-1}(x,z) = (x,\sqrt{1-x^2-z^2})$. This function is smooth on $\phi_{4} (U_1\cap U_4)$ since $x^2+z^2<1$.
+  \end{solution}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}[2]
+  Let $\{(U_\alpha,\phi_\alpha)\}$ and $\{(V_\beta,\psi_\beta)\}$ be atlases for smooth manifolds $M$ and $N$ of dimensions $m$ and $n$ respectively. Show that the collection $\{(U_\alpha\times V_\beta,\phi_\alpha\times \psi_\beta)\}$ of charts is an atlas on $M\times N$. Therefore, $M\times N$ is a smooth manifold of dimension $m+n$.
+
+  \begin{proof}
+    For $p\in M$ and $q\in N$, there exist $\alpha,\beta$ such that $p\in U_\alpha$ and $q\in V_\beta$ whence $(p,q)\in U_\alpha\times V_\beta$. Thus $M\times N = \bigcup_{\alpha,\beta}U_\alpha\times V_\beta$. \\
+
+    For each $\alpha,\beta$, as $\phi_\alpha$ and $\psi_\beta$ are homeomorphisms onto $\phi_\alpha(U_\alpha)$ and $\psi_\beta(V_\beta)$ respectively, it follows that $\phi_\alpha\times \psi_\beta$ is a homeomorphism onto $\phi_\alpha\times\psi_\beta(U_\alpha\times V_\beta) = \phi_\alpha(U_\alpha)\times \psi(V_\beta)$. \\
+
+    Fix $\alpha,\beta$. Then we compute the transition maps
+    \begin{align*}
+      (\phi_{\alpha'}\times\psi_{\beta'})\circ(\phi_{\alpha}\times\psi_{\beta})^{-1} &= (\phi_{\alpha'}\times\psi_{\beta'}) \circ(\phi_{\alpha}^{-1}\times\psi_{\beta}^{-1}) = (\phi_{\alpha'}\circ\phi_{\alpha}^{-1})\times(\psi_{\beta'}\circ\psi_{\beta}^{-1}) \\
+      (\phi_{\alpha}\times\psi_{\beta}) \circ (\phi_{\alpha'}\times\psi_{\beta'})^{-1} &=(\phi_{\alpha}\times\psi_{\beta}) \circ(\phi_{\alpha'}^{-1}\times\psi_{\beta'}^{-1}) = (\phi_{\alpha}\circ\phi_{\alpha'}^{-1})\times(\psi_{\beta}\circ\psi_{\beta'}^{-1})
+    \end{align*}
+    which are both smooth as $\phi_{\alpha}\circ\phi_{\alpha'}^{-1}$, $\phi_{\alpha'}\circ\phi_{\alpha}^{-1}$,  $\psi_{\beta}\circ\psi_{\beta'}^{-1}$, $\psi_{\beta'}\circ\psi_{\beta}^{-1}$ are smooth. Thus $\{(U_\alpha\times V_\beta,\phi_\alpha\times \psi_\beta)\}$ is an atlas on $M\times N$.
+  \end{proof}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Let $V$ be a finite-dimensional vector space over $\R$. Relative to and ordered basis $e = (e_1,\ldots,e_n)$ for $V$, an element $L\in\GL(V)$ is represented by a matrix $[a_j^i]$ defined by
+  \[
+    L(e_j) = \sum_{i}a_{j}^i e_i.
+  \]
+  The map
+  \[
+    \phi_e:\GL(V)\to \GL(n,\R),\text{ }L\mapsto [a_j^i],
+  \]
+  is a bijection with an open subset of $\R^{n\times n}$ that makes $\GL(V)$ into a smooth manifold, which we denote temporarily by $\GL(V)_e$. If $\GL(V)_u$ is the manifold structure induced from another ordered basis $u = (u_1,\ldots, u_n)$ for $V$, show that $\GL(V)_e$ is the same as $\GL(V)_u$. \\
+
+  \begin{proof}
+    To show that $\GL(V)_e$ is the same as $\GL(V)_u$, it suffices to show that the charts $(\GL(V),\phi_e)$ and $(\GL(V),\phi_u)$ have the same maximal atlas, as then the smooth manifold structures that they define would be the same. Hence, it suffices to show that these charts are in fact compatible.\\
+
+    For an ordered basis $\beta$ of $\R^n$ and $T\in \GL(V)$, we write $[T]_{\beta}\in\GL(n,\R)$ to denote the matrix representation of $T$ with respect to the basis $\beta$. If $\beta$,$\gamma$ are two ordered bases of $R^n$, we write $[I]_\gamma^{\beta}$ to denote the change-of-basis matrix from $\beta$ to $\gamma$.\\
+
+    Let $A\in \GL(n,\R)$. Then there exists a unique $T\in \GL(V)$ such that $A = [T]_e = \phi_e(T)$, so $\phi_e^{-1}(A) = T$. Then
+    \[
+      \phi_u\circ\phi_e^{-1}(A) = \phi_u(T) = [T]_u = [I]_u^e[T]_e = [I]_u^e A,
+    \]
+    which is a polynomial function in the coordinates of $\GL(n,\R)$ and thus smooth. In a similar vein, if $B\in \GL(n,\R)$, there is a unique $S\in \GL(V)$ such that $B = [S]_u = \phi_u(S)$, so $\phi_u^{-1}(B) = S$. Then
+    \[
+      \phi_e\circ\phi_u^{-1}(B) = \phi_e(S) = [S]_e = [I]_e^u[S]_u = [I]_e^u B,
+    \]
+    which is also smooth.
+  \end{proof}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[4]
+  Find all points in $\R^3$ in a neighborhood of which the functions $x,x^2+y^2+z^2-1,z$ can serve as a local coordinate system.
+
+  \begin{proof}
+    Let $F:\R^3\to\R^3$ be given by $F(x,y,z) = (x,x^2+y^2+z^2-1,z)$. By Corollary 6.27, it suffices to find all $p\in \R^3$ for which the Jacobian matrix $[\partial F^i/\partial x^j (p)]_{i,j}$ is nonsingular. Hence, we compute
+    \[
+      \det [\frac{\partial F^i}{\partial x^j}(p)] = \det \begin{pmatrix}
+        1 & 0 & 0\\ 2x & 2y & 2z \\ 0 & 0 & 1
+    \end{pmatrix} = 2x,
+    \]
+    thus the Jacobian matrix for $F$ is nonsingular for all $(x,y,z)\in \R^3$ such that $x\neq 0$. Taking any point $p$ such that this holds, we can find always small enough open neighborhood of $p$ not intersecting the $x$-axis, thus giving a local coordinate system.
+  \end{proof}
+\end{homeworkProblem}
+
+\end{document}

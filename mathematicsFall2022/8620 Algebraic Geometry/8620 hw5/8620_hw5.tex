@@ -1,0 +1,481 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+\usepackage{quiver}
+\usepackage{tikz}
+
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\ilm}[1]{\begin{psmallmatrix} #1 \end{psmallmatrix}}
+\newcommand{\ilmb}[1]{\boxed{\begin{smallmatrix} #1 \end{smallmatrix}}}
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\m}{\mf{m}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\divides}{\bigm|}
+\newcommand{\restr}{\big|}
+
+
+%----Switch phi and varphi
+\let\temp\phi
+\let\phi\varphi
+\let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+\let\O\relax
+\newcommand{\O}{\mathcal{O}}
+\let\p\relax
+\newcommand{\p}{\mathfrak{p}}
+\let\q\relax
+\newcommand{\q}{\mathfrak{q}}
+\let\m\relax
+\newcommand{\m}{\mathfrak{m}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Specm}{Specm}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\let\Im\relax
+\DeclareMathOperator{\Im}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\spn}{span}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Fix}{Fix}
+
+
+%----Analysis
+\newcommand{\dd}[2][]{\frac{\partial^{#1}}{\partial {#2}^{#1}}}
+\newcommand{\summ}{\sum\limits}
+\newcommand{\norm}[1]{\left \vert \left \vert #1 \right \vert \right \vert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 8620 Homework 5}
+\author{James Harbour}
+
+
+\begin{document}
+\maketitle
+
+
+\begin{homeworkProblem}
+    Let $ F $ be a presheaf on a topological space $ X $, and let $ f:X\to Y $ be a continuous map. The \textit{direct image} $ f_{*}F $ is defined by the following data:
+    \[
+        (f_{*}F)(V) = F(f^{-1}(V)) \text{ for open } V\sub Y, \text{ and } \rho(f_{*}F)_{V_{2}}^{V_{1}} = \rho(F)_{f^{-1}(V_{2})}^{f^{-1}(V_{1})} \text{ for open } V_{2}\sub V_{1}.
+    \]
+    Show that $ f_{*}F $ is a presheaf. Furthermore, show that if $ F $ is a sheaf then $ f_{*}F $ is also a sheaf.
+
+    \begin{proof}\ \\
+        \underline{$ f_{*}F $ is a presheaf}: Note that $ f_{*}F(\emptyset) = F(f^{-1}(\emptyset)) = F(\emptyset) = \text{initial object} $. For $ V\sub Y $ open, 
+        \[
+            \rho(f_{*}F)_{V}^{V} = \rho(F)_{f^{-1}(V)}^{f^{-1}(V)} = id_{F(f^{-1}(V)} = id_{f_{*}F(V)}.
+        \]
+        Now suppose that $ W\sub V\sub U $ are open in $ Y $. For brevity, write $ \widetilde{\rho} = \rho(f_{*}F) $. Then we compute,
+        \[
+            \widetilde{\rho}_{W}^{V}\widetilde{\rho}_{V}^{U} = \rho(F)_{f^{-1}(W)}^{f^{-1}(V)} \rho(F)_{f^{-1}(V)}^{f^{-1}(U)} = \rho_{f^{-1}(W)}^{f^{-1}(U)} = \widetilde{\rho}_{W}^{U}.
+        \]
+
+        \underline{$ F $ sheaf $ \implies $ $ f_{*}F $ sheaf}: Suppose that $ U = \bigcup_{\alpha\in I}U_{\alpha} $ all open in $ Y $.
+        \begin{itemize}
+            \item  Let $ s,t\in f_{*}F(U) $ such that 
+            \[
+                s\big|_{U_{\alpha}} = t\big|_{U_{\alpha}} \in f_{*}F(U_{\alpha}) = F(f^{-1}(U_{\alpha}))
+            \]
+            for all $ \alpha\in I $. But then, noting that $ f^{-1}(U) = \bigcup_{\alpha\in I}f^{-1}(U_{\alpha}) $, $ F $ being a sheaf implies that $ s = t $.
+            \item Now suppose that $ s_{\alpha}f_{*}F(U_{\alpha}) $ for all $ \alpha\in I $
+            \[
+                s_{\alpha}\restr_{U_{\alpha}\cap U_{\beta}} = s_{\beta}\restr_{U_{\alpha}\cap U_{\beta}} \text { for all } \alpha,\beta\in I.
+            \]
+            Then 
+            \[
+                s_{\beta}\restr_{f^{-1}(U_{\alpha}\cap U_{\beta})} = s_{\beta}\restr{U_{\alpha}\cap U_{\beta}} = s_{\alpha}\restr{U_{\alpha}\cap U_{\beta}} =  s_{\alpha}\restr_{f^{-1}(U_{\alpha}\cap U_{\beta})} \in F(f^{-1}(U_{\alpha}\cap U_{\beta})),
+            \]
+            whence $ F $ being a sheaf implies that there exists some $ s\in F(f^{-1}(U)) = f_{*}F(U) $ such that $ s\restr_{U_{\alpha}}=s_{\alpha} $ for all $ \alpha\in I $.
+        \end{itemize}
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ X $ be a closed subspace of a topological space $ Y $, and let $ \iota:X\to Y $ be the identity embedding. Let $ Sh(X) $ and $ Sh(Y) $ be the categories of sheaves of abelian groups on $ X $ and $ Y $ respectively. Given $ F\in Sh(X) $, identify the stalks of the sheaf $ \iota_{*}F $. Use this to show that the functor $ \iota_{*}:Sh(X)\to Sh(Y) $ is exact.
+
+    \begin{proof}
+        Suppose that $ y\in Y\setminus X $. Choose a representative $ (s,V)\in (\iota_{*}F)_{y} $. Let $ U:=V\cap(Y\setminus X) $, so $ U $ is an open subset of $ V $ containing $ y $. Thus, in the stalk $ (s,V) = (s\restr_{U}, U) $. We compute that,
+        \[
+            s\restr_{U}\in\iota_{*}F(U) = F(\iota^{-1}(U)) = F(X\cap U) = F(\emptyset) \implies s\restr_{U} = 0
+        \]
+        whence $ (s, V) = 0 $. Thus $ (\iota_{*}F)_{y} = 0 $. \\
+
+        Suppose that $ x\in X $. Choose a representative $ (s,V)\in (\iota_{*}F)_{x} $. Then $ s\in F(V\cap X) $. Hence $ (s, V) = (s\restr_{V\cap X}, V\cap X)\in F_{x} $, so $ (\iota_{*}F)_{x}\sub F_{x} $. On the other hand, suppose that $ (s,U\cap X)\in F_{x} $ where $ U $ is an open set in $ Y $. Define $ s '\in F(U\cap (Y\setminus X)) $ by $ s ' = 0 $. Note that $ U = (U\cap X)\cup (U\cap (Y\setminus X)) $ and $ s, s ' $ agree on the intersection of this covering trivially, so by the gluing axiom there exists some $ \widetilde{s}\in F(U) $ such that $ \widetilde{s}\restr_{U\cap X} = s $ and $ \widetilde{s}\restr_{U\cap (Y\setminus X)} = 0 $. Thus $ (s,U\cap X) \in (\iota_{*}F)_{x} $. \\
+
+        Now we shall show that $ \iota_{*} $ is an exact functor. Suppose that $ f:F\to G $ is injective/surjective. We show that $ \iota_{*}f $ is injective/surjective on stalks whenever $ f $ is. Suppose that $ x\in Y $. If $ x\in Y\setminus X $, then $ (\iota_{*}F)_{x} = 0 = (\iota_{*}G)_{x} $, whence $ (\iota_{*}f)_{x} $ is trivially injective/surjective. Thus, suppose $ x\in X $. Then $ (\iota_{*}f)_{x} = f_{x} $, whence $ f_{x} $ is necessarily injective/surjective. Thus $ \iota_{*} $ preserves injectivity and surjectivity.\\
+
+        Now suppose that $ F\xrightarrow{f}G\xrightarrow{g}H $ is exact. Suffices to show exactness on level of stalks. If $ x\in Y\setminus X $ then clear, so suppose $ x\in X $. Then $ (\iota_{*}f)_{x} = f_{x} $ and $ (\iota_{*}g)_{x} = g_{x} $, so image of the stalkwise sequence under this functor is exact, whence original global sequence is exact.
+
+
+        
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ X=Y $ be the unit circle $ \{z\in \C : |z| = 1\} $, and let $ f:X\to Y $ be given by $ f(z) = z^{2} $. Fix an abelian group $ S $ and let $ F $ be the constant sheaf of abelian groups on $ X $ with value group $ S $ (recall that for an open subset $ U \sub X $, the group $ F(U) $ consists of all locally constant functions $ U\to S $). 
+    Show that for any $ y\in Y $, the stalk $ (f_{*}F)_{y} $ is isomorphic to $ S\times S $. On the other hand, let $ G $ be the constant sheaf on $ Y $ with value group $ S\times S $. While $ G $ has the same stalks as $ f_{*}F $, show that $ G\not \simeq f_{*}F $. (\textit{Hint}. Compute global sections.)
+
+    \begin{proof}
+        
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ X $ be a topological space, and let $ \mc{B} $ be a basis of the topology. Given two sheaves $ F $ and $ G $ on $ X $, assume that for every $ U\in\mc{B} $ there is a morphism $ f_{U}: F(U)\to G(U) $, and that for $ U,V\in \mc{B} $ such that $ V\sub U $, the diagram
+    \[\begin{tikzcd}
+	    {F(U)} && {G(U)} \\
+	    \\
+	    {F(V)} && {G(V)}
+	    \arrow["{f_U}", from=1-1, to=1-3]
+	    \arrow["{\rho(F)_V^U}"', from=1-1, to=3-1]
+	    \arrow["{\rho(G)_V^U}", from=1-3, to=3-3]
+	    \arrow["{f_V}"', from=3-1, to=3-3]
+    \end{tikzcd}\]
+    commutes. Show that there exists a unique morphism of sheaves $ f:F\to G $ for which $ f_{U} $ for $ U\in \mc{B} $ coincide with the given ones. Furthermore, show that if $ f_{U} $ is surjective (resp., injective) for every $ U\in \mc{B} $, then $ f $ is surjective (resp., injective) as a \textit{morphism of sheaves}.
+
+
+    \begin{proof}
+        Fix an open set $ U\sub X $. Let $ \mc{U} = \{V\in \mc{B}: V\sub U\} $. Recall that, since $ F $ is a sheave, we have an isomorphism $ \tau(F)_{U}:F(U)\to\displaystyle\varprojlim_{V\in\mc{U}}F(U) $, and similarly for $ G $. Now for $ W\in\mc{U} $, we define a map $ F(U)\to G(W) $ by the following composition:
+        \[
+            F(U)\xrightarrow[\sim]{\tau(F)_{U}}\varprojlim_{V\in\mc{U}}F(V)\xrightarrow{\pi_{W}}F(W)\xrightarrow{f_{W}}G(W).
+        \]
+        Then, for $ W_{1},W_{2}\in\mc{U} $ with $ W_{1}\supseteq W_{2} $, we have the following diagram:
+        \[\begin{tikzcd}
+	        & {F(U)} \\
+	        & {\displaystyle\varprojlim_{V\in\ \mathcal{U}}F(V)} \\
+	        \\
+	        {F(W_1)} && {F(W_2)} \\
+	        \\
+	        {G(W_1)} && {G(W_2)}
+	        \arrow["\sim", from=1-2, to=2-2]
+	        \arrow["{\pi_{W_1}}"', from=2-2, to=4-1]
+	        \arrow["{\pi_{W_2}}", from=2-2, to=4-3]
+	        \arrow["{\rho(F)_{W_2}^{W_1}}", from=4-1, to=4-3]
+	        \arrow["{f_{W_1}}"', from=4-1, to=6-1]
+	        \arrow["{f_{W_2}}", from=4-3, to=6-3]
+	        \arrow["{\rho(G)_{W_2}^{W_1}}", from=6-1, to=6-3]
+        \end{tikzcd}\]
+        This diagram commutes as we have assumed that the square commutes and we know by definition that the triangle commutes. By the universal property of the inverse limit, there exists a map $ \widetilde{f}_{U}:F(U)\to\displaystyle\varprojlim_{V\in\ \mathcal{U}}G(V) $. This map is unique with respect to the following diagram commuting under same assumptions as the previous diagram:
+        \[\begin{tikzcd}
+	        & {F(U)} \\
+	        \\
+	        & {\displaystyle\varprojlim_{V\in\ \mathcal{U}}G(V)} \\
+	        {G(W_1)} && {G(W_2)}
+	        \arrow["{\pi_{W_1}}"', from=3-2, to=4-1]
+	        \arrow["{\pi_{W_2}}", from=3-2, to=4-3]
+	        \arrow["{f_{W_1}\circ \pi_{W_1}\circ \tau(F)_U}"', curve={height=12pt}, from=1-2, to=4-1]
+	        \arrow["{f_{W_2}\circ \pi_{W_2}\circ \tau(F)_U}", curve={height=-12pt}, from=1-2, to=4-3]
+	        \arrow["{\exists!\ \widetilde{f}_U}"', dashed, from=1-2, to=3-2]
+            \arrow["{\rho(G)_{W_2}^{W_1}}"', from=4-1, to=4-3]
+        \end{tikzcd}\]
+        Letting $ f_{U} = \tau(F)_{U}^{-1}\circ \widetilde{f}_{U} $, we get the desired morphism $ f_{U}:F(U)\to G(U) $. \\
+
+        \underline{Agrees on basis elements}: Suppose that $ U\in \mc{B} $. Then $ \tau(G)_{U}^{-1} = \pi_{U} $ and $ \tau(F)_{U}^{-1} = \pi_{U} $ . Let $ s\in F(U) $. The image of $ s $ under the elementwise maps for each $ W\in \mc{U} $ is $ f_{W}(\rho(F)_{W}^{U}s)\in G(W) $. Hence, under the constructed map, i.e. $ \widetilde{f}_{U} $ composed with $ \tau(F)_{U}^{-1} = \pi_{U} $, we see that
+        \[
+            s\xmapsto{\widetilde{f}_{U}}\lr{f_{W}(\rho(F)_{W}^{U}s)}_{W\in\mc{U}}\xmapsto{\pi_{U}}f_{U}(\rho(F)_{U}^{U}s) = f_{U}(s).
+        \]
+
+        \underline{Uniqueness}: If $ g,h $ are morphisms of sheaves $ F,G $ such that $ g_{U} = h_{U} $ for all $ U\in\mc{B} $, then it follows from the fact that $ \mc{B} $ is a basis that $ g $ and $ h $ agree on stalks, whence $ G $ being a sheaf implies that $ g = h $. \\
+
+        \underline{Injective on basis $ \implies $ injective}: Consider the kernel sheaf $ \ker(f) $. For all $ V\in\mc{B} $, we have by assumption that $ \ker(f)(V) = \ker(f_{V}) = 0 $. Moreover,  for $ U\sub X $ open,  
+        \[
+            \ker(f)(U) \cong \varprojlim_{V\in\ \mc{U}} \ker(f)(V) = \varprojlim_{V\in\ \mc{U}} 0 = 0,
+        \]
+        so $ \ker(f) = 0 $ whence by definition $ f $ is an injective morphism.\\
+
+        \underline{Surjective on basis $ \implies $ surjective}: We wish to show that the sheafification $ \im(f)^{+} $ of $ \im(f) $ is isomorphic as sheaves to $ G $. It suffices to show that the pair $ (G, \iota:\im(f)\to G) $ satisfies the universal property for $ (\im(f)^{+},\theta:\im(f)\to\im(f)^{+}) $. 
+        Hence, let $ H $ be a sheaf on $ X $ and $ h:\im(f)\to H $ a morphism of presheaves. Then, for $ U\in \mc{B} $, we have a map $ h_{U}:\im(f)(U)=G(U)\to H(U) $. Moreover, for $ U,V\in\mc{B} $ with $ U\supseteq V $, the following diagram commutes
+        \[\begin{tikzcd}
+	        {G(U)} && {H(U)} \\
+	        \\
+	        {G(V)} && {H(V)}
+	        \arrow["{h_U}", from=1-1, to=1-3]
+	        \arrow["{\rho(G)_V^U}"', from=1-1, to=3-1]
+	        \arrow["{\rho(H)_V^U}", from=1-3, to=3-3]
+	        \arrow["{h_V}"', from=3-1, to=3-3]
+        \end{tikzcd}\]
+        Hence, we are in the situation of the original problem, so we get a unique morphism $ h^{+}:G\to H $ such that $ h^{+}_{U} = h_{U} $ for $ U\in \mc{B} $. Hence, $ h^{+}\circ\iota = h $, so by uniqueness of sheafification $ G\cong\im(f)^{+} $. Hence $ f $ is surjective.
+
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ (X,\O_{X}) $ and $ (Y, \O_{Y}) $ be ringed spaces. Suppose we are given an open covering $ \{U_{i}\}_{i\in I} $ of $ X $, and for each $ i\in I $ a morphism $ (f_{i},f_{i}^{\#}):(U_{i},\O_{X}\vert U_{i}) \to (Y,\O_{Y}) $. If $ (f_{i},f_{i}^{\#}) $ and $ (f_{j}, f_{j}^{\#}) $ coincide on the overlap $ U_{i}\cap U_{j} $ for all $ i,j\in I $ then there exists a morphism $ (f,f^{\#}) $ that restricts to $ (f_{i},f_{i}^{\#}) $ on  $ (U_{i},\O_{X}\vert U_{i}) $.
+
+    \begin{proof}
+        Define a map $ f:X\to Y $ by $ f(x) = f_{i}(x) $ whenever $ x\in U_{i} $. This map is well-defined since $ f_{i}\restr_{U_{i}\cap U_{j}} = f_{j}\restr_{U_{i}\cap U_{j}} $ for all $ i,j\in I $. Note that $ f $ is continuous since if $ V\sub Y $ is open, then $ f^{-1}(V) = \bigcup_{i\in I}f^{-1}(V)\cap U_{i} = \bigcup_{i\in I}f_{i}^{-1}(V) $ which is open by assumption.\\
+
+        \underline{Definition of $ f^{\#} $}: Let $ V\sub Y $ open. We wish to define a ring homomorphism $ f^{\#}(V):\O_{Y}(V)\to f_{*}\O_{X}(V) = \O_{X}(f^{-1}(V)) $. We shall do this locally and then use the gluing axiom for sheaves to obtain a global definition.
+
+        Let $ s\in \O_{Y} $. Then, for each $ i\in I $, we get a section $ t_{i}:=f_{i}^{\#}(s)\in\O_{X}(f_{i}^{-1}(V)) $. Since $ f_{i}^{\#} $ agrees with $ f_{j}^{\#} $ on $ U_{i}\cap U_{j} $, it follows that $ t_{i}\restr_{U_{i}\cap U_{j}} = t_{j}\restr_{U_{i}\cap U_{j}} $, so by the gluing axiom there exists a section $ t\in \O_{X}(f^{-1}(V)) $ such that $ t\restr_{U_{i}} = t_{i} $. Moreover, this section is unique with respect to this property by the locality axiom for sheaves. Hence, the definition $ f^{\#}(V)(s) := t $ is well defined. \\
+
+        \underline{$ (f,f^{\#}) $ restricts to $ (f_{i}, f_{i}^{\#}) $ on $ (U_{i},\O_{X}\restr_{U_{i}}) $}: Let $ V\sub Y $ be open. We must show that the following diagram commutes:
+        \[\begin{tikzcd}
+	        && {f_*\mathcal{O}_X(V)} \\
+	        {\mathcal{O}_Y(V)} &&&& {\mathcal{O}_X(f_i^{-1}(V)) = f_{i,*}\mathcal{O}_X(V)}
+	        \arrow["{f_i^\#(V)}", from=2-1, to=2-5]
+	        \arrow["{f^\#(V)}", from=2-1, to=1-3]
+	        \arrow["{\rho^{f^{-1}(V)}_{f_i^{-1}(V)}}", from=1-3, to=2-5]
+        \end{tikzcd}\]
+        Let $ s\in \O_{Y}(V) $ be a section, $ t_{i}:= f_{i}^{\#}(V)(s) $, and $ t:=f^{\#}(V)(s) $. By construction, $ t $ is such that $ t\restr_{f_{i}^{-1}(V)} = t_{i}$, which is precisely equivalent to the statement that the above diagram commutes.
+
+        \underline{$ f^{\#} $ is a presheaf morphism}: Let $ W\sub V $ be open subsets of $ Y $. We wish to show that the following diagram commutes:
+        \[\begin{tikzcd}
+	        {\mathcal{O}_Y(V)} && {\mathcal{O}_X(f^{-1}(V))} \\
+	        \\
+	        {\mathcal{O}_Y(W)} && {\mathcal{O}_X(f^{-1}(W))}
+	        \arrow["{f^{\#}(V)}", from=1-1, to=1-3]
+	        \arrow["{f^{\#}(W)}", from=3-1, to=3-3]
+	        \arrow[from=1-3, to=3-3]
+	        \arrow[from=1-1, to=3-1]
+        \end{tikzcd}\]
+        Consider the following diagram:
+        \[\begin{tikzcd}
+	        & {\mathcal{O}_Y(W)} && {\mathcal{O}_Y(V)} \\
+	        \\
+	        & {\mathcal{O}_X(f^{-1}(W))} && {\mathcal{O}_X(f^{-1}(V))} \\
+	        \\
+	        {\mathcal{O}_X(f_i^{-1}(W))} &&&& {\mathcal{O}_X(f_i^{-1}(V))}
+	        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=1-4, to=1-2]
+	        \arrow["{f^\#(W)}", color={rgb,255:red,92;green,92;blue,214}, from=1-2, to=3-2]
+	        \arrow["{f^\#(V)}"', color={rgb,255:red,92;green,92;blue,214}, from=1-4, to=3-4]
+	        \arrow[from=3-4, to=3-2]
+	        \arrow["{\rho_{f_i^{-1}(W)}^{f^{-1}(W)}}", color={rgb,255:red,92;green,92;blue,214}, from=3-2, to=5-1]
+	        \arrow["{\rho_{f_i^{-1}(V)}^{f^{-1}(V)}}"', color={rgb,255:red,92;green,92;blue,214}, from=3-4, to=5-5]
+	        \arrow["{f_i^{\#}(W)}"', color={rgb,255:red,92;green,92;blue,214}, curve={height=12pt}, from=1-2, to=5-1]
+	        \arrow["{f_i^{\#}(V)}", color={rgb,255:red,92;green,92;blue,214}, curve={height=-12pt}, from=1-4, to=5-5]
+	        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=5-5, to=5-1]
+        \end{tikzcd}\]
+        By the previous part, the two blue triangles commute. Since $ f_{i}^{\#} $ is a sheaf morphism, the outer curved trapezoid (made up of the two curved blue edges and the two red horizontal edges) commutes. Lastly, the bottom inner trapezoid is made up of only restriction maps and both paths along this trapeziod result by functoriality in the restriction map from $ f^{-1}(V) $ to $ f_{i}^{-1}(W) $, hence they commute. Thus, any path in the diagram ending in the bottom left node commutes. So, the two paths in the following diagram ending in in the bottom left node commute:
+        \[\begin{tikzcd}
+	        & {\mathcal{O}_Y(W)} && {\mathcal{O}_Y(V)} \\
+	        \\
+	        & {\mathcal{O}_X(f^{-1}(W))} && {\mathcal{O}_X(f^{-1}(V))} \\
+	        \\
+	        {\mathcal{O}_X(f_i^{-1}(W))}
+	        \arrow[color={rgb,255:red,214;green,92;blue,92}, from=1-4, to=1-2]
+	        \arrow["{f^\#(W)}", color={rgb,255:red,92;green,92;blue,214}, from=1-2, to=3-2]
+	        \arrow["{f^\#(V)}"', color={rgb,255:red,92;green,92;blue,214}, from=1-4, to=3-4]
+	        \arrow[from=3-4, to=3-2]
+	        \arrow["{\rho_{f_i^{-1}(W)}^{f^{-1}(W)}}", color={rgb,255:red,92;green,92;blue,214}, from=3-2, to=5-1]
+        \end{tikzcd}\]
+        Since this holds for all $ i\in I $, locality axiom for sheaves implies that in fact the original diagram commutes:
+        \[\begin{tikzcd}
+	        {\mathcal{O}_Y(V)} && {\mathcal{O}_X(f^{-1}(V))} \\
+	        \\
+	        {\mathcal{O}_Y(W)} && {\mathcal{O}_X(f^{-1}(W))}
+	        \arrow["{f^{\#}(V)}", from=1-1, to=1-3]
+	        \arrow["{f^{\#}(W)}", from=3-1, to=3-3]
+	        \arrow[from=1-3, to=3-3]
+	        \arrow[from=1-1, to=3-1]
+        \end{tikzcd}\]
+        
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    Let $ A $ be a commutative ring, and let $ \{M_{i},\tau_{i}^{j}\} $ be a direct system of $ A $-modules over a directed set $ I $. For any $ A $-module $ N $, one can consider the direct system $ \{M_{i}\otimes_{A} N, \tau_{i}^{j}\otimes id_{N}\} $. Show that there is a natural isomorphism of $ A $-modules $ (\lim_{\to}M_{i}) \otimes_{A} N \cong \lim_{\to}(M_{i}\otimes_{A}N)$.
+
+    \begin{proof}
+        Note that, letting $ \iota_{i}: M_{i}\to \varinjlim M_{i} $ be the natural map, we get maps $ \iota_{i}\otimes id_{N}:M_{i}\otimes_{A}\to (\varinjlim M_{i})\otimes_{A}N $ making the following diagram commute:
+        \[\begin{tikzcd}
+	        {M_i\otimes_A N} && {M_j\otimes_A N} \\
+	        \\
+	        & {\varinjlim (M_i\otimes_A N)} \\
+	        \\
+            & {(\varinjlim M_{i})\otimes_{A}N} 
+	        \arrow["{\tau_i^j\otimes id_{N}}", from=1-1, to=1-3]
+	        \arrow["{\iota_i\otimes id_N}"', curve={height=12pt}, from=1-1, to=5-2]
+	        \arrow["{\iota_j\otimes id_N}", curve={height=-12pt}, from=1-3, to=5-2]
+	        \arrow["{}", from=1-1, to=3-2]
+	        \arrow["{}"', from=1-3, to=3-2]
+	        \arrow["\exists! \Phi", dashed, from=3-2, to=5-2]
+        \end{tikzcd}\]
+        Hence, by the universal property of direct limits, there exists a morphism $ \Phi:\varinjlim(M_{i}\otimes_{A}N)\to (\varinjlim M_{i})\otimes_{A}N $ making the above diagram commute for all $ i,j\in I $ such that $ i\leq j $. We wish to show that this map is an isomorphism. It suffices to find an inverse in the category of $ A $-modules.\\
+
+        To this end, consider maps $ B_{i}:M_{i}\times N\to M_{i}\otimes_{A} N $ given by $ B_{i}(x,y) = x\otimes y $. For all $ i\leq j $, the following diagram commutes:
+        \[\begin{tikzcd}
+	        {M_i\times N} &&&& {M_j\times N} \\
+	        \\
+	        {M_i\otimes_A N} && {(\varinjlim M_i)\times N} && {M_j\otimes_A N} \\
+	        \\
+	        && {\varinjlim (M_i\otimes_A N)}
+	        \arrow["{\iota_i\times id_N}", from=1-1, to=3-3]
+	        \arrow["{\iota_j \times id_N}"', from=1-5, to=3-3]
+	        \arrow["{\exists!\widetilde{B}}"', dotted, from=3-3, to=5-3]
+	        \arrow[from=3-1, to=5-3]
+	        \arrow["{B_i}"', from=1-1, to=3-1]
+	        \arrow["{B_j}", from=1-5, to=3-5]
+	        \arrow[from=3-5, to=5-3]
+	        \arrow["{\tau_i^j\times N}"{description}, from=1-1, to=1-5]
+        \end{tikzcd}\]
+        hence again by universality there exists a unique morphism $ \widetilde{B}:(\varinjlim M_{i})\times N\to \varinjlim(M_{i}\otimes_{A}N) $ making the above diagram commute. Note that this map $ \widetilde{B} $ is $ A $-bilinear, so by the universal property of tensor products $ \widetilde{B} $ factors through a unique morphism $ B:(\varinjlim M_{i})\otimes_{A}N\to \varinjlim(M_{i}\otimes_{A}N) $. Moreover, this map provides an inverse for $ \Phi $, and thus we are done.
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    A commutative ring $ A $ is called \textit{reduced} if its nilradical is zero. Show that $ A $ is reduced if and only if all localizations $ A_{\mf{p}} $ for all $ \mf{p}\in\Spec(A) $ are reduced. This can be generalized to schemes: a scheme $ X $ is defined to be reduced if the ring $ \O_{X}(U) $ is reduced for all open $ U\sub X $. Show that a scheme $ X $ is reduced if and only if all stalks $ \O_{X,x} $ are reduced.
+
+    \begin{proof}\ \\
+        Fix a prime $ \p\in\Spec(A) $ and let $ \iota:A\to A_{\p} $ be the localization map. We claim that $ Nil(A_{\p}) = \iota(Nil(A))A_{\p} $. Suppose $ \frac{a}{s}\in \iota(Nil(A)) $. Then $ \frac{a}{s} = \frac{b}{1} $ for some $ b\in Nil(A) $. Let $ n\in \N $ be such that $ b^{n} = 0 $. Then $ \lr{\frac{a}{s}}^{n} = 0 $, so $ \frac{a}{s} \in Nil(A_{\p}) $. Hence $ \iota(Nil(A))\sub Nil(A_{\p}) $, whence ideality implies that $ \iota(Nil(A))A_{\p}\sub Nil(A_{\p}) $.
+        On the other hand, suppose that $ \frac{a}{s}\in Nil(A_{\p}) $, so there is some $ n\in \N $ such that $ \lr{\frac{a}{s}}^{n} = 0 $. By definition, there is some $ u\in A\setminus \p $ such that $ a^{n}u = 0 $. But then $ (au)^{n} = 0 $, so $ au\in Nil(A) $. Lastly, we note that
+        \[
+            \frac{a}{s} = \frac{au}{su} = \frac{au}{1}\frac{1}{su} = \iota(au)\frac{1}{su}\in \iota(Nil(A))A_{\p}.
+        \]
+
+
+        \underline{$ \implies $}: Suppose that $ A $ is reduced, i.e. $ 0 = Nil(A) $. Let $ \p\in \Spec(A) $ and let $ \iota $ be the localization map. Then $ Nil(A_{\p}) = \iota(Nil(A))A_{\p} = 0 $. \\
+
+        \underline{$ \impliedby $}: Suppose, for the sake of contradiction, that there is some $ x\in Nil(A)\setminus\{0\} $. Then, for all $ \p\in\Spec(A) $, we have that $ x\in \p\setminus \{0\} $. Consider the annihilator $ 0\neq \Ann(x) \subsetneq A $. Choose a maximal ideal $ \m\supseteq\Ann(x) $. Note that $ x\in Nil(A)\setminus 0 $, hence $ \frac{x}{1} \in Nil(A_{\m}) = 0 $ so there is some $ u\in A\setminus\m $ such that $ ux = 0 $. Thus $ u\in \Ann(x)\sub \m $, contradicting that $ u\in A\setminus \m $.
+
+        \underline{$ \implies $}: Suppose that $ X $ is reduced. So $ \O_{X}(U) $ is reduced for all open $ U\sub X $. Fix a point $ x\in X $, and suppose that $ f\in \O_{X,x}\setminus\{0\} $. Then, for all open $ U\sub X $, $ (f,U)\in \O_{X}(U)\setminus \{0\} $, whence $ f^{n} \neq 0 $ in $ \O_{X}(U) $ for all $ n\in \N $ by reduced. Hence, by constrution of the stalk map, $ f^{n} \neq 0  $ in $ \O_{X,x} $ for all $ n\in \N $.
+
+        \underline{$ \impliedby $}: Suppose that $ \O_{X,x} $ is reduced for all $ x\in X $. Let $ U\sub X $ be open and fix $ f\in\O_{X}(U) $. If $ f^{n} = 0 $, then $ f^{n} = 0 $ in $ \O_{X,x} $ for all $ x\in U $, whence $ f = 0 $ in $ \O_{X,x} $ for all $ x\in U $ which implies that $ f = 0 $.
+    \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+    As in class, consider $ A = K[x,y] $ and $ X=\Spec(A) $. Let $ M $ denote that $ A $-module $ A/I $ where $ I = xA $. Calculate the stalks $ \widetilde{M_{\mf{p}}} $ of the corresponding sheaf $ \widetilde{M} $ for all $ \mf{p}\in X $. Is $ \widetilde{M} $ a skyscraper sheaf?
+    
+    \begin{proof}
+        By problem 6, 
+        \[
+            \widetilde{M}_{\p} = \varinjlim_{D(f)\ni \p}\widetilde{M}(D(f)) = \varinjlim_{D(f)\ni\p}M\otimes_{A}A_{f} \cong M\otimes \varinjlim_{D(f)\ni\p}A_{f}\cong M_{\p}.
+        \]
+        Thus we must compute $ M_{\p} $ for $ \p \in \{(x), (y), (0) \} $. 
+    \end{proof}
+    % Show that $ \widetilde{M}_p \cong M_p $
+\end{homeworkProblem}
+
+
+\end{document}

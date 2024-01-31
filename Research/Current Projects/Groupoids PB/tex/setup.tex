@@ -1,0 +1,48 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Setup}
+
+\subsection{Groupoid Side}
+
+Let $ (\rG, \mu) $ be a discrete pmp groupoid and $ X = \rG^{0} $. Assume we have a collection $ \{\pi_{x}\}_{x\in X} $ such that $ \pi_{x}\in \Prob(\rG^{x}) $ for all $ x\in X $. Extend each $ \pi_{x} $ by zero to be defined on of $ \rG $. For $ g\in \rG $, set
+\[
+    \pi_{g} = g_{*}\pi_{s(g)}
+\]
+In the framework of \cite{kai:05}, $ \{\pi_{g}\} $ give the transition probabilites for a Markov operator on $ \rG $. Such a Markov operator is called \textit{invariant} if $ g_{*} \pi_{h} = \pi_{gh} $ for all $(g,h) \in \rG^{(2)} $.\\
+
+
+\begin{definition}[\cite{kai:05}]
+  A family $ \pi = \{\pi_{g}\} $ of transition probabilities is called Borel if for every non-negative Borel function $ f $, the function $ \pi(f):\rG\to \C $ given by $ \pi(f)(g) = \int_{\rG} f \dd{\pi_{g}} $ is Borel. 
+\end{definition}
+
+Given such a Borel family $ \pi $, we then get an induced Markov operator $ P:\Bor(\rG)\to\Bor(\rG) $ given by $ Pf = \pi(f) $. The corresponding \textit{dual operator} $ \widetilde{P}:M_{+}(\rG)\to M_{+}(\rG) $ is then given by 
+\[
+  \widetilde{P}(\theta) = \int_{\rG} \pi_{g} \dd{\theta(g)} \text{ for all } \theta\in M_{+}(\rG).
+\]
+Now by definition of the vector-valued integral,
+\begin{align*}
+  \inp{\theta}{Pf} = \int_{\rG} Pf(g) \dd{\theta(g)} &= \int_{\rG} \lr{\int_{\rG}f \dd{\pi_{g}}} \dd{\theta(g)}\\
+  &= \int_{\rG} f \dd{\widetilde{P} \theta} = \inp{\widetilde{P} \theta}{f}
+\end{align*}
+
+
+
+\subsection{Von Neumann Algebras Side}
+
+
+Fix a tracial von Neumann algebra $ (M,\tau) $ and an embedding $ M\sub \mathcal{A} $ into a $ C^{*} $ algebra $ \mathcal{A} $.
+\[
+  S_{\tau}\mathcal{A}) := \{\phi\in S(\mathcal{A}) : \phi\vert_{M} = \tau\}.
+\]
+Fixing $ \phi\in S_{\tau}(\mathcal{A}) $ gives an inclusion $ L^{2}(M,\tau)\sub L^{2}(\mathcal{A},\phi) $. Let $ e_{M} = Proj_{L^{2}(M,\tau)}\in B(L^{2}(\mathcal{A},\phi)) $. Define a u.c.p. map $ \mathcal{P}_{\phi}:\mathcal{A} \to B(L^{2}(M,\tau))$, by
+\[
+  \mathcal{P}_{\phi}(T) := e_{M}Te_{m} \text{ for }T\in \mathcal{A}
+\]
+For $ x\in M $, $ \mathcal{P}_{\phi}(x) = x $. The map $ \mathcal{P}_{\phi} $ is the \textit{Poisson transform} of the inclusion $ M\sub \mathcal{A} $. 
+
+
+\end{document}

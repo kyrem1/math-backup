@@ -1,0 +1,297 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+
+
+
+%--------Page Setup--------
+
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\ran}{ran}
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7410 Homework 2}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+  Let $ X,Y,Z $ be normed linear spaces with $ Y\leq X $ and $ T:X\to Z $ a bounded linear operator such that $ T\vert_Y = 0 $. Then there is a unique $ \bar{T}: X/Y\to Z $ so that $ \bar{T}\circ Q = T $ where $ Q:X\to X/Y $ is the quotient map. Show that $ \norm{\bar{T}} = \norm{T} $. 
+  
+  \begin{proof}
+    On one hand, we know that $ \norm{T} = \norm{\bar{T}\circ Q} \leq \norm{\bar{T}}\norm{Q} \leq \norm{\bar{T}} $. Note that $ \ran(\bar{T})\sub \ran(T) $. We claim that $ Q $ \\
+
+    Note that, for $ y\in Y $, $ \norm{Tx} = \norm{T(x+y)} \leq \norm{T}\norm{x+y} $. Thus, by taking the infimum over $ y\in Y $, we obtain that $\norm{\bar{T}(x+Y)} \norm{Tx}\leq \norm{T}\norm{x+Y} $. Thus, $ \norm{\bar{T}}\leq \norm{T} $.
+
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  \textbf{(a)}: Given $ Y\leq X $ normed linear spaces with $ Y \neq X $, prove that for all $ \eps>0 $ there is an $ x\in X $ with $ \norm{x} = 1 $ so that the distance from $ x $ to $ Y $ is at least $ 1-\eps $. 
+
+  \begin{proof}
+    Let $ Q:X\to X/Y $ be the corresponding quotient map. We claim that $ \norm{Q}= 1 $. We have already shown that $ \norm{Q} \leq 1 $. Pick $ x_{0}\in X\setminus Y $ and let $ d = dist(x_{0},Y) $. By Hahn Banach, there exists a linear functional $ \phi\in X^{*} $ such that $ \norm{\phi} = d >0 $, $ \phi(x_{0})=1 $, $ \phi\vert_Y = 0 $. Now, by problem 1, we have $ \widetilde{\phi} :X/Y\to \F$ such that $ \widetilde{\phi}\circ Q = \phi $ and $ \norm{\phi}= \norm{\widetilde{\phi}} $. Then $ \norm{\phi}\leq \norm{\widetilde{\phi}}\norm{Q} = \norm{\phi}\norm{Q} $, whence $ \norm{Q}\geq 1 $. \\
+
+    So $ \norm{Q} =1 $, whence $ 1 = \sup_{\norm{x}\leq 1}\norm{Qx}= \sup_{\norm{x}=1}d(x,Y)$, where the second equality follows from the fact that $ X/Y\neq 0 $. As $ 1-\eps < 1 $, there exists an $ x\in X $ with $ \norm{x}=1 $ such that $ d(x,Y)\geq 1-\eps $.
+  \end{proof}
+
+
+  \textbf{(b)}: Prove that if $ X $ is a normed linear space so that $ Ball(X) =\{x\in X: \norm{x}\leq 1\} $ is compact, then $ X $ is finite dimensional.
+  
+  \begin{proof}
+    By compactness, there exist $ x_{1},\ldots,x_{n} \in Ball(X)$ such that $ Ball(X) \sub \bigcup_{1\leq i\leq n} B_{1/2}(x_{i}) = \bigcup_{1\leq i\leq n} x_i + \frac{1}{2}\cdot Ball(X)$.
+    Let $ Y = \Span\{x_{1},\ldots,x_{n}\} $, so   
+    \[
+      Ball(X)\sub Y + \frac{1}{2}\cdot Ball(X) \sub Y + \frac{1}{2}\lr{Y+\frac{1}{2}Ball(X)} \sub \cdots \sub Y + \frac{1}{2^{n}}Ball(X). 
+    \] 
+    Now let $ x\in Ball(X) $. Then there exist $ y\in Y $ and $ z_{n}\in Ball(X) $ such that for all $ n\in \N $, $ x = y + \frac{1}{2^{n}} $. Then 
+    \[
+      \norm{x-y} = \frac{1}{2^n}\norm{z^{n}} \leq \frac{1}{2^{n}}\xrightarrow{n\to\infty}0,
+    \]
+    so $ Ball(X)\sub Y $, whence by linearity of $ Y $, $ X=Y $.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  \textbf{(a)}: Let $ X,Y $ be Banach spaces and $ A\in B(X,Y) $. Show that there is a $ c>0 $ such that $ \norm{Ax}\geq c \norm{x} $ for all $ x\in X $ if and only if $ \ker(A) = 0 $ and $ \ran(A) $ is closed.
+  
+  \begin{proof}\ \\
+    \underline{$\implies$}: If $ x\in \ker(A) $, then $ \norm{x}\leq \frac{1}{c}\norm{Ax} = 0 $, so $ \ker(A) = 0 $. Suppose that $ y_n = A x_{n} $ is a sequence in $ \ran(A) $ such that $ y_n\to y\in Y $. Then $ \norm{x_{n}- x_{m}} \leq \frac{1}{c}\norm{y_{n}-y_{m}} $, so $ (x_n)_{n} $ is Cauchy, whence by completeness there is some $ x\in X $ such that $ x_{n}\to x $. Since $ A $ is bounded, it follows that
+    \[
+      \norm{y_{n}-Ax} = \norm{Ax_{n}-Ax}\leq \norm{A}\cdot \norm{x_{n}-x}\xrightarrow{n\to\infty} 0,
+    \]
+    so since $ X $ is Hausdorff $ y=Ax $ is in $ \ran(A) $.\\
+
+    \underline{$\impliedby$}: Since $ \ran(A) $ is a closed subspace of $ Y $, $ \ran(A) $ is also Banach. Thus, by the inverse mapping theorem, $ A^{-1}\in B(\ran(A),X) $. Then, for $ x\in X $ and $ c = (\norm{A^{-1}}+1)^{-1}>0 $,
+    \[
+      \norm{x} = \norm{A^{-1}Ax} \leq \norm{A^{-1}}\norm{Ax} \leq \frac{1}{c}\norm{Ax}\implies \norm{Ax}\geq c \norm{x}.
+    \]
+  \end{proof}
+
+
+  \textbf{(b)}: Let $ X,Y,A $ be as in the previous part. Let $ V $ be the $ l^\infty $-direct sum of $ X $ so $ V = \{(x_n)_{n=1}^{\infty}\in X^\N : \sup_{n}\norm{x_{n}} < +\infty\} $. Define 
+  \[
+    approxker(A) = \frac{\{(x_n)_{n}\in V: \norm{Ax_{n}}\to0\}}{\{(x_n)_{n}\in V: \norm{x_{n}}\to0\}}
+  \]
+  Show that $ A $ is injective with closed image if and only if $ approxker(A) = \{0\} $.
+  (\textit{Hint}: For one of the implications, if the previous item fails, then for every $ \eps>0 $ there is an $ x\in X $ with $ \norm{x}=1 $ and $ \norm{Ax}<\eps $.)
+
+  \begin{proof}\ \\
+    \underline{$\implies$}: Suppose that $ A $ is injective with closed image, and let $ (x_n)_n\in V $ such that $ \norm{Ax_{n}}\to 0 $. Then by part (a), 
+    \[
+      \norm{x_n} \leq \frac{1}{c}\norm{Ax_{n}}\xrightarrow{n\to\infty}0,
+    \]
+    so $ approxker(A) = 0 $.
+
+    \underline{$\impliedby$}: We proceed by contraposition. Suppose that $ A $ fails to be injective with closed image. Then by part (a), for all $ n\in\N $ there is some $ x_{n}\in X $ such that $ \norm{x_{n}}=1 $ and $ \norm{Ax_{n}}<\frac{1}{n} $. So, $ (x_n)_n\in V $ and $ \norm{Ax_{n}}\to 0 $, but $ \norm{x_{n}}\not\to 0 $, so $ approxker(A)\neq\{0\} $.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Let $ 1\leq p\leq \infty $ and suppose $ (\alpha_{ij}) $ is a matrix such that $ (Af)(i) = \sum_{j=1}^{\infty} \alpha_{ij}f(j) $ defines an element $ Af $ of $ l^{p} $ for every $ f $ in $ l^{p} $. Show that $ A\in B(l^{p}) $.
+
+  \begin{proof}
+
+    We first claim that for each fixed $ i\in \N $, $ (\alpha_{ij})_{j}\in l^q $. So fix $ i\in\N $
+    
+    Suppose that $ (f_{n})_{n} $ is a sequence in $ l^{p}(\mu) $ such that $ f_{n}\xrightarrow{l^{p}}0 $ and $ g\in l^{p}(\mu) $ is such that $ Af_{n}\xrightarrow{l^{p}}g $. We show that $ g=0 $. Since the measure is counting measure, it suffices to show that $ (Af_{n})(i)\xrightarrow{n\to\infty} 0 $ for all $ k\in \N $.  \\
+
+    For $ k\in \N $, define $ T_k\in (l^{p})^* $ by $ T_k (f) = \sum_{j=1}^{k} \alpha_{ij}f(j) $.
+    Note that each $ T_{k} $ is bounded. Now, for fixed $ f\in l^{p} $ and all $ k\in \N $, 
+    \[
+      |T_{k}(f)| \leq \sum_{j=k}^{k} |\alpha_{ij}f(j)|\leq \sum_{j=1}^{\infty} |\alpha_{ij}f(j)| <+\infty,
+    \]
+    so by the uniform boundedness principle $ M:= \sup_{k\in\N}\norm{T_k}<+\infty $. Thus, for $ f\in l^{p} $, we have that $ |\sum_{j=1}^{\infty} \alpha_{ij}f(j)|\leq\liminf_{k\to\infty} |T_k f| \leq M\norm{f}_{p} $, so by the Riesz representation theorem $ (\alpha_{ij})_{j}\in l^q $.
+    
+    Now, by Holder's inequality,
+    \[
+      \lrvert{(Af_n)(i)} = \lrvert{\sum_{j=1}^\infty \alpha_{ij}f_{n}(j)} \leq \norm{(\alpha_{ij})_{j}}_{q}\norm{f_{n}}_{p} \xrightarrow{n\to\infty}0.
+    \]
+    So, by the closed graph theorem, $ A $ is bounded.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Let $ (X,\Sigma, \mu) $ be a $ \sigma $-finite measure space, $ 1\leq p<\infty $, and suppose that $ k:X\times X\to \F $ is a $ \Sigma\times \Sigma $ measurable function such that for $ f\in L^{p}(\mu) $ and a.e. $ x $, $ k(x,\cdot)f(\cdot)\in L^{1}(\mu) $ and $ (Kf)(x) = \int k(x,y)f(y)\dd{\mu(y)} $ defines an element $ Kf $ of $ L^{p}(\mu) $. Show that $ K:L^{p}(\mu)\to L^{p}(\mu) $ is a bounded operator.
+
+  \begin{proof}
+    For $ x\in X $ such that $ k(x,\cdot)f(\cdot)\in L^1(\mu) $, consider the map $ K_{x}:L^{p}(\mu)\to L^{1}(\mu) $ given by $ K_{x}f = k(x,\cdot)f(\cdot) $. This map is well defined by assumption. Suppose that $ (f_{n})_{n} $ is a sequence in $ L^{p}(\mu) $ such that $ f_{n}\xrightarrow{L^{p}}0 $ and $ g\in L^{p}(\mu) $ is such that $ Kf_{n}\xrightarrow{L^{p}}g $. We show that $ g=0 $. By passing to a subsequence, it suffices to assume $ f_{n}\to 0 $ pointwise a.e., and passing to a further subsequence we can assume that $ Kf_{n}\to g $ pointwise a.e. as well. We shall now justify an application of DCT.\\
+
+    Since $ (f_{n})_{n} $ converges in $ L^{p} $-norm, there is a subsequence $ (f_{n_{k}})_{k} $ such that $ \norm{f_m - f_{n_{k}}}_{p}<\frac{1}{2^{k}} $ for all $ m\geq n_{k} $. Let $ F' = \sum_{k=1}^{\infty}|f_{n_{k+1}}-f_{n_{k}}|$. Each partial sum for $ F ' $ has $ L^p $-norm less than $ 1 $ by the above estimate and Minkowski's inequality, whence Fatou's lemma implies that $ \norm{F '}_p \leq 1$. 
+    Letting $ F = f_{n_{1}}+\sum_{k=1}^{\infty} f_{n_{k+1}}-f_{n_{k}} $. By the previous estimate, $F\in L^p$. Thus, $|F|+F '\in L^p(\mu)$, and for all $ k\in \N $, we have that $ |f_{n_{k}}|\leq |F|+F ' $ pointwise a.e. \\
+
+    Now, without loss of generality, assume that $ n_{k}=k $ for all $ k\in \N $. Let $ h=|F|+F ' $. Then by assumption, for a.e. $ x\in X $ we have $ k(x,\cdot)h(\cdot)\in L^1(\mu) $. Now, for a.e. $ x\in X $, $ |K_{x}(f_{n})| \leq |K_{x}h| $ pointwise almost everywhere with $ K_{x}h\in L^1(\mu) $. So, by the dominated convergence theorem,
+    \[
+      \lim_{n\to\infty}\norm{K_{x}f_{n}}_1 = 0. 
+    \]
+   
+    Thus $ |K f_n(x)| \leq \norm{K_x f_n}_1 \to 0 $. Now, by an identical argument to above, we can find an $ \widetilde{h}\in L^p(\mu) $ such that $ |Kf_n|\leq \widetilde{h} $ pointwise a.e. So, by the dominated convergence theorem, $ \norm{Kf_{n}}_{p}\to 0 $, whence $ g = 0 $ a.e. So the closed graph theorem implies that $ K $ is bounded.
+  \end{proof}
+\end{homeworkProblem}
+
+
+
+
+
+
+\end{document}

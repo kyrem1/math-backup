@@ -1,0 +1,91 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+%--------Bibliography--------
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+%----------Glossary----------
+% TODO Make separate glossary files
+
+%%% Setup
+\usepackage[automake,symbols,nogroupskip,nonumberlist]{glossaries-extra}
+
+\newglossary*{norm}{Norms}
+
+
+%%% List
+
+\newglossaryentry{norm:BV}{
+    name={\ensuremath{\norm{\cdot}_{\mathrm{BV}}}},
+    type={norm},
+    description={BV-Norm},
+    category={symbol},
+}
+
+\newglossaryentry{norm:W}{
+    name={\ensuremath{\norm{\cdot}_{W^{k,p}(\Omega)}}},
+    type={norm},
+    description={Sobolev-Norm},
+    category={symbol},
+}
+
+\newglossaryentry{norm:Lp}{
+    name={\ensuremath{\norm{\cdot}_{L^p(\Omega)}}},
+    type={norm},
+    description={$ L^p $-Norm},
+    category={symbol},
+}
+
+\makeglossaries
+%----------------------------
+
+%-------Subfiles Setup-------
+\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{Geometric Measure Theory Notes}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+\subfile{./tex/notation.tex}
+
+
+\subfile{./tex/BV.tex}
+
+\newpage
+
+\glsaddall
+\printglossary[type=norm,style=long]
+
+\end{document}

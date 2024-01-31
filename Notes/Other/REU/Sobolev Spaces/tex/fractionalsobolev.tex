@@ -1,0 +1,47 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Fractional Sobolev Spaces}
+
+\begin{definition}\label{fracnorms}
+    Fix $ 1\leq p <+\infty $ and let $ s\in (0,1) $ be a fractional exponent. For $ u\in L^{p}(\Omega) $, define the \textit{Gagliardo (semi)norm} of $ u $ to be the quantity
+    \[
+        [u]_{W^{s,p}(\Omega)} := \lr{\int_{\Omega}\int_{\Omega} \frac{|u(x)-u(y)|^{p}}{|x-y|^{n+sp}}\dd{x}\dd{y}}^{\frac{1}{p}}.
+    \]
+    and define the \textit{fractional Sobolev space} $ W^{s,p}(\Omega):= \{u\in L^{p}(\Omega):[u]_{W^{s,p}(\Omega)}<+\infty\} $. This space is in fact Banach with the natural norm
+    \[
+        \norm{u}_{W^{s,p}(\Omega)} := \lr{\norm{u}_{L^{p}(\Omega)}^{p}+[u]_{W^{s,p}(\Omega)}^{p}}^{\frac{1}{p}}
+    \]
+    In a somewhat precise sense, the fraction sobolev spaces $ W^{s,p}(\Omega) $ are intermediary spaces between $ L^{p}(\Omega) $ and the classical Sobolev space $ W^{1,p}(\Omega) $.
+\end{definition}
+
+\begin{definition}\label{besselspace}
+    Fix $ p\in (1,+\infty) $ and $ s\in \R $. Define the \textit{Bessel potential} to be the operator
+    \[
+        \mathscr{J}_{s}f(\xi):= \mathscr{F}^{-1}\left[(1+| \xi|^{2})^{\frac{s}{2}}\mathscr{F}f\right].
+    \]
+
+    We define the \textit{Bessel Potential Spaces} $ H^{s,p}(\R^{n}) $ as follows:
+    \[
+        H^{s,p}(\R^{n}) := \{f\in \S^{\prime} : \mathscr{J}_{s}f \in L^{p}(\R^{n})\}
+    \]
+    \[
+        \norm{u}_{H^{s,p}(\R^{n})}:= \int_{\R^{n}}(1+| \xi|^{2})^{s}|\widehat{u} (\xi)|^{2}\dd{\xi}
+    \]
+\end{definition}
+
+
+
+
+\begin{proposition}
+    Let $ p\in[1,+\infty) $ and $ 0 < s \leq s^{\prime} < 1 $. Let $ \Omega\sub \R^{n} $ be an open set and $ u:\Omega\to \R $ a measurable function. Then there exists a constant $ C \geq 1 $ depending only on $ n$,$s$, $p$, such that
+    \[
+        \norm{u}_{W^{s,p}(\Omega)} \leq C\norm{u}_{W^{s^{\prime},p}(\Omega)}
+    \]
+    Hence, there is a continuous inclusion $ W^{s^{\prime},p}(\Omega)\sub W^{s,p}(\Omega)$.
+\end{proposition}
+
+\end{document}

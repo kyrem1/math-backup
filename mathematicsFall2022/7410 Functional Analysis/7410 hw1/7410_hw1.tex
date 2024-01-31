@@ -1,0 +1,317 @@
+\documentclass[12pt,letterpaper]{article}
+
+%--------Packages--------
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{xspace}
+\usepackage{graphicx}
+\usepackage{hhline}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{braket}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{delarray}
+\usepackage{mathtools}
+\usepackage{fullpage}
+\usepackage{faktor} % For quotients
+\usepackage{mathrsfs}
+
+\usepackage[italicdiff]{physics} % For differentials
+\usepackage{bbm} % For indicator
+
+% \usepackage{quiver}
+\usepackage[linguistics]{forest}
+
+%--------Page Setup--------
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+
+
+%--------Macros--------
+
+\newcommand{\sub}{\subseteq}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mf}[1]{\mathfrak{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\units}[1]{#1 ^{\times}}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\lr}[1]{\left(#1\right)}
+\newcommand{\lrvert}[1]{\left\lvert#1\right\rvert}
+
+\DeclarePairedDelimiterX{\inp}[2]{\langle}{\rangle}{#1, #2}
+
+%----Switch phi and varphi
+% \let\temp\phi
+% \let\phi\varphi
+% \let\varphi\temp
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathbb{N}\xspace}
+\newcommand{\I}{\mathbb{I}\xspace}
+\newcommand{\R}{\mathbb{R}\xspace}
+\newcommand{\Z}{\mathbb{Z}\xspace}
+\newcommand{\Q}{\mathbb{Q}\xspace}
+\newcommand{\G}{\mathbb{G}\xspace}
+
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\M}{\mathcal{M}}
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\res}{res}
+% \DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\Sym}{Sym}
+% \DeclareMathOperator{\dv}{div}
+\DeclareMathOperator{\alb}{alb}
+\DeclareMathOperator{\img}{Im}
+\DeclareMathOperator{\et}{et}
+\DeclareMathOperator{\ck}{coker}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Ac}{at}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Pic}{Pic}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\fc}{frac}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Mod}{Mod}
+\DeclareMathOperator{\Cone}{Cone}
+\DeclareMathOperator{\FI}{FI}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Alb}{Alb}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Jac}{Jac}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\fr}{frac}
+\DeclareMathOperator{\Int}{Int}
+\let\Span\relax
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Ran}{Ran}
+
+
+
+%----Analysis
+\newcommand{\summ}{\sum\limits}
+% \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\thicc}{\bigg}
+\newcommand{\eps}{\varepsilon}
+\newcommand*\cls[1]{\overline{#1}}
+\newcommand{\ind}{\mathbbm{1}}
+\DeclareMathOperator{\sgn}{sgn}
+
+
+%--------Theorem environments--------
+\newtheorem{definition}{Definition}[]
+\newtheorem{lemma}{Lemma}[]
+\newtheorem{corollary}{Corollary}[]
+\newtheorem{theorem}{Theorem}[]
+\theoremstyle{remark}
+\newtheorem*{claim}{Claim}
+
+
+\newenvironment{solution}
+{\begin{proof}[Solution]}
+{\end{proof}}
+
+
+\makeatletter
+\newcommand{\thickhline}{%
+    \noalign {\ifnum 0=`}\fi \hrule height 1pt
+    \futurelet \reserved@a \@xhline
+}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\makeatother
+
+% --------Problem environment--------
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \stepcounter{homeworkProblemCounter}
+}
+
+
+%--------Metadata--------
+\title{MATH 7410 Homework 1}
+\author{James Harbour}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+  Let $(X,\mu)$ be a $\sigma$-finite measure space.\\
+
+  \textbf{(a)}: Prove that if $x,y\in\R_+$ and $0<p<1$, then $(x+y)^p\leq x^p+y^p$.
+
+  \begin{proof}
+    Fix $y\in\R_+$ and consider the function $f:[0,+\infty)\to \R$ given by $f(x) = (x+y)^p-(x^p+y^p)$. Note that $f(0)=0$. As $0<p<1$,
+    \[
+      x^{p-1}\geq (x+y)^{p-1}\implies 0\geq p\lr{(x+y)^{p-1}-x^{p-1}} = f'(x)
+    \]
+    so $f$ is nonincreasing and $f(0) = 0$ whence $f(x)\leq 0$ for all $x\in \R_+$ as desired.
+  \end{proof}
+
+  \textbf{(b)}: Fix $0<p<\infty$ and prove that $L^p(X,\mu)$ is a vector space under the natural operations of addition and scalar multiplication.
+
+  \begin{proof}
+    Fix $f,g\in L^p(X,\mu)$. Then as $|f+g|\leq 2(|f|+|g|)$ and $x\mapsto x^p$ is increasing,
+    \[
+      \norm{f+g}_p^p = \int |f+g|^p \dd{\mu} \leq \int 2^p(|f|+|g|)^p\dd{\mu} = 2^p(\norm{f}_p^p + \norm{g}_p^p) < +\infty,
+    \]
+    so $f+g\in L^p(X,\mu)$. For $\lambda\in \C$,
+    \[
+      \norm{\lambda f}_p = \lr{\int |\lambda f|^p\dd{\mu}}^{1/p} = |\lambda| \norm{f}_p < +\infty,
+    \]
+    so $\lambda f\in L^p(X,\mu)$. Thus $L^p(X,\mu)$ is a vector space.
+  \end{proof}
+
+  \textbf{(c)}: Fix $0<p<1$ and define $d:L^p(X,\mu)\times L^p(X,\mu) \to [0,\infty)$ by $d(f,g) = \norm{f-g}_p^p$. Prove that $d$ is a metric and that addition and multiplication are continuous with respect to $d$.
+
+  \begin{proof}
+    Let $f,g\in L^p(X,\mu)$. Applying part (a) and that $x\mapsto x^p$ is increasing,
+    \[
+      \norm{f+g}_p^p = \int |f+g|^p \dd{\mu} \leq \int (|f|+|g|)^p\dd{\mu} \overset{(a)}{\leq} \int |f|^p+|g|^p\dd{\mu} = \norm{f}_p^p + \norm{g}_p^p.
+    \]
+    Then for $f,g,h\in L^p(X,\mu)$,
+    \[
+      d(f,h) = \norm{f-h}_p^p = \norm{f-g+g-h}_p^p \leq \norm{f-g}_p^p + \norm{g-h}_p^p = d(f,g) + d(g,h).
+    \]
+    Clearly, $d(f,f) = 0$ and $d(f,g) = d(g,f)$. Suppose that $d(f,g)=0$. Then $\int |f-g|^p \dd{\mu} =0$, whence $|f-g| = 0$ a.e. so $f=g$ a.e. Thus $d$ is a metric. \\
+
+    Now suppose that $f_n\to f$ and $g_n\to g$ in $L^p(X,\mu)$ with respect to $d$. Then applying the above inequality,
+    \[
+      d(f_n+g_n, f+g) = \norm{f_n-f + g_n-g}_p^p \leq \norm{f_n-f}_p^p + \norm{g_n-g}_p^p = d(f_n,f) + d(g_n,g) \xrightarrow{n\to\infty}0,
+    \]
+    so addition is continuous with respect to $d$. \\
+
+    Lastly, assume that $(\lambda_n,f_n)\to (\lambda,f)$ in the product topology, i.e. $\lambda_n\to\lambda$ in $\C$ and $f_n\to f$ with respect to $d$. Note that
+    \[
+      \lrvert{\norm{f_n}_p^p-\norm{f}_p^p} \leq \norm{f_n-f}_p^p \xrightarrow{n\to\infty}0,
+    \]
+    so there exists some $C>0$ such that $\norm{f_n}_p^p\leq C$ for all $n\in\N$. We compute,
+    \[
+      d(\lambda_n f_n,\lambda f) = \norm{\lambda_n f_n -\lambda f}_p^p \leq \norm{\lambda_n f_n- \lambda f_n}_p^p + \norm{\lambda f_n - \lambda f}_p^p\leq C|\lambda_n-\lambda|^p + |\lambda|^p\norm{f_n-f}_p^p \xrightarrow{n\to\infty}0,
+    \]
+    so scalar multiplication is continuous with respect to $d$.
+  \end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Let $X$ be a Banach space.\\
+
+  \textbf{(a)}: If $Y,Z$ are Banach spaces, and $S\in B(X,Y), T\in B(Y,Z)$, prove that $\norm{TS}\leq \norm{T}\norm{S}$.
+
+  \begin{proof}
+    For all $x\in X$, observe that
+    \[
+      \norm{TSx} \leq \norm{T}\norm{Sx}\leq \norm{T}\norm{S}\norm{x},
+    \]
+    so by definition $\norm{TS}\leq \norm{T}\norm{S}$.
+  \end{proof}
+
+  \textbf{(b)}: If $T\in B(X)$ and $\norm{T}<1$, prove that $1-T$ is invertible.\\
+
+  \begin{proof}
+    Define $S_n = \sum_{k=0}^{n}T^k$. Note that
+    \[
+      \norm{S_n} \leq \sum_{k=0}^{n}\norm{T}^k\leq \sum_{k=0}^{\infty} \norm{T}^k = (1-\norm{T})^{-1}.
+    \]
+    As $X$ is Banach and $S_n$ is Cauchy, there exists an $S\in B(X)$ such that $\norm{S_n-S}\xrightarrow{n\to\infty} 0$. \\
+
+    Fix $\eps>0$. Choose $N\in \N$ such that for $n\geq N$, $\norm{T}^n<\eps/2$ and $\norm{S-S_n} < \frac{\eps}{2\norm{1-T}}$. Then for $n\geq N$,
+    \begin{align*}
+      \norm{S(1-T)-1} \leq \norm{(S-S_n)(1-T)}+\norm{S_n(1-T)-1} &\leq \norm{S-S_n}\norm{1-T} + \norm{S_n(1-T)-1} \\
+      &< \frac{\eps}{2} + \norm{\sum_{k=0}^{n} T^k(1-T)-1} = \frac{\eps}{2}\norm{T^{k+1}}<\eps.
+    \end{align*}
+    As $\eps>0$ was arbitrary, $S(1-T) = 1$.
+  \end{proof}
+
+  \textbf{(c)}: IF $T\in B(X)$ is invertible and $S\in B(X)$ has $\norm{S-T}<\norm{T^{-1}}^{-1}$, then $S$ is invertible. Use this to show that the set of invertible elements $Inv(B(X))$ is open.
+
+  \begin{proof}
+    Observe that
+    \[
+      \norm{T^{-1}S - 1} \leq \norm{T^{-1}}\norm{S-T} < 1
+    \]
+    by assumption, so part (b) implies that $-T^{-1}S = 1-(T^{-1}S - 1)$ is invertible, whence $S$ is invertible as the invertible elements of $B(X)$ form a group with multiplication.\\
+
+    Hence if $T\in Inv(B(X))$ then $B_{\norm{T^{-1}}^{-1}}(T,\norm{\cdot})\sub Inv(B(X))$, so $Inv(B(X))$ is open as it is the union of all such open balls.
+  \end{proof}
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Show that $l^\infty$ is not separable.
+
+  \begin{proof}
+    For each $I\in\ms{P}(\N)$, define an element $a_I\in l^{\infty}(\N)$ by $a_I(n) = \ind_{I}(n)$. Then for $I\neq J\in \ms{P}(\N)$, $B_{1/2}(a_I)\cap B_{1/2}(a_J) = \emptyset$. Thus, we have an uncountable family of pairwise disjoint balls $\{ B_{1/2}(a_I)\}_{I\in\ms{P}(\N)}$. Any dense subset of $l^{\infty}(\N)$ must intersect each of these balls, whence by disjointness this set must be uncountable. By contraposition $l^{\infty}(\N)$ is not separable.
+  \end{proof}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Prove that if $X$ is a normed space, $M\leq X$, and both $M$ and $X/M$ are complete, then $X$ is complete.
+
+  \begin{proof}
+    Let $Q:X\to X/M$ be the natural map and $(x_n)_{n=1}^{\infty}$ a Cauchy sequence in $X$. Then by completeness, there exists a $z\in X$ such that $\norm{Q(x_n-z)}\xrightarrow{n\to\infty}0$. Choose a sequence $(m_n)_{n=1}^{\infty}$ in $M$ such that for $n\in\N$,
+    \[
+      \norm{Q(x_n-x)}+\frac{1}{n}\geq\norm{x_n-x-m_n}.
+    \]
+    Then $\norm{x_n-x-m_n}\xrightarrow{n\to\infty}0$. We claim that $(m_n)_{n=1}^{\infty}$ is Cauchy. To see this, observe that
+    \begin{align*}
+      \norm{m_n-m_k}&\leq \norm{x_k-x-m_k}+\norm{x_k-x-m_n} \\&\leq \norm{x_k-x-m_k}+\norm{x_n-x-m_n} + \norm{x_k-x_n} \xrightarrow{k,n\to\infty}0.
+    \end{align*}
+    By completeness, there is some $m\in M$ such that $m_n\to m$. Lastly, note that
+    \[
+      \norm{x_n-x-m} \leq \norm{x_n-x-m_n} + \norm{m_n-m} \xrightarrow{n\to\infty}0,
+    \]
+    so $x_n\to x + m$, whence $X$ is complete.
+  \end{proof}
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Let $\H$ be a Hilbert space and suppose $\M\leq \H$. Show that if $Q:\H\to\H/\M$ is the natural map, then $Q: \M^\perp\to \H/\M$ is an isometric isomorphism.
+
+  \begin{proof}
+    Let $f\in \H$. There are unique $f^\parallel\in \M$ and $f^\perp\in \M^\perp$ such that $f = f^\parallel+f^\perp$, whence $Q(f^\perp) = f^\perp +\M = f^\perp +f^\parallel + \M = f+ \M$. Thus $Q\vert_{\M^\perp}$ is surjective. \\
+
+    Moreover, note that $f^\parallel$ is such that
+    \[
+      \norm{f^\perp} = \norm{f-f^{\parallel}} = dist(f, \M) = \inf\{\norm{f+m}:m\in M\} = \norm{Q(f^\perp)}
+    \]
+    so $Q\vert_{\M^\perp}$ is isometric and thus injective. As $Q$ is bounded and $\M^\perp$ is a closed linear subspace of $\H$, $Q\vert_{\M^\perp}$ is continuous. Thus $Q\vert_{\M^\perp}$ is a continuous bijection of Banach spaces, so by the Inverse mapping theorem $(Q\vert_{\M^\perp})^{-1}$ is continuous.
+  \end{proof}
+\end{homeworkProblem}
+
+\end{document}
