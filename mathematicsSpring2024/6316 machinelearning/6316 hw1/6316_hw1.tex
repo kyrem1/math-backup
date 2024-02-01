@@ -59,4 +59,86 @@
 \begin{document}
 \maketitle
 
+\begin{homeworkProblem}
+  Show that, given a training set $ S = \{(x_{i}, f(x_{i}))\}_{i=1}^{m}\sub (\R^{d}\times\{0,1\})^{m} $, there exists a polynomial $ p_{S} $ such that $ h_{S}(x) = 1 $ if and only if $ p_{S}(x) \geq 0 $, where $ h_{S} $ is defined as
+  \[
+    h_{S}(x) = \begin{cases} y_{i} & \text{ if }x = x_{i} \text{ for some }i\\
+    0 & \text{otherwise} \end{cases}
+  \]
+\end{homeworkProblem}
+
+\begin{solution}
+  Consider the polynomial 
+  \[
+    p_{S}(x) = -\prod_{i=1}^{m} \norm{x-x_{i}}_{2}^2 - (f(x)-1)^2 
+  \]
+  where $ \norm{\cdot}_{2} $ denotes the standard Euclidean norm on $ \R^{d} $. Note that, by squaring the $ \norm{x-x_{i}}_{2} $ terms above, we obtain a true polynomial in the coordinates of $ x\in \R^{d} $.
+
+  \begin{claim}
+    $ h_{S}(x)=1 $ if and only if $ p_{S}(x) \geq 0 $.
+  \end{claim}
+  \textit{Proof of Claim}.
+    Note first that, for arbitrary $ x $, both $ (f(x)-1)^{2}\geq 0 $ and $ \prod_{i=1}^{m}\norm{x-x_{i}}_{2}^{2} \geq0 $ by the trivial inequality, whence 
+    \begin{equation}\label{eq:le1}
+      p_{S}(x) = -\prod_{i=1}^{m} \norm{x-x_{i}}_{2}^2 - (f(x)-1)^2 \leq -\prod_{i=1}^{m}\norm{x-x_{i}}_{2}^{2} 
+    \end{equation}
+    \begin{equation}\label{eq:le2}
+      p_{S}(x) = -\prod_{i=1}^{m} \norm{x-x_{i}}_{2}^2 - (f(x)-1)^2 \leq - (f(x)-1)^2. 
+    \end{equation}
+    \underline{($ \impliedby$)}: We proceed by contraposition. Suppose that $ h_{S}(x)\neq1 $. We wish to show that $ p_{S}(x)<0 $. Note that, as the image of $ h_{S} $ is $ \{0,1\} $, it follows that $ h_{S}(x) = 0 $. Now we have two cases.
+
+    If $ x=x_{j} $ for some $ j\in \{1,\ldots,m\} $, then $ 0 = h_{S}(x_{j}) = f(x_{j}) $, whence by \eqref{eq:le2},
+    \[
+      p_{S}(x) \leq -(f(x)-1)^{2}=-1 < 0.
+    \]
+    If $ x\not\in\{x_{1},\ldots,x_{m}\} $, then $ \norm{x-x_{i}}_{2}^{2} > 0 $ for all $ i $, whence by \eqref{eq:le1} we have
+    \[
+      p_{S}(x)\leq -\prod_{i=1}^{m}\norm{x-x_{i}}_{2}^{2} < 0.
+    \]
+ \underline{($ \implies $)}:
+  On the other hand, suppose that $ h_{S}(x) = 1 $. Then it follows that $ x=x_{j} $ for some $ j\in\{1,\ldots, m\} $ and $ f(x_{j}) = h(x_{j})= 1 $. Hence, 
+  \[
+    p_{S}(x) = -\prod_{i=1}^{m} \norm{x-x_{i}}_{2}^2 - (f(x)-1)^2 = -\norm{x_{j}-x_{j}}_{2}^{2}\prod_{i=j} \norm{x-x_{i}}_{2}^2 - (1-1)^2  = 0.
+  \]
+  
+\end{solution}
+
+\begin{homeworkProblem}
+  Let $ \H $ be a class of binary classifiers over a domain $ \mathcal{X} $. Let $ \mathcal{D} $ be an unknown distribution over $ \mathcal{X} $, and let $ f $ be the target hypothesis in $ \H $. Fix some $ h\in \H $. Show that 
+  \[
+    \underset{S\vert_{x} \sim \mathcal{D}^{m}}{\E}[L_{S}(h)] = L_{(\mathcal{D},f)}(h).
+  \]
+\end{homeworkProblem}
+
+\begin{proof}
+  This claim follows from the construction of the product measure, the definition of the pushforward measure, and some elementary manipulation. By definition,
+  \[
+    L_{(\mathcal{D},f)}(h) = \mathcal{D}(\{x\in \mathcal{X}: f(x)\neq h(x)\}).
+  \]
+  Let $ \pi_{i}:\mathcal{X}^{m}\to \mathcal{X} $ denote the $ i^{th} $ projection map. Note that, for any measurable subset $ A\sub \mathcal{X} $ and $ (x_{1},\ldots,x_{m})\in \mathcal{X}^{m}$, we have
+  \begin{equation}\label{eq:ind}
+    \ind_{A} (x_{i}) = \ind_{A} (\pi_{i}((x_{1},\ldots,x_{m})))  = \ind_{\pi_{i}^{-1}(A)}((x_{1},\ldots,x_{m})).
+  \end{equation}
+  Recall, by construction of the product measure, that the product measure $ \mathcal{D}^{m} $ pushes forward to the original measure $ \mathcal{D} $ under each of the projection maps $ \pi_{i} $, namely
+  \begin{equation}\label{eq:product}
+    \mathcal{D}^{m}(\pi_{i}^{-1}(A))\overset{\text{definition}}{=} (\pi_{i})_{*}\mathcal{D}^{m}(A) = \mathcal{D}(A) \text{ for all measurable }A\sub \mathcal{X}.
+  \end{equation}
+  Finally, we expand the expectation and write,
+  
+  \begin{align*}
+    \underset{S\vert_{x} \sim \mathcal{D}^{m}}{\E}[L_{S}(h)] &= \int_{\mathcal{X}^{m}} L_{S}(h) \dd{\mathcal{D}^{m}(x_{1},\ldots, x_{m})}
+    = \int_{\mathcal{X}^{m}} \frac{|\{\widetilde{x}\in S\vert_{x} : h(\widetilde{x}) \neq f(\widetilde{x})\}|}{m} \dd{\mathcal{D}^{m}(x_{1},\ldots, x_{m})}\\
+    &=\frac{1}{m} \int_{\mathcal{X}^{m}} \sum_{i=1}^{m}\ind_{\{x\in \mathcal{X}: h(x) \neq f(x)\}}(x_{i}) \dd{\mathcal{D}^{m}(x_{1},\ldots, x_{m})}\\
+    &\overset{\eqref{eq:ind}}{=}\frac{1}{m} \sum_{i=1}^{m}\int_{\mathcal{X}^{m}} \ind_{\pi_{i}^{-1}(\{x\in \mathcal{X}: h(x) \neq f(x)\})}((x_{1},\ldots,x_{n})) \dd{\mathcal{D}^{m}(x_{1},\ldots, x_{m})}\\
+    &=\frac{1}{m} \sum_{i=1}^{m} \mathcal{\D}^{m}(\pi_{i}^{-1}(\{x\in \mathcal{X}: h(x) \neq f(x)\}) )\\
+    &\overset{\eqref{eq:product}}{=}\frac{1}{m} \sum_{i=1}^{m} \mathcal{\D}(\{x\in \mathcal{X}: h(x) \neq f(x)\}) = \mathcal{\D}(\{x\in \mathcal{X}: h(x) \neq f(x)\}) = L_{(\mathcal{D},f)}(h)\\
+  \end{align*}
+
+
+
+
+
+
+\end{proof}
+
 \end{document}
