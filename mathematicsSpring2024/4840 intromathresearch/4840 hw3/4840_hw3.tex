@@ -26,6 +26,20 @@
 %----------------------------
 
 
+%--------Other Setup---------
+\usepackage{ytableau} % For young diagrams
+\usepackage{caption}
+% Adjust caption spacing and font
+\captionsetup{
+  font=small, % Adjust the font size
+  labelfont=bf,
+  format=plain, % Use plain format to avoid any unwanted effects
+  justification=raggedright, % Ensure the caption is justified, which can help with spacing
+  singlelinecheck=false, % Applies justification setting even when the caption is a single line
+}
+%----------------------------
+
+
 %--------Subfiles Setup-------
 %\usepackage{subfiles}
 %----------------------------
@@ -50,7 +64,7 @@
 
 
 %--------Metadata------------
-\title{Intro Math Research Hw2}
+\title{Intro Math Research Hw3}
 \author{James Harbour}
 %----------------------------
 
@@ -64,19 +78,51 @@
 
 \section{Reading Comments}
 
-\subsection*{Pak Reading}
+\subsection*{QUOMODOCUMQUE Article}
 
 
-\subsection*{Godsil Reading}
+\subsection*{Tao Article}
+
+
+\subsection*{Vakil Article}
+
+
+\newpage
+
+
+
+\section{Project Topics}
+\textbf{Assignment}: Look over the Project Topics document and start searching for readable
+resources. List the two topics which look most interesting to you and
+give two references for each of these topics (different from the one I gave).
+Keep in mind the remark of § 2.2
+
+\subsection*{Topic 1: Schur-Weyl Duality and its Analogues}
+\begin{itemize}
+  \item In \cite[Ch.4,6]{fultonharris}, Fulton and Harris provide a gentle introduction to Schur-Weyl duality and the various identities which arise as a consequence.
+  \item In \cite{dipper:05}, Dipper, Doty, and Hu obtain an analogue of Schur-Weyl duality for symplectic groups using the Brauer algebra. 
+
+\end{itemize}
+
+
+
+\subsection*{Topic 2: Quasisymmetric Functions}
+\begin{itemize}
+  \item The book \textit{An Introduction to Quasisymmetric {S}chur Functions} \cite{qsymschur} by Luoto, Mykytiuk and van Willigenburg gives a broad overview of the machinery behind quasisymmetric functions (namely Hopf algebras) as well as a description of the basis of quasisymmetric {S}chur functions for the quasisymmetric function algebra.
+  \item In \cite{stanley:95}, Stanley contstructs a quasisymmetric function from a finite graph. This construction encodes the coloring data in a way that generalizes the graph chromatic polynomial. 
+\end{itemize}
+
 
 
 \newpage
 
 \section{Symmetric Polynomials/Functions Exposition}
 
-%\textbf{Assignment}: Write two pages about symmetric polynomials, confining yourself to what
-%we learned in class (definition of the algebra, the monomial basis, and partitions). The only new material should be a discussion on the homogenous
-%symmetric functions.
+\textbf{Assignment}: Revise your write-up on symmetric polynomials, focusing on the extra tip
+in § 2.1 (``indispensable, interesting, illustrative.'') If you did not write about the basis of homogeneous symmetric
+functions last time, this should be included in your two pages. Add a third
+page dedicated to the combinatorial definition of Schur functions and their
+symmetry.
 
 \subsection*{Preliminary Considerations} 
 Throughout this article, fix a (unital) commutative ring $ R $ and a field $ k $. For simplicity, we work over vector spaces instead of general modules.
@@ -87,22 +133,22 @@ Throughout this article, fix a (unital) commutative ring $ R $ and a field $ k $
 
 \subsection{Algebraic Background}
 
-Many common algebraic objects possess both a vector space structure and an internal product structure. For example, the set of $ n\times n $ matrices over $ k $, denoted $ M_{n}(k) $, has a product given by matrix multiplication and is also a vector space under addition and scalar multiplication by $ k $. 
-
-\begin{definition}\label{def:kalg}
-  Let $ A $ be a $ k $-vector space equipped with a map $ \cdot: A\times A\to A $ (written $ (x,y)\mapsto x\cdot y $). The pair $ (A,\cdot) $ is a \textit{$ k $-algebra} if, for $ x,y,z\in A $ and $ a,b\in k $, the following hold:
-  \begin{itemize}
-    \item $(x+y)\cdot z = x\cdot z + y\cdot z$,
-    \item $z\cdot (x+y) = z\cdot x + z\cdot y$,
-    \item $(a x) \cdot (b y) = (a b)(x\cdot y)$.
-  \end{itemize}
-\end{definition}
-%We abuse notation and often write $ xy $ for the product $ x\cdot y $. This is standard and usually clear from context. 
-%Observe that we did not assume the binary operation $ \cdot $ is associative. We will mainly focus on associative algebras; however, some non-associative examples (for culture) include Lie algebras, the Octonions, and $ \R^{3} $ equipped with the vector cross product.
-
-\begin{keyexample*}\label{ex:poly}
-  For $ X= \{x_{i}\}_{i\in I} $, the rings $ k[X] $ and $ k\llbracket X \rrbracket $ form the prototypical example of $ k $-algebras.
-\end{keyexample*}
+%Many common algebraic objects possess both a vector space structure and an internal product structure. For example, the set of $ n\times n $ matrices over $ k $, denoted $ M_{n}(k) $, has a product given by matrix multiplication and is also a vector space under addition and scalar multiplication by $ k $. 
+%
+%\begin{definition}\label{def:kalg}
+%  Let $ A $ be a $ k $-vector space equipped with a map $ \cdot: A\times A\to A $ (written $ (x,y)\mapsto x\cdot y $). The pair $ (A,\cdot) $ is a \textit{$ k $-algebra} if, for $ x,y,z\in A $ and $ a,b\in k $, the following hold:
+%  \begin{itemize}
+%    \item $(x+y)\cdot z = x\cdot z + y\cdot z$,
+%    \item $z\cdot (x+y) = z\cdot x + z\cdot y$,
+%    \item $(a x) \cdot (b y) = (a b)(x\cdot y)$.
+%  \end{itemize}
+%\end{definition}
+%%We abuse notation and often write $ xy $ for the product $ x\cdot y $. This is standard and usually clear from context. 
+%%Observe that we did not assume the binary operation $ \cdot $ is associative. We will mainly focus on associative algebras; however, some non-associative examples (for culture) include Lie algebras, the Octonions, and $ \R^{3} $ equipped with the vector cross product.
+%
+%\begin{keyexample*}\label{ex:poly}
+%  For $ X= \{x_{i}\}_{i\in I} $, the rings $ k[X] $ and $ k\llbracket X \rrbracket $ form the prototypical example of $ k $-algebras.
+%\end{keyexample*}
 
 Often in algebra, elements of a given object may be decomposed into a sum of simpler elements which are, in a sense, ``homogenous.'' For example, any polynomial in $ n $-variable may be decomposed into a sum of simpler polynomials each of which are futher sums of monomials of the same total degree.  In this way, a polynomial is split into a sum of homogenous parts. This behavior is codified in the notion of \textit{grading}.
 
@@ -138,10 +184,10 @@ The reader is cautioned that not every $ k $-algebra has a nontrivial grading. I
   The permutation group $ S_{n} $ acts naturally on the polynomial ring $ k[x_{1},\ldots,x_{n}] $ by defining $ \sigma \cdot x_{i_{1}}^{\alpha_1}\cdots x_{i_l}^{\alpha_{l}} := x_{\sigma(i_{1})}^{\alpha_{1}}\cdots x_{\sigma(i_{l})}^{\alpha_{l}}$ and extending by linearity. The ring of \textit{symmetric polynomials} in $ n $ indeterminates is the fixed points of this action, namely $ k[x_{1},\ldots, x_{n}]^{S_{n}} $.
 \end{definition}
 
-\subsection{Compositions and Partitions}
+\subsection{Partitions and Compositions}
 \begin{definition}\label{def:comp}\ 
   \begin{itemize}
-    \item A \textit{partition} of $ n\in \N $ is a set $ \alpha=\{\alpha_{1},\ldots, \alpha_{l}\} $ of positive integers which sum to $ n $. We denote the set of partitions of $ n $ by $ \Par(n) $. We denote the statement $ [\lambda\in \Par(n)] $ by $ \lambda\vdash n $. Also, we write $ \Par:=\bigcup_{n\geq0}\Par(n) $.
+    \item A \textit{partition} of $ n\in \N $ is a finite sequence $ \alpha=(\alpha_{1},\ldots, \alpha_{l}) $ of weakly decreasing positive integers which sum to $ n $. We denote the set of partitions of $ n $ by $ \Par(n) $. We denote the statement $ [\lambda\in \Par(n)] $ by $ \lambda\vdash n $. Also, we write $ \Par:=\bigcup_{n\geq0}\Par(n) $.
     \item A \textit{weak composition} of $ n\in \N $ is a (finitely supported) sequence $\alpha=(\alpha_{i})_{i=1}^{\infty}\in (\N\cup\{0\})^{\N}$ such that $ \sum_{i} \alpha_{i} = n $. The length of a weak composition $ \alpha $ is given by
   \[
     l(\alpha) :=\max\{i\in \N: \alpha_{i}\neq 0\}.
@@ -193,4 +239,82 @@ From the monomial symmetric functions, we may form another interesting basis for
   h_{\lambda}:=\prod_{i=1}^{\infty} \sum_{\nu\vdash \lambda_{i}} m_{\nu}.
 \]
 where $ \lambda = (\lambda_{1},\lambda_{2},\ldots) $. Again, the set $ \{h_{\lambda}: \lambda\vdash n\} $ is a basis for $ \Lambda_{k}^{n} $ and the set $ \{h_{\lambda}: \lambda\in\Par\} $ is a basis for $ \Lambda_{k} $.
+
+\subsection{Schur Functions}
+
+\begin{definition}\label{def:youngdiagram}
+  Given $ \lambda\vdash n $, the \textit{Ferrers diagram of shape $ \lambda $} is the set $\{(i,j)\in \N^{2} : j\in \N, 1\leq i \leq \lambda_{j}\}$ depicted as points in $ \R^{2} $. The \textit{Young diagram of shape $ \lambda $} is depicted identically to the Ferrers diagram except the points are replaced with squares. The \textit{size} of the diagram is the number of entries, namely $ n $. We depict the case $ (5,2,1)\vdash 8 $ below.
+\end{definition}
+
+\begin{figure}[h]
+\centering
+% Align tableaux at the top of their respective minipages
+\ytableausetup{boxframe=0pt, aligntableaux=top}
+\begin{minipage}[t]{0.20\textwidth}
+\centering
+\ydiagram[\bullet]{1,2,5}
+% Adjust space below to align captions uniformly
+\vspace{5pt} % Adjust the space to ensure alignment if necessary
+\caption*{\textit{Ferrers Diagram} for the partition (5,2,1)}
+\end{minipage}
+\quad % This adds some space between the diagrams
+\begin{minipage}[t]{0.20\textwidth}
+\centering
+\ytableausetup{boxframe=normal, aligntableaux=top}
+\begin{ytableau}
+*(white)\\
+*(white) & *(white) \\
+*(white) & *(white) & *(white) & *(white) & *(white) \\
+\end{ytableau}
+\vspace{5pt} % Keep consistent vertical space
+\caption*{\textit{Young Diagram} for the partition (5,2,1)}
+\end{minipage}
+\quad
+\begin{minipage}[t]{0.20\textwidth}
+\centering
+\begin{ytableau}
+9 \\
+5 & 5 \\
+1 & 1 & 1 & 4 & 6 \\
+\end{ytableau}
+\vspace{5pt} % Adjust as needed
+\caption*{\textit{Semi-standard Young tableau} for the partition (5,2,1)}
+\end{minipage} 
+\quad
+\begin{minipage}[t]{0.20\textwidth}
+\centering
+\begin{ytableau}
+8 \\
+5 & 7 \\
+1 & 2 & 3 & 4 & 6 \\
+\end{ytableau}
+\vspace{5pt} % Uniform spacing for alignment
+\caption*{\textit{Standard Young tableau} for the partition (5,2,1)}
+\end{minipage} 
+\end{figure}
+
+
+\begin{definition}\label{def:youngtableaux}
+  Given $ \lambda\vdash n $ and a Young diagram of shape $ \lambda $, a \textit{semi-standard Young tableau of shape $ \lambda $} is a filling of the boxes of the Young diagram with positive integers such that 
+  \begin{itemize}
+    \item the entries are weakly increasing along rows,
+    \item the entries are strictly increasing up columns.
+  \end{itemize}
+  A semi-standard Young tableau of size $ n $ is said to be \textit{standard} if the elements of $ \{1,\ldots,n\} $ each appear exactly once in the tableau. We write $ SSYT(\lambda) $ and $ SYT(\lambda) $ for the sets of semi-standard and standard Young tableaux of shape $ \lambda $. Given a semi-standard Young tableaux $ \mathcal{T} $, the \textit{weight} of $ \mathcal{T} $ is a function $ \alpha=\alpha_{\mathcal{T}}:\N \to \N$ given by
+  \[
+    \alpha(i) := \text{number of times $ i $ appears in $ \mathcal{T} $}.
+  \]
+  Note that $ \alpha(i) = 0 $ for sufficiently large $ i $, so we may write $ x^{\alpha} = x_{1}^{\alpha(1)}x_{2}^{\alpha(2)} \cdots $ and obtain a valid monomial.
+\end{definition}
+
+
+\begin{definition}\label{def:schur}
+ \[
+  s_{\lambda} := \sum_{\mathcal{T}\in SSYT(\lambda) } x^{\alpha_{\mathcal{T}}}.
+\] 
+\end{definition}
+
+
+
+
 \end{document}

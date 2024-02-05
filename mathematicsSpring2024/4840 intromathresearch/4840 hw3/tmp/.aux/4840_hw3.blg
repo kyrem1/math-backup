@@ -1,0 +1,20 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'tmp/.aux/4840_hw3.blg'
+[67] biber:340> INFO - === Sat Feb  3, 2024, 19:22:24
+[80] Biber.pm:419> INFO - Reading 'tmp/.aux/4840_hw3.bcf'
+[135] Biber.pm:979> INFO - Found 5 citekeys in bib section 0
+[150] Biber.pm:4419> INFO - Processing section 0
+[159] Biber.pm:4610> INFO - Looking for bibtex file '/home/kyrem1/Mathematics/bibs/comborefs.bib' for section 0
+[160] bibtex.pm:1713> INFO - LaTeX decoding ...
+[172] bibtex.pm:1519> INFO - Found BibTeX data source '/home/kyrem1/Mathematics/bibs/comborefs.bib'
+[236] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[236] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[236] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[236] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[243] bbl.pm:660> INFO - Writing 'tmp/.aux/4840_hw3.bbl' with encoding 'UTF-8'
+[245] bbl.pm:763> INFO - Output to tmp/.aux/4840_hw3.bbl
+[245] Biber.pm:131> WARN - ISBN '0-387-97527-6; 0-387-97495-4' in entry 'fultonharris' is invalid - run biber with '--validate_datamodel' for details.
+[245] Biber.pm:131> WARN - ISBN '978-1-4614-7299-5; 978-1-4614-7300-8' in entry 'qsymschur' is invalid - run biber with '--validate_datamodel' for details.
+[245] Biber.pm:131> WARN - legacy year field '[2024] ©2024' in entry 'stanley2' is not an integer - this will probably not sort properly.
+[245] Biber.pm:131> WARN - ISBN '978-1-009-26249-1; 978-1-009-26248-4' in entry 'stanley2' is invalid - run biber with '--validate_datamodel' for details.
+[245] Biber.pm:133> INFO - WARNINGS: 4
