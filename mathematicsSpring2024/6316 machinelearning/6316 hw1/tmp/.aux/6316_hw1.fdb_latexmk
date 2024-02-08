@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1706755665 "6316_hw1.tex" "tmp/6316_hw1.pdf" "6316_hw1" 1706755666 0
+["pdflatex"] 1707103019 "6316_hw1.tex" "tmp/6316_hw1.pdf" "6316_hw1" 1707103019 0
   "/home/kyrem1/.texlive/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk" 1667774832 8424 39348d4b74d815a9465c39079ff37b4b ""
   "/home/kyrem1/texmf/tex/latex/kyrem1sty/kyrem1sty.sty" 1706753328 5515 ddf73201bc9431c3f7361dd8097c7475 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1704400182 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -200,9 +200,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1704400182 40684 9b9ec0b4288972636ff6a3b9c4238efc ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1706662333 4483110 adb1e1d04498b9576f1f17c4219c5e03 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1706662291 6768057 84441ed010fbb88a6482ee44094f9156 ""
-  "6316_hw1.tex" 1706755665 5982 42bd7f3ad5b17eaecdf4fe8d4c0f9135 ""
-  "tmp/.aux/6316_hw1.aux" 1706755666 946 db8215461d56ca678bf9f5bae5d86301 "pdflatex"
-  "tmp/.aux/6316_hw1.out" 1706755666 182 65b02fe74d6cd5a2f207765132328df0 "pdflatex"
+  "6316_hw1.tex" 1707103015 5982 42bd7f3ad5b17eaecdf4fe8d4c0f9135 ""
+  "tmp/.aux/6316_hw1.aux" 1707103019 946 db8215461d56ca678bf9f5bae5d86301 "pdflatex"
+  "tmp/.aux/6316_hw1.out" 1707103019 182 65b02fe74d6cd5a2f207765132328df0 "pdflatex"
   (generated)
   "tmp/.aux/6316_hw1.aux"
   "tmp/.aux/6316_hw1.log"

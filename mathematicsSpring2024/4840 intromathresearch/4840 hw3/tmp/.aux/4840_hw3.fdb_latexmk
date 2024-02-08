@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber tmp/.aux/4840_hw3"] 1707006144 "tmp/.aux/4840_hw3.bcf" "tmp/.aux/4840_hw3.bbl" "tmp/.aux/4840_hw3" 1707093504 0
-  "/home/kyrem1/Mathematics/bibs/comborefs.bib" 1707006094 4499 edc02c4163b4dcfe198ac3d058ff712f ""
-  "tmp/.aux/4840_hw3.bcf" 1707093504 107802 38bec2df8c17bce54b6639f9ad19bf5a "pdflatex"
+["biber tmp/.aux/4840_hw3"] 1707097850 "tmp/.aux/4840_hw3.bcf" "tmp/.aux/4840_hw3.bbl" "tmp/.aux/4840_hw3" 1707424692 0
+  "/home/kyrem1/Mathematics/bibs/comborefs.bib" 1707421850 5535 943091251d8b62667ce44ddaceb46776 ""
+  "tmp/.aux/4840_hw3.bcf" 1707424691 107923 1bf4d29feb5eab0c591bb7551788e7e7 "pdflatex"
   (generated)
   "tmp/.aux/4840_hw3.bbl"
   "tmp/.aux/4840_hw3.blg"
   (rewritten before read)
-["pdflatex"] 1707093503 "4840_hw3.tex" "tmp/4840_hw3.pdf" "4840_hw3" 1707093504 0
+["pdflatex"] 1707424690 "4840_hw3.tex" "tmp/4840_hw3.pdf" "4840_hw3" 1707424692 0
   "/home/kyrem1/texmf/tex/latex/kyrem1sty/kyrem1sty.sty" 1706753328 5515 ddf73201bc9431c3f7361dd8097c7475 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1704400182 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1704400182 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -231,12 +231,12 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1704400182 40684 9b9ec0b4288972636ff6a3b9c4238efc ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1706662333 4483110 adb1e1d04498b9576f1f17c4219c5e03 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1706662291 6768057 84441ed010fbb88a6482ee44094f9156 ""
-  "4840_hw3.tex" 1707093501 14452 7ddac7dbeab42feb33a829c561ecc2c5 ""
-  "tmp/.aux/4840_hw3.aux" 1707093504 2541 0b1c49fe9f2a87a9b77fd7076be6b8eb "pdflatex"
-  "tmp/.aux/4840_hw3.bbl" 1707006144 9563 84e3f647af7c98c7a20cee7c4a102a6b "biber tmp/.aux/4840_hw3"
-  "tmp/.aux/4840_hw3.out" 1707093504 1575 56a92767fc49bf1166235f6836908381 "pdflatex"
-  "tmp/.aux/4840_hw3.run.xml" 1707093504 2368 ba5bd755d6f820256b55431dab042612 "pdflatex"
-  "tmp/.aux/4840_hw3.toc" 1707093504 777 c14580f9438071f6a8532d1358314422 "pdflatex"
+  "4840_hw3.tex" 1707424689 17016 30849607b1ded77b064015432f267612 ""
+  "tmp/.aux/4840_hw3.aux" 1707424691 2645 00011f48b5c1801283f0829662925f69 "pdflatex"
+  "tmp/.aux/4840_hw3.bbl" 1707097850 12662 2c3623d0fad552ac5144ad17376ad86a "biber tmp/.aux/4840_hw3"
+  "tmp/.aux/4840_hw3.out" 1707424691 1575 56a92767fc49bf1166235f6836908381 "pdflatex"
+  "tmp/.aux/4840_hw3.run.xml" 1707424691 2368 ba5bd755d6f820256b55431dab042612 "pdflatex"
+  "tmp/.aux/4840_hw3.toc" 1707424691 777 c14580f9438071f6a8532d1358314422 "pdflatex"
   (generated)
   "tmp/.aux/4840_hw3.aux"
   "tmp/.aux/4840_hw3.bcf"

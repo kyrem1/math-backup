@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2024.1.30)  4 FEB 2024 19:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2024.1.30)  8 FEB 2024 15:38
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -974,13 +974,13 @@ LaTeX Font Info:    Trying to load font information for U+rsfs on input line 76.
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 76.
- (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) (tmp/.aux/4840_hw3.toc)
+ (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (tmp/.aux/4840_hw3.toc)
 \tf@toc=\write6
 \openout6 = `4840_hw3.toc'.
 
- [1
-
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [3] [4] [5] (tmp/.aux/4840_hw3.aux)
+ [2] [3] [4] [5] (tmp/.aux/4840_hw3.aux)
 Package rerunfilecheck Info: File `4840_hw3.out' has not changed.
 (rerunfilecheck)             Checksum: 56A92767FC49BF1166235F6836908381;1575.
 Package logreq Info: Writing requests to '4840_hw3.run.xml'.
@@ -988,15 +988,21 @@ Package logreq Info: Writing requests to '4840_hw3.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 32836 strings out of 477985
- 632226 string characters out of 5840058
+ 32842 strings out of 477985
+ 632374 string characters out of 5840058
  1869388 words of memory out of 5000000
- 52476 multiletter control sequences out of 15000+600000
+ 52479 multiletter control sequences out of 15000+600000
  525713 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  128i,11n,131p,858b,1376s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
 pdfTeX warning (dest): name{cite.0@stanley2} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@ath} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{cite.0@wachs:12} has been referenced but does not exist, replaced by a fixed one
 
 
 pdfTeX warning (dest): name{cite.0@stanley:95} has been referenced but does not exist, replaced by a fixed one
@@ -1011,10 +1017,10 @@ pdfTeX warning (dest): name{cite.0@dipper:05} has been referenced but does not e
 pdfTeX warning (dest): name{cite.0@fultonharris} has been referenced but does not exist, replaced by a fixed one
 
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb>
-Output written on tmp/.aux/4840_hw3.pdf (5 pages, 210553 bytes).
+Output written on tmp/.aux/4840_hw3.pdf (5 pages, 213495 bytes).
 PDF statistics:
- 206 PDF objects out of 1000 (max. 8388607)
- 161 compressed objects within 2 object streams
- 37 named destinations out of 1000 (max. 500000)
+ 211 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
+ 40 named destinations out of 1000 (max. 500000)
  85 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -19,6 +19,43 @@
 
 \refsection{0}
   \datalist[entry]{anyt/global//global/global}
+    \entry{ath}{article}{}
+      \name{author}{1}{}{%
+        {{hash=31402ca26e24ffc6efbed93d4044697b}{%
+           family={Athanasiadis},
+           familyi={A\bibinitperiod},
+           given={Christos\bibnamedelima A.},
+           giveni={C\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{31402ca26e24ffc6efbed93d4044697b}
+      \strng{fullhash}{31402ca26e24ffc6efbed93d4044697b}
+      \strng{bibnamehash}{31402ca26e24ffc6efbed93d4044697b}
+      \strng{authorbibnamehash}{31402ca26e24ffc6efbed93d4044697b}
+      \strng{authornamehash}{31402ca26e24ffc6efbed93d4044697b}
+      \strng{authorfullhash}{31402ca26e24ffc6efbed93d4044697b}
+      \field{labelalpha}{Ath15}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1077-8926}
+      \field{journaltitle}{Electron. J. Combin.}
+      \field{number}{2}
+      \field{title}{Power sum expansion of chromatic quasisymmetric functions}
+      \field{volume}{22}
+      \field{year}{2015}
+      \field{pages}{Paper 2.7\bibrangessep 9}
+      \range{pages}{-1}
+      \verb{doi}
+      \verb 10.37236/4761
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.37236/4761
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.37236/4761
+      \endverb
+    \endentry
     \entry{dipper:05}{article}{}
       \name{author}{3}{}{%
         {{hash=820514ab1f62381ce2611f7572ca2763}{%
@@ -233,6 +270,51 @@
       \endverb
       \verb{url}
       \verb https://www.sciencedirect.com/science/article/pii/S0001870885710201
+      \endverb
+    \endentry
+    \entry{wachs:12}{incollection}{}
+      \name{author}{2}{}{%
+        {{hash=79c42b68885852b07c08d7eb8f5c2204}{%
+           family={Shareshian},
+           familyi={S\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod}}}%
+        {{hash=48af18048f5a26eab7e77db0e80bd8e5}{%
+           family={Wachs},
+           familyi={W\bibinitperiod},
+           given={Michelle\bibnamedelima L.},
+           giveni={M\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Ed. Norm., Pisa}%
+      }
+      \strng{namehash}{4b1b80ce031e320052bcf8fa1a33b380}
+      \strng{fullhash}{4b1b80ce031e320052bcf8fa1a33b380}
+      \strng{bibnamehash}{4b1b80ce031e320052bcf8fa1a33b380}
+      \strng{authorbibnamehash}{4b1b80ce031e320052bcf8fa1a33b380}
+      \strng{authornamehash}{4b1b80ce031e320052bcf8fa1a33b380}
+      \strng{authorfullhash}{4b1b80ce031e320052bcf8fa1a33b380}
+      \field{labelalpha}{SW12}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Configuration spaces}
+      \field{isbn}{978-88-7642-430-4; 978-88-7642-431-1}
+      \field{series}{CRM Series}
+      \field{title}{Chromatic quasisymmetric functions and {H}essenberg varieties}
+      \field{volume}{14}
+      \field{year}{2012}
+      \field{pages}{433\bibrangedash 460}
+      \range{pages}{28}
+      \verb{doi}
+      \verb 10.1007/978-88-7642-431-1\_20
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/978-88-7642-431-1_20
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/978-88-7642-431-1_20
       \endverb
     \endentry
   \enddatalist

@@ -73,22 +73,33 @@
 \begin{document}
 
 \maketitle
-\tableofcontents
 
 
 \section{Reading Comments}
 
 \subsection*{QUOMODOCUMQUE Article}
-
+\begin{itemize}
+  \item I quite like the point about avoiding undermining your own work. Most advice I have heard for math talks have been about humility and being very specific about how much attention you put on your own work, but this warns against swinging the pendulum too far in the other direction.
+  \item I entirely agree with the statement about timing; I pretty much unconsciously stop listening to a talk the moment the speaker goes over time.
+\end{itemize}
 
 \subsection*{Tao Article}
-
+\begin{itemize}
+  \item Tao's blogposts often have really poignant quotes, this one is no exception.
+  \item I like that he expresses the importance of always giving a sense of global locality within a talk/paper, as this is often the main challenge for people who can already locally verify details. 
+  \item It's very interesting the point that one should sit on a paper for a while before releasing to, say, the arXiv. 
+\end{itemize}
 
 \subsection*{Vakil Article}
-
+  \textbf{Note:} I very much already admire Vakil as an expositor for his \textit{Rising Sea}. It's where I first learned category theory ages ago and I continue to reference it whenever I need to think about schemes.
+\begin{itemize}
+  \item When I initially began attending seminars, I found myself taking notes in a more ``traditional sense'' as Vakil puts it. I definitely agree with him now that this sapped from my focus on the talk and nowadays I take much less notes and only write key ideas.
+  \item I find it quite interesting the idea of, after having written three things to take away down, cutting one of them to make room for another instead of simply adding to the list. This is quite cool as it forces you to distill the essence of the talk.
+\end{itemize}
 
 \newpage
 
+\tableofcontents
 
 
 \section{Project Topics}
@@ -109,7 +120,7 @@ Keep in mind the remark of § 2.2
 \subsection*{Topic 2: Quasisymmetric Functions}
 \begin{itemize}
   \item The book \textit{An Introduction to Quasisymmetric {S}chur Functions} \cite{qsymschur} by Luoto, Mykytiuk and van Willigenburg gives a broad overview of the machinery behind quasisymmetric functions (namely Hopf algebras) as well as a description of the basis of quasisymmetric {S}chur functions for the quasisymmetric function algebra.
-  \item In \cite{stanley:95}, Stanley contstructs a quasisymmetric function from a finite graph. This construction encodes the coloring data in a way that generalizes the graph chromatic polynomial. 
+  \item In \cite{stanley:95}, Stanley contstructs a symmetric function from a finite graph. This construction encodes the coloring data in a way that generalizes the graph chromatic polynomial. Nearly two decades later, Shareshian and Wachs in \cite{wachs:12} develop a quasisymmetric version of Stanley's chromatic function and establish connections to cohomological invariants coming from algebraic geometry. Three years later, Athanasiadis produced a wonderful elementary account (\cite{ath}) of the development of both the symmetric and quasisymmetric chromatic function . 
 \end{itemize}
 
 
@@ -118,11 +129,11 @@ Keep in mind the remark of § 2.2
 
 \section{Symmetric Polynomials/Functions Exposition}
 
-\textbf{Assignment}: Revise your write-up on symmetric polynomials, focusing on the extra tip
-in § 2.1 (``indispensable, interesting, illustrative.'') If you did not write about the basis of homogeneous symmetric
-functions last time, this should be included in your two pages. Add a third
-page dedicated to the combinatorial definition of Schur functions and their
-symmetry.
+%\textbf{Assignment}: Revise your write-up on symmetric polynomials, focusing on the extra tip
+%,in § 2.1 (``indispensable, interesting, illustrative.'') If you did not write about the basis of homogeneous symmetric
+%functions last time, this should be included in your two pages. Add a third
+%page dedicated to the combinatorial definition of Schur functions and their
+%symmetry.
 
 \subsection*{Preliminary Considerations} 
 Throughout this article, fix a (unital) commutative ring $ R $ and a field $ k $. For simplicity, we work over vector spaces instead of general modules.
@@ -197,6 +208,10 @@ The reader is cautioned that not every $ k $-algebra has a nontrivial grading. I
   
 \end{definition}
 
+\begin{example}
+  For $ n=5 $, the sequences $ \alpha=(1, 0, 2, 2, 0, 0, \ldots) $ and $ \beta=(2,0,1,2,0,0,\ldots) $ are distinct  weak compositions but neither are valid partitions of $ 5 $ due to the presence of a $ 0 $ between positive entries. On the other hand, $ \lambda = (2,2,1) $ is a partition of $ 5 $.
+\end{example}
+
 \subsection{Symmetric Functions}
 
 \begin{definition}[pg. 308 in \cite{stanley2}]\label{def:symfunc}
@@ -239,7 +254,6 @@ From the monomial symmetric functions, we may form another interesting basis for
   h_{\lambda}:=\prod_{i=1}^{\infty} \sum_{\nu\vdash \lambda_{i}} m_{\nu}.
 \]
 where $ \lambda = (\lambda_{1},\lambda_{2},\ldots) $. Again, the set $ \{h_{\lambda}: \lambda\vdash n\} $ is a basis for $ \Lambda_{k}^{n} $ and the set $ \{h_{\lambda}: \lambda\in\Par\} $ is a basis for $ \Lambda_{k} $.
-
 \subsection{Schur Functions}
 
 \begin{definition}\label{def:youngdiagram}
@@ -309,9 +323,11 @@ where $ \lambda = (\lambda_{1},\lambda_{2},\ldots) $. Again, the set $ \{h_{\lam
 
 
 \begin{definition}\label{def:schur}
+  Given $ \lambda\vdash n $, the \textit{Schur function} indexed by $ \lambda $ is defined by
  \[
-  s_{\lambda} := \sum_{\mathcal{T}\in SSYT(\lambda) } x^{\alpha_{\mathcal{T}}}.
+  s_{\lambda} := \sum_{\mathcal{T}\in SSYT(\lambda) } x^{\alpha_{\mathcal{T}}}
 \] 
+where $ \alpha_{\mathcal{T}} $ denotes the weight of the Young tableau $ \alpha $.
 \end{definition}
 
 
