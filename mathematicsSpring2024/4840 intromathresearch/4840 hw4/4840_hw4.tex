@@ -64,7 +64,7 @@
 
 
 %--------Metadata------------
-\title{Intro Math Research Hw3}
+\title{Intro Math Research Hw4}
 \author{James Harbour}
 %----------------------------
 
@@ -75,56 +75,42 @@
 \maketitle
 
 
-\section{Reading Comments}
+\section{Abstracts}
 
-\subsection*{QUOMODOCUMQUE Article}
-\begin{itemize}
-  \item I quite like the point about avoiding undermining your own work. Most advice I have heard for math talks have been about humility and being very specific about how much attention you put on your own work, but this warns against swinging the pendulum too far in the other direction.
-  \item I entirely agree with the statement about timing; I pretty much unconsciously stop listening to a talk the moment the speaker goes over time.
-\end{itemize}
+\subsection*{Talk Abstract}
+``Groups, as men, shall be know by their actions'' -Guillermo Moreno. In this talk, we introduce the field of representation theory and its connection to combinatorics. Through examples, we hint towards a deep connection between the combinatorics of partitions and the actions of symmetric groups on vector spaces. The only background required will be linear algebra and some knowledge of group theory.
 
-\subsection*{Tao Article}
-\begin{itemize}
-  \item Tao's blogposts often have really poignant quotes, this one is no exception.
-  \item I like that he expresses the importance of always giving a sense of global locality within a talk/paper, as this is often the main challenge for people who can already locally verify details. 
-  \item It's very interesting the point that one should sit on a paper for a while before releasing to, say, the arXiv. 
-\end{itemize}
 
-\subsection*{Vakil Article}
-  \textbf{Note:} I very much already admire Vakil as an expositor for his \textit{Rising Sea}. It's where I first learned category theory ages ago and I continue to reference it whenever I need to think about schemes.
-\begin{itemize}
-  \item When I initially began attending seminars, I found myself taking notes in a more ``traditional sense'' as Vakil puts it. I definitely agree with him now that this sapped from my focus on the talk and nowadays I take much less notes and only write key ideas.
-  \item I find it quite interesting the idea of, after having written three things to take away down, cutting one of them to make room for another instead of simply adding to the list. This is quite cool as it forces you to distill the essence of the talk.
-\end{itemize}
+\subsection*{Paper Abstract}
+
+In this paper we exposit one of the fundamental results linking representation theory and algebraic combinatorics called Schur-Weyl duality. It provides a dictionary between the representation theory of finite symmetric groups and the representation theory of the general linear group of a finite dimensional complex vector space. Through this dictionary, we obtain representation theoretic constructions of many aspects of symmetric function theory, including Schur functions and Littlewood-Richardson coefficients.
 
 \newpage
+\section{Outlines}
 
-%\tableofcontents
-
-
-\section{Project Topics}
-\textbf{Assignment}: Look over the Project Topics document and start searching for readable
-resources. List the two topics which look most interesting to you and
-give two references for each of these topics (different from the one I gave).
-Keep in mind the remark of § 2.2
-
-\subsection*{Topic 1: Schur-Weyl Duality and its Analogues}
+\subsection{Talk Outline}
 \begin{itemize}
-  \item In \cite[Ch.4,6]{fultonharris}, Fulton and Harris provide a gentle introduction to Schur-Weyl duality and the various identities which arise as a consequence.
-  \item In \cite{dipper:05}, Dipper, Doty, and Hu obtain an analogue of Schur-Weyl duality for symplectic groups using the Brauer algebra. 
-
+  \item Run through the standard example $ \pi:  D_{2n} \to O(3) $
+  \item Introduce definition of representations of finite groups.
+  \item Get relevant defs to say $ V\otimes V \cong Sym^{2} \oplus \Lambda^{2}V$.
+  \item State $ V\otimes V\otimes V \cong Sym^{3}V \oplus \Lambda^{3}V \oplus \text{ something else }$.
+  \item Hint how that something else is related to the partition $ (2,1) $ of $ 3 $.
 \end{itemize}
 
 
+\subsection{Paper Outline}
 
-\subsection*{Topic 2: Quasisymmetric Functions}
+
 \begin{itemize}
-  \item The book \textit{An Introduction to Quasisymmetric {S}chur Functions} \cite{qsymschur} by Luoto, Mykytiuk and van Willigenburg gives a broad overview of the machinery behind quasisymmetric functions (namely Hopf algebras) as well as a description of the basis of quasisymmetric {S}chur functions for the quasisymmetric function algebra.
-  \item In \cite{stanley:95}, Stanley contstructs a symmetric function from a finite graph. This construction encodes the coloring data in a way that generalizes the graph chromatic polynomial. Nearly two decades later, Shareshian and Wachs in \cite{wachs:12} develop a quasisymmetric version of Stanley's chromatic function and establish connections to cohomological invariants coming from algebraic geometry. Three years later, Athanasiadis produced a wonderful elementary account (\cite{ath}) of the development of both the symmetric and quasisymmetric chromatic function . 
+  \item Set up relevant preliminary representation theoretic definitions (group algebra stuff etc.)
+  \item Talk about the generic representation theory of $ S_{n} $ 
+  \item Define Young symmetrizers and Specht Modules 
+  \item Talk about the commuting left and right actions of $ GL(V) $ and $ S_{n} $ respectively.
+  \item State and cite the double centralizer theorem to prove Schur-Weyl duality. 
+  \item Obtain relations to Schur functions, Littlewood-Richardson coefficients, plethyism, etc.
 \end{itemize}
 
 
-\printbibliography
 \newpage
 
 \section{Symmetric Polynomials/Functions Exposition}
@@ -143,23 +129,6 @@ Throughout this article, fix a (unital) commutative ring $ R $ and a field $ k $
 \end{notation*}
 
 \subsection{Algebraic Background}
-
-%Many common algebraic objects possess both a vector space structure and an internal product structure. For example, the set of $ n\times n $ matrices over $ k $, denoted $ M_{n}(k) $, has a product given by matrix multiplication and is also a vector space under addition and scalar multiplication by $ k $. 
-%
-%\begin{definition}\label{def:kalg}
-%  Let $ A $ be a $ k $-vector space equipped with a map $ \cdot: A\times A\to A $ (written $ (x,y)\mapsto x\cdot y $). The pair $ (A,\cdot) $ is a \textit{$ k $-algebra} if, for $ x,y,z\in A $ and $ a,b\in k $, the following hold:
-%  \begin{itemize}
-%    \item $(x+y)\cdot z = x\cdot z + y\cdot z$,
-%    \item $z\cdot (x+y) = z\cdot x + z\cdot y$,
-%    \item $(a x) \cdot (b y) = (a b)(x\cdot y)$.
-%  \end{itemize}
-%\end{definition}
-%%We abuse notation and often write $ xy $ for the product $ x\cdot y $. This is standard and usually clear from context. 
-%%Observe that we did not assume the binary operation $ \cdot $ is associative. We will mainly focus on associative algebras; however, some non-associative examples (for culture) include Lie algebras, the Octonions, and $ \R^{3} $ equipped with the vector cross product.
-%
-%\begin{keyexample*}\label{ex:poly}
-%  For $ X= \{x_{i}\}_{i\in I} $, the rings $ k[X] $ and $ k\llbracket X \rrbracket $ form the prototypical example of $ k $-algebras.
-%\end{keyexample*}
 
 Often in algebra, elements of a given object may be decomposed into a sum of simpler elements which are, in a sense, ``homogenous.'' For example, any polynomial in $ n $-variable may be decomposed into a sum of simpler polynomials each of which are futher sums of monomials of the same total degree.  In this way, a polynomial is split into a sum of homogenous parts. This behavior is codified in the notion of \textit{grading}.
 
@@ -180,13 +149,6 @@ with $ A_{0},A_{1},\ldots $ vector spaces such that $ A_{i}\cdot A_{j}\sub A_{i+
   \]
 \end{keyexample*} 
 The reader is cautioned that not every $ k $-algebra has a nontrivial grading. In fact, it can be shown that the ring of formal power series $ k\llbracket x \rrbracket $ does not have a nontrivial grading.
-%\begin{claim}
-%  The algebra $ k\llbracket x \rrbracket $ does not possess a nontrivial grading.
-%\end{claim}
-%\begin{proof}[Proof of Claim]
-%  Suppose 
-%\end{proof}
-
 
 
 \subsection{Symmetric Polynomials}
@@ -318,19 +280,33 @@ where $ \lambda = (\lambda_{1},\lambda_{2},\ldots) $. Again, the set $ \{h_{\lam
   \[
     \alpha(i) := \text{number of times $ i $ appears in $ \mathcal{T} $}.
   \]
-  Note that $ \alpha(i) = 0 $ for sufficiently large $ i $, so we may write $ x^{\alpha} = x_{1}^{\alpha(1)}x_{2}^{\alpha(2)} \cdots $ and obtain a valid monomial.
+  Note that $ \alpha(i) = 0 $ for sufficiently large $ i $, so we may write $ x^{\alpha} = x_{1}^{\alpha(1)}x_{2}^{\alpha(2)} \cdots $ and obtain a valid monomial. We write $ SSYT(\lambda,\alpha) $ for the set of semi-standard Young tableaux of shape $ \lambda $ and weight $ \alpha $.
 \end{definition}
 
 
 \begin{definition}\label{def:schur}
   Given $ \lambda\vdash n $, the \textit{Schur function} indexed by $ \lambda $ is defined by
  \[
-  s_{\lambda} := \sum_{\mathcal{T}\in SSYT(\lambda) } x^{\alpha_{\mathcal{T}}}
+  s_{\lambda} := \sum_{\mathcal{T}\in SSYT(\lambda) } x^{\alpha_{\mathcal{T}}} = \sum_{\alpha} \sum_{\mathcal{T}\in SSYT(\lambda,\alpha)} x^{\alpha}
 \] 
 where $ \alpha_{\mathcal{T}} $ denotes the weight of the Young tableau $ \alpha $.
 \end{definition}
 
+\begin{proposition}
+  The Schur function $ s_{\lambda} $ is a symmetric function.
+\end{proposition}
 
+
+\begin{proof}
+  Let $ \sigma\in S_{\infty}$. Then by definition of the action of $ S_{\infty} $ we have 
+  \[
+    \sigma \cdot s_{\lambda} = \sum_{\alpha} |SSYT(\lambda,\alpha)|\cdot \sigma\cdot x^{\alpha}= \sum_{\alpha} |SSYT(\lambda,\alpha)| x^{\sigma\alpha} = \sum_{\alpha} |SSYT(\lambda,\sigma\alpha)| x^{\alpha}.
+  \]
+  By the Bender-Knuth involution, we have that for fixed weak composition $ \alpha $, $ |SSYT(\lambda,\alpha)| = |SSYT(\lambda,\sigma \alpha)|$, whence 
+  \[
+    \sigma s_{\lambda} = \sum_{\alpha} |SSYT(\lambda, \sigma \alpha)|x^{\alpha} = \sum_{\alpha}|SSYT(\lambda,\alpha)|x^{\alpha} = s_{\lambda}.
+  \]
+\end{proof}
 
 
 \end{document}
