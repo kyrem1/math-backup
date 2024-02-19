@@ -1,0 +1,264 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{CS 6316 Homework 2}
+\author{James Harbour, gtr8rh@virginia.edu}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+% 3.5 Q2,3,6
+
+\begin{homeworkProblem}
+  Let $ \mathcal{X} $ be a discrete domain, and let $ \mathcal{H}_{\text{Singleton}} = \{h_{z}:z\in \mathcal{X}\} \cup \{h^{-}\}$, where for each $ z\in \mathcal{X} $, $ h_{z} $ is the function defined by 
+  \[
+    h_{z}(x) := 
+    \begin{cases} 
+      1 & \text{if } x=z\\
+      0 & \text{if } x\neq z\\
+    \end{cases}
+  \]
+  and $ h^{-} $ is the null hypothesis, namely $ h^{-}(x)=0 $ for all $ x\in \mathcal{X} $. The realizability assumption here implies that the true hypothesis $ f $ labels negatively all examples in the domain, perhaps except one.
+  \begin{enumerate}
+    \item Describe an algorithm that implements the ERM rule for learning $ \mathcal{H}_{\text{Singleton}} $ in the realizable setup.
+    %\item Show that $ \H_{\text{Singleton}} $ is PAC learnable. Provide an upper bound on the sample complexity.
+  \end{enumerate}
+\end{homeworkProblem}
+
+\begin{solution}
+  For brevity, we write $ \H:= \H_{\text{Singleton}} $. Sample finite $ S = \{x_{1}, \ldots, x_{m}\} $ according to $ \mathcal{D} $. We wish to cosntruct a learning algorithm $ A $ such that the hypothesis $ A(S) $ satisfies
+  \[
+    h_{S}:= A(S)\in \argmin_{h\in \H}{L_{S}(h)}
+  \]  
+  As $ \mathcal{X} $ is discrete, a short computation reveals that realizability implies $ f=0 $ or $ f=\ind_{z^{*}} $ for some $ z^{*} \in \mathcal{X}$. Fix $ z\in \mathcal{X} $.
+
+  If $ f(x)=0 $ for all $ x\in \mathcal{S} $, then
+  \begin{equation*}
+    L_{S}(h_{z}) = \frac{1}{|S|}|\{x\in S : h_{z}(x) \neq f(x)\}| = \frac{1}{|S|} |\{x\in S: \ind_{z}(x) \neq 0\}| = \frac{1}{|S|}\ind_{z}(S).
+  \end{equation*}
+  In the other case, suppose that there is some $ z^{*} $ with $ f(z^{*}) = 1 $, in short $ |f^{-1}(\{1\})| \in\{0,1\} $. Clearly, if $ z=z^{*} $ then $ L_{S}(h_{z}) = 0 $. On the other hand, if $ z\neq z^{*} $, then
+  \begin{align*}
+    L_{S}(h_{z}) &= \frac{1}{|S|}|\{x\in S : h_{z}(x) \neq f(x)\}| = \frac{1}{|S|} |\{x\in S: \ind_{z}(x) \neq \ind_{z^{*}}(x)\}| \\
+    &=\frac{1}{|S|}\left| \{x\in S\setminus \{z^{*}\}: \ind_{z}(x) \neq 0\} \sqcup \{x\in S\cap\{z^{*}\}: \ind_{z}(x) \neq 1\}\right| = \frac{1}{|S|}\lr{\ind_{z}(S) + \ind_{z^{*}}(S)} \\
+  \end{align*}
+
+  In both cases, we have the identity
+  \begin{equation}
+    L_{S}(h_{z}) = \frac{1}{|S|}(\ind_{z}(S) + \ind_{f^{-1}(\{1\})}(S)) = \frac{1}{|S|}\left(\ind_{z}(S) + \ind_{1}(f(S))\right) 
+  \end{equation}
+  We also compute
+  \[
+    L_{S}(h^{-}) = \frac{1}{|S|}|\{x\in S : f(x) \neq 0\}| = \frac{1}{|S|}\ind_{1}(f(S)).
+  \]
+  If $ f^{-1}(\{1\})\cap S \neq \emptyset$, let $ z^{*}\in S $ be such that $ f(z^{*}) = 1 $. Then note that $ L_S(h_{z^{*}}) = 0 $, so we have $ h_{z^{*}}\in  \argmin_{h\in \H}{L_{S}(h)}$. If $ f^{-1}(\{1\})\cap S = \emptyset $, then $ L_{S}(h^{-}) = 0 $ whence $ h^{-}\in  \argmin_{h\in \H}{L_{S}(h)}$. Hence, defining
+  \[
+    A(S) := 
+    \begin{cases}
+      h_{z^{*}} & \text{if } f^{-1}(\{1\})\cap S = \{z^{*}\}\\
+      h^{-} & \text{if } f^{-1}(\{1\}) \cap S = \emptyset,
+    \end{cases}
+  \]
+  gives us a learning algorithm which implements the ERM rule for learning $ \H = \H_{\text{Singleton}} $.
+%  \[
+%    \argmin_{h\in\H} L_{S}(h) = \argmin\left[\{L_{S}(h^{-})\}\cup \{L_{S}(h_{z}):z\in \mathcal{X} \}\right]
+%  \]
+  
+ % By realizability, we assume there exists some $ h^{*}\in \H $ such that $\mathcal{D}(\{x\in \mathcal{X} : h^{*}(x)\neq f(x)\})= L_{(\mathcal{D},f)}(h^{*}) = 0 $. $ h^{*} = h_{z}$ for some $ z\in \mathcal{X} $.
+ % \[
+ %   1 = \mathcal{D}(\{h^{*}(x) = f(x)\}) = \mathcal{D}(\{\ind_{z}(x) = f(x)\})   
+ % \]
+  
+\end{solution}
+
+
+
+\begin{homeworkProblem}
+  Let $ \mathcal{X} =\R^{2} $, $ \mathcal{Y}=\{0,1\} $, and let $ \H $ be the class of concentric circles in the plane, that is, $ \H = \{h_{r}:r\in \R_{+}\} $, where $ h_{r}(x) = \ind_{\{\norm{x}\leq r\}} $. Design an ERM algorithm to learn $ \H $ and explain why it is ERM.
+
+ % Prove that $ \H $ is PAC learnable (assume realizability), and its sample complexity is bounded by
+ % \[
+ %   m_{\H}(\eps,\delta) \leq \ceil*{\frac{\log(1/\delta)}{\eps}}.
+ % \]
+\end{homeworkProblem}
+\begin{proof}
+  By realizability, there is some $ r^{*}>0 $ such that 
+  \[
+    0 = L_{(\mathcal{D},f)} (h_{r^{*}}) = \mathcal{D}  (\{x\in \R^{2} : f(x) \neq \ind_{B_{r^{*}}(0)}(x)\})
+  \]
+  whence 
+  \[
+    1 = \mathcal{D}  (\{x\in \R^{2} : f(x) = \ind_{B_{r^{*}}(0)}(x)\}).
+  \]
+  Since this occurs with probability $ 1 $, we may as well assume $ f = \ind_{B{r^{*}}(0)} $.
+
+  %Let $ N = \{x\in \R^{2} : f(x)\neq \ind_{B_{r^{*}}(0)}(x)\} $, so $ \mathcal{D}(N) = 0 $. Note that, as the codomain of $ f $ is $ \mathcal{Y}= \{0,1\} $, we have
+%  \[
+%    f(x) = 
+%    \begin{cases}
+%      \ind_{B_{r^{*}}(0)} (x) & \text{if } x\not\in N\\
+%      1 - \ind_{B_{r^{*}}(0)} (x) & \text{if } x\in N
+%    \end{cases}
+%  \]
+%  \begin{align*}
+%    L_{S}(h_{r}) &= \frac{1}{|S|}|\{x\in S : h_{r}(x) \neq f(x)\}| = \frac{1}{|S|} |\{x\in S: \ind_{B_{r}(0)}(x) \neq f(x)\}|\\
+%    &= \frac{1}{|S|}\left[ |\{x\in S\setminus N: \ind_{B_{r}(0)}(x) \neq f(x)\}| + |\{x\in S\cap N: \ind_{B_{r}(0)}(x) \neq f(x)\}|\right] \\
+%    &=\frac{1}{|S|}\left[ |\{x\in S\setminus N: \ind_{B_{r}(0)}(x) \neq \ind_{B_{r^{*}}(0)}(x)\}| + |\{x\in S\cap N: \ind_{B_{r}(0)}(x) \neq 1 - \ind_{B_{r^{*}}(0)}(x)\}|\right] \\
+%    &=\frac{1}{|S|}\left[ |(S\setminus N)\cap (B_{r}(0)\, \Delta\,  B_{r^{*}}(0))| + |\{x\in S\cap N: \ind_{B_{r}(0)}(x) \neq 1 - \ind_{B_{r^{*}}(0)}(x)\}|\right] \\
+%    &=\frac{1}{|S|}\left[ |(S\setminus N)\cap (B_{r}(0)\, \Delta\,  B_{r^{*}}(0))| + |\{x\in S\cap N: \ind_{B_{r}(0)}(x) \neq 1 - \ind_{B_{r^{*}}(0)}(x)\}|\right] 
+%  \end{align*}
+  Choose the minimal $ s\geq 0 $ such that $ S\cap f^{-1}(\{1\}) \sub B_{s}(0)$ and set $ A(S) := h_{s} $. Note that, as $ S\cap f^{-1}(\{1\})\sub B_{r^{*}}(0) $, by minimality we have $ s\leq r^{*} $. Using that all nonzero labelled examples lie inside $ B_{s}(0) $, we compute
+ % \begin{align*}
+ %   L_{S}(h_{s}) &= \frac{1}{|S|}|\{x\in S : h_{s}(x) \neq f(x)\}| = \frac{1}{|S|} |\{x\in S: \ind_{B_{s}(0)}(x) \neq f(x)\}|\\
+ %   &=\frac{1}{|S|}\left[ |(S\setminus N)\cap (B_{s}(0)\, \Delta\,  B_{r^{*}}(0))| + |\{x\in S\cap N: \ind_{B_{s}(0)}(x) \neq 1 - \ind_{B_{r^{*}}(0)}(x)\}|\right] \\
+ % \end{align*}
+  \begin{align*}
+    L_{S}(h_{s}) &= \frac{1}{|S|}|\{x\in S : h_{s}(x) \neq f(x)\}| = \frac{1}{|S|} |\{x\in S: \ind_{B_{s}(0)}(x) \neq \ind_{B_{r^{*}}(0)}(x)\}| \\
+    &= \frac{1}{|S|} | S\cap (B_{r^{*}}(0)\, \Delta \, B_{s}(0))| = \frac{1}{|S|} | S\cap (B_{r^{*}}(0)\setminus B_{s}(0))| = 0.
+  \end{align*}
+  Hence, the algorithm $ A(S) $ is ERM.
+
+ % \begin{align*}
+ %   L_{S}(h_{s}) &= \frac{1}{|S|}|\{x\in S : h_{s}(x) \neq f(x)\}| = \frac{1}{|S|} |\{x\in S: \ind_{B_{s}(0)}(x) \neq f(x)\}|\\
+ %   &= \frac{1}{|S|}\left[ |\{x\in S\cap f^{-1}(\{1\}): \ind_{B_{s}(0)}(x) \neq 1\}| + |\{x\in S\cap f^{-1}(\{0\}): \ind_{B_{s}(0)}(x) \neq 0\}|\right] \\
+ %   &= \frac{1}{|S|}  |\{x\in S\cap f^{-1}(\{0\}): \ind_{B_{s}(0)}(x) \neq 0\}| = \frac{1}{|S|}  | S\cap f^{-1}(\{0\})\cap B_{s}(0)| \\
+ %   %&=\frac{1}{|S|}\left[ |(S\setminus N)\cap (B_{s}(0)\, \Delta\,  B_{r^{*}}(0))| + |\{x\in S\cap N: \ind_{B_{s}(0)}(x) \neq 1 - \ind_{B_{r^{*}}(0)}(x)\}|\right] \\
+ % \end{align*}
+ % Suppose $r < s $. Then by minimailty of $ s $, there is some $ z\in (S\cap f^{-1}(\{1\})\setminus B_{r}(0) $.
+ % \begin{align*}
+ %   L_{S}(h_{r}) &= \frac{1}{|S|}|\{x\in S : h_{r}(x) \neq f(x)\}| = \frac{1}{|S|} |\{x\in S: \ind_{B_{r}(0)}(x) \neq f(x)\}|\\
+ %   &= \frac{1}{|S|}\left[ |\{x\in S\cap f^{-1}(\{1\}): \ind_{B_{r}(0)}(x) \neq 1\}| + |\{x\in S\cap f^{-1}(\{0\}): \ind_{B_{r}(0)}(x) \neq 0\}|\right] \\
+ %   &= \frac{1}{|S|}\left[ |S\cap f^{-1}(\{1\})\setminus B_{r}(0)| + |S\cap f^{-1}(\{0\})\cap B_{r}(0)|\right] \\
+ %   &= \frac{1}{|S|}  |\{x\in S\cap f^{-1}(\{0\}): \ind_{B_{s}(0)}(x) \neq 0\}| = \frac{1}{|S|}  | S\cap f^{-1}(\{0\})\cap B_{s}(0)| \\
+ % \end{align*}
+
+ % Suppose, for the sake of contradiction, that
+ % \[
+ %   |S\cap f^{-1}(\{1\})\setminus B_{r}(0)| + |S\cap f^{-1}(\{0\})\cap B_{r}(0)| > |S\cap f^{-1}(\{0\}) \cap B_{s}(0)|.
+ % \]
+ % Then 
+ % \begin{align*}
+ %   |S\cap f^{-1}(\{1\})\setminus B_{r}(0)|   &> |S\cap f^{-1}(\{0\}) \cap B_{s}(0)| - |S\cap f^{-1}(\{0\})\cap B_{r}(0)| \\
+ %   &> |S\cap f^{-1}(\{0\})  \cap(B_{s}(0)\setminus B_{r}(0)) |
+ % \end{align*}
+
+ % \begin{claim}
+ %   $|S\cap f^{-1}(\{1\})\setminus B_{r}(0)|  \leq |S\cap f^{-1}(\{0\})  \cap(B_{s}(0)\setminus B_{r}(0)) |$.
+ % \end{claim}
+
+
+ % % TODO maybe prove ERM with probability 1. 
+  
+\end{proof}
+
+
+\begin{homeworkProblem}
+  Let $ \H $ be a hypothesis class of binary classifiers. Show that if $ \H $ is agnostic PAC learnable, then $ \H $ is PAC learnable as well. Furthermore, if $ A $ is a successful agnostic PAC learner for $ \H $, then $ A $ is also a successful PAC learner for $ \H $.
+\end{homeworkProblem}
+
+\begin{proof}
+  Suppose $ \H $ is agnostic PAC learnable and let $ A_{\text{ag}}(S) $ and $ m_{\H}:(0,1)^{2}\to \N $ be the corresponding agnostic algorithm and agnostic sample complexity. Fix $ \eps,\delta\in (0,1)^{2} $, a distribution $ \mathcal{D} $ on $ \mathcal{X} $, and a labeling function $ f:\mathcal{X}\to\{0,1\} $ such that $ (\H, \mathcal{D}, f) $ is realizable. Define a probability measure (distribution) $ \mathcal{F} $ on $ X\times \{0,1\} $ by 
+  \[
+    \dd{\mathcal{F}(x,y)} = \dd{\delta_{f(x)}(y)}\dd{\mathcal{D}(x)},
+  \]  
+  equivalently 
+  \[
+    \int_{X\times Y} g(x,y) \dd{\mathcal{F}} = \int_{X}\int_{\{0,1\}}g(x,y) \dd{\delta_{f(x)}(y)}\dd{\mathcal{D}(x)} \quad \text{for all Borel }g:X\times\{0,1\}\to \C.
+  \]
+  To begin, we compute for any hypothesis $ h\in \H $ that
+  \begin{align*}
+    \P_{(x,y)\sim \mathcal{F}}[h(x)\neq y] &= \int_{X\times Y} \ind_{\{h(x)\neq y \}}(x,y) \dd{\mathcal{F}(x,y)} \\
+    &= \int_{X} \int_{\{0,1\}} \ind_{\{h(x)\neq y \}}(x,y) \dd{\delta_{f(x)}(y)}\dd{\mathcal{D}(x)} \\
+    &= \int_{X}  \ind_{\{(\widetilde{x},\widetilde{y}): h(\widetilde{x})\neq \widetilde{y} \}}(x,f(x)) \dd{\mathcal{D}(x)} \\
+    &= \mathcal{D}(\{x\in \mathcal{X} : h(x)\neq f(x)\}) = L_{(\mathcal{D},f)}(h).
+  \end{align*}
+  Now, since $ (\H,\mathcal{D},f) $ is realizable, it follows that
+  \[
+    \inf_{h\in\H}\P_{(x,y)\sim \mathcal{F}}[h(x)\neq y] = \inf_{h\in \H} L_{(\mathcal{D},f)}(h) = 0.
+  \]
+  Then, by agnostic PAC learnability, running $ A_{\text{ag}} $ on $ m\geq m_{\H}(\eps,\delta) $ i.i.d. examples generated by $ \mathcal{F} $ returns a hypothesis $ A_{\text{ag}}(S) $ such that 
+  \begin{align*}
+    1-\delta&\leq \P_{S\sim \mathcal{F}^{m}}[L_{\mathcal{F}}(A_{\text{ag}}(S)) \leq \inf_{h\in \H} L_{\mathcal{F}}(h)+\eps] \\
+    &=\P_{S\sim \mathcal{F}^{m}}\left[\P_{(x,y)\sim \mathcal{F}}[A_{\text{ag}}(S)(x)\neq y] \leq \inf_{h\in \H} \P_{(x,y)\sim \mathcal{F}}[h(x)\neq y]+\eps\right] \\
+    &=\P_{S\sim \mathcal{F}^{m}}\left[\P_{(x,y)\sim \mathcal{F}}[A_{\text{ag}}(S)(x)\neq y] \leq \eps\right] \\
+    &=\P_{S\sim \mathcal{F}^{m}}\left[L_{(\mathcal{D},f)}(A_{\text{ag}}(S)) \leq \eps\right]= \P_{S\sim \mathcal{D}^{m}}[L_{(\mathcal{D},f)}(A_{\text{ag}}(S)) \leq \eps]
+  \end{align*}
+  This shows that $ \H $ is PAC learnable and also that $ A=A_{\text{ag}} $ is a successful PAC learner for $ \H $.
+
+\end{proof}
+
+%\begin{definition}
+%  $ \H $ is \textit{PAC learnable} if there is $ m_{\H}:(0,1)^{2}\to \N $ and an algorithm such that: for every $ \eps,\delta\in (0,1) $, distribution $ \mathcal{D} $ on $ \mathcal{X} $, and labeling function $ f:\mathcal{X}\to \{0,1\} $, if realizability holds for $ (\H, \mathcal{D}, f), $  then running on $ m\geq m_{\H}(\eps,\delta) $ i.i.d. examples generated by $ \mathcal{D} $ and labeled by $ f $, the algorithm returns a hypothesis $ h $ such that, with probability of at least $ 1-\delta $ (over the choice of examples), $ L_{(\mathcal{D},f)}(h)\leq \eps $.
+%\end{definition}
+%
+%\begin{definition}
+%  $ \H $ is \textit{agnostic PAC learnable} if there is $ m_{\H}:(0,1)^{2}\to \N $ and an algorithm such that: for every $ \eps,\delta\in (0,1) $ and distribution $ \mathcal{D} $ on $ \mathcal{X}\times \mathcal{Y} $, running on $ m\geq m_{\H}(\eps,\delta) $ i.i.d. examples generated by $ \mathcal{D} $ returns a hypothesis $ h $ such that, with probability of at least $ 1-\delta $ (over the choice of $ m $ training examples), \[ L_{\mathcal{D}}(h) \leq \min_{h^{\prime}\in \H}L_{\mathcal{D}}(h^{\prime}) + \eps. \]
+%  Note that 
+%  \[L_{\mathcal{D}}(h) = \P_{(x,y)\sim \mathcal{D}}[h(x)\neq y] = \mathcal{D}(\{(x,y)\in \mathcal{X}\times \mathcal{Y}: h(x)\neq y\}.\]
+%\end{definition}
+
+%\section*{Remarks}
+%For the first two tasks, you only need to design an ERM algorithm and do not need to prove PAC learnability,
+%though you do need to explain why they are ERM.
+%You can assume realizability in both.
+%
+\end{document}
+
+
+
+
+
+
+
+
