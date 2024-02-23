@@ -1,0 +1,98 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+\addbibresource{/home/kyrem1/Mathematics/bibs/comborefs.bib}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Other Setup-------
+\usepackage{ytableau} % For young diagrams
+%\usepackage{todonotes}
+%\newcommand{\Jenn}[1]{\todo[size=\tiny]{#1
+%      \\ \hfill --- Jenn}}
+\usepackage{caption}
+% Adjust caption spacing and font
+%\captionsetup{
+%  font=small, % Adjust the font size
+%  labelfont=bf,
+%  format=plain, % Use plain format to avoid any unwanted effects
+%  justification=raggedright, % Ensure the caption is justified, which can help with spacing
+%  singlelinecheck=false, % Applies justification setting even when the caption is a single line
+%}
+%----------------------------
+
+
+%--------Subfiles Setup-------
+\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{Schur Weyl Duality and The Frobenius Formula}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  In this paper we exposit one of the fundamental results linking representation theory and algebraic combinatorics called Schur-Weyl duality. It provides a dictionary between the representation theory of finite symmetric groups and the representation theory of the general linear group of a finite dimensional complex vector space. Through this dictionary, we obtain representation theoretic constructions of many aspects of symmetric function theory, including Schur functions, Kostka numbers, and internal/external products on the symmetric function ring.
+\end{abstract}
+
+\tableofcontents
+
+
+
+\subfile{./tex/repbackground.tex}
+
+
+\subfile{./tex/symmetricgroupreps.tex}
+
+\subfile{./tex/schurfunctors.tex}
+
+
+
+\printbibliography
+
+\end{document}

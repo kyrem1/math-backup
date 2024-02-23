@@ -1,0 +1,321 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Representations of $ S_{n} $}
+\cite{fultonharris}
+
+\subsection{Partitions, Young Diagrams, and Tabloids}.
+% TODO cut out parts of young diagram definitions that arent needed
+\begin{definition}\label{def:youngdiagram}
+  Given $ \lambda\vdash n $, the \textit{Ferrers diagram of shape $ \lambda $} is the set $\{(i,j)\in \N^{2} : j\in \N, 1\leq i \leq \lambda_{j}\}$ depicted as points in $ \R^{2} $. The \textit{Young diagram of shape $ \lambda $} is depicted identically to the Ferrers diagram except the points are replaced with squares. The \textit{size} of the diagram is the number of entries, namely $ n $. We depict the case $ (5,2,1)\vdash 8 $ below.
+\end{definition}
+
+\begin{figure}[h]
+\captionsetup{
+  font=small, % Adjust the font size
+  labelfont=bf,
+  format=plain, % Use plain format to avoid any unwanted effects
+  justification=raggedright, % Ensure the caption is justified, which can help with spacing
+  singlelinecheck=false, % Applies justification setting even when the caption is a single line
+}
+\centering
+% Align tableaux at the top of their respective minipages
+\ytableausetup{boxframe=0pt, aligntableaux=top}
+\begin{minipage}[t]{0.20\textwidth}
+\centering
+\ydiagram[\bullet]{1,2,5}
+% Adjust space below to align captions uniformly
+\vspace{5pt} % Adjust the space to ensure alignment if necessary
+\caption*{\textit{Ferrers Diagram} for the partition (5,2,1)}
+\end{minipage}
+\quad % This adds some space between the diagrams
+\begin{minipage}[t]{0.20\textwidth}
+\centering
+\ytableausetup{boxframe=normal, aligntableaux=top}
+\begin{ytableau}
+*(white)\\
+*(white) & *(white) \\
+*(white) & *(white) & *(white) & *(white) & *(white) \\
+\end{ytableau}
+\vspace{5pt} % Keep consistent vertical space
+\caption*{\textit{Young Diagram} for the partition (5,2,1)}
+\end{minipage}
+\quad
+\begin{minipage}[t]{0.20\textwidth}
+\centering
+\begin{ytableau}
+9 \\
+5 & 5 \\
+1 & 1 & 1 & 4 & 6 \\
+\end{ytableau}
+\vspace{5pt} % Adjust as needed
+\caption*{\textit{Semi-standard Young tableau} for the partition (5,2,1)}
+\end{minipage} 
+\quad
+\begin{minipage}[t]{0.20\textwidth}
+\centering
+\begin{ytableau}
+8 \\
+5 & 7 \\
+1 & 2 & 3 & 4 & 6 \\
+\end{ytableau}
+\vspace{5pt} % Uniform spacing for alignment
+\caption*{\textit{Standard Young tableau} for the partition (5,2,1)}
+\end{minipage} 
+\end{figure}
+
+
+\begin{definition}\label{def:youngtableaux}
+  Given $ \lambda\vdash n $ and a Young diagram of shape $ \lambda $, a \textit{semi-standard Young tableau of shape $ \lambda $} is a filling of the boxes of the Young diagram with positive integers such that 
+  \begin{itemize}
+    \item the entries are weakly increasing along rows,
+    \item the entries are strictly increasing up columns.
+  \end{itemize}
+  A semi-standard Young tableau of size $ n $ is said to be \textit{standard} if the elements of $ \{1,\ldots,n\} $ each appear exactly once in the tableau. We write $ SSYT(\lambda) $ and $ SYT(\lambda) $ for the sets of semi-standard and standard Young tableaux of shape $ \lambda $. Given a semi-standard Young tableau $ \mathcal{T} $, the \textit{weight} of $ \mathcal{T} $ is a function $ \alpha=\alpha_{\mathcal{T}}:\N \to \N$ given by
+  \[
+    \alpha(i) := \text{number of times $ i $ appears in $ \mathcal{T} $}.
+  \]
+  Note that $ \alpha(i) = 0 $ for sufficiently large $ i $, so we may write $ x^{\alpha} = x_{1}^{\alpha(1)}x_{2}^{\alpha(2)} \cdots $ and obtain a valid monomial. We write $ SSYT(\lambda,\alpha) $ for the set of semi-standard Young tableaux of shape $ \lambda $ and weight $ \alpha $.
+\end{definition}
+
+
+\begin{definition}\label{def:lambdatableau}
+  Given $ \lambda\vdash n $, a $ \lambda $-tableau is simply a filling of the boxes of the Young diagram of shape $ \lambda $ with the elements of $ \{1,\ldots,n\} $ without repetition (and no other restrictions). Denote the set of $ \lambda $-tableaux by $ YT(\lambda) $. Note that $ S_{n}\acts YT(\lambda) $ by permuting labels.
+\end{definition}
+
+
+\begin{definition}\label{def:youngtabloid}
+  Given $ \lambda\vdash n $, define an equivalence relation $ \sim $ on $ YT(\lambda) $ by $ \mathcal{T}\sim \mathcal{T}^{\prime} $ if and only if $ \mathcal{T}^{\prime} $ can be obtained from $ \mathcal{T} $ by permuting the entries of each row. % TODO POSSIBLY COLUMNS CUZ FRENCH NOTATION
+ An equivalence class with respect to this relation is called a \textit{$ \lambda $-tabloid}. If $ \mathcal{T} $ is a $ \lambda $-tableau, we write $ \{\mathcal{T}\} $ for the corresponding $ \lambda $-tabloid. Finally, we write $ Tab(\lambda):= YT(\lambda)/\sim $ for the set of $ \lambda $-tabloids. Note that the action of $ S_{n} $ on $ \lambda $-tableaux descends to an action on $ \lambda $-tabloids.
+\end{definition}
+
+%TODO examples of equivalent and inequivalent lambda-tableaux.
+
+
+\subsection{Construction of Specht Modules}
+Young diagrams will give projection operators $ P_{\lambda}:\C[S_{n}]\to\C[S_{n}] $ which commute with the action of $ S_{n} $, whence the image $ P_{\lambda}(\C[S_{n}]) $ gives a subrepresentation of the regular representation. These subrepresentations will end up being precisely the irreducible representations of $ S_{n} $. Throughout this section, $ \lambda\vdash n$ will be fixed.\\
+
+\begin{definition}\label{def:rowandcolgroup}
+  Given a $ \lambda $-tableau $ \mathcal{T} $, define the \textit{row group} $ R_{\mathcal{T}} $ to be the subgroup of $ S_{n} $ which permutes only the labels in the rows of $ \mathcal{T} $ and the \textit{column group} $ C_{\mathcal{T}} $ as the subgroup which permutes only the labels in the columns of $ \mathcal{T} $. 
+\end{definition}
+Now we may define the \textit{Young row and column symmetrizers} in $ \C[S_{n}] $ by
+\begin{equation}\label{eq:rowandcolsymm}
+  a_{\mathcal{T}} := \sum_{\sigma\in R_{\mathcal{T}}} \sigma, \qquad b_{\mathcal{T}} := \sum_{\sigma\in C_{\mathcal{T}}} \sgn(\sigma) \sigma.
+\end{equation}
+Note that for $ \mathcal{T}\in YT(\lambda) $, the corresponding tabloid is precisely the orbit of $ \mathcal{T} $ under its row group, i.e. 
+\[
+  \{\mathcal{T}\} = R_{\mathcal{T}}\mathcal{T} = \{\sigma \mathcal{T}\in YT(\lambda) : \sigma\in R_{\mathcal{T}}\}.
+\]
+Now let $ M^{\lambda} $ be the free $ \C $-vector space over the set of $ \lambda $-tabloids. Extending the action $ S_{n}\acts Tab(\lambda) $ linearly to all of $ M^{\lambda} $, we obtain a $ \C[S_{n}] $-module structure on $ M^{\lambda} $. For $ \mathcal{T}\in YT(\lambda) $, the element $ e_{\mathcal{T}}\in M^{\lambda} $ given by
+\[
+  e_{\mathcal{T}} := b_{\mathcal{T}}\cdot \{\mathcal{T}\} = \sum_{\sigma\in C_{\mathcal{T}}} \sgn(\sigma) \{\sigma \mathcal{T}\}
+\]
+is called the \textit{polytabloid associated to $\mathcal{T}$}.
+Let $ S^{\lambda} $ be the subspace of $ M^{\lambda} $ generated by all polytabloids, namely
+\[
+  S^{\lambda}:=\Span_{\C}\{e_{\mathcal{T}} : \mathcal{T}\in YT(\lambda)\}.
+\]
+\begin{claim}
+  $ S^{\lambda} $ is a $ \C[S_{n}] $-submodule of $ M^{\lambda} $.
+\end{claim}
+
+\begin{proof}[Proof of Claim]
+  Fix $ \sigma\in S_{n} $. We first show that $ C_{\sigma \mathcal{T}} = \sigma C_{\mathcal{T}} \sigma^{-1}$. Indeed, if $ T_{i} $ is the set of entries for the $ i $th column of $ \mathcal{T} $, then $ \sigma(T_{i}) $ is the entries for the $ i $th column of $ \sigma \mathcal{T} $. Now it suffices to note that $ \tau\in S_{n} $ stabilizes $ T_{i} $ if and only if $ \sigma \tau \sigma^{-1} $ stabilizes $ \sigma(T_{i}) $. Using this identity, we compute 
+\begin{equation*}
+  \sigma b_{\mathcal{T}} = \sum_{\gamma\in C_{\mathcal{T}}} \sgn(\gamma) \sigma \gamma \overset{\tau=\sigma \gamma \sigma^{-1}}{=} \sum_{\tau\in \sigma C_{\mathcal{T}} \sigma^{-1}} \sgn(\sigma^{-1} \tau \sigma) \tau \sigma = \sum_{\tau\in C_{\sigma\mathcal{T}}} \sgn(\tau)  \tau \sigma  = b_{\sigma \mathcal{T}} \sigma.
+\end{equation*}
+Now we apply $ \sigma $ to the generators of $ S^{\lambda} $ and find
+\begin{equation*}
+  \sigma \cdot e_{\mathcal{T}} = \sigma \cdot (b_{\mathcal{T}} \cdot\{\mathcal{T}\}) = (\sigma b_{\mathcal{T}}) \cdot \{\mathcal{T}\} = b_{\sigma \mathcal{T}} \{\sigma \mathcal{T}\} = e_{\sigma \mathcal{T}}.
+\end{equation*}
+As $ S_{n} $ stabilizes $ S^{\lambda} $, the claim follows. 
+\end{proof}
+
+
+\begin{definition}\label{def:spechtmodule}
+  The $ \C[S_{n}] $-module $ S^{\lambda} $ as defined above is the \textit{Specht module corresponding to $ \lambda $}.
+\end{definition}
+
+
+\begin{example}[Sign Representation]
+  Consider the partition $ \lambda=(1,1,\ldots, 1) $ of $ n $. Since each row of $ \lambda $ has one element, the $ \lambda $-tabloids are the same as $ \lambda $-tableaux.\\
+
+  Let $ \mathcal{T} $ be a $ \lambda $-tableau. As $ \mathcal{T} $ has only one column, $ C_{\mathcal{T}} = S_{n} $, whence $ b_{\mathcal{T}} = \sum_{\gamma\in S_{n}} \sgn(\gamma) \gamma $ and consequently
+  \[
+    \sigma e_{\mathcal{T}} = \sum_{\gamma\in S_{n}} \sgn(\gamma) \sigma \gamma \{\mathcal{T}\} = \sum_{\tau\in S_{n}} \sgn(\sigma^{-1} \tau) \tau \{\mathcal{T}\} = \sgn(\sigma)e_{\mathcal{T}} \quad \text{for all } \sigma\in S_{n}.
+  \]
+  On the other hand, we know that $ \sigma e_{\mathcal{T}} = e_{\sigma \mathcal{T}} $, so it follows that $ S^{\lambda} = \C e_{\mathcal{T}} $ is the one-dimensional $ \sgn $ representation.
+\end{example}
+
+\begin{example}[Trivial Representation]
+  Consider the partition $ \lambda=(n) $ of $ n $. Since there is one row of $ \lambda $, all $ \lambda $-tableaux are equivalent so there is only one $ \lambda $-tabloid. Fix a $ \lambda $-tableau $ \mathcal{S} $.
+  
+  Each $ e_{\mathcal{T}} = \{T\} = \{S\} $, so $ S^{\lambda} = \C e_{\mathcal{S}} $ is one-dimensional. The action of $ \sigma $ is given by $ \sigma e_{\mathcal{T}} = e_{\sigma \mathcal{T}} = e_{\mathcal{T}} $, so $ S^{\lambda} $ is the trivial representation of $ S_{n} $.
+
+\end{example}
+
+\begin{example}[Augmentation Subrepresentation]
+  Consider the partition $ \lambda=(n-1,1) $ of $ n $. Observe that there are $ n $ distinct $ \lambda $-tabloids, each corresponding to the integer in singular box on the $ 2 $nd row. Denote the tabloid with $ i $ in the $ 2nd $ row by $ t_{i} $, so $ Tab(\lambda) = \{t_{1},\ldots, t_{n}\} $.
+
+  Let $ V=\C\{v_{1}, \ldots, v_{n}\} $ be the standard representation of $ S_{n} $ (i.e. $ \sigma v_{i} = v_{\sigma(i)} $). Observe that the map $ L:V\to M^{\lambda}$ given by $L(v_{i})=t_{i}$ is an isomorphism of $ \C[S_{n}] $-modules. The \textit{augmentation subrepresentation} $ W $ of $ V $ is given by $ W:= \{ \sum_{i=1}^{n} \alpha_{i} v_{i}: \sum_{i} \alpha_{i}=0 \}$. We claim that $ S^{\lambda}\cong W $ as $ \C[S_{n}] $-modules.
+  Fix $ i\in \{1,\ldots,n\} $ and let $ \mathcal{T} $ be a $ \lambda $-tableau such that $ t_{i} = \{\mathcal{T}\} $.  Let $ j $ be the integer below $ i $ on the tableau.
+  \begin{figure}[h]
+    \centering % This command centers the figure
+    \ytableausetup{boxsize=1.5em, boxframe=normal, aligntableaux=top}
+    \begin{ytableau}
+      i  & \none   & \none & \none & \none \\
+      j  & *(white)   & \none[\dots] & *(white) & *(white) \\
+    \end{ytableau}
+    \caption*{General form of $ \mathcal{T} $ when $ t_{i}=\{\mathcal{T}\} $} % Add a caption if needed
+  \end{figure}
+  Then the column group $ C_{\mathcal{T}} $ is then of order $ 2 $ generated by the transposition $ (i\ j) $. 
+  \begin{align*}
+    e_{\mathcal{T}} = \sum_{\gamma\in C_{\mathcal{T}}} \sgn(\gamma) \gamma t_{i} = t_{i} - t_{j}.
+  \end{align*}
+  Hence, one checks
+  \[
+    S^{\lambda} = \Span\{t_{i}-t_{j}: 1\leq i, j \leq n, i\neq j \} = \Span\{t_{i}-t_{i+1}: 1\leq i\leq n-1\}.
+  \]
+  Moreover, $ \{t_{i}-t_{i+1} : 1\leq i \leq n-1\} $ gives a basis for $ S^{\lambda} $. The restriction of $ L $ to $ W $ gives a vector space isomorphism $ L:W\to S^{\lambda} $ as $ \{v_{i}-v_{i+1}\}_{1\leq i \leq n-1} $ gives a basis for $ W $, so a basis gets mapped to a basis. Moreover, this map intertwines the $ S_{n} $-action, so it produces $ \C[S_{n}] $-module isomorphism.
+\end{example}
+
+\subsection{Alternative Construction}
+
+Fix a $ \lambda $-tableau $ \mathcal{S} $ throughout this section, say the canonical one (increasing across rows and then moving up rows).
+Recall the row and column symmetrizers $ a_{\lambda}:=a_{\mathcal{S}} $, $ b_{\lambda}:=b_{\mathcal{S}} $ and define the Young symmetrizer 
+\[
+  c_{\lambda} := a_{\lambda}\cdot b_{\lambda}\in \C[S_{n}].
+\]
+Set $ V_{\lambda} := \C[S_{n}]c_{\lambda} $. Define a map $ T:\C[S_{n}]a_{\lambda} \to M^{\lambda} $ by $ T(\sigma a_{\lambda})= \{\sigma \mathcal{S}\} $. 
+%\begin{theorem}
+%  Letting $ S^{\lambda} $ be the Specht module as defined in the previous section, we have $ S^{\lambda}\cong V_{\lambda} = \C[S_{n}]c_{\lambda} $ as $ \C[S_{n}] $-modules.
+%\end{theorem}
+%
+%\begin{proof}
+%  $M^{\lambda} =  \C\{Tab(\lambda)\} = \{t: t\in Tab(\lambda)\} $, $ Y^{\lambda}:= \C\{YT_{\lambda}\} = \C\{\mathcal{T}: \mathcal{T}\in YT(\lambda)\}$.
+%
+%  \[\dim_{\C} Y^{\lambda} = |YT(\lambda)| = n!\]
+%  Note that elements of $ YT(\lambda) $ are in one-to-one correspondence with elements of $ S_{n} $ by defining $ \sigma_{\mathcal{T}}(i) $ to be the value in the $ i $th box of $ \mathcal{T} $.
+%
+%  Define $ L: Y^{\lambda}\to M^{\lambda} $ by $ L(\mathcal{T}) = \{\mathcal{T}\} $. 
+%
+%  Define $ R: M^{\lambda}\to Y^{\lambda}$ by $ R(t) = \sum_{\mathcal{T}\in t} \mathcal{T} = \sum_{\sigma\in R_{\mathcal{T}}} \sigma \mathcal{T} $.
+%
+%  As $ S^{\lambda} $ is cyclic, $ S^{\lambda}=\C[S_{n}] \cdot e_{\{\mathcal{S}\}}\sub M^{\lambda}$.
+%  \begin{align*}
+%    R(e_{\{\mathcal{S}\}}) &= \sum_{\tau\in C_{\mathcal{S}}}\sgn(\tau)R(\{\tau\mathcal{S}\}) = \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \sum_{\sigma\in R_{\tau\mathcal{S}}} \sigma \tau\mathcal{T} \\
+%    &= \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \sum_{\sigma\in \tau R_{\mathcal{S}} \tau^{-1}} \sigma \tau\mathcal{T} \\
+%    &= \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \sum_{\gamma\in R_{\mathcal{S}}} \tau \gamma \mathcal{T} = b_{\lambda}a_{\lambda} \mathcal{T} \\
+%  \end{align*}
+%  If $ \sigma\in S_{n} $, then 
+%  \begin{align*}
+%    R(\sigma e_{\mathcal{S}}) &= R(e_{\sigma \mathcal{S}}) = \sum_{\tau\in C_{\sigma\mathcal{S}}} \sgn(\tau) \sum_{\gamma\in R_{\sigma\mathcal{S}}} \tau \gamma \mathcal{T} \\
+%    &= \sum_{\tau\in \sigma C_{\mathcal{S}} \sigma^{-1}} \sgn(\tau) \sum_{\gamma\in \sigma R_{\mathcal{S}} \sigma^{-1}} \tau \gamma \mathcal{T} \\
+%    &= \sum_{\widetilde{\tau}\in C_{\mathcal{S}} } \sgn(\widetilde{\tau}) \sum_{\widetilde{\gamma}\in R_{\mathcal{S}} } \sigma \widetilde{\tau} \sigma^{-1} \sigma \widetilde{\gamma} \sigma^{-1} \mathcal{T} \\
+%    &=\sigma \sum_{\widetilde{\tau}\in C_{\mathcal{S}} } \sgn(\widetilde{\tau}) \sum_{\widetilde{\gamma}\in R_{\mathcal{S}} }  \widetilde{\tau}  \widetilde{\gamma} \sigma^{-1} \mathcal{T} = \sigma b_{\lambda}a_{\lambda} \sigma^{-1} \mathcal{T}\\
+%  \end{align*}
+%
+%\end{proof}
+%
+
+%Define $ R: M^{\lambda}\to \C[S_{n}]a_{\lambda}$ by $ R(t) =  \sum_{\sigma\in R_{\mathcal{T}}} \sigma  $ where $ t = \{\mathcal{T}\} $. Note that if $ \mathcal{T}\sim \mathcal{T}^{\prime} $, then $ R_{\mathcal{T}} = R_{\mathcal{T}^{\prime}} $ so this map is well-defined. 
+%\begin{claim}
+%  The map $ R $ is an isomorphism of $ \C[S_{n}] $-modules.
+%\end{claim}
+%
+%\begin{proof}[Proof of Claim]
+%  For $ \mathcal{T}\in YT(\lambda) $, there is some $ \tau\in S_{n} $ such that $ \mathcal{T} = \tau \mathcal{S} $. Then, we compute
+%  \[
+%    R(\{T\}) = \sum_{\sigma\in R_{\mathcal{T}}} \sigma = \sum_{\sigma\in R_{\tau \mathcal{S}}} \sigma  = \sum_{\gamma\in R_{S}} \tau \gamma \tau^{-1} = \tau a_{\lambda} \tau^{-1}
+%  \]
+%\end{proof}
+%
+%
+%\begin{claim}
+%  $ R(S^{\lambda}) = \C[S_{n}]c_{\lambda} = V_{\lambda} $. 
+%\end{claim}
+%
+%\begin{proof}[Proof of Claim]
+%  \begin{align*}
+%    R(e_{\{\mathcal{S}\}}) &= \sum_{\tau\in C_{\mathcal{S}}}\sgn(\tau)R(\{\tau\mathcal{S}\}) = \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \sum_{\sigma\in R_{\tau\mathcal{S}}} \sigma \\
+%    &= \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \sum_{\sigma\in \tau R_{\mathcal{S}} \tau^{-1}} \sigma  \\
+%    &= \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \sum_{\gamma\in R_{\mathcal{S}}} \tau \gamma \tau^{-1}  \\
+%    &= \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \tau\left(\sum_{\gamma\in R_{\mathcal{S}}}  \gamma \right) \tau^{-1} \\
+%    &= \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \tau a_{\lambda} \tau^{-1} \\
+%  \end{align*}
+%\end{proof}
+
+
+\begin{claim}
+  The map $ T $ is an isomorphism of $ \C[S_{n}] $-modules.
+\end{claim}
+
+\begin{proof}[Proof of Claim]
+  We first show this map is well defined. If $ \sigma a_{\lambda} = \tau a_{\lambda} $, then $ \tau^{-1}\sigma $ fixes $ a_{\lambda} $, whence $ \tau^{-1} \sigma \in R_{\mathcal{S}} $ and consequently $ \sigma \{\mathcal{S}\} = \tau\{\mathcal{S}\}$.
+
+  Since the action of $ S_{n} $ on $ \lambda $-tableau is transitive, it follows that the map $ T $ is onto. On the other hand, suppose $ \sum_{\sigma} \alpha_{\sigma}\sigma a_{\lambda} \in \ker(T) $. Then
+  \[
+    0 = T(\sum_{\sigma} \alpha_{\sigma} \sigma a_{\lambda}) = \sum_{\sigma} \alpha_{\sigma} \{\sigma \mathcal{S}\}.
+  \]
+  Since $ M^{\lambda} $ is a free $ \C $-module, it follows that $ \sum_{\sigma} \alpha_{\sigma} \sigma = 0 $. Lastly, if $ \sigma, \gamma\in S_{n} $, then
+  \[
+    \sigma T(\gamma a_{\lambda}) = \sigma\{\gamma \mathcal{S}\} = \{\sigma \gamma \mathcal{S}\} = T(\sigma \gamma s_{\lambda}).
+  \]
+
+\end{proof}
+
+\begin{claim}
+  The map $ T $ restricted to the submodule $ \C[S_{n}]b_{\lambda} a_{\lambda} $ gives a $ \C[S_{n}] $-module isomorphism $\C[S_{n}]b_{\lambda} a_{\lambda}\cong S^{\lambda} $.
+\end{claim}
+
+\begin{proof}[Proof of Claim]
+  For $ \sigma\in S_{n} $, we compute
+  \begin{align*}
+    T(\sigma b_{\lambda} a_{\lambda}) &= \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) T(\sigma \tau a_{\lambda}) =  \sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \{\sigma \tau \mathcal{S}\} \\
+    &= \sigma\sum_{\tau\in C_{\mathcal{S}}} \sgn(\tau) \{\tau \mathcal{S}\} = \sigma e_{\mathcal{S}} = e_{\sigma \mathcal{S}}\\
+  \end{align*}
+  Since $ S_{n} $ acts transitively on $ \lambda $-tableaux, it follows that
+  \[
+    T(\C[S_{n}]b_{\lambda}a_{\lambda}) = \Span_{\C}\{e_{\sigma \mathcal{S}}: \sigma\in S_{n}\} = S^{\lambda}
+  \]
+  By the proof of the previous claim, $ T $ is injective and intertwines the action of $ S_{n} $, whence $ T\vert_{\C[S_{n}]b_{\lambda}a_{\lambda}} $ furnishes an isomorphism of $ \C[S_{n}] $-modules as desired.
+\end{proof}
+
+
+\begin{proposition}
+  Set $ A = \C[S_{n}]$, so $ V_{\lambda} = A a_{\lambda} b_{\lambda} = A c_{\lambda}$.
+  \begin{enumerate}
+    \item $ V_{\lambda} \cong Ab_{\lambda}a_{\lambda} $.
+    \item $V_{\lambda}$ is the image of the map from $ A a_{\lambda} $ to $ A b_{\lambda} $ given by right multiplication by $ b_{\lambda} $.
+  \end{enumerate}
+\end{proposition}
+%Note that $ R_{\mathcal{S}}\cap C_{\mathcal{S}} =\{1\} $, so decomposition of elements $\gamma\in R_{\mathcal{S}}C_{\mathcal{S}} $ into products $\gamma= \sigma \tau $ with $ \sigma\in R_{\mathcal{S}} $ and $ \tau\in C_{\mathcal{S}} $ is unique. For Hence,
+%\[
+%c_{\lambda} = \sum_{\sigma\in R_{\mathcal{S}}} \sigma\sum_{\tau\in C_{\mathcal{S}}}  \sgn(\tau) \tau=\sum_{\sigma\in R_{\mathcal{S}}, \tau\in C_{\mathcal{S}}}  \sgn(\tau) \sigma\tau = \sum_{\gamma\in R_{\mathcal{S}} C_{\mathcal{S}}} \sgn(\tau_{\gamma}) \gamma,
+%\]
+%\[
+%  c_{\lambda} = 
+%\]
+%where $ \tau_{\gamma} $ is the unique element of $ C_{\mathcal{S}} $ in the product decomposition of $ \gamma $.
+
+\subsection{Results on Specht Modules}
+Having obtained a few examples of Specht modules, we now show that $ \{S^{\lambda}: \lambda\vdash n\} $ forms a complete set of non-isomorphic, irreducible representations of $ S_{n} $. This is established by the combining the following three theorems.
+\begin{theorem}
+  Given $ \lambda\vdash n $, the Specht module $ S^{\lambda} $ is irreducible as a $ \C[S_{n}] $-module (i.e. an irreducible representation of $ S_{n} $).
+\end{theorem}
+
+\begin{theorem}
+  If $ \lambda,\mu\vdash n $ and $ \lambda\neq \mu $, then $ S^{\lambda}\not\cong S^{\mu} $ as $ \C[S_{n}] $-modules.
+\end{theorem}
+
+\begin{theorem}
+  Every irreducible representation of $ S_{n} $ is ismorphic to $ S^{\lambda} $ for some $ \lambda\vdash n $.  
+\end{theorem}
+
+
+
+
+\end{document}
