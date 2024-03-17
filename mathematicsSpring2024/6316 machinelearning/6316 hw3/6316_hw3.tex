@@ -1,0 +1,125 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{6316 Homework 3}
+\author{James Harbour\\gtr8rh@virginia.edu}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+%\begin{definition}
+%  $ C\sub X $ finite. $ \H\sub \{0,1\}^{X}  $ hypothesis class. Set $ \H_{C}:=\{(h(c_{1}), \ldots, h(c_{m})): h\in \H\}\sub \{0,1\}^{C} $. Say $ \H $ \textit{shatters} $ C $ if $ \H_{C} = \{0,1\}^{C} $. The VC dimension of $ \H $ is the maximal size of a set which is shattered by $ \H $. Infinite if can shatter arbitrarily large sizes.
+%\end{definition}
+
+\begin{homeworkProblem}
+  Show the following monotonicity property of VC-dimension: For every two hypothesis calsses, if $ \H^{\prime}\sub \H $ then $ \VCdim(\H^{\prime})\leq \VCdim(\H) $.
+\end{homeworkProblem}
+
+\begin{proof}
+  Note that, if $ C\sub X $ is any subset, then
+  \begin{equation}\label{eq:cont}
+    \H^{\prime}_{C} = \{(h(c_{1}),\ldots, h(c_{\VCdim(\H^{\prime})})):h\in \H^{\prime}\} 
+    \overset{\H^{\prime}\sub \H}{\sub}\{(h(c_{1}),\ldots, h(c_{\VCdim(\H^{\prime})})):h\in \H\} = \H_{C}
+  \end{equation}
+  Suppose first that $ \VCdim(\H^{\prime}) < +\infty $. By definition, there exists a finite set $ C\sub X $ of size $ \VCdim(\H^{\prime}) $ which is shattered by $ \H^{\prime} $, i.e. $ \H^{\prime}_{C} = \{0,1\}^{C} $. Appealing to equation \eqref{eq:cont}, we find
+  \[
+    \{0,1\}^{C} = \H^{\prime}_{C} \overset{\eqref{eq:cont}}{\sub} \H_{C} \sub \{0,1\}^{C},
+  \]
+  whence $ \H_{C} = \{0,1\}^{C} $. Thus, as $ \H $ shatters $ C $ which is a set of size $ \VCdim(\H^{\prime}) $, it follows by definition that $ \VCdim(\H)\geq \VCdim(\H^{\prime}) $ as desired. \\
+
+
+  Now assume that $ \VCdim(\H^{\prime}) = +\infty $. Fix arbitrary $ N\in \N $. Since $ \H^{\prime} $ has infinite VC-dimension, there exists a set $ C\sub X $ of size $ |C|\geq N $ which is shattered by $ \H^{\prime} $. By equation \eqref{eq:cont}, we have again that $ \H_{C}=\{0,1\}^{C} $ whence $ \H $ shatters $ C $. Thus, $ \H $ shatters sets of arbitrarily large size, whence $ \VCdim(\H) = +\infty $ and trivially $ \VCdim(\H^{\prime}) = +\infty \leq +\infty =\VCdim(\H)  $.
+\end{proof}
+
+\begin{homeworkProblem}
+  Let $ \H $ be the class of signed intervals, that is, $ \H = \{h_{a,b,s}:a\leq b, s\in \{\pm 1\}\} $ where
+  \[
+    h_{a,b,s} = 
+    \begin{cases}
+      s & \text{if }x\in[a,b] \\
+      -s & \text{otherwise}
+    \end{cases}
+  \]
+  Calculate $ \VCdim(\H) $.
+\end{homeworkProblem}
+
+\begin{solution}
+  We claim that $ \VCdim(\H) = 3 $. First consider the set $ C = \{1,3,5\} $. Consider the hypotheses $ h_{0,2,\pm1}, h_{2,4,\pm1}, h_{4,6,\pm1},h_{0,6,\pm1}$. We claim these classes restricted to $ C $ witness all of $ \{\pm 1\}^{C} $. This is clear from the computations below.
+  \[
+    h_{0,2,\pm1}(1) = \pm1,\,\, h_{0,2,\pm1}(3)=\mp1,\,\, h_{0,2,\pm1}(5)=\mp1
+  \]
+  \[
+    h_{2,4,\pm1}(1) = \mp1,\,\, h_{2,4,\pm1}(3)=\pm1,\,\, h_{2,4,\pm1}(5)=\mp1
+  \]
+  \[
+    h_{4,6,\pm1}(1) = \mp1,\,\, h_{4,6,\pm1}(3)=\mp1,\,\, h_{4,6,\pm1}(5)=\pm1
+  \]
+  \[
+    h_{0,6,\pm1}(1) = \pm1,\,\, h_{0,6,\pm1}(3)=\pm1,\,\, h_{0,6,\pm1}(5)=\pm1
+  \]
+  Hence $ \H $ shatters $ C $, so $ \VCdim(\H) \geq 3 $.
+
+  Now suppose that $ C\sub \R $ with $ |C| = 4 $. Write $ C = \{a,b,c,d\} $ with $ a<b<c<d $. We claim that $ (+1,-1,+1,-1)\not\in\H_{C}  $. Suppose, for the sake of contradiction, that there is some $ h = h_{\alpha,\beta,s}\in \H $ such that $ (+1,-1,+1,-1) = (h(a), h(b), h(c), h(d)) $. 
+  
+  For the first case, assume $ s=1 $. As $ h(a),h(c) = +1 $, we have $ a,c\in [\alpha,\beta] $. But then $ b\in [a,c]\sub [\alpha,\beta] $, whence $ h(b) = +1 $ contradicting the assumption that $ h(b) = -1 $. 
+
+  For the second case, assume $ s=-1 $. As $ h(b),h(d) = -1 $, we have $ b,d\in [\alpha,\beta] $. But then $ c\in[b,d]\sub [\alpha,\beta] $, whence $ h(c) = -1 $ contradicting the assumption that $ h(c) = +1 $.
+
+  In both cases, we reach a contradiction, so the claim follows and thus $ \H $ cannot shatter any set of size $ 4 $. Hence $ \VCdim(\H) = 4 $.
+
+
+\end{solution}
+
+\end{document}

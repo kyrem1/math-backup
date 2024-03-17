@@ -1,0 +1,138 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{Presentations Worksheet}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+
+\begin{center}
+  \Large\textbf{Evan}: \textit{Matroids and Greedy Algorithms on Them}
+\end{center}
+
+\section*{Peer Feedback}
+
+\begin{itemize}
+  \item While I appreciated the style of sticking to one board and not meandering too much, I think it would be more instructive if you wrote bigger and used more boards to make up for it.
+  \item The basic examples of graphs and matrices were great. I would love to have seen more examples which are more involved.
+  \item I didn't really buy that the greedy algorithm you described ``converges'', whatever that means. Maybe a couple comments about that would have been nice. 
+\end{itemize}
+
+\section*{Three Things}
+
+\begin{itemize}
+  \item \textit{Motivation}: Matroids generalize the notion of ``independence'' to other settings.
+  \item \textit{Definition}: A matroid is a pair $ (E, I) $ where $ E $ is a set called the ``ground set'' and $ I\sub \mathcal{P}(E) $ satisfies 
+    \begin{itemize}
+      \item $ \emptyset \in I $,
+      \item if $ A\in I $ and $ B\sub A $, then $ B\in I $,
+      \item if $ A,B\in I $ and $ |A| > |B| $, then there is some $ a\in A $ such that $ B\cup \{a\} \in I $.
+    \end{itemize}
+  \item \textit{Point of Talk}: Given a weighted matroid (matroid with weights), there is a greedy algorithm which gives an independent set of maximum weight and size. Generalizes Kruskal's algorithm for finding spanning forests.
+\end{itemize}
+
+
+\newpage
+
+
+\begin{center}
+  \Large\textbf{Ethan}: \textit{Quasisymmetric Functions}
+\end{center}
+
+\section*{Peer Feedback}
+\begin{itemize}
+  \item While the starting motivation was good, I think you introudced too much notation too fast in the beginning. In my opinion, a math talk should have a continuous, slow increase in difficulty throughout the talk, not a sharp jump.
+  \item I find math talks the most engaging when the speaker barely uses their notes and gives their exposition in an impromptu manner. Try to wean off using notes so much.
+  \item Try to stick to the time limit set by the organizers for math talks.
+\end{itemize}
+
+\section*{Three Things}
+\begin{itemize}
+  \item Quasisymmetric functions are an attempt to build a larger ring of generating functions than the symmetric fyunctions by using compositions instead of partitions as our fundamental combinatorial object.
+  \item Analgous to how semistandard Young tableaux are used in the theory of symmetric functions, we have a notion of tableaux for compositions called \textit{semistandard reverse composition tableaux}.
+  \item In this way, quasisymmetric Schur functions can be built, and these in fact can be used to write ordinary Schur functions as a sum of quasisymmetric Schur functions.
+\end{itemize}
+
+
+\newpage
+
+\begin{center}
+  \Large\textbf{Samir}: \textit{Symmetry of Grothendieck Polynomials}
+\end{center}
+
+\section*{Peer Feedback}
+\begin{itemize}
+  \item It is hard to give any critical feedback to someone who has already nearly mastered the art of giving math talks. Your boardwork and pacing were excellent
+  \item My one critique is to maybe think a bit more deeply about the example you utilized so that you can respond quicker to questions regarding it.
+  \item I would have loved a more in depth discussion of the history of Grothendieck polynomials and how they arose.
+\end{itemize}
+
+\section*{Three Things}
+
+\begin{itemize}
+  \item Analagous to ordinary tableaux, we have a collection $ SVT(\lambda) $ of what are called \textit{set-valued tableaux} corresponding to a partition $ \lambda $.
+  \item \textit{Definition}: Given $ \lambda\vdash d $,
+    \[
+      G_{\lambda}= \sum_{T\in SVT(\lambda)} \beta^{|T|-| \lambda|} x^{\omega(T)}.
+    \]
+  \item $ G_{\lambda} = S_{\lambda} + (\text{higher degree terms in $ \beta $}) $. Symmetry is shown via a generalization of the Bender-Knuth involution.
+\end{itemize}
+
+
+\newpage
+
+
+
+\end{document}

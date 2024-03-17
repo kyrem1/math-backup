@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2024.1.30)  26 FEB 2024 00:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2024.1.30)  17 MAR 2024 15:59
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**6316_hw2.tex
-(./6316_hw2.tex
+**6316_hw3.tex
+(./6316_hw3.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-22> (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
@@ -639,8 +639,8 @@ LaTeX Info: Redefining \bigcdot on input line 86.
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 25.
 Package hyperref Info: Option `pdfnewwindow' set `true' on input line 25.
- (tmp/.aux/6316_hw2.aux)
-\openout1 = `6316_hw2.aux'.
+ (tmp/.aux/6316_hw3.aux)
+\openout1 = `6316_hw3.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 59.
 LaTeX Font Info:    ... okay on input line 59.
@@ -680,9 +680,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package hyperref Info: Link coloring ON on input line 59.
- (tmp/.aux/6316_hw2.out) (tmp/.aux/6316_hw2.out)
+ (tmp/.aux/6316_hw3.out) (tmp/.aux/6316_hw3.out)
 \@outlinefile=\write4
-\openout4 = `6316_hw2.out'.
+\openout4 = `6316_hw3.out'.
 
 LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -698,28 +698,29 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 61.
  (/usr/share/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    Trying to load font information for U+bbm on input line 85.
- (/usr/share/texmf-dist/tex/latex/bbm-macros/ubbm.fd
-File: ubbm.fd 1999/03/15 V 1.2 Font definition for bbm font - TH
-) [1
+Underfull \hbox (badness 10000) in paragraph at lines 79--81
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] (tmp/.aux/6316_hw2.aux)
-Package rerunfilecheck Info: File `6316_hw2.out' has not changed.
-(rerunfilecheck)             Checksum: 6213A69C2A74EA306625D7FB89F4BD97;273.
+ []
+
+[1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (tmp/.aux/6316_hw3.aux)
+Package rerunfilecheck Info: File `6316_hw3.out' has not changed.
+(rerunfilecheck)             Checksum: 65B02FE74D6CD5A2F207765132328DF0;182.
  ) 
 Here is how much of TeX's memory you used:
- 23800 strings out of 477985
- 452931 string characters out of 5840058
- 1870388 words of memory out of 5000000
- 43540 multiletter control sequences out of 15000+600000
- 523498 words of font info for 81 fonts, out of 8000000 for 9000
+ 23778 strings out of 477985
+ 452322 string characters out of 5840058
+ 1867388 words of memory out of 5000000
+ 43527 multiletter control sequences out of 15000+600000
+ 523103 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 128i,12n,131p,648b,512s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/kyrem1/.texlive/texmf-var/fonts/pk/ljfour/public/bbm/bbm12.600pk></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on tmp/.aux/6316_hw2.pdf (3 pages, 163595 bytes).
+ 128i,9n,131p,683b,508s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on tmp/.aux/6316_hw3.pdf (2 pages, 125377 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
- 9 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 PDF objects out of 1000 (max. 8388607)
+ 64 compressed objects within 1 object stream
+ 6 named destinations out of 1000 (max. 500000)
+ 29 words of extra memory for PDF output out of 10000 (max. 10000000)
 
