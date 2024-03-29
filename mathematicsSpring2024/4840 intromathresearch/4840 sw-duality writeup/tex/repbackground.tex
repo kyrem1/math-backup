@@ -13,17 +13,66 @@
 \end{definition}
 
 \begin{definition}
-    A morphism between two representations $ (\pi, V) $ and $ (\rho, W) $ of a group $ G $ is a linear map $ T:V\to W $ such that $ T \pi(g) = \rho(g) T $ for all $ g\in G $.
+    A morphism between two representations $ (\pi, V) $ and $ (\rho, W) $ of a group $ G $ is a linear map $ T:V\to W $ such that $ T \pi(g) = \rho(g) T $ for all $ g\in G $. A morphism between representations is an isomorphism if it is an isomorphism of vector spaces.
+
+    We write $ \Hom_{G}(V,W) $ for the set of morphisms between $ (\pi,V) $ and $ (\rho,W) $.
+\end{definition}
+
+\begin{definition} Fix a representation $ (\pi,V) $ of a group $ G $.
+    \begin{itemize}
+        \item  A \textit{subrepresentation} of $ (\pi,V) $ is a subspace $ W\sub V $ such that $ \pi(g)w\in W $ for all $ w\in W $.
+        \item We say $ (\pi,V) $ is \textit{irreducible} if its only subrepresentations are $ V $ and $ 0 $.
+    \end{itemize}
+\end{definition}
+
+The interplay between irreducible representations and morphisms of representations is encapsulated in the following fundamental result.
+
+\begin{lemma}[Schur's Lemma]
+    Let $ (\pi,V) $, $ (\rho,W) $ be irreducible representations of a group $ G $. Then $ \Hom_{G}(V,W)\cong\C $ if $ (\pi,V)\cong (\rho,W) $ and is $ 0 $ otherwise.
+\end{lemma}
+
+\begin{proof}
+    Suppose $ \Hom_{G}(V,W)\neq 0 $. Let $ T\in \Hom_{G}(V,W)\setminus\{0\} $. Since $ \ker(T)\neq V $, irreduciblity implies $ \ker(T) = 0 $. Likewise, as $ \Im(T) \neq 0 $, irreducibility implies $ \Im(T) = W $. Hence $ T $ is an isomorphism, so without loss of generality assume $ (\pi,V) = (\rho,W) $. Let $ \alpha\in \C $ be an eigenvalue of $ T $ with eigenvector $ v $ and observe
+    \[
+        T \pi(g) v = \pi(g) T v = \pi(g) \alpha v = \alpha\pi(g) v.
+    \]
+    As $ v\neq 0 $, irreducibility implies $ \pi(G)v = V$, whence $ T = \alpha I $ on all of $ V $. Thus every element of $ \Hom_{G}(V,V) $ is a multiple of the identity.
+\end{proof}
+
+
+\begin{definition}
+    Given a representation $ (\pi,V) $ of a group $ G $, we define the corresponding \textit{dual respresentation} to be $ (\pi^{*}, V^{*}) $ where $ V^{*}=\Hom_{\C}(V,\C) $ is the dual vector space and $ \pi^{*}(g)f(v) = f(\pi(g^{-1})v) $ for $ f\in V^{*} $, $ g\in G $, and $ v\in V $.
 \end{definition}
 
 
 
-\subsection{Character Theory and Orthogonality Relations}
+\subsection{Character Theory}
 
+% TODO dual representations and their characters, also mention why reps of $ S_n $ are self-dual
+Whilst we will not need much character theory in the following, we mention some of the main definitions and results for the reader's enlightenment.
 
+\begin{definition}
+    Given a representation $ (\pi,V) $ of a group $ G $, the corresponding character of the representation is the funciton $ \chi_{\pi}:G\to \C $ given by
+    \[
+        \chi_{\pi} (g) = Tr(\pi(g))
+    \]
+    Note that as $ Tr $ is conjugacy invariant, so is $ \chi_{\pi} $.
+\end{definition}
 
-\subsection{Fundamental Examples}
+An incredibly suprising result of finite group representation theory is that the characters of representations are enough to entirely determine the representation. This is encapsulated in the following theorem.
 
+\begin{theorem}
+    Let $ (\pi,V),(\rho,W) $ be (complex) representations of a finite group G. Then $ (\pi,V)\cong (\rho,W) $ if and only if $ \chi_{\pi}= \chi_{\rho} $.
+\end{theorem}
+
+One application we will need this theorem for is the self-duality of representations of symmetric groups. 
+
+\begin{proposition}
+    Let $ (\pi,V) $ be a representation of $ S_{n} $. Then $ V\cong V^{*} $ as representations.
+\end{proposition}
+\begin{proof}
+    One may compute that $ \chi_{V^{*}}(g) = \chi_{V}(g^{-1})  $. In $ S_{n} $, the group elements $ g $ and $ g^{-1} $ are conjugate, so $ \chi_{V}(g^{-1})= \chi_{V}(g) $, whence by the above theorem, since $ V $ and $ V^{*} $ have the same characters, it follows that they are isomorphic as representations.
+\end{proof}
 
 
 \end{document}

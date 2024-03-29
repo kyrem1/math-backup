@@ -64,6 +64,39 @@
       \verb https://doi.org/10.1007/978-1-4612-0979-9
       \endverb
     \endentry
+    \entry{stanley2}{book}{}
+      \name{author}{1}{}{%
+        {{hash=a61a7c4d8f4b467437038b8bc2aee208}{%
+           family={Stanley},
+           familyi={S\bibinitperiod},
+           given={Richard\bibnamedelima P.},
+           giveni={R\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press, Cambridge}%
+      }
+      \strng{namehash}{a61a7c4d8f4b467437038b8bc2aee208}
+      \strng{fullhash}{a61a7c4d8f4b467437038b8bc2aee208}
+      \strng{bibnamehash}{a61a7c4d8f4b467437038b8bc2aee208}
+      \strng{authorbibnamehash}{a61a7c4d8f4b467437038b8bc2aee208}
+      \strng{authornamehash}{a61a7c4d8f4b467437038b8bc2aee208}
+      \strng{authorfullhash}{a61a7c4d8f4b467437038b8bc2aee208}
+      \field{labelalpha}{Sta24}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{annotation}{For {V}olume {I} see [2868112\endremfr]}
+      \field{edition}{Second}
+      \field{isbn}{978-1-009-26249-1; 978-1-009-26248-4}
+      \field{note}{With an appendix by Sergey Fomin}
+      \field{series}{Cambridge Studies in Advanced Mathematics}
+      \field{title}{Enumerative combinatorics. {V}ol. 2}
+      \field{volume}{208}
+      \field{year}{[2024] ©2024}
+      \field{pages}{xvi+783}
+      \range{pages}{-1}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

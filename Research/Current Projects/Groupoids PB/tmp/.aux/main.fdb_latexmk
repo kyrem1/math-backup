@@ -1,14 +1,14 @@
 # Fdb version 4
-["biber tmp/.aux/main"] 1706742866 "tmp/.aux/main.bcf" "tmp/.aux/main.bbl" "tmp/.aux/main" 1706746706 0
+["biber tmp/.aux/main"] 1710967645 "tmp/.aux/main.bcf" "tmp/.aux/main.bbl" "tmp/.aux/main" 1710968159 0
   "/home/kyrem1/Mathematics/bibs/defrig.bib" 1706485848 8644 4ee14988fafd7fb91abcfa01c12bf61b ""
-  "/home/kyrem1/Mathematics/bibs/groupoids.bib" 1706490511 1040 656e1c26c643d3e5b5c323149cd9f7be ""
-  "tmp/.aux/main.bcf" 1706746706 108134 197b39721d69923b63d8497826f43b89 "pdflatex"
+  "/home/kyrem1/Mathematics/bibs/groupoids.bib" 1710967524 1284 eb7cba9d10a13e2a9d280fbb5e9e3ff9 ""
+  "tmp/.aux/main.bcf" 1710968159 108199 b60aaae8bbc5cbcafbab8c9a0a0738ab "pdflatex"
   (generated)
   "tmp/.aux/main.bbl"
   "tmp/.aux/main.blg"
   (rewritten before read)
-["pdflatex"] 1706746705 "main.tex" "tmp/main.pdf" "main" 1706746706 0
-  "/home/kyrem1/texmf/tex/latex/kyrem1sty/kyrem1sty.sty" 1706745789 5515 ddf73201bc9431c3f7361dd8097c7475 ""
+["pdflatex"] 1710968158 "main.tex" "tmp/main.pdf" "main" 1710968159 0
+  "/home/kyrem1/texmf/tex/latex/kyrem1sty/kyrem1sty.sty" 1710693195 5814 a803441a391f04f4055eb250c98789a0 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1704400182 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1704400182 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1704400182 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -220,13 +220,13 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1704400182 40684 9b9ec0b4288972636ff6a3b9c4238efc ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1706662333 4483110 adb1e1d04498b9576f1f17c4219c5e03 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1706662291 6768057 84441ed010fbb88a6482ee44094f9156 ""
-  "main.tex" 1706742519 1527 e02547d4e296a93f87fa2b1351c05054 ""
-  "tex/ideas.tex" 1706745167 473 916896112702d98733f281a057736de1 ""
-  "tex/setup.tex" 1706746701 2296 eeeef2d78d08b2bdddea3c5663acf8c7 ""
-  "tmp/.aux/main.aux" 1706746706 1423 3620a27f29157acc38f0a472a9b5541c "pdflatex"
-  "tmp/.aux/main.bbl" 1706742866 3495 aba635b86357056d2546d5feca7537b4 "biber tmp/.aux/main"
-  "tmp/.aux/main.out" 1706746706 533 e44bc61ea9633478ed4340663ce95fc4 "pdflatex"
-  "tmp/.aux/main.run.xml" 1706746706 2400 7ed1fc7a665bb73d46f799e7ddac4da7 "pdflatex"
+  "main.tex" 1710967543 1527 e02547d4e296a93f87fa2b1351c05054 ""
+  "tex/ideas.tex" 1710968158 1037 03dcb2912c1598e1d7d1bdf52a77f3e3 ""
+  "tex/setup.tex" 1708639006 2296 eeeef2d78d08b2bdddea3c5663acf8c7 ""
+  "tmp/.aux/main.aux" 1710968159 1554 719cc78d61f0e98cd94c5ef8c9c03bfe "pdflatex"
+  "tmp/.aux/main.bbl" 1710967646 4727 2976fd1bfd8147e45390e12303c585c3 "biber tmp/.aux/main"
+  "tmp/.aux/main.out" 1710968159 533 e44bc61ea9633478ed4340663ce95fc4 "pdflatex"
+  "tmp/.aux/main.run.xml" 1710968159 2400 7ed1fc7a665bb73d46f799e7ddac4da7 "pdflatex"
   (generated)
   "tmp/.aux/main.aux"
   "tmp/.aux/main.bcf"

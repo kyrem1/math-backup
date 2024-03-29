@@ -98,6 +98,38 @@
       \verb https://doi.org/10.1007/BF02772536
       \endverb
     \endentry
+    \entry{sartini:24}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=837a628b2e3071f9c7c2db4992b27b95}{%
+           family={Sarti},
+           familyi={S\bibinitperiod},
+           given={Filippo},
+           giveni={F\bibinitperiod}}}%
+        {{hash=0f5f8d167a9c4a0e4468e304141a2c3c}{%
+           family={Savini},
+           familyi={S\bibinitperiod},
+           given={Alessio},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{532f04829b43334cb380a3552cf35cbd}
+      \strng{fullhash}{532f04829b43334cb380a3552cf35cbd}
+      \strng{bibnamehash}{532f04829b43334cb380a3552cf35cbd}
+      \strng{authorbibnamehash}{532f04829b43334cb380a3552cf35cbd}
+      \strng{authornamehash}{532f04829b43334cb380a3552cf35cbd}
+      \strng{authorfullhash}{532f04829b43334cb380a3552cf35cbd}
+      \field{labelalpha}{SS24}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{math.DS}
+      \field{eprinttype}{arXiv}
+      \field{title}{Boundaries and equivariant maps for ergodic groupoids}
+      \field{year}{2024}
+      \verb{eprint}
+      \verb 2402.15355
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

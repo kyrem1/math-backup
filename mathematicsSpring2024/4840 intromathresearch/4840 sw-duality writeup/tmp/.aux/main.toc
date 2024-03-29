@@ -1,11 +1,14 @@
 \contentsline {section}{\numberline {1}Representation Theory Background}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Group Representations}{1}{subsection.1.1}%
-\contentsline {subsection}{\numberline {1.2}Character Theory and Orthogonality Relations}{2}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Fundamental Examples}{2}{subsection.1.3}%
-\contentsline {section}{\numberline {2}Representations of $ S_{n} $}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Partitions, Young Diagrams, and Tabloids}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {1.2}Character Theory}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Representations of $ S_{n} $}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Partitions, Young Diagrams, and Tabloids}{3}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Construction of Specht Modules}{3}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Alternative Construction}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Results on Specht Modules}{5}{subsection.2.4}%
-\contentsline {section}{\numberline {3}Representations of $ \GL (V) $}{5}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Schur Functors}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {2.3}Alternative Construction}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Results on Specht Modules}{6}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Representations of $ \GL (V) $}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Schur Functors}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Schur-Weyl Duality}{7}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Applications}{8}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Kronecker Multiplication}{8}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Frobenius Characteristic Map}{9}{subsection.4.2}%

@@ -8,7 +8,114 @@
 
 \subsection{Schur Functors}
 
-Recall the
+Let $ V $ be a finite dimensional complex vector space and consider the space $ V^{\otimes n} $. We have a natural (right) action of $ S_{n} $ on $ V^{\otimes n} $ given for $ \sigma\in S_{n} $ by 
+\[
+    (v_{1}\otimes \cdots \otimes v_{n}) \sigma := v_{\sigma(1)}\otimes \cdots \otimes v_{\sigma(n)}.
+\]
+We also have a natural (left) action of $ \GL(V) $ on $ V^{\otimes n} $ given for $ T\in \GL(V) $ by
+\[
+    T(v_{1} \otimes \cdots \otimes v_{n}) := Tv_{1} \otimes \dots \otimes Tv_{n}.
+\]
+Moreover, these actions commute with each other.
 
 
+\begin{definition}
+    Fix $ \lambda\vdash n $. The \textit{Schur functor of shape $\lambda$} is the functor $ \mathbb{S}_{\lambda}:Vect_{\C}\to Vect$
+    given, for a finite-dimensional vector space $ V $, by
+    \[
+        \mathbb{S}_{\lambda}(V) := \Hom_{S_{n}}(S^{\lambda}, V^{\otimes n})
+    \]
+    Moreover, $ \mathbb{S}_{\lambda}(V)$ is a representation of $ \GL(V) $ under the natural action $ [T \phi](x) = T \phi(x) $ for $ \phi\in \mathbb{S}_{\lambda}(V) $, $ T\in\GL(V) $, and $ x\in S^{\lambda} $.
+\end{definition}
+With the notation of section \ref{sec:altconst}, we note the following alternative construction of $ \mathbb{S}_{\lambda}(V) $ by computing
+\begin{align*}
+    \mathbb{S}_{\lambda}(V) = \Hom_{S_{n}}(S^{\lambda},V^{\otimes n}) &\cong V^{\otimes n}\otimes_{\C[S_{n}]}(S^{\lambda})^{*} \\
+    &\cong V^{\otimes n}\otimes_{\C[S_{n}]}S^{\lambda} \\
+    &\cong V^{\otimes n}\otimes_{\C[S_{n}]}\rho(c_{\lambda})\C[S_{n}]  \cong V^{\otimes n} c_{\lambda}\otimes_{\C[S_{n}]} \C[S_{n}]  \cong V^{\otimes n}c_{\lambda}.
+\end{align*}
+Hence, the Schur functor may also be described as the image of the action of the Young symmetrizer when restricted to $ V^{\otimes n} $.
+\subsection{Schur-Weyl Duality}
+
+\begin{theorem}[Schur-Weyl Duality]
+    Let $ V $ be a finite-dimensional complex vector space and regard $ V^{\otimes n} $ as a representation of $ \GL(V)\times S_{n} $ as described above. Then, as representations,
+    \[
+        V^{\otimes n} \cong \bigoplus_{\lambda\vdash n}S^{\lambda} \otimes_{\C} \mathbb{S}_{\lambda}(V).
+    \]
+\end{theorem}
+
+
+\begin{lemma}\label{lem:symspan}
+    The symmetric tensor power $ \Sym^{n}(V) $ is spanned by $ v \otimes \cdots \otimes v $ for $ v\in V $.
+\end{lemma}
+
+%\begin{lemma}\label{lem:idemp}
+%    Suppose $ R $ is a ring, $ M $ is and $ R $-module, and $ e\in R $ has $ e^{2}=e $. Then 
+%    \[
+%        \Hom_{R}(Re,M) \cong eM
+%    \]
+%    under the map $ (x\in eM)\mapsto (y\mapsto yx : y\in Re) $.
+%\end{lemma}
+
+
+%Under $ R= \C[S_{n}] $, $ e= \alpha c_{\lambda} $, and $ M=V^{\otimes n} $.
+%\[
+%    \Hom_{S_{n}}(S_{\lambda}, V^{\otimes n})\cong c_{\lambda} V^{\otimes n}  
+%\]
+\begin{lemma}
+    A subspace of $ V^{\otimes n} $ is an $ \End_{S_{n}}(V^{\otimes n}) $-submodule if and only if it is a $ \GL(V) $-submodule.
+\end{lemma}
+
+\begin{proof}
+    Consider the inclusion
+    \[
+        \End(V) \overset{\iota}{\hookrightarrow} \End(V^{\otimes n}) \cong \End(V)^{\otimes n}
+    \]
+    under the map $ T\overset{\iota}{\mapsto} T\otimes \cdots \otimes T $. By Lemma \ref{lem:symspan}, 
+    \[ 
+        \Span_{\C}(\iota(\End(V)) = \Sym^{n}(\End(V)) = \End_{S_{n}}(V^{\otimes n}).
+    \]
+    Suppose $ W\sub V^{\otimes n} $ is an $ \End_{S_{n}}(V^{\otimes n}) $-submodule. Let $ T\in \GL(V) $. By definition, the action of $ T $ on $ V^{\otimes d} $ is given by $ \iota(T) $, which is in $ \End_{S_{n}}(V^{\otimes n}) $ by above so $ TW\sub T $.
+
+    On the other hand, suppose $ W\sub V^{\otimes n} $ is a $ \GL(V) $-submodule. Let $ L\in \End_{S_{n}}(V^{\otimes n}) $. By above, $ L\in \Span_{\C}(\iota(\End(V))) $ so there is some $ L_{1},\ldots, L_{r}\in \End(V) $ and $ \alpha_{1}.\ldots, \alpha_{r}\in \C $ such that 
+    \[
+        L = \sum_{i=1}^{r} \alpha_{i} L_{i}
+    \]
+    Recall that $ \GL(V) $ is dense in $ \End(V) $ in the Euclidean operator topology, so we may choose $ T_{ij}\in \GL(V) $ such that $ \norm{L_{i}-T_{ij}}_{2}\xrightarrow{j\to\infty} 0 $ for $ i\in \{1,\ldots, r\} $. Since $ L $ is expressed as a finite sum of the $ L_{i} $s, we observe that
+    \[
+        \norm{L - \sum_{i=1}^{r} \alpha_{i} T_{ij}}_{2}\xrightarrow{j\to\infty} 0
+    \]
+    Let $ w\in W $. Identifying $W\sub V^{\otimes n}\cong \C^{l} $ for some $ l $ with the standard topology, it follows by operator continuity that $ \sum_{i=1}^{r} \alpha_{i} T_{ij} w \xrightarrow{j\to\infty} Lw $, so $ Lw\in \cls{W} $ as each $ \sum_{i=1}^{r} \alpha_{i}T_{ij} w\in W $. As finite dimensional topological vector spaces are closed, $ \cls{W}=W $, so $ W $ is an $ \End_{S_{n}}(V^{\otimes n}) $-submodule.
+    
+\end{proof}
+
+\begin{lemma}
+    If $ (W,\pi) $ is an irreducible representation of $ S_{n} $, then $ V^{\otimes n} \otimes_{\C[S_{n}]} W $ is a simple left $ \End_{S_{n}}(V^{\otimes n}) $-module. 
+\end{lemma}
+
+\begin{proof}
+    First decompose $ V^{\otimes d} $ into a direct sum of irreducible $ S_{n} $-representations by
+    \[
+        V^{\otimes n} = \bigoplus_{i=1}^{l} V_{i}^{\oplus m_{i}},
+    \]
+    so by Schur's lemma $ \End_{S_{n}}(V^{\otimes n})\cong \bigoplus_{i=1}^{l} M_{m_{i}}(\C) $.
+    Pick $ s $ such that $ V_{s}\cong W $. Applying self-duality of $ S_{n} $-representations and Schur's lemma, we find
+    \begin{align*}
+        V_{i} \otimes_{\C[S_{n}]} V_{s} \cong (V_{i})^{*} \otimes_{\C[S_{n}]} V_{s} \cong \Hom_{S_{n}}(V_{i},V_{s}) = \begin{cases}
+            \C & \text{if }i=s\\
+            0 & \text{otherwise}
+        \end{cases}
+    \end{align*}
+    So, we compute
+    \[
+        V^{\otimes n} \otimes_{\C[S_{n}]} W\cong \bigoplus_{i=1}^{l} V_{i}^{\oplus m_{i}}\otimes_{\C[S_{n}]} W \cong \bigoplus_{i=1}^{l} (V_{i}\otimes_{\C[S_{n}]} W)^{\oplus m_{i}} \cong\C^{\oplus m_{s}}
+    \]
+    which is most definitely irreducible under the action of $ \bigoplus_{i=1}^{l}M_{m_{i}}(\C) = \End_{S_{n}}(V^{\otimes n}) $.
+\end{proof}
+By the above lemma, each Schur functor $ \mathbb{S}_{\lambda}(V) $ is an irreducible $ \GL(V) $-representation. Applying the above lemmas and the decomposition of $ \C[S_{n}] $, we obtain the theorem:
+
+\begin{align*}
+    V^{\otimes n} = V^{\otimes n}\otimes_{\C[S_{n}]}\C[S_{n}] &= V^{\otimes n}\otimes_{\C[S_{n}]}\bigoplus_{\lambda\vdash n} (S^{\lambda})^{\oplus \dim{S^{\lambda}}}\\
+    &\cong\bigoplus_{\lambda\vdash n} (V^{\otimes n}\otimes_{\C[S_{n}]}S^{\lambda})^{\oplus \dim{S^{\lambda}}}\\
+    &\cong\bigoplus_{\lambda\vdash n} \mathbb{S}_{\lambda}(V)^{\oplus \dim{S^{\lambda}}} \cong \bigoplus_{\lambda\vdash n} S^{\lambda}\otimes_{\C}\mathbb{S}_{\lambda}(V).
+\end{align*}
 \end{document}

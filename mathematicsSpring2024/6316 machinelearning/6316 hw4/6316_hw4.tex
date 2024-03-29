@@ -1,0 +1,197 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{CS 6316 Homework 4}
+\author{James Harbour\\gtr8rh@virginia.edu}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+  Show how to cast the ERM problem of linear regression with respect to the absolute value loss function, $ l(h, (x,y)) = |h(x)-y| $, as a linear program; namely, show how to write the problem
+  \[
+    \min_{w}\sum_{i=1}^{m}|\inp{w}{x_{i}}-y_{i}|
+  \]
+  as a linear program. \textit{Hint}: Start with proving that for any $ c\in \R $,
+  \[
+    |c| = \min_{a\geq 0}a \text{ s.t } c\leq a \text{ and } c\geq -a.
+  \]
+  You can use the hint directly without proving it.
+\end{homeworkProblem}
+
+\begin{proof}
+  First we rewrite the minimization problem in terms of an inner product and some constraints
+  \begin{align*}
+    \min_{w\in \R^{d}} \sum_{i=1}^{m}|\inp{w}{x_{i}} - y_{i}| = \begin{cases}\min_{u = (w_{1},\ldots,w_{d}, a_{1},\ldots,a_{d})\in \R^{d+m}} \sum_{j=1}^{d}a_{j}\\
+      \text{s.t. }a_{j}\geq 0\\
+      \inp{w}{x_{j}}-y_{j} \leq a_{j} \iff a_{j} -\inp{w}{x_{j}}\geq -y_{j}\\
+      \inp{w}{x_{j}}-y_{j} \geq -a_{j} \iff a_{j} + \inp{w}{x_{j}} \geq y_{j}
+    \end{cases}
+  \end{align*}
+  Moreover, $ \sum_{j}a_{j} =  \inp{u}{c} $ where $ c $  is the column vector in $ \R^{d+m} $ with $ d $ zeros and $ m $ ones.
+  Define a new matrix $ X\in M_{m\times d}(\R) $ by 
+  \[
+    X = \begin{pmatrix}
+          \text{---} & x_{1} & \text{---}\\
+          & \vdots & \\ 
+          \text{---} & x_{m} & \text{---}
+        \end{pmatrix}
+  \]
+  Observe now that the first constraint becomes
+  \begin{align*}
+    -\begin{pmatrix}
+      y_{1}\\\vdots\\ y_{m}
+    \end{pmatrix}&\leq
+    \begin{pmatrix}
+      a_{1} \\\vdots\\ a_{m} 
+    \end{pmatrix}
+    -
+    \begin{pmatrix}
+      \sum_{j=1}^{d}w_{j}(x_{1})_{j} \\
+      \vdots \\
+      \sum_{j=1}^{d}w_{j}(x_{m})_{j}
+    \end{pmatrix} = \begin{pmatrix}
+      a_{1} \\\vdots\\ a_{m} 
+    \end{pmatrix}
+    -
+    \begin{pmatrix}
+      \sum_{j=1}^{d}w_{j}X_{1j} \\
+      \vdots \\
+      \sum_{j=1}^{d}w_{j}X_{mj}
+    \end{pmatrix}\\
+    &=\begin{pmatrix}
+      a_{1} \\\vdots\\ a_{m} 
+    \end{pmatrix} -Xw = 
+    \begin{pmatrix}
+      -X & \vert& I_{m}
+      \end{pmatrix} \begin{pmatrix}w_{1}\\\vdots\\w_{d}\\a_{1}\\\vdots\\a_{m}\end{pmatrix}  = \begin{pmatrix}
+      -X & \vert& I_{m}
+      \end{pmatrix}u
+  \end{align*}
+  Similarly, the second constraint becomes
+  \begin{align*}
+    \begin{pmatrix}
+      y_{1}\\\vdots\\ y_{m}
+    \end{pmatrix}&\leq
+    \begin{pmatrix}
+      a_{1} \\\vdots\\ a_{m} 
+    \end{pmatrix} +Xw = 
+    \begin{pmatrix}
+      X & \vert& I_{m}
+      \end{pmatrix} \begin{pmatrix}w_{1}\\\vdots\\w_{d}\\a_{1}\\\vdots\\a_{m}\end{pmatrix}  = \begin{pmatrix}
+      X & \vert& I_{m}
+      \end{pmatrix}u
+  \end{align*}
+  Finally, define a new block matrix $ A\in M_{2m \times (d+m)} $ and $ b\in \R^{2m} $ by 
+  \[
+    A = \begin{pmatrix} -X & I_{m} \\ X & I_{m}
+      \end{pmatrix}, \quad b=\begin{pmatrix}-y_{1} \\ \vdots \\ y_{m} \\ y_{1} \\ \vdots \\ y_{m}\end{pmatrix}
+  \]
+  Then, in one expression, the above constraints become
+  \begin{align*}
+    Au = \begin{pmatrix} -X & I_{m} \\ X & I_{m}
+    \end{pmatrix}u\geq \begin{pmatrix}-y_{1} \\ \vdots \\ y_{m} \\ y_{1} \\ \vdots \\ y_{m}\end{pmatrix} = b
+  \end{align*}
+  Then, as linear program, our problem becomes
+ \[
+    \begin{cases}
+      \min_{u\in\R^{d+m}} \inp{u}{c}\text{ such that}\\
+      Au \geq b\\
+      u\geq 0
+    \end{cases}
+  \]
+
+\end{proof}
+
+\begin{homeworkProblem}
+  In this problem, we will get bounds on the VC-dimension of the class of (closed) balls in $ \R^{d} $, that is,
+  \[
+    \mathcal{B}_{d} = \{B_{v,r}:v\in \R^{d}, r>0\}
+  \]
+  where 
+  \[
+    B_{v,r}(x) = \begin{cases}
+      1 & \text{ if }\norm{x-v}\leq r\\
+      0 & \text{ otherwise}.
+    \end{cases}
+  \]
+\end{homeworkProblem}
+%You only need to show that if $x_1$, . . . , $x_m$ are shattered by $B_d$ then $\phi(x_1), \dots, \phi(x_m)$ are shattered by the class of halfspaces in $\mathbb{R}^{d+1}$. 
+%You do not need to answer any other questions.
+
+
+Consider the mapping $ \phi: \R^{d} \to \R^{d+1} $ defined by $ \phi(x) = (x,\norm{x}^{2}) $. Show that if $ x_{1},\ldots, x_{m} $ are shattered by $ \mathcal{B}_{d} $ then $ \phi(x_{1}),\ldots, \phi(x_{m}) $ are shattered by the class of halfspaces in $ \R^{d+1} $ (in this question we assume that $ \mathrm{sign}(0) = 1 $).  What does this tell us about $ \VCdim(\mathcal{B}_{d}) $?
+
+\begin{proof}
+  Write $ \H = \mathcal{B}_{d} $ and suppose that $ S = \{x_{1},\ldots,x_{m}\}\sub \R^{d} $ is shattered by $ \H $, so $ \{0,1\}^{S} = \H_{S} $. We wish to show that $ (HS_{d+1})_{S} = \{0,1\}^{\phi(S)} $. Suppose $ f: \phi(S)\to \{0,1\} $ is any function. \\
+
+  Let $ g:S\to \{0,1\} $ be given by $ g=f\circ \phi $, so $ g(x_{i}) = f(x_{i},\norm{x_{i}}^{2}) $. By shattering, there is some $ v\in \R^{d} $ and $ r>0 $ such that $ g = B_{v,r}\vert_{S} $. We now have the following equivalences
+  \begin{align*}
+    f(\phi(x_{i})) = g(x_{i}) = 1 &\iff r \geq \norm{x_{i}-v}^{2} = \norm{x_{i}}^{2}+ \norm{v}^{2} -2\inp{x_{i}}{v} \\
+    &\iff 0\leq \inp{2v}{x_{i}}-\norm{x_{i}}^{2}-\norm{v}^{2}+r \\
+    &\iff 0\leq \inp{(2v,-1)}{\phi(x_{i})} + r-\norm{v}^{2} = h_{(2v,-1),r-\norm{v}^{2}}(\phi(x_{i}))
+  \end{align*}
+  Hence, we have that the half space  $h_{(2v,-1),r-\norm{v}^{2}}\vert_{\phi(S)} = f$ as desired, whence $ \phi(S) $ is shattered by half spaces in $ \R^{d+1} $. 
+\end{proof}
+
+
+
+%\noindent\underline{(2)}: Find a set of $ d+1 $ points in $ \R^{d} $ that is shattered by $ \mathcal{B}_{d} $. Conclude that 
+%\[
+%  d+1\leq \VCdim(\mathcal{B}_{d}) \leq d+2.
+%\]
+
+
+\end{document}

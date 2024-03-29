@@ -1,0 +1,9 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'tmp/.aux/4840_hw9.blg'
+[68] biber:340> INFO - === Thu Mar 28, 2024, 15:44:28
+[82] Biber.pm:419> INFO - Reading 'tmp/.aux/4840_hw9.bcf'
+[136] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[150] bbl.pm:660> INFO - Writing 'tmp/.aux/4840_hw9.bbl' with encoding 'UTF-8'
+[150] bbl.pm:763> INFO - Output to tmp/.aux/4840_hw9.bbl
+[150] Biber.pm:131> WARN - The file 'tmp/.aux/4840_hw9.bcf' does not contain any citations!
+[150] Biber.pm:133> INFO - WARNINGS: 1

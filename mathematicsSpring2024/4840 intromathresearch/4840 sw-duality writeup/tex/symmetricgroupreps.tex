@@ -5,7 +5,6 @@
 \begin{document}
 
 \section{Representations of $ S_{n} $}
-\cite{fultonharris}
 
 \subsection{Partitions, Young Diagrams, and Tabloids}.
 % TODO cut out parts of young diagram definitions that arent needed
@@ -182,7 +181,7 @@ As $ S_{n} $ stabilizes $ S^{\lambda} $, the claim follows.
   Moreover, $ \{t_{i}-t_{i+1} : 1\leq i \leq n-1\} $ gives a basis for $ S^{\lambda} $. The restriction of $ L $ to $ W $ gives a vector space isomorphism $ L:W\to S^{\lambda} $ as $ \{v_{i}-v_{i+1}\}_{1\leq i \leq n-1} $ gives a basis for $ W $, so a basis gets mapped to a basis. Moreover, this map intertwines the $ S_{n} $-action, so it produces $ \C[S_{n}] $-module isomorphism.
 \end{example}
 
-\subsection{Alternative Construction}
+\subsection{Alternative Construction}\label{sec:altconst}
 
 Fix a $ \lambda $-tableau $ \mathcal{S} $ throughout this section, say the canonical one (increasing across rows and then moving up rows).
 Recall the row and column symmetrizers $ a_{\lambda}:=a_{\mathcal{S}} $, $ b_{\lambda}:=b_{\mathcal{S}} $ and define the Young symmetrizer 
@@ -286,11 +285,7 @@ Set $ V_{\lambda} := \C[S_{n}]c_{\lambda} $. Define a map $ T:\C[S_{n}]a_{\lambd
 
 
 \begin{proposition}
-  Set $ A = \C[S_{n}]$, so $ V_{\lambda} = A a_{\lambda} b_{\lambda} = A c_{\lambda}$.
-  \begin{enumerate}
-    \item $ V_{\lambda} \cong Ab_{\lambda}a_{\lambda} $.
-    \item $V_{\lambda}$ is the image of the map from $ A a_{\lambda} $ to $ A b_{\lambda} $ given by right multiplication by $ b_{\lambda} $.
-  \end{enumerate}
+  $ \C[S_{n}]b_{\lambda}a_{\lambda}\cong \C[S_{n}]a_{\lambda}b_{\lambda} $.
 \end{proposition}
 %Note that $ R_{\mathcal{S}}\cap C_{\mathcal{S}} =\{1\} $, so decomposition of elements $\gamma\in R_{\mathcal{S}}C_{\mathcal{S}} $ into products $\gamma= \sigma \tau $ with $ \sigma\in R_{\mathcal{S}} $ and $ \tau\in C_{\mathcal{S}} $ is unique. For Hence,
 %\[
@@ -302,7 +297,7 @@ Set $ V_{\lambda} := \C[S_{n}]c_{\lambda} $. Define a map $ T:\C[S_{n}]a_{\lambd
 %where $ \tau_{\gamma} $ is the unique element of $ C_{\mathcal{S}} $ in the product decomposition of $ \gamma $.
 
 \subsection{Results on Specht Modules}
-Having obtained a few examples of Specht modules, we now show that $ \{S^{\lambda}: \lambda\vdash n\} $ forms a complete set of non-isomorphic, irreducible representations of $ S_{n} $. This is established by the combining the following three theorems.
+Having obtained a few examples of Specht modules, we note that $ \{S^{\lambda}: \lambda\vdash n\} $ forms a complete set of non-isomorphic, irreducible representations of $ S_{n} $. This is established by the combining the following three theorems, which we leave unproven and cite standard references \cite{fultonharris}, \cite{stanley2}.
 \begin{theorem}
   Given $ \lambda\vdash n $, the Specht module $ S^{\lambda} $ is irreducible as a $ \C[S_{n}] $-module (i.e. an irreducible representation of $ S_{n} $).
 \end{theorem}
@@ -314,7 +309,6 @@ Having obtained a few examples of Specht modules, we now show that $ \{S^{\lambd
 \begin{theorem}
   Every irreducible representation of $ S_{n} $ is ismorphic to $ S^{\lambda} $ for some $ \lambda\vdash n $.  
 \end{theorem}
-
 
 
 

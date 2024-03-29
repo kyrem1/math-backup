@@ -1,17 +1,19 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'tmp/.aux/main.blg'
-[65] biber:340> INFO - === Thu Feb 22, 2024, 17:15:44
-[77] Biber.pm:419> INFO - Reading 'tmp/.aux/main.bcf'
-[131] Biber.pm:979> INFO - Found 1 citekeys in bib section 0
-[145] Biber.pm:4419> INFO - Processing section 0
-[155] Biber.pm:4610> INFO - Looking for bibtex file '/home/kyrem1/Mathematics/bibs/comborefs.bib' for section 0
-[156] bibtex.pm:1713> INFO - LaTeX decoding ...
-[171] bibtex.pm:1519> INFO - Found BibTeX data source '/home/kyrem1/Mathematics/bibs/comborefs.bib'
-[218] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[218] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[218] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[218] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[223] bbl.pm:660> INFO - Writing 'tmp/.aux/main.bbl' with encoding 'UTF-8'
-[224] bbl.pm:763> INFO - Output to tmp/.aux/main.bbl
-[224] Biber.pm:131> WARN - ISBN '0-387-97527-6; 0-387-97495-4' in entry 'fultonharris' is invalid - run biber with '--validate_datamodel' for details.
-[224] Biber.pm:133> INFO - WARNINGS: 1
+[70] biber:340> INFO - === Thu Mar 28, 2024, 22:58:08
+[83] Biber.pm:419> INFO - Reading 'tmp/.aux/main.bcf'
+[141] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
+[156] Biber.pm:4419> INFO - Processing section 0
+[165] Biber.pm:4610> INFO - Looking for bibtex file '/home/kyrem1/Mathematics/bibs/comborefs.bib' for section 0
+[166] bibtex.pm:1713> INFO - LaTeX decoding ...
+[182] bibtex.pm:1519> INFO - Found BibTeX data source '/home/kyrem1/Mathematics/bibs/comborefs.bib'
+[233] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[233] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[233] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[233] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[239] bbl.pm:660> INFO - Writing 'tmp/.aux/main.bbl' with encoding 'UTF-8'
+[240] bbl.pm:763> INFO - Output to tmp/.aux/main.bbl
+[240] Biber.pm:131> WARN - ISBN '0-387-97527-6; 0-387-97495-4' in entry 'fultonharris' is invalid - run biber with '--validate_datamodel' for details.
+[240] Biber.pm:131> WARN - legacy year field '[2024] ©2024' in entry 'stanley2' is not an integer - this will probably not sort properly.
+[240] Biber.pm:131> WARN - ISBN '978-1-009-26249-1; 978-1-009-26248-4' in entry 'stanley2' is invalid - run biber with '--validate_datamodel' for details.
+[240] Biber.pm:133> INFO - WARNINGS: 3

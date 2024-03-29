@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2024.1.30)  31 JAN 2024 19:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Arch Linux) (preloaded format=pdflatex 2024.1.30)  20 MAR 2024 16:55
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -633,7 +633,7 @@ LaTeX Font Info:    Overwriting symbol font `stmry' in version `bold'
 \c@factexercise=\count330
 \c@exercise=\count331
 \c@remark=\count332
-LaTeX Info: Redefining \bigcdot on input line 82.
+LaTeX Info: Redefining \bigcdot on input line 86.
 \c@partCounter=\count333
 \c@homeworkProblemCounter=\count334
 ) (/usr/share/texmf-dist/tex/latex/biblatex/biblatex.sty
@@ -958,18 +958,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31382 strings out of 477985
- 602961 string characters out of 5840058
+ 31403 strings out of 477985
+ 603343 string characters out of 5840058
  1866388 words of memory out of 5000000
- 51054 multiletter control sequences out of 15000+600000
+ 51074 multiletter control sequences out of 15000+600000
  524054 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  128i,10n,131p,677b,1399s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on tmp/.aux/main.pdf (2 pages, 141977 bytes).
+Output written on tmp/.aux/main.pdf (2 pages, 145753 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 82 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
+ 115 PDF objects out of 1000 (max. 8388607)
+ 84 compressed objects within 1 object stream
+ 12 named destinations out of 1000 (max. 500000)
  45 words of extra memory for PDF output out of 10000 (max. 10000000)
 
