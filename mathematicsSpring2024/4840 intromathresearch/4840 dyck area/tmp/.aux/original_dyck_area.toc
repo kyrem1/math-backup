@@ -1,0 +1,5 @@
+\contentsline {section}{\numberline {1}Preliminaries}{1}{section.1}%
+\contentsline {section}{\numberline {2}Counting Dyck Paths}{1}{section.2}%
+\contentsline {section}{\numberline {3}Computing the Total Area}{1}{section.3}%
+\contentsline {section}{\numberline {4}Area Averages and Asymptotic info}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Large Deviations}{6}{subsection.4.1}%

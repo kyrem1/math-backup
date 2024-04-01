@@ -1,0 +1,126 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{anyt/global//global/global}
+    \entry{cheng:07}{article}{}
+      \name{author}{3}{}{%
+        {{hash=e066c62642a0921fc341f994e1bccd05}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Szu-En},
+           giveni={S\bibinithyphendelim E\bibinitperiod}}}%
+        {{hash=e35e398e2710881ce806dd83df5b7373}{%
+           family={Eu},
+           familyi={E\bibinitperiod},
+           given={Sen-Peng},
+           giveni={S\bibinithyphendelim P\bibinitperiod}}}%
+        {{hash=700ee1697117d49a39057dfe0119f409}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Tung-Shan},
+           giveni={T\bibinithyphendelim S\bibinitperiod}}}%
+      }
+      \strng{namehash}{057ba9f292cbbc8e9b10950d508c9935}
+      \strng{fullhash}{057ba9f292cbbc8e9b10950d508c9935}
+      \strng{bibnamehash}{057ba9f292cbbc8e9b10950d508c9935}
+      \strng{authorbibnamehash}{057ba9f292cbbc8e9b10950d508c9935}
+      \strng{authornamehash}{057ba9f292cbbc8e9b10950d508c9935}
+      \strng{authorfullhash}{057ba9f292cbbc8e9b10950d508c9935}
+      \field{labelalpha}{CEF07}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{It is known that the area of all Catalan paths of length n is equal to 4n−2n+1n, which coincides with the number of inversions of all 321-avoiding permutations of length n+1. In this paper, a bijection between the two sets is established. Meanwhile, a number of interesting bijective results that pave the way to the required bijection are presented.}
+      \field{issn}{0195-6698}
+      \field{journaltitle}{European Journal of Combinatorics}
+      \field{number}{4}
+      \field{title}{Area of Catalan paths on a checkerboard}
+      \field{volume}{28}
+      \field{year}{2007}
+      \field{pages}{1331\bibrangedash 1344}
+      \range{pages}{14}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.ejc.2006.01.006
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0195669806000126
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0195669806000126
+      \endverb
+    \endentry
+    \entry{msv:96}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=dde3fd1a7a45f8bb234c107aeb9ae37c}{%
+           family={Merlini},
+           familyi={M\bibinitperiod},
+           given={Donatella},
+           giveni={D\bibinitperiod}}}%
+        {{hash=05ed9110b965c869c8086fe1cf9a098f}{%
+           family={Sprugnoli},
+           familyi={S\bibinitperiod},
+           given={Renzo},
+           giveni={R\bibinitperiod}}}%
+        {{hash=0bdcd59c9cc1c18619ece55383fddb11}{%
+           family={Verri},
+           familyi={V\bibinitperiod},
+           given={M.\bibnamedelimi Cecilia},
+           giveni={M\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \name{editor}{1}{}{%
+        {{hash=925a724ffbc50775aabf8c1b349a0c79}{%
+           family={Kirchner},
+           familyi={K\bibinitperiod},
+           given={Hélène},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Berlin, Heidelberg}%
+      }
+      \list{publisher}{1}{%
+        {Springer Berlin Heidelberg}%
+      }
+      \strng{namehash}{fefde14efa4cb0c42868c7dd5b328bb1}
+      \strng{fullhash}{fefde14efa4cb0c42868c7dd5b328bb1}
+      \strng{bibnamehash}{fefde14efa4cb0c42868c7dd5b328bb1}
+      \strng{authorbibnamehash}{fefde14efa4cb0c42868c7dd5b328bb1}
+      \strng{authornamehash}{fefde14efa4cb0c42868c7dd5b328bb1}
+      \strng{authorfullhash}{fefde14efa4cb0c42868c7dd5b328bb1}
+      \strng{editorbibnamehash}{925a724ffbc50775aabf8c1b349a0c79}
+      \strng{editornamehash}{925a724ffbc50775aabf8c1b349a0c79}
+      \strng{editorfullhash}{925a724ffbc50775aabf8c1b349a0c79}
+      \field{labelalpha}{MSV96}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{We use the ``first passage decomposition'' methodology to study the area between various kinds of underdiagonal lattice paths and the main diagonal. This area is important because it is connected to the number of inversions in permutations and to the internal path length in various types of trees. We obtain the generating functions for the total area of all the lattice paths from the origin to the point (n, n). Since this method also determines the number of these paths, we are able to obtain exact results for the average area.}
+      \field{booktitle}{Trees in Algebra and Programming --- CAAP '96}
+      \field{isbn}{978-3-540-49944-2}
+      \field{title}{The area determined by underdiagonal lattice paths}
+      \field{year}{1996}
+      \field{pages}{59\bibrangedash 71}
+      \range{pages}{13}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

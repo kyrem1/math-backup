@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'tmp/.aux/original_dyck_area.blg'
+[65] biber:340> INFO - === Sun Mar 31, 2024, 22:22:31
+[79] Biber.pm:419> INFO - Reading 'tmp/.aux/original_dyck_area.bcf'
+[136] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
+[151] Biber.pm:4419> INFO - Processing section 0
+[160] Biber.pm:4610> INFO - Looking for bibtex file '/home/kyrem1/Mathematics/bibs/comborefs.bib' for section 0
+[161] bibtex.pm:1713> INFO - LaTeX decoding ...
+[180] bibtex.pm:1519> INFO - Found BibTeX data source '/home/kyrem1/Mathematics/bibs/comborefs.bib'
+[234] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[234] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[234] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[234] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[240] bbl.pm:660> INFO - Writing 'tmp/.aux/original_dyck_area.bbl' with encoding 'UTF-8'
+[242] bbl.pm:763> INFO - Output to tmp/.aux/original_dyck_area.bbl

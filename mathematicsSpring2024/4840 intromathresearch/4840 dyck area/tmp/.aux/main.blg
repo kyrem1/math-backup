@@ -1,0 +1,15 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'tmp/.aux/main.blg'
+[66] biber:340> INFO - === Fri Mar 29, 2024, 18:05:24
+[79] Biber.pm:419> INFO - Reading 'tmp/.aux/main.bcf'
+[131] Biber.pm:979> INFO - Found 2 citekeys in bib section 0
+[144] Biber.pm:4419> INFO - Processing section 0
+[154] Biber.pm:4610> INFO - Looking for bibtex file '/home/kyrem1/Mathematics/bibs/comborefs.bib' for section 0
+[155] bibtex.pm:1713> INFO - LaTeX decoding ...
+[172] bibtex.pm:1519> INFO - Found BibTeX data source '/home/kyrem1/Mathematics/bibs/comborefs.bib'
+[228] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[229] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[229] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[229] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[235] bbl.pm:660> INFO - Writing 'tmp/.aux/main.bbl' with encoding 'UTF-8'
+[236] bbl.pm:763> INFO - Output to tmp/.aux/main.bbl
