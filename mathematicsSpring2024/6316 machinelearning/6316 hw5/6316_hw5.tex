@@ -1,0 +1,131 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{CS 6316 Homework 5}
+\author{James Harbour\\gtr8rh@virginia.edu}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+  We have informally argued that the AdaBoost algorithm uses the weighting mechanism to ``force'' the weak learner to focus on the problematic examples in the next iteration. In this question, we will find some rigorous justification for this argument.
+
+  Show that the error of $ h_{t} $ w.r.t. the distribution $ D^{(t+1)} $ is exactly $ 1/2 $. That is, show that for every $ t\in[T] $,
+  \[
+    \sum_{i=1}^{m}D_{i}^{(t+1)} \ind_{[y_{i}\neq h_{t}(x_{i})]} = 1/2.
+  \]
+\end{homeworkProblem}
+
+\begin{proof}
+  The error of $ h_{t} $ w.r.t. the distribution $ D^{(t)} $ is given by 
+  \[
+    \eps_{t} = \sum_{i=1}^{m}D_{i}^{(t)}\ind_{[y_{i}\neq h_{t}(x_{i})]},
+  \]
+  whence the weight at round $ t $ given in the AdaBoost algorithm to the hypothesis $ h_{t} $ is 
+  \[
+    w_{t} = \frac{1}{2}\log(\frac{1}{\eps_{t}}-1).
+  \]
+  As an intermediate computation, we note that 
+  \begin{equation}\label{eq:exp}
+    e^{-w_{t}} = e^{-\frac{1}{2}\log(\frac{1}{\eps_{t}}-1) } = \lr{\frac{1}{\eps_{t}}-1}^{-\frac{1}{2}} = \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}
+  \end{equation}
+
+  \begin{align}\label{eq:errorexpansion}
+    \sum_{i=1}^{m}D_{i}^{(t+1)}\ind_{[y_{i}\neq h_{t}(x_{i})]} &= \sum_{i=1}^{m} \frac{D_{i}^{(t)}e^{-w_{t}y_{i}h_{t}(x_{i})}}{\sum_{j=1}^{m}D_{j}^{(t)} e^{-w_{t}y_{j}h_{t}(x_{j})}} \ind_{[y_{i}\neq h_{t}(x_{i})]} \nonumber\\
+    &\overset{\eqref{eq:exp}}{=} \frac{1}{\sum_{j=1}^{m}D_{j}^{(t)} \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}^{\,y_{j}h_{t}(x_{j})}}\sum_{i=1}^{m} D_{i}^{(t)} \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}^{\,y_{i}h_{t}(x_{i})} \ind_{[y_{i}\neq h_{t}(x_{i})]}
+  \end{align}
+  We treat the numerator of this expression first. Observe that
+  \begin{align*}
+    \sum_{i=1}^{m} D_{i}^{(t)} \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}^{\,y_{i}h_{t}(x_{i})} \ind_{[y_{i}\neq h_{t}(x_{i})]} &= \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}^{-1}\sum_{i=1}^{m} D_{i}^{(t)}  \ind_{[y_{i}\neq h_{t}(x_{i})]} \\
+    &= \sqrt{\frac{1-\eps_{t}}{\eps_{t}}}\cdot \eps_{t} = \sqrt{\eps_{t}(1-\eps_{t})}
+  \end{align*}
+  To evaluate the denominator of the aforementioned expression, we use the triviality that $ 1 = \ind_{[y_{i}=h_{t}(x_{i})]} + \ind_{[y_{i}\neq h_{t}(x_{i})]} $ to expand 
+  \begin{align*}
+    \sum_{j=1}^{m}D_{j}^{(t)} \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}^{\,y_{j}h_{t}(x_{j})} &= \sum_{j=1}^{m}D_{j}^{(t)} \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}^{\,y_{j}h_{t}(x_{j})} \ind_{[y_{i}\neq h_{t}(x_{i})]} + \sum_{j=1}^{m}D_{j}^{(t)} \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}^{\,y_{j}h_{t}(x_{j})} \ind_{[y_{i}=h_{t}(x_{i})]}\\
+    &= \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}^{\,-1}\cdot\sum_{j=1}^{m}D_{j}^{(t)}  \ind_{[y_{i}\neq h_{t}(x_{i})]} + \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}\cdot\sum_{j=1}^{m}D_{j}^{(t)}  \ind_{[y_{i}=h_{t}(x_{i})]}\\
+    &= \sqrt{\frac{1-\eps_{t}}{\eps_{t}}} \cdot \eps_{t} + \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}\cdot\sum_{j=1}^{m}D_{j}^{(t)}  \ind_{[y_{i}=h_{t}(x_{i})]}\\
+    &= \sqrt{\eps_{t}(1-\eps_{t})} + \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}\cdot\lr{\sum_{j=1}^{m}D_{j}^{(t)} -\sum_{j=1}^{m}D_{j}^{(t)}\ind_{[y_{i}\neq h_{t}(x_{i})]}}\\
+    &= \sqrt{\eps_{t}(1-\eps_{t})} + \sqrt{\frac{\eps_{t}}{1-\eps_{t}}}\cdot(1 -\eps_{t}) = 2\sqrt{\eps_{t}(1-\eps_{t})}\\
+  \end{align*}
+  Substituting these computations into equation \eqref{eq:errorexpansion}, we find
+  \begin{align*}
+    \sum_{i=1}^{m}D_{i}^{(t+1)}\ind_{[y_{i}\neq h_{t}(x_{i})]} &= \frac{1}{2\sqrt{\eps_{t}(1-\eps_{t})}} \cdot \sqrt{\eps_{t}(1-\eps_{t})} = \frac{1}{2}
+  \end{align*}
+  as desired.
+\end{proof}
+
+\begin{homeworkProblem}
+  In this exercise we discuss the VC-dimension of classes of the form $ L(B,T) $. We proved an upper bound of $ O(dT \log(dT)) $, where $ d= \VCdim(B) $. Here we wish to prove an almost matching lower bound. However, that will not be the case for all classes $ B $.
+
+  Note that for every class $ B $ and every number $ T\geq 1 $, $ \VCdim(B)\leq \VCdim(L(B,T)) $. Find a class $ B $ for which $ \VCdim(B) = \VCdim(L(B,T)) $ for every $ T\geq 1 $. (\textit{Hint}: Take $ \mathcal{X} $ to be a finite set.)
+\end{homeworkProblem}
+
+\begin{proof}
+  Take $ \mathcal{X} = \{1,\ldots, n\} $ and $ B = 2^{\mathcal{X}} $. Suppose $ T\geq 1 $. If $ f:\mathcal{X}\to\{\pm1\} $ as any function, then for $ w = (1,0,\ldots,0)\in \R^{T} $ and $ h_{t} = f $ for $ 1\leq t\leq T $, we have that 
+  \[
+    f(x) = \sign(f(x)) = \sign\lr{\sum_{t=1}^{T}w_{t}f(x)}
+  \]
+  whence $ f\in L(B,T) $. So $ B\sub L(B,T) \sub 2^{\mathcal{X}} = B $, whence $ B=L(B,T) $ and consequently they have equal VC-dimensions.
+\end{proof}
+
+
+
+
+
+
+
+
+
+\end{document}

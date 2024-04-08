@@ -1,0 +1,3 @@
+\contentsline {section}{\numberline {1}Preliminaries}{1}{section.1}%
+\contentsline {section}{\numberline {2}Fuss-Catalan Preliminaries}{2}{section.2}%
+\contentsline {section}{\numberline {3}Recursive Decomposition}{2}{section.3}%
