@@ -1,3 +1,6 @@
 \contentsline {section}{\numberline {1}Preliminaries}{1}{section.1}%
-\contentsline {section}{\numberline {2}Fuss-Catalan Preliminaries}{2}{section.2}%
-\contentsline {section}{\numberline {3}Recursive Decomposition}{2}{section.3}%
+\contentsline {section}{\numberline {2}Fuss-Catalan Preliminaries}{1}{section.2}%
+\contentsline {section}{\numberline {3}Recursive Decomposition}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Non-recursive Summands}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Recursive Summands}{8}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Asymptotics}{10}{section.4}%

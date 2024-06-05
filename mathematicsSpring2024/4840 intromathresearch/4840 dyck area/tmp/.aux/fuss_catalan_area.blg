@@ -1,9 +1,9 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'tmp/.aux/fuss_catalan_area.blg'
-[65] biber:340> INFO - === Sun Apr  7, 2024, 16:29:20
-[78] Biber.pm:419> INFO - Reading 'tmp/.aux/fuss_catalan_area.bcf'
-[131] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
-[144] bbl.pm:660> INFO - Writing 'tmp/.aux/fuss_catalan_area.bbl' with encoding 'UTF-8'
-[144] bbl.pm:763> INFO - Output to tmp/.aux/fuss_catalan_area.bbl
-[144] Biber.pm:131> WARN - The file 'tmp/.aux/fuss_catalan_area.bcf' does not contain any citations!
-[144] Biber.pm:133> INFO - WARNINGS: 1
+[68] biber:340> INFO - === Wed Apr 24, 2024, 17:10:15
+[82] Biber.pm:419> INFO - Reading 'tmp/.aux/fuss_catalan_area.bcf'
+[135] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[149] bbl.pm:660> INFO - Writing 'tmp/.aux/fuss_catalan_area.bbl' with encoding 'UTF-8'
+[149] bbl.pm:763> INFO - Output to tmp/.aux/fuss_catalan_area.bbl
+[149] Biber.pm:131> WARN - The file 'tmp/.aux/fuss_catalan_area.bcf' does not contain any citations!
+[150] Biber.pm:133> INFO - WARNINGS: 1

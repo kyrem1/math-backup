@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Motivation}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{$(n, n)$ Paths}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Generalizing Dyck Paths}{14}{0}{1}
+\beamer@sectionintoc {2}{Working with Paths of Type $(sn,n)$}{17}{0}{2}

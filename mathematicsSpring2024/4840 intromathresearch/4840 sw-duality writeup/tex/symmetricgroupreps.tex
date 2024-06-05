@@ -5,9 +5,9 @@
 \begin{document}
 
 \section{Representations of $ S_{n} $}
-
-\subsection{Partitions, Young Diagrams, and Tabloids}.
+\subsection{Partitions, Young Diagrams, and Tabloids}
 % TODO cut out parts of young diagram definitions that arent needed
+To begin discussing the representation theory of $ S_{n} $, we first lay out some combinatorial groundwork with which to build the theory upon.
 \begin{definition}\label{def:youngdiagram}
   Given $ \lambda\vdash n $, the \textit{Ferrers diagram of shape $ \lambda $} is the set $\{(i,j)\in \N^{2} : j\in \N, 1\leq i \leq \lambda_{j}\}$ depicted as points in $ \R^{2} $. The \textit{Young diagram of shape $ \lambda $} is depicted identically to the Ferrers diagram except the points are replaced with squares. The \textit{size} of the diagram is the number of entries, namely $ n $. We depict the case $ (5,2,1)\vdash 8 $ below.
 \end{definition}
@@ -65,6 +65,56 @@
 \caption*{\textit{Standard Young tableau} for the partition (5,2,1)}
 \end{minipage} 
 \end{figure}
+\begin{definition}\label{def:lambdatableau}
+  Given $ \lambda\vdash n $, a $ \lambda $-tableau is simply a filling of the boxes of the Young diagram of shape $ \lambda $ with the elements of $ \{1,\ldots,n\} $ without repetition (and no other restrictions). Denote the set of $ \lambda $-tableaux by $ YT(\lambda) $. Note that $ S_{n}\acts YT(\lambda) $ by permuting labels.
+\end{definition}
+
+
+\begin{definition}\label{def:youngtabloid}
+  Given $ \lambda\vdash n $, define an equivalence relation $ \sim $ on $ YT(\lambda) $ by $ \mathcal{T}\sim \mathcal{T}^{\prime} $ if and only if $ \mathcal{T}^{\prime} $ can be obtained from $ \mathcal{T} $ by permuting the entries of each row. % TODO POSSIBLY COLUMNS CUZ FRENCH NOTATION
+ An equivalence class with respect to this relation is called a \textit{$ \lambda $-tabloid}. If $ \mathcal{T} $ is a $ \lambda $-tableau, we write $ \{\mathcal{T}\} $ for the corresponding $ \lambda $-tabloid. Finally, we write $ Tab(\lambda):= YT(\lambda)/\sim $ for the set of $ \lambda $-tabloids. Note that the action of $ S_{n} $ on $ \lambda $-tableaux descends to an action on $ \lambda $-tabloids.
+\end{definition}
+
+\begin{example}
+Below, we show two equivalent and inequivalent $ (5,2,1) $-tableaux. The first two tableau are equal as tabloids, whereas the last is not equal to the first two.
+
+\begin{figure}[h]
+\captionsetup{
+  font=small, % Adjust the font size
+  labelfont=bf,
+  format=plain, % Use plain format to avoid any unwanted effects
+  justification=raggedright, % Ensure the caption is justified, which can help with spacing
+  singlelinecheck=false, % Applies justification setting even when the caption is a single line
+}
+% Align tableaux at the top of their respective minipages
+\centering
+\ytableausetup{boxframe=normal, aligntableaux=top}
+\[
+\begin{ytableau}
+8 \\
+5 & 7 \\
+1 & 2 & 3 & 4 & 6 \\
+\end{ytableau}
+\sim\quad
+\begin{ytableau}
+8 \\
+7 & 5 \\
+1 & 3 & 2 & 6 & 4 \\
+\end{ytableau}
+\not\sim\quad
+\begin{ytableau}
+8 \\
+1 & 7 \\
+5 & 2 & 3 & 4 & 6 \\
+\end{ytableau}
+\]
+%\vspace{5pt} % Uniform spacing for alignment
+\end{figure}
+
+
+ 
+\end{example}
+
 
 
 \begin{definition}\label{def:youngtableaux}
@@ -81,16 +131,6 @@
 \end{definition}
 
 
-\begin{definition}\label{def:lambdatableau}
-  Given $ \lambda\vdash n $, a $ \lambda $-tableau is simply a filling of the boxes of the Young diagram of shape $ \lambda $ with the elements of $ \{1,\ldots,n\} $ without repetition (and no other restrictions). Denote the set of $ \lambda $-tableaux by $ YT(\lambda) $. Note that $ S_{n}\acts YT(\lambda) $ by permuting labels.
-\end{definition}
-
-
-\begin{definition}\label{def:youngtabloid}
-  Given $ \lambda\vdash n $, define an equivalence relation $ \sim $ on $ YT(\lambda) $ by $ \mathcal{T}\sim \mathcal{T}^{\prime} $ if and only if $ \mathcal{T}^{\prime} $ can be obtained from $ \mathcal{T} $ by permuting the entries of each row. % TODO POSSIBLY COLUMNS CUZ FRENCH NOTATION
- An equivalence class with respect to this relation is called a \textit{$ \lambda $-tabloid}. If $ \mathcal{T} $ is a $ \lambda $-tableau, we write $ \{\mathcal{T}\} $ for the corresponding $ \lambda $-tabloid. Finally, we write $ Tab(\lambda):= YT(\lambda)/\sim $ for the set of $ \lambda $-tabloids. Note that the action of $ S_{n} $ on $ \lambda $-tableaux descends to an action on $ \lambda $-tabloids.
-\end{definition}
-
 %TODO examples of equivalent and inequivalent lambda-tableaux.
 
 
@@ -100,6 +140,34 @@ Young diagrams will give projection operators $ P_{\lambda}:\C[S_{n}]\to\C[S_{n}
 \begin{definition}\label{def:rowandcolgroup}
   Given a $ \lambda $-tableau $ \mathcal{T} $, define the \textit{row group} $ R_{\mathcal{T}} $ to be the subgroup of $ S_{n} $ which permutes only the labels in the rows of $ \mathcal{T} $ and the \textit{column group} $ C_{\mathcal{T}} $ as the subgroup which permutes only the labels in the columns of $ \mathcal{T} $. 
 \end{definition}
+As an illustrative example for these groups, note that the equality below implies $ (57)(23)(64)\in R_{\mathcal{T}} $.
+\begin{figure}[h]
+\captionsetup{
+  font=small, % Adjust the font size
+  labelfont=bf,
+  format=plain, % Use plain format to avoid any unwanted effects
+  justification=raggedright, % Ensure the caption is justified, which can help with spacing
+  singlelinecheck=false, % Applies justification setting even when the caption is a single line
+}
+% Align tableaux at the top of their respective minipages
+\centering
+\ytableausetup{boxframe=normal, aligntableaux=top}
+\[
+  (57)(23)(64)\cdot
+\begin{ytableau}
+8 \\
+5 & 7 \\
+1 & 2 & 3 & 4 & 6 \\
+\end{ytableau}
+=\quad
+\begin{ytableau}
+8 \\
+7 & 5 \\
+1 & 3 & 2 & 6 & 4 \\
+\end{ytableau}
+\]
+%\vspace{5pt} % Uniform spacing for alignment
+\end{figure}\\
 Now we may define the \textit{Young row and column symmetrizers} in $ \C[S_{n}] $ by
 \begin{equation}\label{eq:rowandcolsymm}
   a_{\mathcal{T}} := \sum_{\sigma\in R_{\mathcal{T}}} \sigma, \qquad b_{\mathcal{T}} := \sum_{\sigma\in C_{\mathcal{T}}} \sgn(\sigma) \sigma.
@@ -182,6 +250,8 @@ As $ S_{n} $ stabilizes $ S^{\lambda} $, the claim follows.
 \end{example}
 
 \subsection{Alternative Construction}\label{sec:altconst}
+
+More algebraically-minded sources on the representation theory of $ S_{n} $ will take an alternative approach to the construction of Specht modules which may elucidate some details to the intended audience and obfuscate some details from others. We present this alternative construction for personal edification as well as to appeal to the former audience.
 
 Fix a $ \lambda $-tableau $ \mathcal{S} $ throughout this section, say the canonical one (increasing across rows and then moving up rows).
 Recall the row and column symmetrizers $ a_{\lambda}:=a_{\mathcal{S}} $, $ b_{\lambda}:=b_{\mathcal{S}} $ and define the Young symmetrizer 

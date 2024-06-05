@@ -6,11 +6,28 @@
 
 \section{Representation Theory Background}
 
+Before the introduction of the abstract group concept by Emmy N\"{o}ether, groups were only studied in relation to their actions. As the old adage goes,``\textit{groups, as men, shall be known by their actions.}'' This philosophy takes its strongest modern form in the notion of representation theory, which studies groups through the lens of their actions on vector spaces. As an illustrative example, consider the dihedral group of order $ 2n $. This group has the abstract presentation
+
+\[
+    D_{2n}=\cyclic{r,s | r^{n}=s^{2}=e, rsr = s^{-1}} ;
+\]
+however, this presentation is not how we intuitively think about $ D_{2n} $. This group is always introduced as the symmetries of an $ n $-gon, which suggests some type of action on $ \R^{2} $. Consider the map $ \pi:D_{2n}\to \GL_{2}(\R) $ given by 
+\begin{align*}
+    r&\mapsto \begin{pmatrix}\cos(\frac{2\pi}{n}) &-\sin(\frac{2\pi}{n}) \\\sin(\frac{2\pi}{n}) &\cos(\frac{2\pi}{n})   \end{pmatrix} \\
+    s&\mapsto \begin{pmatrix}0 &1 \\1&0 \end{pmatrix}
+\end{align*}
+The map $ \pi $ makes concrete our intuition about the dihedral group and encodes its information via an action on the vector space $ \R^{2} $. This leads to the notion of a representation.
 \subsection{Group Representations}
+
 
 \begin{definition}
     A \textit{representation} of a group $ G $ is a pair $ (\pi, V) $ where $ V $ is a $ \C $-vector space and $ \pi: G\to \GL(V) $ is a group homomorphism.
 \end{definition}
+
+
+\begin{example}
+  Let $ V $ have basis $ e_{1},\ldots, e_{n} $ and consider the map $ \pi:S_{n}\to \GL(V) $ given by $ \pi(\sigma)e_{i} = e_{\sigma(i)} $ extended by linearity. 
+\end{example}
 
 \begin{definition}
     A morphism between two representations $ (\pi, V) $ and $ (\rho, W) $ of a group $ G $ is a linear map $ T:V\to W $ such that $ T \pi(g) = \rho(g) T $ for all $ g\in G $. A morphism between representations is an isomorphism if it is an isomorphism of vector spaces.
@@ -24,6 +41,14 @@
         \item We say $ (\pi,V) $ is \textit{irreducible} if its only subrepresentations are $ V $ and $ 0 $.
     \end{itemize}
 \end{definition}
+
+\begin{example}
+    Let $ \pi:S_{n}\to \GL(V) $ be the representation above and consider the subspace $ W:= \{\sum \alpha_{i}e_{i}\in V : \sum_{i}\alpha_{i} = 0\} $. Note that if $ \sum_{i} \alpha_{i} = 0 $, then $ \sum_{i} \alpha_{\sigma(i)} = 0 $, so $ \pi(\sigma)W\sub W $ for all $ \sigma\in S_{n} $. The representation $ (W, \pi\vert_{W}) $ is called the \textit{standard representation} of $ S_{n} $.
+\end{example}
+
+\begin{exercise}
+    Prove that $ (W, \pi\vert_{W}) $ is an irreducible representation of $ S_{n} $.
+\end{exercise}
 
 The interplay between irreducible representations and morphisms of representations is encapsulated in the following fundamental result.
 
@@ -49,15 +74,19 @@ The interplay between irreducible representations and morphisms of representatio
 \subsection{Character Theory}
 
 % TODO dual representations and their characters, also mention why reps of $ S_n $ are self-dual
-Whilst we will not need much character theory in the following, we mention some of the main definitions and results for the reader's enlightenment.
+Character theory studies a very refined invariant of representation theory which contains a surprising amoun of information. Whilst we will not need much character theory in the following, we mention some of the main definitions and results for the reader's enlightenment.
 
 \begin{definition}
-    Given a representation $ (\pi,V) $ of a group $ G $, the corresponding character of the representation is the funciton $ \chi_{\pi}:G\to \C $ given by
+    Given a representation $ (\pi,V) $ of a group $ G $, the corresponding character of the representation is the function $ \chi_{\pi}:G\to \C $ given by
     \[
         \chi_{\pi} (g) = Tr(\pi(g))
     \]
     Note that as $ Tr $ is conjugacy invariant, so is $ \chi_{\pi} $.
 \end{definition}
+
+\begin{exercise}
+   Compute the character of the standard representation of $ S_{n} $.
+\end{exercise}
 
 An incredibly suprising result of finite group representation theory is that the characters of representations are enough to entirely determine the representation. This is encapsulated in the following theorem.
 
@@ -65,13 +94,13 @@ An incredibly suprising result of finite group representation theory is that the
     Let $ (\pi,V),(\rho,W) $ be (complex) representations of a finite group G. Then $ (\pi,V)\cong (\rho,W) $ if and only if $ \chi_{\pi}= \chi_{\rho} $.
 \end{theorem}
 
-One application we will need this theorem for is the self-duality of representations of symmetric groups. 
+One application of this theorem is the self-duality of representations of symmetric groups.
 
 \begin{proposition}
     Let $ (\pi,V) $ be a representation of $ S_{n} $. Then $ V\cong V^{*} $ as representations.
 \end{proposition}
 \begin{proof}
-    One may compute that $ \chi_{V^{*}}(g) = \chi_{V}(g^{-1})  $. In $ S_{n} $, the group elements $ g $ and $ g^{-1} $ are conjugate, so $ \chi_{V}(g^{-1})= \chi_{V}(g) $, whence by the above theorem, since $ V $ and $ V^{*} $ have the same characters, it follows that they are isomorphic as representations.
+    One may compute that $ \chi_{V^{*}}(\pi(g)) = \chi_{V}(\pi(g^{-1}))  $. In $ S_{n} $, the group elements $ g $ and $ g^{-1} $ are conjugate, so $ \chi_{V}(\pi(g^{-1}))= \chi_{V}(\pi(g)) $, whence by the above theorem, since $ V $ and $ V^{*} $ have the same characters, it follows that they are isomorphic as representations.
 \end{proof}
 
 

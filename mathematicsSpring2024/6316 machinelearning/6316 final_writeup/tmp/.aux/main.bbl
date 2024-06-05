@@ -1,0 +1,23 @@
+\begin{thebibliography}{1}
+
+\bibitem{williams:20}
+Max Williams.
+\newblock financial-data.
+\newblock \url{https://github.com/FutureSharks/financial-data}, 2020.
+
+\bibitem{otabek:24}
+Sattarov Otabek and Jaeyoung Choi.
+\newblock Multi-level deep q-networks for bitcoin trading strategies.
+\newblock {\em Scientific Reports}, 14(1):771, Jan 2024.
+
+\bibitem{ayitey:23}
+Michael Ayitey~Junior, Peter Appiahene, Obed Appiah, and Christopher~Ninfaakang Bombie.
+\newblock Forex market forecasting using machine learning: Systematic literature review and meta-analysis.
+\newblock {\em Journal of Big Data}, 10(1):9, Jan 2023.
+
+\bibitem{carapuco:18}
+João Carapuço, Rui Neves, and Nuno Horta.
+\newblock Reinforcement learning applied to forex trading.
+\newblock {\em Applied Soft Computing}, 73:783--794, 2018.
+
+\end{thebibliography}
