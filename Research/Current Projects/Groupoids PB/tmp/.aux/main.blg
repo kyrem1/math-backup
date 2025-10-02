@@ -1,15 +1,15 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'tmp/.aux/main.blg'
-[64] biber:340> INFO - === Wed Mar 20, 2024, 16:47:26
-[76] Biber.pm:419> INFO - Reading 'tmp/.aux/main.bcf'
-[127] Biber.pm:979> INFO - Found 3 citekeys in bib section 0
-[140] Biber.pm:4419> INFO - Processing section 0
-[148] Biber.pm:4610> INFO - Looking for bibtex file '/home/kyrem1/Mathematics/bibs/groupoids.bib' for section 0
-[148] bibtex.pm:1713> INFO - LaTeX decoding ...
-[153] bibtex.pm:1519> INFO - Found BibTeX data source '/home/kyrem1/Mathematics/bibs/groupoids.bib'
-[192] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[192] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[192] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[192] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[199] bbl.pm:660> INFO - Writing 'tmp/.aux/main.bbl' with encoding 'UTF-8'
-[201] bbl.pm:763> INFO - Output to tmp/.aux/main.bbl
+[143] biber:340> INFO - === Sat Jan 25, 2025, 16:33:36
+[173] Biber.pm:419> INFO - Reading 'tmp/.aux/main.bcf'
+[288] Biber.pm:979> INFO - Found 3 citekeys in bib section 0
+[314] Biber.pm:4419> INFO - Processing section 0
+[333] Biber.pm:4610> INFO - Looking for bibtex file '/home/kyrem1/Mathematics/bibs/groupoids.bib' for section 0
+[334] bibtex.pm:1713> INFO - LaTeX decoding ...
+[343] bibtex.pm:1519> INFO - Found BibTeX data source '/home/kyrem1/Mathematics/bibs/groupoids.bib'
+[425] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[425] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[425] Biber.pm:4239> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[425] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[441] bbl.pm:660> INFO - Writing 'tmp/.aux/main.bbl' with encoding 'UTF-8'
+[443] bbl.pm:763> INFO - Output to tmp/.aux/main.bbl

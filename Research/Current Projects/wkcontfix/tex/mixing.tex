@@ -1,0 +1,46 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\subsection{Mixing Proof}
+\begin{definition}
+ A representation $\pi$ on $X \ast \H$ is called {\it mixing} or $c_0$ if 
+for every $\epsilon, \delta > 0$ and every pair of normalized sections $\xi, \eta \in S(X \ast \H)$, there is $E \subset X$ with $\mu(X \setminus E) < \delta$ such that 
+$$
+\left|\{g \in (\rG\vert_E)_x : |\inp{\pi(g)\xi_x}{\eta_{r(g)}}| > \epsilon\}\right| < \infty  \quad \text{for $\mu$-a.e. $x \in E$.}
+$$
+\end{definition}
+
+\begin{definition}
+ An $ M $-$ M $ bimodule $ _M \H_{M} $ is {\it mixing relative to $ A\sub M $} if any net $ (u_{i})_{i\in I} $ in $ (M)_{1} $ which satisfies $ \norm{\E_{A}(xu_{n}y)}_{2}\to 0 $ for all $ x,y\in M $, satisfies
+\[
+    \lim_{i} \sup_{y\in(M)_{1}} |\inp{u_{n} \xi y}{\eta}| =\lim_{i} \sup_{y\in(M)_{1}} |\inp{y \xi u_{n} }{\eta}| =  0 \quad\text{ for all } \xi, \eta\in \H
+\]
+\end{definition}
+
+
+\begin{proposition}
+    If $ \pi $ is mixing then $\,_M \B(\pi)_{M} $ is mixing relative to $ A $.
+\end{proposition}
+
+\begin{proof}
+    Fix $ \xi \in S_{1}(X\ast\H) $ and $ \eps>0 $. The map $ \phi:\rG\to \C $ given by $ \pi(g) = \inp{\pi(g) \xi_{d(g)}}{\xi_{r(g)}} $ is then a unital positive definite function on $ \rG $ (see KIDA, CLAIRE, JOLISSAINT etc).
+    By LUPINI, CLAIRE, there is a unique unital, completely positive, $ \E_{A} $-preserving, $ A $-$ A $ bimodular map $ \Phi:M\to M $ such that 
+    \[
+        \Phi(u_{\sigma}) = \phi(\cdot\, \sigma) u_{\alpha} \quad \text{for all } \sigma\in[\rG].
+    \]
+    Such a map extends to a unique contraction $ \widehat{\Phi}: L^{2}(M)\to L^2(M) $; moreover, the expectation-preservation and $ A $-$ A $-bimodularity imply that $ \widehat{\Phi}\in \inp{M}{A}\cap A^{\prime} $.
+    
+
+
+
+
+
+
+
+\end{proof}
+
+
+\end{document}

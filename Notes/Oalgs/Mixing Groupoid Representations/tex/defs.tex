@@ -1,0 +1,110 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Definitions}
+
+\subsection{Fourier Decomposition}
+For $ \sigma\in [[\rG]] $, define $ u_{\sigma}\in B(L^{2}(\rG, \mu_{\rG})) $ by
+\[
+    \lambda_{\sigma} 1_E = 1_\sigma \ast 1_E = 1_{\sigma \cdot E}
+\]
+for every subset $ E\sub \rG $ with $ \mu_{\rG}(E)<\infty $. Define the groupoid von Neumann algebra $ L(\rG) $ by 
+\[
+    L(\rG) = \{\lambda_{\sigma}: \sigma\in [[\rG]]\}^{\prime\prime}
+\]
+
+Any subset $ S\sub \rG $ with $ \mu_{\rG}(S)<\infty $ defines an element $ \lambda_{S}\in L(\rG) $ in the same way. When $ \sigma \in[\rG]$, we write $ u_{\sigma}= \lambda_{\sigma} $. \\
+
+
+
+
+
+Note that $ L^{\infty}(\rG^{(0)} ,\mu)$ is a regular subalgebra of $ L(\rG) $. When $ A\in [[\rG]]$ and $ F\in L^{\infty}(\rG^{(0)},\mu) $, we have the relation $ \lambda_{A}F \lambda_{A}^{*} = (F\circ \sigma_{A}^{-1} )\cdot 1_{r(A)}  $ where $ \sigma_{A} $ denotes the bijection from $ d(A) $ to $ r(A) $.\\
+
+
+The conditional expectation $ \E_{A}:L(\rG)\to L^{\infty}(\rG^{(0)},\mu) $ is given by $ \E_{A}(a) = a 1_{\rG^{(0)}} \vert_{\rG^{(0)}} $. 
+
+The map $ j:L(\rG)\to L^{2}(\rG,\mu_{\rG}) $ is given by $j(a) = a1_{\rG^{(0)}}$.
+\subsection{Representations and Bimodules}
+\subsubsection{Mixingness}
+\begin{definition}
+ A representation $\pi$ on $X \ast \H$ is called {\it mixing} or $c_0$ if 
+for every $\epsilon, \delta > 0$ and every pair of normalized sections $\xi, \eta \in S(X \ast \H)$, there is $E \subset X$ with $\mu(X \setminus E) < \delta$ such that 
+$$
+\left|\{g \in (\rG\vert_E)_x : |\inp{\pi(g)\xi_x}{\eta_{r(g)}}| > \epsilon\}\right| < \infty  \quad \text{for $\mu$-a.e. $x \in E$.}
+$$
+\end{definition}
+
+\begin{definition}
+ An $ M $-$ M $ bimodule $ _M \H_{M} $ is {\it mixing relative to $ A\sub M $} if any net $ (u_{i})_{i\in I} $ in $ (M)_{1} $ which satisfies $ \norm{\E_{A}(xu_{n}y)}_{2}\to 0 $ for all $ x,y\in M $, satisfies
+\[
+    \lim_{i} \sup_{y\in(M)_{1}} |\inp{u_{n} \xi y}{\eta}| =\lim_{i} \sup_{y\in(M)_{1}} |\inp{y \xi u_{n} }{\eta}| =  0 \quad\text{ for all } \xi, \eta\in \H
+\]
+\end{definition}
+
+\rule{14cm}{1pt}\\
+Identities:
+\[
+  \B(\pi) := \left[ \int_{X}^{\oplus}\H_{x}\dd{\mu(x)}\right] \otimes_{A} L^{2}(\rG).
+\]
+\[
+    au_{\sigma}\cdot (\xi \otimes \eta) \cdot x = \widetilde{\pi}_{\sigma}(\xi)\otimes au_{\sigma}\eta x
+\]
+\[
+    (\widetilde{\pi}(\sigma) \xi)(x) = \pi(r\vert_{\sigma}^{-1}(x)) \ \xi(d\circ r\vert_{\sigma}^{-1}(x))=\pi(x \sigma) \ \xi_{d(x \sigma)}
+\]
+\[
+    \cls{\mu}(E) = \int_{X} \#(d^{-1}(x)\cap E) \dd{\mu(x)}= \int_{X} \#\{g\in E: d(g) = x\} \dd{\mu(x)}
+\]
+\[
+    \sigma\in[\rG] \implies \cls{\mu}(\sigma) = 1
+\]
+
+\begin{definition}
+ A representation $\pi$ on $X \ast \H$ is called {\it mixing} or $c_0$ if 
+for every $\epsilon, \delta > 0$ and every pair of normalized sections $\xi, \eta \in S(X \ast \H)$, there is $E \subset X$ with $\mu(X \setminus E) < \delta$ such that 
+$$
+\left| \{g \in (\rG\vert_E)_x : |\inp{\pi(g)\xi_x}{\eta_{r(g)}} | > \eps\}\right| < \infty  \quad \text{for $\mu$-a.e. $x \in E$.}
+$$
+\end{definition}
+
+\begin{definition}
+ An $ M $-$ M $ bimodule $ _M \H_{M} $ is {\it mixing relative to $ A\sub M $} if any net $ (u_{i})_{i\in I} $ in $ (M)_{1} $ which satisfies $ \norm{\E_{A}(xu_{n}y)}_{2}\to 0 $ for all $ x,y\in M $, satisfies
+\[
+    \lim_{i} \sup_{y\in(M)_{1}} |\inp{u_{n} \xi y}{\eta}| =\lim_{i} \sup_{y\in(M)_{1}} |\inp{y \xi u_{n} }{\eta}| =  0 \quad\text{ for all } \xi, \eta\in \H
+\]
+\end{definition}
+
+\subsubsection{Weak Containment}
+
+\begin{definition}
+We say that $\pi$ is {\it weakly contained} in $\rho$, denoted $\pi \prec \rho$, if for any $\epsilon > 0$, $\xi \in S(X \ast \H)$, and $E \subset \rG$ with $\mu_\rG(E) < \infty$, there exists $\{\eta^1, \dots, \eta^m\} \subset S(X \ast \K)$ with
+$$
+\mu_\rG\lr{\{g\in E : |\inp{ \pi(g)\xi_{d(g)}}{\xi_{r(g)}} - \sum_{i = 1}^m \inp{\rho(g)\eta^i_{d(g)}}{ \eta^i_{r(g)}} | \ge \epsilon\}} < \epsilon.
+$$
+\end{definition}
+
+\begin{definition}
+    Given two $M$-$N$ bimodules $ \H $ and $ \K $, we say that $ \H $ is \textit{weakly contained} in $ \K $ (denoted by $ \H \prec \K $) if for every $ \eps >0 $ and finite subsets $ E\sub M $, $ F\sub N $, $ \{ \xi_{1}, \ldots, \xi_{n}\}\sub \H $, there exists $ \{ \eta_{1},\ldots, \eta_{n}\}\sub \K $ such that 
+    \[
+        |\inp{x \xi_{i} y}{\xi_{j}}- \inp{x \eta_{i} y}{\eta_{j}}| < \eps \quad \text{for all }x\in E,\,y\in F,\,\text{and } 1\leq i,j\leq n.
+    \]
+\end{definition}
+
+Note that any $ M $-$ N $ bimodule $ \H $ gives rise to a $ * $-homomorphism $ \pi_{\H}: M \otimes N^{\text{op}}\to B(\H) $ given by $ \pi_{\H}(x \otimes y) \xi = x \xi y $. In this language, we have that $ \H \prec \K $ if and only if $ \norm{\pi_{H}(T)} \leq \norm{\pi_{\K}(T)} $ for all $ T\in M \otimes N^{\text{op}} $.
+
+\begin{definition}
+    Let $ \pi_{1}, \pi_{2} $ be nondegenerate $ * $-representations of a $ C^{*} $-algebra $ A $. We say that $ \pi_{1} $ is \textit{weakly contained} in $ \pi_{2} $ and write $ \pi_{1}\prec \pi_{2}$ if $ \norm{\pi_{1}(a)}\leq \norm{\pi_{2}(a)} $ for all $ a\in A $.
+\end{definition}
+
+Hence, $ _M\H_N \prec\, _M\K_N $ if and only if $ \pi_{\H} \prec \pi_{\K} $.
+
+
+% TODO: Make sure can reduce to output vectors being in S_1 as opposed to just S. Actually S_{bounded} is fine. 
+
+
+
+\end{document}

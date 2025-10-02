@@ -1,0 +1,105 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Mixingness Arguments}
+
+Basic Computations:
+\begin{align*}
+    \inp{au_{\sigma}\cdot ( \xi \otimes \widehat{m_{1}}) \cdot u_{i}}{ \eta \otimes  \widehat{m_{2}}} &= \inp{\widetilde{\pi}(\sigma) \xi \otimes  au_{\sigma} \widehat{m_{1}} u_{i}}{ \eta \otimes \widehat{m_{2}}}\\
+    &= \inp{\widetilde{\pi}(\sigma) \xi}{ \eta \cdot\, _A \inp{au_{\sigma} \widehat{m_{1}}u_{i}}{\widehat{m_{2}}}}\\
+    &= \inp{\widetilde{\pi}(\sigma) \xi}{ \eta \cdot \E_{A}(au_{\sigma} m_{1}u_{i}ym_{2}^{*})}\\
+    &= \int_{X}\E_{A}(au_{\sigma} m_{1}u_{i}m_{2}^{*})(x) \cdot \inp{(\widetilde{\pi}(\sigma) \xi)_{x}}{\eta_{x}}\dd{\mu(x)}
+\end{align*}
+
+Exists $ Y\sub X $ with $ \mu(X\setminus Y) < \delta $ and
+\[
+    \cls{\mu}(\{g\in \rG\vert_{Y} : | \inp{\pi(g) \xi_{d(g)}}{\xi_{r(g)}}| > \eps\}) <\infty.
+\]
+
+\begin{align*}
+    \{g\in \rG\vert_{Y} : | \inp{\pi(g) \xi_{d(g)}}{\xi_{r(g)}}| > \eps\} &= \bigcup_{\sigma\in \Gamma} \{g\in \rG\vert_{Y}\cap \sigma : | \inp{\pi(g) \xi_{d(g)}}{\xi_{r(g)}}| > \eps\} \\
+    &= \bigcup_{\sigma\in \Gamma} \{x\sigma \in \rG\vert_{Y} : x\in Y,\, | \inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}}| > \eps\} \\
+\end{align*}
+
+\begin{align*}
+    \sum_{\sigma\in \Gamma}\cls{\mu}\lr{\{x\sigma \in \rG\vert_{Y} : x\in Y,\, | \inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}}| > \eps\}}&=\cls{\mu}\lr{\bigsqcup_{\sigma\in \Gamma} \{x\sigma \in \rG\vert_{Y} : x\in Y,\, | \inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}}| > \eps\}}\\ 
+    &= \cls{\mu}(\{g\in \rG\vert_{Y} : | \inp{\pi(g) \xi_{d(g)}}{\xi_{r(g)}}| > \eps\}) <+\infty
+\end{align*}
+
+whence, enumerating $ \Gamma = \{\sigma_{n}\}_{n\in\N} $, we have $$ \cls{\mu}\lr{\{x\sigma_{n} \in \rG\vert_{Y} : x\in Y,\, | \inp{\pi(x \sigma_{n}) \xi_{d(x \sigma_{n})}}{\xi_{x}}| > \eps\}} \xrightarrow{n\to\infty}0$$
+
+\[
+\cls{\mu}\lr{\{x\sigma \in \rG\vert_{Y} : x\in Y,\, | \inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}}| > \eps\}} <\infty
+\]
+
+
+\rule{14cm}{1pt}\\
+
+Exists $E \subset X$ with $\mu(X \setminus E) < \delta$ such that 
+$$
+\left|\{g \in \rG :d(g)=x,\, r(g)\in E,\, |\inp{\pi(g)\xi_x}{\eta_{r(g)}}| > \epsilon\}\right| < \infty  \quad \text{for $\mu$-a.e. $x \in E$.}
+$$
+
+There exists further $ E_{0} \sub E$ and $ N\in \N$ such that $  $
+\[
+\left|\{g \in \rG :d(g)=x,\, r(g)\in E_{0},\, |\inp{\pi(g)\xi_x}{\eta_{r(g)}}| > \epsilon\}\right| \leq N   \quad \text{for all $x \in E_0$.}
+\]
+
+
+\[
+    \norm{\E_{A}(f)}_{L^{2}(M, \tau)} = 
+\]
+
+
+\subsection{Fake Computation without fusing}
+WLOG $ \norm{u_{i}}\leq 1 $
+\begin{align*}
+    \inp{au_{\sigma}\cdot ( \xi \otimes \widehat{m_{1}}) \cdot u_{i}}{ \eta \otimes  \widehat{m_{2}}} &= \inp{\widetilde{\pi}(\sigma) \xi \otimes  au_{\sigma} \widehat{m_{1}} u_{i}}{ \eta \otimes \widehat{m_{2}}}\\
+    &?=\inp{\widetilde{\pi}(\sigma) \xi }{\eta}\inp{au_{\sigma} \widehat{m_{1}} u_{i}}{\widehat{m_{2}}}\\
+    &\leq \inp{\widetilde{\pi}(\sigma) \xi }{\eta} \norm{\E_{A}(au_{\sigma}m_{1}u_{i}m_{2}^{*})}_{2}
+\end{align*}
+\begin{align*}
+    \sup_{\norm{y}\leq1}\inp{y\cdot ( \xi \otimes \widehat{m_{1}}) \cdot u_{i}}{ \eta \otimes  \widehat{m_{2}}} &= \sup_{\norm{y}\leq1}\sum_{\sigma\in \Gamma}\inp{\widetilde{\pi}(\sigma) \xi \otimes  \E_{A}(y u_{\sigma}^{*})u_{\sigma} \widehat{m_{1}} u_{i}}{ \eta \otimes \widehat{m_{2}}}\\
+    &?=\sup_{\norm{y}\leq1}\sum_{\sigma\in \Gamma}\inp{\widetilde{\pi}(\sigma) \xi }{\eta}\inp{a_{\sigma}(y)u_{\sigma} \widehat{m_{1}} u_{i}}{\widehat{m_{2}}}\\
+    &\leq\sup_{\norm{y}\leq1} \inp{\widetilde{\pi}(\sigma) \xi }{\eta} \norm{\E_{A}(au_{\sigma}m_{1}u_{i}m_{2}^{*})}_{2}
+\end{align*}
+
+
+\[
+    a^{\sigma} = (a 1_{\rG^{0}})\circ r\vert_{\sigma}^{-1} =\E_A(au_{\sigma}^{*})\in A
+\]
+
+\begin{align*}
+    \sup_{\norm{y}\leq1}\inp{\widetilde{\pi}(\sigma) \xi \otimes  \E_{A}(y u_{\sigma}^{*})u_{\sigma} \widehat{m_{1}} u_{i}}{ \eta \otimes \widehat{m_{2}}} &= \sup_{\norm{y}\leq1}\int_{X}\E_{A}(yu_{\sigma}^{*})\E_{A}(u_{\sigma}m_{1}u_{i}m_{2}^{*}) \inp{(\widetilde{\pi}(\sigma) \xi)_{x}}{\eta_{x}}\dd{\mu(x)}\\
+    &= \sup_{\norm{y}\leq1}\int_{X}(y1_X)(x \sigma)\E_{A}(u_{\sigma}m_{1}u_{i}m_{2}^{*}) \inp{(\widetilde{\pi}(\sigma) \xi)_{x}}{\eta_{x}}\dd{\mu(x)}\\
+\end{align*}
+
+
+
+\subsection{Try with tricks of jollisaint}
+Finite subsets
+\[
+    1=F_{0}\sub F_{1}\sub \cdots \sub \Gamma,\quad \Gamma=\bigcup_{n=1}^{\infty}F_{n}
+\]
+
+$ \alpha_{n}\to \infty $, $ \eps_{n}\to 0 $, $ \sum_{n} \alpha_{n} \eps_{n}<\infty $
+\[
+    E_{n}=\{x\in X: \exists  \sigma\in F_{n} \text{ such that } | \inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}}|\geq \eps_{n} \}
+\]
+
+\subsection{Group Bundles}
+
+Let $ L:\rG\to [0,+\infty) $ denote the composition $ \rG \xrightarrow{b} X\ast \H \xrightarrow{\norm{\cdot}} [0,+\infty) $. Noting that $ L $ is Borel and the restriction of the source map
+\[
+    d: L^{-1}((R,+\infty))\cap \rG\vert_{E} \to E
+\]
+is countable-to-one, by Lusin-Novikov there is a countable collection of measurable subsets $ U_{n}\sub L^{-1}((R,+\infty))\cap \rG\vert_{E}  $ such that $ L^{-1}((R,+\infty))\cap \rG\vert_{E} =\bigcup_{n}U_{n} $ and $ d:U_{n}\to E $ is a borel isomorphism for all $ n\in \N $. Chosing some $ U = U_{n} $, we may extend $ U $ to an element $ \sigma\in [\rG] $.
+
+
+
+\end{document}
+
+

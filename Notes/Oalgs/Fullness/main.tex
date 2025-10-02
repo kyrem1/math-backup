@@ -1,0 +1,400 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{Fullness Notes}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+
+\begin{lemma}
+  Let $ N $ be a tracial von Neumann algebra. Suppose that $ P\sub p(M \otimes N) p $ is a von Neumann subalgebra such that 
+  \begin{itemize}
+    \item $ P $ is strongly nonamenable relative to $ 1 \otimes N $,
+    \item $ P_{0}:= P^{\prime}\cap p(M \otimes N)p \prec_{M \otimes N} A \otimes  N$ .
+  \end{itemize}
+  Assume there is some $ s\in (0,1) $ and $ \delta>0 $ such that 
+  \[
+    \tau(b^{*}( \alpha_{t} \otimes id)(b)) \geq \delta \quad \text{for all }b\in U(P_{0}).
+  \]
+  Let $ Q_{0} = \qN_{p(M \otimes N)p}(P)^{\prime\prime} $. Then one of the following holds
+  \begin{enumerate}
+    \item $ P_{0} \prec 1\otimes N  $,
+    \item $ Q_{0} \prec A \otimes N$,
+    \item there is a partial isometry $ v\in p(M \otimes N) p $ such that $ vv^{*}\in Z(P_{0}) $ and 
+      \[
+        v^{*}P_{0} v \sub \{u_{\sigma}: \sigma\in [\rG]\}^{\prime\prime} \otimes N.
+      \]
+  \end{enumerate}
+
+\end{lemma}
+
+
+\begin{theorem}
+  Let $ N $ be a tracial von Neumann algebra. Suppose that $ P\sub p(M \otimes N) p $ is a von Neumann subalgebra such that 
+  \begin{itemize}
+    \item $ P $ is strongly nonamenable relative to $ 1 \otimes N $,
+    \item $ P_{0}:= P^{\prime}\cap p(M \otimes N)p \prec_{M \otimes N} A \otimes  N$ .
+  \end{itemize}
+  Then actually $ P_{0}\prec_{M \otimes N}  1 \otimes N  $.
+\end{theorem}
+
+\begin{proof}
+  We have 
+  \[
+    _{M \otimes N} L^{2}(\widetilde{M} \otimes N) \ominus L^{2}(M \otimes N)_{M \otimes N} \prec \, _{M \otimes N} L^{2}(M \otimes N) \otimes_{1 \otimes N} L^{2}(M \otimes N)_{M \otimes N}
+  \]
+  \[
+    \forall z\in Z(P_{0}),\quad _{M \otimes N} L^{2}(M \otimes N)_{Pz} \not\prec \,_{M \otimes N} L^{2}(\widetilde{M} \otimes N) \ominus L^{2}(M \otimes N)_{M \otimes N}
+  \]
+  Fix $ \eps > 0 $. Then there is $ F\sub U(P) $ finite and $ \delta>0 $ such that, for $ x\in (p(\widetilde{M} \otimes N)p)_{1} $,
+  \[
+    \max_{u\in F} \norm{[u,x]}_{2}\leq \delta \implies \norm{x- \E_{M \otimes N}(x)}_{2}\leq \eps.
+  \]
+  Choose $ s = 2^{-k} $ such that $ \max_{u\in F} \norm{ \alpha_{s}(u) - u}_{2}\leq \delta/2 $. Then for $ x\in P_{0} $, we have that $ \norm{[\alpha_{s}(x),u]}_{2}\leq \delta $. Hence, for $ x\in (P_{0})_{1} $,
+  \begin{equation}
+    \norm{\alpha_{2s}(x)-x}_{2}\leq 2 \norm{\alpha_{s}(x) - \E_{M \otimes N}(\alpha_{s}(x))}_{2} \leq 2\eps.
+  \end{equation}
+  Consequently, 
+  \[
+    \lim_{t\to 0} \sup_{x\in (P_{0})_{1}} \norm{\alpha_{t}(x) -x}_{2} = 0,
+  \]
+  so $ P_{0} $ is $ (\alpha_{t} \otimes id) $-rigid.\\
+
+  \rule{14cm}{1pt}\\
+
+
+  Choose $ \delta_{0}\in (0,1) $ and $ t $ such that $ \sup_{x\in(P_{0})_{1}}\norm{(\alpha_{t}\otimes id)(x)-x}_{2}< \sqrt{2(1-\delta_{0})} $. Then we have that 
+  \[
+    | \tau( b^{*}( \alpha_{t}\otimes id)(b))|> \delta\quad \text{for }b\in U(P_{0}).
+  \]
+
+  Suppose, for the sake of contradiction, that $ P_{0}\not\prec 1 \otimes N $. Then either part (2) or part (3) of the above lemma hold.\\
+
+
+  \underline{\textbf{(Case 1):}} Suppose $ Q_{0} \prec A \otimes N $. Then as $ P\vee P_{0}\sub Q_{0} $, we have that $ P,P_{0}\prec A \otimes N $. \\
+
+  By IPV section 2.4, as $ A \otimes N $ is amenable relative to $ 1 \otimes N $, there exists a non-zero projection $  f\in P^{\prime}\cap p(M \otimes N)p$  such that $ Pf  $ is amenable relative to $ 1 \otimes N $. This contradicts the assumption that $ P $ is strongly nonamenable relative to $ 1 \otimes N $.\\
+
+  \underline{\textbf{(Case 2):}} There is a partial isometry $ v\in p(M \otimes N) p $ such that $ vv^{*}\in Z(P_{0}) $ and 
+      \[
+        v^{*}P_{0} v \sub \{u_{\sigma}: \sigma\in [\rG]\}^{\prime\prime} \otimes N.
+      \]
+  NOTE: Maybe I can get this to be a unitary. \\
+
+  Let $ S:= \{u_{\sigma}: \sigma\in [\rG]\}^{\prime\prime} $. We need to build a contradiction from
+  \begin{itemize}
+    \item $ P_{0} \prec A \otimes N $,
+    \item $ v^{*}P_{0}v\sub S \otimes N $.
+  \end{itemize}
+  We have assumed that $ P_{0} \not\prec 1 \otimes N $, so there is some sequence $ (u_{n})_{n} $ in $ U(P_{0}) $ such that 
+  \[
+    \norm{\E_{1 \otimes N}(xu_{n}y)}_{2}\to0\quad \text{for }x,y\in M \otimes N.
+  \]
+  Then the intertwining into $ A \otimes N $ implies that there is some $ \eps>0 $ and $ N\in \N $ such that 
+  \[
+    \norm{\E_{A \otimes N}(u_{n})}_{2} > \eps\quad \text{for } n\geq N.
+  \]
+
+
+
+
+
+
+\end{proof}
+
+
+\section{Weak Containment}
+\subsection{Definitions}
+
+\begin{definition}
+We say that $\pi$ is {\it weakly contained} in $\rho$, denoted $\pi \prec \rho$, if for any $\epsilon > 0$, $\xi \in S(X \ast \H)$, and $E \subset \rG$ with $\mu_\rG(E) < \infty$, there exists $\{\eta^1, \dots, \eta^m\} \subset S(X \ast \K)$ with
+$$
+\mu_\rG\lr{\{g\in E : |\inp{ \pi(g)\xi_{d(g)}}{\xi_{r(g)}} - \sum_{i = 1}^m \inp{\rho(g)\eta^i_{d(g)}}{ \eta^i_{r(g)}} | \ge \epsilon\}} < \epsilon.
+$$
+\end{definition}
+
+\begin{definition}
+    Given two $M$-$N$ bimodules $ \H $ and $ \K $, we say that $ \H $ is \textit{weakly contained} in $ \K $ (denoted by $ \H \prec \K $) if for every $ \eps >0 $ and finite subsets $ E\sub M $, $ F\sub N $, $ \{ \xi_{1}, \ldots, \xi_{n}\}\sub \H $, there exists $ \{ \eta_{1},\ldots, \eta_{n}\}\sub \K $ such that 
+    \[
+        |\inp{x \xi_{i} y}{\xi_{j}}- \inp{x \eta_{i} y}{\eta_{j}}| < \eps \quad \text{for all }x\in E,\,y\in F,\,\text{and } 1\leq i,j\leq n.
+    \]
+\end{definition}
+
+Note that any $ M $-$ N $ bimodule $ \H $ gives rise to a $ * $-homomorphism $ \pi_{\H}: M \otimes N^{\text{op}}\to B(\H) $ given by $ \pi_{\H}(x \otimes y) \xi = x \xi y $. In this language, we have that $ \H \prec \K $ if and only if $ \norm{\pi_{H}(T)} \leq \norm{\pi_{\K}(T)} $ for all $ T\in M \otimes N^{\text{op}} $.
+
+\begin{definition}
+    Let $ \pi_{1}, \pi_{2} $ be nondegenerate $ * $-representations of a $ C^{*} $-algebra $ A $. We say that $ \pi_{1} $ is \textit{weakly contained} in $ \pi_{2} $ and write $ \pi_{1}\prec \pi_{2}$ if $ \norm{\pi_{1}(a)}\leq \norm{\pi_{2}(a)} $ for all $ a\in A $.
+\end{definition}
+
+Hence, $ _M\H_N \prec\, _M\K_N $ if and only if $ \pi_{\H} \prec \pi_{\K} $.
+
+
+% TODO: Make sure can reduce to output vectors being in S_1 as opposed to just S. Actually S_{bounded} is fine. 
+
+
+
+\subsection{Ben Stuff, i.e. preliminary lemmas}
+
+For $ \pi:A\to B(\H) $ a $ * $-representation of a $ C^{*} $-algebra $ A $ and $ \xi\in \H $, define $ \omega_{\xi}\in A^{*} $ by $ \omega_{\xi}(a) = \inp{\pi(a) \xi}{\xi} $.
+
+\begin{theorem}
+    Let $ \pi_{j}:A\to B(\H_{j}) $ , $ j=1,2 $ be nondegenerate $ * $-representations of a $ C^{*} $-algebra $ A $. Then the following are equivalent:
+    \begin{enumerate}
+        \item $ \pi_{1}\prec \pi_{2} $,
+        \item $ \ker(\pi_{2})\sub \ker(\pi_{1}) $,
+        \item For all $ \xi\in \H_{1} $ with $ \norm{\xi} = 1 $, we have 
+            \[
+                \omega_{\xi}\in \cls{\text{co}}^{\text{wk}^{*}}\{ \omega_{\eta}: \eta\in \H_{2},\, \norm{\eta}=1\},
+            \]
+        \item For all $ \xi\in \H_{1} $,
+            \[
+                \omega_{\xi}\in \cls{\Span}^{\text{wk}^{*}}\{ \omega_{\eta}: \eta\in \H_{2}\}.
+            \]
+    \end{enumerate}
+
+\end{theorem}
+hello there
+
+
+\subsection{Main Argument}
+
+\begin{proposition}
+    Consider two representations $ \pi, \rho$ of $ \rG $ on bundles $ \H = \{\H_{x}\}_{x\in X} $ and $ \K = \{\K_{x}\}_{x\in X} $ respectively. Then $ \pi \prec \rho $ implies that $ B(\pi) \prec B( \rho) $.
+\end{proposition}
+% TODO see if can take unit sections in both sides of definition of weak containment
+
+% TODO au_\sigma, y case + simple tensor + m\in M
+% TODO x,y\in (M)_1 case 
+% TODO x,y\in M case
+% TODO not simple tensors in B(\pi)
+
+
+
+
+
+
+Fix $ \eps>0 $, $ a\in A $, $ \sigma\in [\rG] $, $ m\in (M)_{1} $, $ \xi\in S_{b}(X\ast \H) $, and $ \phi, \psi\in M $.
+\begin{align*}
+    \inp{au_{\sigma}\cdot ( \xi \otimes \widehat{\psi}) \cdot m}{ \xi \otimes  \widehat{\psi}} &= \inp{\widetilde{\pi}(\sigma) \xi \otimes  au_{\sigma} \widehat{\psi} m}{ \xi \otimes \widehat{\psi}}\\
+    &= \inp{\widetilde{\pi}(\sigma) \xi}{ \xi \cdot\, _A \inp{au_{\sigma} \widehat{\psi}m}{\widehat{\psi}}}\\
+    &= \inp{\widetilde{\pi}(\sigma) \xi}{ \xi \cdot\E_{A}(au_{\sigma} \psi m\psi^{*})}\\
+    &= \int_{X}\E_{A}(au_{\sigma} \psi m\psi^{*}) \cdot \inp{(\widetilde{\pi}(\sigma) \xi)_{x}}{\xi_{x}}\dd{\mu(x)}
+\end{align*}
+
+
+We have $ \cls{\mu}(\sigma) =1 <+\infty $, so by assumption there exists $ \{\eta^{i}\}_{i=1}^{s}\sub S_{b}(X \ast \K) $ such that the set  
+\[
+    A^{\sigma}_{\eps} \coloneqq \{g\in \sigma\sub \rG : |\inp{\pi(g) \xi_{d(g)}}{\xi_{r(g)}} - \sum_{i}\inp{\rho(g) \eta^{i}_{d(g)}}{\eta^{i}_{r(g)}}|\geq \eps\}.
+\]
+has measure $ \cls{\mu}(A^{\sigma}_{\eps})<\eps $. Taking the range of this set in the unit space $ X $, we see
+\begin{align*}
+    r(A^{\sigma}_{\eps}) &= \{r(g)\in X : g\in A^{\sigma}_{\eps}\sub \sigma\}= \{x\in X: x \sigma \in A^{\sigma}_{\eps}\}\\
+    %&=\{x\in X: \left|\inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{r(x \sigma)}} - \sum_{i}\inp{\rho( x \sigma) \eta^{i}_{d( x \sigma)}}{\eta^{i}_{r( x \sigma)}}\right|\geq \eps\}\\
+    &=\{x\in X: \left|\inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}} - \sum_{i}\inp{\rho( x \sigma) \eta^{i}_{d( x \sigma)}}{\eta^{i}_{x}}\right|\geq \eps\}
+\end{align*}
+and compute that 
+\begin{align*}
+    \cls{\mu}(A^{\sigma}_{\eps}) &= \int_{X}  \#\{g\in A^{\sigma}_{\eps}: d(g) = x\} \dd{\mu(x)}\\
+    &=\int_{X} 1_{d(A^{\sigma}_{\eps})}(x) \dd{\mu(x)} = \mu(d(A^{\sigma}_{\eps})) = \mu(r(A^{\sigma}_{\eps})).
+\end{align*}
+For brevity, write $ f\coloneqq \E_{A}(au_{\sigma} \psi m\psi^{*}) $. Observe that
+\begin{align*}
+    | & \inp{au_{\sigma}(\xi \otimes \widehat{\psi}) m}{\xi \otimes \widehat{\psi}} - \sum_{i}\inp{au_{\sigma} (\eta^{i}\otimes \widehat{\psi})m}{\eta^{i} \otimes \widehat{\psi}}|  \\ 
+    &=\left|\int_{X}\E_{A}(au_{\sigma} \psi m\psi^{*}) \cdot \inp{(\widetilde{\pi}(\sigma) \xi)_{x}}{\xi_{x}}\dd{\mu(x)} - \sum_{i=1}^{s} \int_{X}\E_{A}(au_{\sigma} \psi m\psi^{*}) \cdot \inp{(\widetilde{\rho}(\sigma) \eta^{i})_{x}}{\eta^{i}_{x}}\dd{\mu(x)} \right|\\
+    &\leq\int_{X}|f(x)| \cdot\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle - \sum_{i}  \left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)} 
+\end{align*}
+
+Let $ C>0 $ such that 
+\[
+  \norm{\xi_{x}}, \norm{\eta^{i}_{x}} \leq C \quad \text{for all }x\in X \text{ and }1\leq i \leq s.
+\]
+
+%On the set $ r(A^{\sigma}_{\eps}) $, we use the polarization identity for a crude bound. Observe that
+%\[
+%    \int_{r(A_{\eps}^{\sigma})} \norm{\pi (x \sigma) \xi_{d(x \sigma)}\pm \xi_{x}}^{2}_{\H_{x}} \dd{\mu(x)} \leq \int_{r(A_{\eps}^{\sigma})} 2 \dd{\mu(x)} < 2 \eps,
+%\]
+%whence
+%\[
+%    \int_{r(A_{\eps}^{\sigma})} \inp{\pi (x \sigma) \xi_{d(x \sigma)}}{\xi_{x}} \dd{\mu(x)} \leq \int_{r(A_{\eps}^{\sigma})} \frac{1}{4}(8) \dd{\mu(x)} < 2 \eps.
+%\]
+%The same bound also follows for the $ \rho $ inner products, thus 
+By Cauchy-Schwartz,
+\begin{align*}
+    \int_{r(A^{\sigma}_{\eps})}&| f(x)| \cdot\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle - \sum_{i=1}^{m}  \left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)} \\
+    &\leq  \norm{f}_{\infty} \left[\int_{r(A^{\sigma}_{\eps})}\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle\right| + \sum_{i=1}^{m}\int_{r(A_{\eps}^{\sigma})}  \left|\left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)}\right] \\
+    &\leq C^{2}\eps(s+1) \norm{f}_{\infty}
+\end{align*}
+
+
+Substituting this bound back into BLANK, we compute
+\begin{align*}
+    \int_{X}| \phi(x)|& \cdot\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle - \sum_{i}  \left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)} \\
+    &< C^{2}\eps(s+1) \norm{f}_{\infty} + \int_{X\setminus r(A_{\eps}^{\sigma})}| f(x)| \cdot\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle - \sum_{i}  \left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)} \\
+    &< C^{2}\eps(s+1) \norm{f}_{\infty} + \norm{f}_{\infty} \int_{X\setminus r(A_{\eps}^{\sigma})} \eps\dd{\mu(x)}  \leq \eps \cdot(C^{2}(s+1) \norm{f}_{\infty}+1)
+\end{align*}
+
+
+\section{Mixing Proof}
+\begin{definition}
+ A representation $\pi$ on $X \ast \H$ is called {\it mixing} or $c_0$ if 
+for every $\epsilon, \delta > 0$ and every pair of normalized sections $\xi, \eta \in S(X \ast \H)$, there is $E \subset X$ with $\mu(X \setminus E) < \delta$ such that 
+$$
+\left|\{g \in (\rG\vert_E)_x : |\inp{\pi(g)\xi_x}{\eta_{r(g)}}| > \epsilon\}\right| < \infty  \quad \text{for $\mu$-a.e. $x \in E$.}
+$$
+\end{definition}
+
+\begin{definition}
+ An $ M $-$ M $ bimodule $ _M \H_{M} $ is {\it mixing relative to $ A\sub M $} if any net $ (u_{i})_{i\in I} $ in $ (M)_{1} $ which satisfies $ \norm{\E_{A}(xu_{n}y)}_{2}\to 0 $ for all $ x,y\in M $, satisfies
+\[
+    \lim_{i} \sup_{y\in(M)_{1}} |\inp{u_{n} \xi y}{\eta}| =\lim_{i} \sup_{y\in(M)_{1}} |\inp{y \xi u_{n} }{\eta}| =  0 \quad\text{ for all } \xi, \eta\in \H
+\]
+\end{definition}
+
+
+\begin{proposition}
+    If $ \pi $ is mixing then $\,_M \B(\pi)_{M} $ is mixing relative to $ A $.
+\end{proposition}
+
+\begin{proof}
+    Fix $ \xi \in S_{1}(X\ast\H) $ and $ \eps>0 $. The map $ \phi:\rG\to \C $ given by $ \phi(g) = \inp{\pi(g) \xi_{d(g)}}{\xi_{r(g)}} $ is then a unital positive definite function on $ \rG $ (see KIDA, CLAIRE, JOLISSAINT etc).
+    By LUPINI, CLAIRE, there is a unique unital, completely positive, $ \E_{A} $-preserving, $ A $-$ A $ bimodular map $ \Phi:M\to M $ such that 
+    \[
+        \Phi(u_{\sigma}) = \phi(\cdot\, \sigma) u_{\sigma} \quad \text{for all } \sigma\in[\rG].
+    \]
+    Such a map extends to a unique contraction $ \widehat{\Phi}: L^{2}(M)\to L^2(M) $; moreover, the expectation-preservation and $ A $-$ A $-bimodularity imply that $ \widehat{\Phi}\in \inp{M}{A}\cap A^{\prime} $.
+    
+
+    Appealing to the mixingness of $ \pi $, for each $ k\in \N $ there is some measureable $ E_{k}\sub X $ with $ \mu(X\setminus E_{k})  <  2^{-k} $ such that  
+    \[
+      \mu_{\rG}\lr{\{g\in \rG\vert_{E_{k}}: | \phi(g)| >\eps\}} < +\infty.
+    \]
+    Let $ F_{1} = E_{1} $ and $ F_{k+1} = E_{k+1}\setminus \bigsqcup_{i=1}^{k}F_{k} $, so $ 1 = \mu\lr{\bigcup_{k=1}^{\infty}E_{k}} = \mu\lr{\bigsqcup_{k=1}^{\infty}F_{k}} $. Consider the projections $ p_{i} = 1_{F_{i}} $, $ q_{i} = 1_{E_{i}} $ in $ A $. These satisfy the following:
+    \begin{itemize}
+      \item $ q_{k} = \sum_{i=1}^{k} p_{i} $,
+      \item $ \tau(1-q_{k}) \xrightarrow{k\to\infty} 0$,
+      \item $ \tau(p_{k}) < 2^{-k} $
+    \end{itemize}
+    Consider the map $ \Phi_{k}: q_{k}M q_{k}\to q_{k}Mq_{k} $ given by $ \Phi_{k}(\cdot) = \Phi(q_{k}\cdot q_{k}) $. By CLAIRE, we have that $ \widehat{\Phi}_{k}\in \K(\inp{q_{k}M q_{k}}{q_{k}A q_{k}}) $. 
+    
+
+    Suppose that $ (u_{n})_{n=1}^{\infty}$ is a sequence in $ (M)_{1} $ such that $ \norm{\E_{A}(m_{1}u_{n}m_{2})}_{2}\to 0 $ for all $ m_{1},m_{2}\in M $.
+    
+    Fix $ k\in \N $ such that $ \norm{1-q_{k}}_{2} < \eps/6$. Then, for all $ n\in \N $, we have
+    \begin{align*}
+      \norm{u_{n}}_{2} &= \norm{(1-q_{k})u_{n}(1-q_{k})}_{2} + \norm{(1-q_{k})u_{n} q_{k}}_{2} + \norm{q_{k}u_{n}(1-q_{k})}_{2} + \norm{q_{k}u_{n}q_{k}}_{2}\\
+      &\leq 3\norm{1-q_{k}}_{2} + \norm{q_{k}u_{n}q_{k}}_{2}  < \frac{\eps}{2} + \norm{q_{k}u_{n}q_{k}}_{2}.
+    \end{align*}
+    Note that this choice of $ k $ is independent of $ n \in \N$, so the above is essentially a uniform integrability estimate. 
+
+    As the sequence $ (q_{k}u_{n}q_{k})_{n=1}^{\infty} $ in $ (q_{k}Mq_{k})_{1} $ satisfies the hypotheses of POPA 1.3.3.5, the compactness of $ \widehat{\Phi}_{k} $ gives that 
+    \[
+      \norm{\Phi_{k}(q_{k}u_{n}q_{k})}_{2} \xrightarrow{n\to\infty} 0.
+    \]
+    Choose $ N\in \N $ such that $ \norm{\Phi_{k}(q_{k}u_{n}q_{k})}_{2} < \eps/2 $ for all $ n\geq N $. Then we have 
+    \begin{align*}
+       \norm{\Phi(u_{n})}_{2}  \leq \frac{\eps}{2} + \norm{\Phi_{k}(q_{k}u_{n}q_{k})}_{2} < \eps
+    \end{align*}
+    for all $ n\geq N $, so $ \norm{\Phi(u_{n})}_{2}\to 0 $.
+
+    Now fix a countable subset $ \Gamma \sub [\rG]$ which generates $ \rG $ and write $ u_{n} = \sum_{\sigma\in \Gamma} a_{\sigma}^{n} u_{\sigma} $. For any $ m, y\in (M)_{1} $, observe that
+    \begin{align*}
+      \inp{u_{n}\cdot( \xi \otimes \widehat{m})\cdot y}{\xi \otimes \widehat{m}}&= \sum_{\sigma\in \Gamma} \inp{a_{\sigma}^{n}( \xi \otimes \widehat{m}) \cdot y}{\xi \otimes \widehat{m}} \\
+      &= \sum_{\sigma\in \Gamma} \int_{X} \E_{A} (a_{\sigma}^{n}u_{\sigma}mym^{*}) \inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}} \dd{\mu(x)}\\
+      &= \int_{X}\E_{A} \lr{ \sum_{\sigma\in \Gamma}\inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}}a_{\sigma}^{n}u_{\sigma}mym^{*}}  \dd{\mu(x)}\\
+      &= \int_{X}\E_{A}(  \Phi(u_{n})mym^{*})  \dd{\mu(x)} = \inp{\Phi(u_{n})}{my^{*}m^{*}}
+    \end{align*}
+    whence
+    \[
+      \sup_{y\in (M)_{1}} |\inp{u_{n}\cdot( \xi \otimes \widehat{m})\cdot y}{\xi \otimes \widehat{y}}| \leq \norm{\Phi(u_{n})}_{2} \xrightarrow{n\to\infty} 0.
+    \]
+    We may then upgrade this result to any vectors $ v,w\in \B(\pi) $ by applying the technique in TBOOK applied to the set 
+    \[
+      V = \{v\in \B(\pi): \lim_{n\to\infty}\sup_{y\in (M)_{1}} |\inp{u_{n}vy}{v}|=0\text{ for any } (u_{n})_{n=1}^{\infty}\text{ with } \norm{\E_{A}(m_{1}u_{n}m_{2})}_{2}\to 0 \text{ for all }m_{1},m_{2}\in M\}.
+    \]
+    One shows that this set is closed under scalar multiplication, the action of $ M \odot M^{\rm{op}} $, addition, and is norm closed, whence it follows that $ V = \B(\pi) $. Lastly, one uses polarization to upgrade to pairs of vectors.
+
+
+
+\end{proof}
+
+
+
+
+\section{Weak Containment: Ben Fix}
+
+\begin{proposition}
+  Suppose $ \pi$, $\rho $ on $ \{\H_{x}\}_{x\in X} $, $ \{\K_{x}\}_{x\in X} $ respectively. Set $ D = \Span\{au_{\sigma}: a\in A,\, \sigma\in [\rG]\} $. Suppose that, for any $ \xi\in \int_{X}^{\oplus}\H_{x}\dd{\mu(x)} $ and $ \psi\in M $, we have 
+  \begin{center}
+    there exists $ C_{\xi}>0 $ such that for all $ \delta>0  $, $ F\sub D $, and $ E\sub M $ finite subsets, \\
+    there are $ \eta_{1}, \ldots, \eta_{l}\in \int_{X}^{\oplus}\K_{x}\dd{\mu(x)} $ such that $ \sum_{i=1}^{l}\inp{\eta_{i}}{\eta_{i}}\leq C_{\xi} $ and 
+    \[
+      \left| \omega_{\xi \otimes \widehat{\psi}}(x^{\prime} \otimes y) - \sum_{i=1}^{l} \omega_{\eta_{i} \otimes \widehat{\psi}}(x^{\prime} \otimes y)\right| < \delta\quad \text{for all }x^{\prime}\in F,\, y\in E.
+    \]
+  \end{center}
+  Then, when considered as an element of $ (M \otimes_{\text{max}} M^{\rm{op}})^{*} $, we have that 
+  \[
+    \omega_{\xi \otimes \widehat{\psi}}\in \cls{\text{co}}^{wk^{*}}\left\{\omega_{\eta \otimes \widehat{\psi}}: \eta\in\int_{X}^{\oplus} \K_{x}\dd{\mu(x)},\, \norm{\eta}_{2}\leq C_{\xi}\right\}.
+  \]
+\end{proposition}
+
+
+
+
+
+
+
+\end{document}

@@ -1,0 +1,47 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Weak Containment}
+   Write $ \mathscr{S}:= \{au_{\sigma}: a\in A,\, \sigma\in[\rG]\} $.
+    Suppose $ \xi\in S_{1}(X\ast\H) $, $ \psi\in M $, and both $ E\sub \mathscr{S} $, $ F\sub M $ are finite subsets. For $ \gamma = au_{\sigma}\in E $ and $ \phi\in F $, writing $ f_{\gamma,\phi}:= \E_{A}(\gamma \psi \phi \psi^{*}) $, we have
+    \begin{align*}
+        \inp{\gamma\cdot (\xi \otimes \widehat{\psi})\cdot \phi}{\xi \otimes \widehat{\psi}} = \int_{X}f_{\gamma,\phi}(x)\cdot \inp{\pi(x \sigma) \xi_{s(x \sigma)}}{\xi_{x}}\dd{\mu(x)}
+    \end{align*}
+    Fix $ \eps^{\prime}>0 $ and set $ \eps:= \eps^{\prime}\cdot(4\max_{(\gamma,\phi)\in E\times F}\{\norm{f_{\gamma,\phi}}_{\infty}\})^{-1} $. By weak containment, there exist sections $ \eta^{1},\ldots, \eta^{s}\in S(X\ast\K) $ such that the set
+    \[
+        A_{\eps} := \{g\in \rG:\left|\inp{\pi(g) \xi_{s(g)}}{\xi_{r(g)}} - \sum_{i=1}^{s} \inp{\rho(g) \eta^{i}_{s(g)}}{\eta^{i}_{r(g)}} \right| \geq \eps\}
+    \]
+    has measure $ \mu_{\rG}(A_{\eps}) < \eps $. Observe that then
+    \[
+        A_{\eps}\cap X = \{x\in X: |1 - \sum_{i=1}^{s}\norm{\eta^{i}_{x}}^{2}|\geq \eps\}
+    \]
+    has measure $ \mu(A_{\eps}\cap X) = \mu_{\rG}(A_{\eps}\cap X) < \eps $. Consider
+    \[
+        S_{\eps} := \{x\in X: |1-\sum_{i=1}^{s} \norm{\eta^{i}_{x}}^{2}|< \eps\} = X\setminus (A_{\eps}\cap X).
+    \]
+    This set has measure $ \mu(S_{\eps}) > 1-\eps $ and for $ x\in S_{\eps} $ we have that 
+    \[
+        \sum_{i=1}^{s}\norm{\eta^{i}_{x}}^{2}< 1+\eps \leq 2,
+    \]
+    whence the sections given by $ \widetilde{\eta}^{i}_{x}:= 1_{S_{\eps}}(x) \eta^{i}_{x} $ are bounded.\\
+
+    Now, fix $ \gamma = au_{\sigma}\in E $ and $ \phi\in F $. On one hand we have 
+    \begin{align*}
+        \bigg|\int_{r(A_{\eps})}& f(x)\cdot \left(\inp{\pi(x \sigma) \xi_{s(x \sigma)}}{\xi_{x}} - \sum_{i=1}^{s} \inp{\rho(g) \widetilde{\eta}^{i}_{s(x \sigma)}}{\widetilde{\eta}^{i}_{x}}\right)\dd{\mu(x)}\bigg|  \\
+        &\leq \int_{r(A_{\eps})}|f(x)| \lr{1 + \sum_{i=1}^{s} \norm{\widetilde{\eta}^{i}_{x}}^{2}} \dd{\mu(x)} \leq 3 \eps \norm{f}_{\infty}.
+    \end{align*}
+    On the other hand, since $ X\setminus r(A_{\eps}) \sub S_{\eps} $, the definition of $ S_{\eps} $ implies that
+    \begin{align*}
+        \bigg|\int_{X\setminus r(A_{\eps})}& f(x)\cdot \lr{\inp{\pi(x \sigma) \xi_{s(x \sigma)}}{\xi_{x}} - \sum_{i=1}^{s} \inp{\rho(g) \widetilde{\eta}^{i}_{s(x \sigma)}}{\widetilde{\eta}^{i}_{x}}}\dd{\mu(x)}\bigg|  \\
+        &\leq  \mu(X\setminus r(A_{\eps})) \eps \norm{f}_{\infty} \leq \eps\norm{f}_{\infty}.
+    \end{align*}
+    Combining these estimates, we obtain
+    \begin{align*}
+        |\inp{au_{\sigma}\cdot (\xi \otimes \widehat{\psi})\cdot \phi}{\xi \otimes \widehat{\psi}} - \sum_{i=1}^{s} \inp{au_{\sigma}\cdot (\widetilde{\eta}^{i} \otimes \widehat{\psi})\cdot \phi}{\widetilde{\eta}^{i} \otimes \widehat{\psi}} | < 4 \eps \norm{f}_{\infty} = \eps^{\prime}
+    \end{align*}
+    as desired.\\
+
+\end{document}

@@ -27,6 +27,8 @@
 
 %--------Other Setup-------
 \usepackage{tikz}
+\usepackage{subcaption}
+\usepackage{float}
 
 %\usetikzlibrary{arrows.meta,decorations.pathreplacing,positioning}
 \usetikzlibrary{snakes, arrows.meta,shapes,patterns,calc,decorations.pathreplacing,positioning,decorations.markings}
@@ -691,5 +693,323 @@ which when multiplying by $ \binom{s+1}{2} $, we get a term of
 \]
 
 
+\newpage
+
+\section*{Section 3 for Paper}
+
+% TODO Find a way to reword/reformat this paragraph to be more clear
+Instead of using a single centerline as in the $ (n,n) $ case, we define $ s $ lines
+\[
+  L_{i} := \{(x,y):x = sy+i\},\quad 0\leq i <s
+\]
+and use these lines to perform a touchpoint decomposition. Fix a path $ P\in D_{n+1}^{s} $ and consider the following procedure. 
+The path $ P $ will meet the line $ L_{0} $ somewhere for the last time (excluding $ (s(n+1),n+1) $). Denote this point $ Z_{0} = (sy_{0},y_{0}) $. Let $ P_{0} $ be the subpath of $ P $ from $ (0,0) $ to $ Z_{0} $. The next point in $ P $ is forced to be $ Z_{0} +(1,0) \in L_{1}$. \\
+
+\noindent Now, for $ 1\leq k <s $, 
+\begin{itemize}
+  \item $ P $ meets $ L_{k} $ for the last time at $ Z_{k} = (sy_{k}, y_{k}) $,
+  \item $ P_{k} $ is the subpath of $ P $ from $ Z_{k-1}+(1,0)\in L_{k} $ to $ Z_{k} $,
+  \item the next point in $ P $ after $ P_{k} $ is forced to be $ Z_{k}+(1,0)\in L_{k+1} $.
+\end{itemize}
+Finally, let $ P_{s} $ be the subpath of $ P $ from $ Z_{s-1} +(1,0)$ to $ Z_{s}:=(s(n+1), n) $ and note that the last move in the path is to $ (s(n+1), n+1) $.
+
+
+\begin{definition}
+  The vector $ \vec{y} = (y_{0},\ldots, y_{s-1}) $ is called the \emph{type} of the path $ P $. We denote by $ D_{n}^{s}(\vec{y})$ the set of all paths in $ D_{n}^{s} $ of type $ \vec{y} $.
+\end{definition}
+
+%TODO Insert Diagram
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.50]
+  % Define dimensions
+  \def\n{12}
+  \def\s{1.5}
+  \def\TickSize{3.5pt}
+  % Draw grid
+  \draw[gray, very thin] (0,0) -- (0,\n+1) -- (\s*\n+\s,\n+1) --(\s*\n+\s, 0) -- (0,0);
+  
+  % Draw diagonal
+  \draw[red, thick] (0,0) -- (\s*\n+\s,\n+1) node[anchor=south west] [xshift=-1.5cm,yshift=-0.1cm] {$x = s y$};
+  
+  % Define points
+\coordinate (O) at (0,0);
+
+  \coordinate (A) at (\s*2,2); % Z0
+  \coordinate (B) at (\s*3+1,3); %Z1
+  \coordinate (C) at (\s*5+2,5); %Z2
+
+  \coordinate (X) at (\s*2+1,2);
+  \coordinate (Y) at (\s*3+2,3);
+
+  % Label points
+  \node[above left] at (A) {$Z_{0}$};
+  \node[above] at (B) {$Z_{1}$};
+  \node[above] at (C) {$Z_{2}$};
+  \node[left] at (0,2) {$ y_{0} $};
+  \node[left] at (0,3) {$ y_{1} $};
+  \node[left] at (0,5) {$ y_{2} $};
+  \node[left] at (0,\n-3) {$ y_{s-1} $};
+  \node[left] at (0,\n-1) {$ n $};
+  
+  \foreach \y in {2,3,5, \n-3, \n-1, \n} {%
+      \draw ($(0,\y) + (-\TickSize,0)$) -- ($(0,\y) + (\TickSize,0)$)
+          node [right] {};
+  }
+  % Draw points
+  \foreach \point in {A, B, C}
+      \fill [black] (\point) circle (3.25pt);
+
+  \tikzset{decoration={snake,amplitude=.4mm,segment length=2mm,
+                       post length=0mm,pre length=0mm}}
+  \draw[thick, blue, decorate] (O) to[bend right=30] node[midway,below right, black] {$ P_{0} $} (A);
+  \draw[thick, blue, decorate] (X) to[bend right=40] node[midway,below right, black] {$ P_{1} $} (B);
+  \draw[thick, blue, decorate] (Y) to[bend right=30] node[midway,below right, black] {$ P_{2} $} (C);
+  \path (\s*5+3,6) -- node[auto=false]{\ldots} (\s*5+5,6);
+  %\draw[very thick, -Stealth] (A) -- (X) node[midway,below] {};
+  \draw [very thick, -Stealth] (A) -- (X);
+  \draw [very thick,dashed] (X) -- (B);
+  \draw [very thick, -Stealth] (B) -- (Y);
+  \draw [very thick,dashed] (Y)-- (C);
+  % Define points
+% Define points
+  \coordinate (J) at (\s*\n+\s, \n+1);
+  \coordinate (K) at (\s*\n+\s, \n-1);
+  \coordinate (L) at (\s*\n-\s, \n-3);
+  \coordinate (M) at (\s*\n-\s-1, \n-3);
+  \coordinate (N) at (\s*\n -\s-1 -1.5*\s, \n-4.5);
+  % Draw points
+  \foreach \point in {J, K,  M}
+      \fill [black] (\point) circle (2.5pt);
+
+
+  % Label points
+  \node[above ] at (M) {$ Z_{s-1} $};
+  % \node[right] at (J) {(s(n+1),n+1) (s(n+1),n+1) };
+  % \node[right] at (K) {Zs=(s(n+1),n) Z_{s} = (s(n+1), n) };
+  
+  
+  \draw [very thick, dashed] (L) -- (K);
+  \draw [very thick, -Stealth] (K) -- (J);
+  \draw [very thick, -Stealth] (M) -- (L);
+  \draw [very thick, dashed] (N) -- (M);
+  
+  %\foreach \y in {2,3,5} {%
+  %    \draw ((0,\y)+(−\TickSize,0)(0,\y) + (-\TickSize,0)) -- ((0,\y)+(\TickSize,0)(0,\y) + (\TickSize,0))
+  %        node [right] {};
+  %}
+  \tikzset{decoration={snake,amplitude=.4mm,segment length=2mm,
+                       post length=0mm,pre length=0mm}}
+  \draw[thick, blue, decorate] (\s*\n -\s-2 -1.5*\s+1, \n-5) to[bend right=30] node[midway,below] {} (M);
+  \draw[thick, blue, decorate] (L) to[bend right=40] node[midway,below] {} (K);
+  %\draw[thick, blue, decorate] (Y) to[bend right=30] node[midway,below] {} (C);
+  %\path (C) -- node[auto=false]{\ldots} (\s*\n+\s, 5);
+  %%\draw[very thick, -Stealth] (A) -- (X) node[midway,below] {};
+  %\draw [very thick, -Stealth] (A) -- (X);
+  %\draw [very thick,dotted] (X) -- (B);
+  %\draw [very thick, -Stealth] (B) -- (Y);
+  %\draw [very thick,dotted] (Y)-- (11.5,5.);
+  % Define points
+
+
+\end{tikzpicture}
+\end{figure}
+
+
+\subsection{Total Area Using Touchpoints}
+\noindent We are interested in studying the total area of all $ (sn,n) $-Dyck paths i.e. the quantity
+\[
+  A_{n}:= \sum_{P\in D_{n}^{s}}\area(P).
+\]
+
+In this section, we derive a recursive formula for $ A_{n+1} $ using the touchpoint decomposition above. 
+Note that the data for the decomposition of a path is entirely encoded in its type vector $ \vec{y} $. Hence, in order to iterate over all possible paths, we will first iterate over all possible paths of a given type and then iterate over all possible types $ 0\leq y_{0}\leq y_{1}\leq \cdots \leq y_{s-1} \leq n $. For simplicity, set $ y_{s}=n $.\\
+
+To begin, fix a type $ \vec{y} = (y_{0},\ldots, y_{s-1}) $ and a path $ P\in D_{n+1}^{s}(\vec{y}) $. The area of $ P $ decomposes into the contributions from the portions corresponding to the subpaths $ P_{l} $ for $ 0\leq l \leq s $. The contribution of $ P_{0} $ to the total area is precisely $ \area(P_{0}) $.
+
+% TODO Label P_l and I_l 
+\noindent\textbf{\underline{Contribution of $0< l < s$}}: The parallelogram $ I_{l} $ in diagram INSERT contributes $ l(y_{l}-y_{l-1}) $, whilst $ P_{l} $ contributes $ \area(P_{l}) $. \\
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.80, every node/.style={scale=1}]
+  % Define dimensions
+  \def\n{4}
+  \def\s{2}
+  \def\TickSize{3pt}
+  % Draw grid
+  %\draw[gray, very thin] (0,0) -- (0,\n+1) -- (\s*\n+\s,\n+1) --(\s*\n+\s, 0) -- (0,0);
+  \draw[gray] (-1,0) -- (-1,\n+1);
+  %\draw[gray] (-1,-1) --(\s*\n+\s, -1);
+  
+  % Draw diagonal
+  \draw[red, thick] (0,0) -- (\s*\n+1*\s,\n+1) node[anchor=south west] [xshift=-1.5cm,yshift=-0.1cm] {$x = s y$};
+  
+  % Define points
+  \coordinate (O) at (0,0);
+
+  \coordinate (X) at (\s*2+2,2);
+  \coordinate (Y) at (\s*3+4,3);
+
+
+  \coordinate (J) at (\s*\n+\s, \n+1);
+  \coordinate (K) at (\s*\n+\s, \n-1);
+  \coordinate (b) at (\s*\n+\s-4, \n-1);
+  \coordinate (L) at (\s*\n-\s, \n-3);
+  \coordinate (M) at (\s*\n-\s-2, \n-3);
+  \coordinate (a) at (\s*\n-\s-4, \n-3);
+  \coordinate (N) at (\s*\n -\s-2 -1.5*\s, \n-4.5);
+  % Draw points
+  \foreach \point in { K,  M, a, b}
+      \fill [black] (\point) circle (2.5pt);
+
+  \definecolor{darkgreen}{RGB}{0,100,0}
+  \coordinate (I) at (\s*\n+\s-4,\n-2);
+  \node at (I) [darkgreen] {$ I_{l} $};
+
+  \coordinate (P) at (\s*\n+\s-1, \n-2.5);
+  \node[below right] at (P) [blue] {$ P_{l} $};
+
+  % Label points
+  \node[below] at (M) {$ Z_{l-1} $};
+  \node[above] at (K) {$ Z_{l}=(sy_{l}+l,y_{l}) $};
+  \node[above left] at (b) {$ (sy_{l},y_{l}) $};
+  \node[above left] at (a) {$ (sy_{l-1},y_{l-1}) $};
+  
+  \draw [very thick, dashed] (L) -- (K);
+  \draw [ dashed] (a) -- (M);
+  \draw [ dashed] (b) -- (K);
+  %\draw [very thick, -Stealth] (K) -- (J);
+  \draw [very thick, -Stealth] (M) -- (L);
+  %\draw [very thick, dashed] (N) -- (M);
+  
+  \foreach \y in {\n-3,\n-1} {%
+      \draw ($(-1,\y) + (-\TickSize,0)$) -- ($(-1,\y) + (\TickSize,0)$)
+          node [right] {};
+  }
+  \node[left] at (-1,\n-3) {$ y_{l-1} $};
+  \node[left] at (-1,\n-1) {$ y_{l} $};
+  \tikzset{decoration={snake,amplitude=.4mm,segment length=2mm,
+                       post length=0mm,pre length=0mm}}
+  \draw[thick, blue, decorate] (L) to[bend right=40] node[midway,below] {} (K);
+  %\draw[thick, blue, decorate] (Y) to[bend right=30] node[midway,below] {} (C);
+  %\path (C) -- node[auto=false]{\ldots} (\s*\n+\s, 5);
+  %%\draw[very thick, -Stealth] (A) -- (X) node[midway,below] {};
+  %\draw [very thick, -Stealth] (A) -- (X);
+  %\draw [very thick,dotted] (X) -- (B);
+  %\draw [very thick, -Stealth] (B) -- (Y);
+  %\draw [very thick,dotted] (Y)-- (11.5,5.);
+  % Define points
+
+\end{tikzpicture}
+\end{figure}
+
+% TODO Label T
+\noindent\textbf{\underline{Contribution of $l=s$}}: Again, the parallelogram $ I_{s} $ in diagram INSERT contributes $ s(y_{s}-y_{s-1}) = s(n-y_{s-1}) $ and $ P_{s} $ contributes $ \area(P_{s}) $. Additionally, the triangle $ T $ contributes an area of $ \frac{s}{2} $. \\
+
+\begin{figure}[H]
+  \centering
+
+\begin{tikzpicture}[scale=0.80, every node/.style={scale=1}]
+  % Define dimensions
+  \def\n{4}
+  \def\s{2}
+  \def\TickSize{3pt}
+  % Draw grid
+  %\draw[gray, very thin] (0,0) -- (0,\n+1) -- (\s*\n+\s,\n+1) --(\s*\n+\s, 0) -- (0,0);
+
+  % Draw diagonal
+  \draw[red, thick] (0,0) -- (\s*\n+\s,\n+1) node[anchor=south west] [xshift=-1.5cm,yshift=-0.1cm] {$x = s y$};
+  
+  % Define points
+  \coordinate (O) at (0,0);
+
+  \coordinate (X) at (\s*2+2,2);
+  \coordinate (Y) at (\s*3+4,3);
+
+
+  \coordinate (J) at (\s*\n+\s, \n+1);
+  \coordinate (K) at (\s*\n+\s, \n-1);
+  \coordinate (b) at (\s*\n+\s-4, \n-1);
+  \coordinate (L) at (\s*\n-\s, \n-3);
+  \coordinate (M) at (\s*\n-\s-2, \n-3);
+  \coordinate (a) at (\s*\n-\s-4, \n-3);
+  \coordinate (N) at (\s*\n -\s-2 -1.5*\s, \n-4.5);
+  % Draw points
+  \foreach \point in { K,  M, a, b}
+      \fill [black] (\point) circle (2.5pt);
+
+  \definecolor{darkgreen}{RGB}{0,100,0}
+  \coordinate (I) at (\s*\n+\s-4,\n-2);
+  \node at (I) [darkgreen] {$ I_{s} $};
+
+  \coordinate (P) at (\s*\n+\s-1, \n-2.5);
+  \node[below right] at (P) [blue] {$ P_{s} $};
+  
+  \coordinate (T) at (\s*\n+\s-1, \n);
+  \node[below left] at (T) [darkgreen] {$ T $};
+
+  % Label points
+  \node[below] at (M) {$ Z_{s-1} $};
+  \node[right] at (K) {$ Z_{s} $};
+  \node[above left] at (b) {$ (sy_{s},y_{s}) $};
+  \node[above left] at (a) {$ (sy_{s-1},y_{s-1}) $};
+  
+  \draw [very thick, dashed] (L) -- (K);
+  \draw [ dashed] (a) -- (M);
+  \draw [ dashed] (b) -- (K);
+  \draw [very thick, -Stealth] (K) -- (J);
+  \draw [very thick, -Stealth] (M) -- (L);
+  %\draw [very thick, dashed] (N) -- (M);
+  
+  \tikzset{decoration={snake,amplitude=.4mm,segment length=2mm,
+                       post length=0mm,pre length=0mm}}
+  \draw[thick, blue, decorate] (L) to[bend right=40] node[midway,below] {} (K);
+  %\draw[thick, blue, decorate] (Y) to[bend right=30] node[midway,below] {} (C);
+  %\path (C) -- node[auto=false]{\ldots} (\s*\n+\s, 5);
+  %%\draw[very thick, -Stealth] (A) -- (X) node[midway,below] {};
+  %\draw [very thick, -Stealth] (A) -- (X);
+  %\draw [very thick,dotted] (X) -- (B);
+  %\draw [very thick, -Stealth] (B) -- (Y);
+  %\draw [very thick,dotted] (Y)-- (11.5,5.);
+  % Define points
+
+\end{tikzpicture}
+
+  
+\end{figure}
+
+\noindent Combining these contributions gives
+\begin{equation*}
+  \area(P) = \frac{s}{2} + \sum_{l=1}^{s} l(y_{l}-y_{l-1}) + \sum_{l=0}^{s}\area(P_{l}).
+\end{equation*}
+Finally, summing over all possible types $ \vec{y} $ and paths $ P\in D_{n+1}^{s}(\vec{y}) $ gives three large sums to evaluate. Since $ \frac{s}{2} $ is constant, its corresponding sum evaluates to
+\[
+  \sum_{P\in D_{n+1}^{s}}\frac{s}{2} = \frac{s}{2}F_{n+1} = \frac{s}{2}[F(z)^{s+1}]_{n} 
+\]
+\noindent The sum from the parallelogram contributions (see APPENDIX REFERENCES for details) evaluates to 
+\begin{equation}
+  \sum_{\substack{0\leq y_{0}\leq \cdots\leq y_{s-1}\leq n\\y_{s}=n}} \sum_{\substack{P\in \mathcal{D}_{n+1}^{s}\\\text{of type }y_{0},\ldots, y_{s-1}}}\sum_{l=1}^{s} l(y_{l}-y_{l-1}) = \frac{s(s+1)}{2}[zF^{\prime}(z)F(z)^{s}]_{n}.
+\end{equation}
+\noindent The recursive area sum (see APPENDIX REFERENCES for details) evaluates to 
+\begin{equation}
+  \sum_{\substack{0\leq y_{0}\leq \cdots\leq y_{s-1}\leq n\\y_{s}=n}} \sum_{\substack{P\in \mathcal{D}_{n+1}^{s}\\\text{of type }y_{0},\ldots, y_{s-1}}}  \sum_{l=0}^{s}\area(P_{l}) = (s+1)[A(z)F(z)^{s}]_{n}
+\end{equation}
+Combining these sums gives our desired recursive total area formula
+\begin{equation}
+  A_{n+1} =\frac{s}{2}[F(z)^{s+1}]_{n} + \frac{s(s+1)}{2}[zF^{\prime}(z)F(z)^{s}]_{n}+ (s+1)[A(z)F(z)^{s}]_{n}.
+\end{equation}
+
+
+
 
 \end{document}
+
+
+
+
+
+
+
+
+

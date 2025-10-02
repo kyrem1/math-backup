@@ -1,0 +1,124 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Subfiles Setup-------
+\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{Algebraic Actions Notes}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+    We then note that
+    \begin{equation}\begin{split}
+        \sum_{r=1}^{\delta n} \frac{1}{r} {(s+1)r-2 \choose r-1} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r} = \\
+        \sum_{r=1}^{\delta n} \frac{1}{(s+1)r-1} {(s+1)r-1 \choose r} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r} = \\
+        1 + \sum_{r=0}^{\delta n} \frac{1}{(s+1)r-1} {(s+1)r-1 \choose r} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r} = \\
+        1 - \sum_{r=0}^{\delta n} \frac{-1}{(s+1)r-1} {(s+1)r-1 \choose r} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r}
+    \end{split}\end{equation}
+    
+    Let us note that if we apply Lemma \ref{lem:polya_szego} with $a = -1$, $b = s+1$, and $k = r$, we have
+    \begin{equation}\begin{split}
+        \sum_{r=0}^{\infty} \frac{-1}{(s+1)r-1} {(s+1)r - 1 \choose r} z^r = \frac{1}{x}
+    \end{split}\end{equation}
+
+    Provided that we meet the conditions
+    \begin{align}
+        z = \frac{x - 1}{x^{(s+1)}} && |z| < \frac{s^s}{(s+1)^{(s+1)}}
+    \end{align}
+    
+       We then note that for $\frac{s}{s+1} < \gamma < 1$, if we set $x = \gamma \frac{s+1}{s}$, then
+    \begin{equation}\begin{split}
+        |z| = \abs{\frac{\gamma \frac{s+1}{s} - 1}{(\gamma \frac{s+1}{s})^{(s+1)}}} = \frac{1}{\gamma^s} \cdot \frac{s^s}{(s+1)^{(s+1)}} \cdot \abs{\lr{s\lr{1 - \frac{1}{\gamma}} + 1}} < \frac{s^s}{(s+1)^{(s+1)}}
+    \end{split}\end{equation}1
+        Therefore, if $x = \gamma \frac{s+1}{s}$ and $z = \frac{x - 1}{x^{(s+1)}}$, then we have
+    \begin{equation}\begin{split}
+        \sum_{r=0}^{\infty} \frac{-1}{(s+1)r-1} {(s+1)r - 1 \choose r} z^r = \frac{1}{\gamma } \frac{s}{s+1}
+    \end{split}\end{equation}
+
+    \newpage
+
+Consider the function $ F:(0,+\infty)\to \R $ given by
+\[
+    F(\gamma) = \frac{\gamma \frac{s+1}{s} - 1}{(\gamma \frac{s+1}{s})^{(s+1)}} = \frac{1}{\gamma^s} \cdot \frac{s^s}{(s+1)^{(s+1)}} \cdot \lr{s\lr{1 - \frac{1}{\gamma}} + 1}
+\]
+This function is nonnegative and monotone increasing for $\gamma \in (\frac{s}{s+1},1) $. Moreover, in this range we have 
+\begin{align*}
+    \sum_{r=0}^{\infty} \frac{-1}{(s+1)r-1} {(s+1)r - 1 \choose r} F(\gamma)^r = \frac{1}{\gamma} \frac{s}{s+1} 
+\end{align*}
+whence
+\[
+    1-\frac{1}{\gamma}\frac{s}{s+1} = \sum_{r=1}^{\infty} \frac{1}{(s+1)r-1} {(s+1)r - 1 \choose r} F( \gamma)^{r}
+\]
+
+Let $ (\eps_{k})_{k} $ be a sequence increasing to $ 1 $ with $ \eps_{k}> \frac{s}{s+1} $ for all $ k\in \N $, and define 
+\[
+    a_{r,k} = \frac{1}{(s+1)r -1} \binom{(s+1)r -1}{r} F(\eps_{k})^{r}.
+\]
+As $ F $ is monotone increasing in the range of the $ \eps_{k} $s, we have $ a_{r,k}\leq a_{r,k+1} $ for all $ r,k\in \N $. By the monotone convergence theorem,
+\begin{align*}
+    \sum_{r=1}^{\infty} \frac{1}{(s+1)r-1}&\binom{(s+1)r-1}{r} \lr{\frac{s^{s}}{(s+1)^{s+1}}}^{r} \\
+    &=  \sum_{r=1}^{\infty} \sup_{k} a_{r,k}  
+    = \sup_{k}\sum_{r=1}^{\infty}  a_{r,k} = \sup_{k} 1- \frac{1}{\eps_{k}} \frac{s}{s+1} = 1-\frac{s}{s+1}
+\end{align*}
+or equivalently
+\begin{equation*}
+    \sum_{r=0}^{\infty} \frac{-1}{(s+1)r-1} {(s+1)r - 1 \choose r} \cdot \left( \frac{s^s}{(s+1)^{(s+1)}} \right)^r  = \frac{s}{s+1}.
+\end{equation*}
+
+
+
+  Equivalently (plugging in $z$), we have
+    \begin{equation}\begin{split}
+        \sum_{r=0}^{\infty} \frac{-1}{(s+1)r-1} {(s+1)r - 1 \choose r} \cdot \left( \frac{s^s}{(s+1)^{(s+1)}} \right)^r \cdot \left( \gamma^{s} \cdot (1 - s (1 - \gamma)) \right)^r = \gamma \frac{s}{s+1}
+    \end{split}\end{equation}
+
+
+    
+    \textbf{TODO: insert justification for why this converges at the radius}
+
+
+    
+    We then have
+    \begin{equation}\begin{split}
+        1 - \sum_{r=0}^{\delta n} \frac{-1}{(s+1)r-1} {(s+1)r-1 \choose r} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r} \sim \frac{1}{s+1}
+    \end{split}\end{equation}
+
+
+\end{document}

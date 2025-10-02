@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.4.23)  24 APR 2024 16:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Arch Linux) (preloaded format=pdflatex 2024.12.31)  19 MAR 2025 14:09
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1593,7 +1593,7 @@ or  <return>  to continue without it.
  
 Here is how much of TeX's memory you used:
  27911 strings out of 476076
- 571206 string characters out of 5793775
+ 571206 string characters out of 5793774
  1954187 words of memory out of 5000000
  49409 multiletter control sequences out of 15000+600000
  569880 words of font info for 78 fonts, out of 8000000 for 9000

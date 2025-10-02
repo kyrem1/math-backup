@@ -1,0 +1,272 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{220A Homework 1}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+% Conway. I.6:4;  II.1:6, 7; II.2: 1, 4, 5
+
+\begin{homeworkProblem}
+  Let $\Lambda$ be a circle lying in $S$. Then there is a unique plane $P$ in $\mathbb{R}^3$ such that 
+\[ P \cap S = \Lambda. \]
+Recall from analytic geometry that
+\[
+P = \{ (x_1, x_2, x_3) : x_1 \beta_1 + x_2 \beta_2 + x_3 \beta_3 = l \}
+\]
+where $(\beta_1, \beta_2, \beta_3)$ is a vector orthogonal to $P$ and $l$ is some real number. It can be assumed that 
+\[
+\beta_1^2 + \beta_2^2 + \beta_3^2 = 1.
+\]
+Use this information to show that if $\Lambda$ contains the point $N$ then its projection on $C$ is a straight line. Otherwise, $\Lambda$ projects onto a circle in $C$.
+
+\begin{proof}
+  We denote the projection of $ (x_{1},x_{2},x_{3}) $ by $ z= a+bi $ or $ (a,b,0) $.
+  Let $ t\in[0,1] $ be such that $ (x_{1},x_{2},x_{3}) = t(a,b,0)+(1-t)N $. Then we obtain
+  \[
+    (x_{1},x_{2},x_{3}-1) = t(a,b,-1)
+  \]
+  This gives the relations $ x_{1}=ta $, $ x_{2}=tb $, $ x_{3}=1-t $. Moreover, upon substituting these relations and using that $ x_{1}^{2}+x_{2}^{2}+x_{3}^{2}=1 $, we obtain
+  \begin{align*}
+   |z|^{2} = a^{2}+b^{2} = \frac{x_{1}^{2}+x_{2}^{2}}{t^{2}} = \frac{1-x_{3}^{2}}{(1-x_{3})^{2}} = \frac{1+x_{3}}{1-x_{3}} = \frac{2-t}{t} =  \frac{2}{t} -1
+  \end{align*}
+  which leads to $ t = \frac{2}{|z|^{2}+1} $. Now substituting these relations into the equation for the plane $ P $, we compute
+  \begin{align*}
+    l &= \beta_{1}x_{1}+\beta_{2}x_{2}+\beta_{3}x_{3}\\
+    &=\beta_{1}ta+\beta_{2}tb+\beta_{3}(1-t)\\
+    &=\frac{2\beta_{1}}{|z|^{2}+1}a+\frac{2\beta_{2}}{|z|^{2}+1}b+\beta_{3}\left(1-\frac{2}{|z|^{2}+1}\right)\\
+    &=\frac{2\beta_{1}}{|z|^{2}+1}a+\frac{2\beta_{2}}{|z|^{2}+1}b+\beta_{3}\left(\frac{|z|^{2}-1}{|z|^{2}+1}\right).
+  \end{align*}
+
+  After moving over $ l $ and multiplying through by $ |z|^{2}+1 $, we obtain 
+  \begin{align*}
+    0&= 2\beta_{1}a + 2\beta_{2}b+\beta_{3}(|z|^{2}-1)-l(|z|^{2}+1)\\
+    &=(\beta_{3}-l)|z|^{2}+ 2\beta_{1}a + 2\beta_{2}b - \beta_{3}-l\\
+    &=(\beta_{3}-l)(a^{2}+b^{2})+ 2\beta_{1}a + 2\beta_{2}b - \beta_{3}-l\\
+  \end{align*}
+
+  Suppose first that $ N\in \Lambda $. Then $ (0,0,1) $ satisfies the equation for $ P $ which gives $ \beta_{3}=l $.
+  Then the above equation simplifies to the following equation for a line in $ a $ and $ b $
+  \begin{align*}
+    0= 2\beta_{1}a+2\beta_{2}b.\\
+  \end{align*}
+  From now on, we assume that $ N\not \in \Lambda $, so $ \beta_{3}\neq l $.
+  Completing the square  for the quadratics in $ a $ and $ b $ in the previously obtained equation, we obtain
+  \begin{align*}
+    0 = (\beta_{3}-l)\left(a+\frac{4\beta_{1}}{\beta_{3}-l}\right)^{2}-\frac{\beta_{1}^{2}}{\beta_{3}-l} + (\beta_{3}-l)\left(b+\frac{4\beta_{2}}{\beta_{3}-l}\right)-\frac{\beta_{2}^{2}}{\beta_{3}-l} - \beta_{3}-l
+  \end{align*}
+  which upon rearranging and dividing by $ \beta_{3}-l $ gives the following equation for a circle in $ a  $ and $ b $
+ % \[
+ %   \beta_{3}-l +\frac{\beta_{1}^{2}}{\beta_{3}-l} +\frac{\beta_{2}^{2}}{\beta_{3}-l}  = (\beta_{3}-l)\left(a+\frac{4\beta_{1}}{\beta_{3}-l}\right)^{2} + (\beta_{3}-l)\left(b+\frac{4\beta_{2}}{\beta_{3}-l}\right)^{2}
+ % \]
+\[
+    1 +\frac{1}{(\beta_{3}-l)^{2}}\left(\beta_{1}^{2}+\beta_{2}^{2}\right)  = \left(a+\frac{4\beta_{1}}{\beta_{3}-l}\right)^{2} + \left(b+\frac{4\beta_{2}}{\beta_{3}-l}\right)^{2}.
+  \]
+\end{proof}
+
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  
+Prove that $ G $ is open if and only if $ X\setminus G $ is closed.
+
+\begin{proof}\,\\
+  In Conway, the definition of closed is being the complement of closed, so this question is silly. For the sake of writing something I will just use baby Rudin's definition of closed as a set which contains its limit points.\\
+
+  \underline{($\implies $)}: Suppose that $ G $ is open. Let $ p\in X $ be a limit point of $ X\setminus G $. Suppose, for the sake of contradiction, that $ p\not\in X\setminus G $. Then $ p\in G $. As $ G $ is open, there is some $ \eps>0 $ such that $ B_{\eps}(p)\sub G $. As $ p $ is a limit point of $ X\setminus G $, there is some point $ q\in B_{\eps}(p)\cap (X\setminus G) $, which contradicts $ B_{\eps}(p)\sub G $. Thus, $ p\in X\setminus G $, so $ X\setminus G $ contains all of its limit points and is thus closed.\\
+
+
+  \underline{($\impliedby $)}: We proceed by contraposition. Suppose that $ G $ is not open. Then by definition there is some point $ p\in G $ such that $ B_{r}(p)\not\sub G $ for all $ r>0 $. Hence, for each $ r>0 $, there is some point $ q\in B_{r}(p)\cap (X\setminus G) $ with $ q\neq p $ as $ p\in G $. Thus by definition $ p\in G $ is a limit point of $ X\setminus G $, so we have found a limit point of $ X\setminus G $ which is not in $ X\setminus G $, so $ X\setminus G $ is not closed.
+  
+\end{proof}
+
+\end{homeworkProblem}  
+
+
+\begin{homeworkProblem}
+Prove that $ (\widehat{\C},d) $ is a metric space. [NOTE I write $ \widehat{\C} $ for the Riemann sphere].\\
+
+\[
+  d(z,w) := \frac{2|z-w|}{[(1+|z|^{2})(1+|w|^{2})]^{\frac{1}{2}}}\quad \text{for }z,w\in\C
+\]
+\[
+  d(\infty,z):= d(z,\infty) := \frac{2}{(1+|z|^{2})^{\frac{1}{2}}}\quad \text{for }z\in\C
+\]
+\[d(\infty,\infty):=0\]
+\begin{proof}
+ That $ d $ is nonnegative and symmetric is clear by the above expressions. It is also clear that $ d(z,z)= 0  $ for all $ z\in \widehat{\C} $. Now suppose that $ z,w\in \C $ are such that $ d(z,w)=0 $. Then 
+ \begin{align*}
+   &0 = d(z,w) = \frac{2|z-w|}{[(1+|z|^{2})(1+|w|^{2})]^{\frac{1}{2}}}  \\
+   \implies& 0= 2|z-w|\quad \implies\,  z=w.
+ \end{align*}
+  Let $ z\in \widehat{\C} $ and suppose for the sake of contradiction that $ d(z,\infty)=0 $ but $ z \neq \infty $. Then
+  \begin{align*}
+    0=d(z,\infty) = \frac{2}{(1+|z|^{2})} \implies  0 = 2
+  \end{align*}
+  which is absurd, thus $ d(z,\infty)=0 $ implies that $ z=\infty $.
+  Lastly we need to check the triangle inequality.  For $ P=(P_{1},P_{2},P_{3})\in\R^{3} $, let $ \norm{P}_{2}= \sqrt{P_{1}^{2}+P_{2}^{2}+P_{3}^{2}} $ denote the euclidean norm in $ \R^{3} $. By construction, if $ z,w\in \widehat{C} $ and$ Z,W\in\R^{3} $ are the corresponding points on the Riemann sphere in $ \R^{3} $, then 
+  \[
+    d(z,w) = \norm{Z-W}_{2}.
+  \]
+  Suppose that $ u,v,w\in\C $. Let $ U,V,W\in \R^{3}$ be the corresponding points on the Riemann sphere in $ \R^{3} $. Then by the triangle inequality in $ \R^{3} $,
+  \begin{align*}
+    d(u,w) = \norm{U-W}_{2} \leq \norm{U-V}_{2}+\norm{V-W}_{2} = d(u,v)+d(v,w).
+  \end{align*}
+
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+The purpose of this exercise is to show that a connected subset of $\mathbb{R}$ is an interval.  \\
+
+\textbf{(a)}: Show that a set $A \subset \mathbb{R}$ is an interval iff for any two points $a$ and $b$ in $A$ with $a < b$, the interval $[a,b] \subset A$.  
+
+\begin{proof}\,\\
+  \underline{($ \implies $)}: Let $ \alpha\in \R\cup\{-\infty\} $ and $ \beta\in \R\cup\{+\infty\} $.
+
+
+  Suppose $ A = [\alpha,\beta] $. Then if $ a,b\in A $ with $ a<b $ and $ x\in [a,b] $, then $ \alpha\leq a \leq x \leq b \leq \beta $, so $ x\in A $ whence $ [a,b]\sub A $. 
+
+  Suppose $ A = (\alpha, \beta] $. Then if $ a,b\in A$ with $ a<b $ and $ x\in [a,b] $, then $ \alpha<a\leq x\leq b \leq \beta $, so $ x\in A $ whence $ [a,b] \sub A $.
+
+  Suppose $ A = (\alpha, \beta) $. Then if $ a,b\in A$ with $ a<b $ and $ x\in [a,b] $, then $ \alpha<a\leq x\leq b < \beta $, so $ x\in A $ whence $ [a,b] \sub A $.
+
+  \underline{($ \impliedby $)}: Singletons are intervals so suppose $ A $ is not a singleton. Let $ M:= \sup(A)\in \R\cup\{+\infty\} $ and $ m:=\inf(A)\in \R\cup\{-\infty\} $. Let $ x\in (m, M) $. Then by definition of supremum and infimum, there exist $ a,b\in A $ such that $ m<a<x<b<M $. By the assumption, it follows that $ x\in A $. Thus $ (\inf(A), \sup(A))\sub A $, whence $ A = (m,M) $, $ [m,M) $, or $ [m,M] $.
+
+\end{proof}
+
+
+\textbf{(b)}: Use part (a) to show that if a set $A \subset \mathbb{R}$ is connected then it is an interval.  
+
+\begin{proof} 
+ Suppose that $ A \sub \R$ is not an interval. Then by (a) there are points $ a,b\in A $ with $ a<b $ and $ x\in\R\setminus A $ such that $ a<x<b $. Then in the subspace topology, the sets $ A\cap (-\infty,x) $ and $ A\cap(x,+\infty) $ are  open, proper, and nonempty.
+ Moreover 
+ \[
+   A\setminus (A\cap(-\infty,x)) = A\cap (x,+\infty),
+ \]
+ so these sets are also closed. Thus $ A $ can be written as the union of two disjoint, proper, clopen sets, so $ A $ is not connected.
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+Prove the following generalization of Lemma 2.6. If $\{D_j : j \in J\}$ is a 
+collection of connected subsets of $X$ and if for each $j$ and $k$ in $J$ we have 
+$D_j \cap D_k \neq \emptyset$ then 
+\[
+D = \bigcup_{j \in J} D_j
+\]
+is connected.  
+
+\begin{proof}
+ Let $ A $ be a nonempty clopen subset of $ D $. Then $ D = A\sqcup (D\setminus A) $ so it suffices to show that $ A=D $. By definition of the subspace topology, $ A\cap D_{i} $ is clopen in $ D_{i} $ for all $ i\in J $. As each $ D_{i} $ is connected, it follows that $ A\cap D_{i}= D_{i} $ or $ A\cap D_{i}=\emptyset $. As $ A $ is nonempty, there is some $ D_{k} $ with $ A\cap D_{k}\neq \emptyset$, whence $ A\cap D_{k} = D_{k} $.
+
+ By assumption, for each $ i\in J $ there is some $ x_{i}\in D_{i}\cap D_{k} $. Hence, for fixed $ i\in J $, $ x_{i}\in A $ whence $ x_{i}\in A\cap D_{i} $. This implies that $ A\cap D_{i} $ is nonempty, so connectedness gives $ A\cap D_{i}= D_{i} $. Hence, for all $ i\in J $, $ D_{i}\sub A $, so
+  \[
+    A = A\cap D = A\cap \bigcup_{j\in J} D_{j} = \bigcup_{j\in J} A\cap D_{j} = \bigcup_{j\in J} D_{j} = D.
+  \] 
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  
+Show that if $F \subset X$ is closed and connected then for every pair of points 
+$a, b$ in $F$ and each $\varepsilon > 0$ there are points $z_0, z_1, \ldots, z_n$ 
+in $F$ with $z_0 = a$, $z_n = b$ and $d(z_{k-1}, z_k) < \varepsilon$ for 
+$1 \leq k \leq n$. Is the hypothesis that $F$ be closed needed? If $F$ is a set which 
+satisfies this property then $F$ is not necessarily connected, even if $F$ is closed. 
+Give an example to illustrate this.  
+
+\begin{proof}
+We construct an analgoue of connected components for this notion of $ \eps $-ball connectedness. We denote such an $ \eps $-bounded sequence of points by $ (z_{0},z_{1},\ldots, z_{n}) $. Fix $ a\in F $.
+Let
+\begin{align*}
+  G_{0} &= F\cap B_{\eps}(a)\\
+  G_{1}&= F\cap \bigcup_{x\in G_{0}} B_{\eps}(x)\\
+  &\vdots\\
+  G_{n+1}& = F\cap \bigcup_{x\in G_{n}} B_{\eps}(x)\\
+  &\vdots
+\end{align*}
+Note that each of the $ G_{n} $s are open in the subspace topology of $ F $. Let $ C_{a}:= \bigcup_{n=0}^{\infty}G_{n} $, the $ \eps $-ball component of the point $ a\in F $. Suppose now $ a,b\in F $, $ a\neq b $, and assume that $ C_{a}\cap C_{b}\neq \emptyset $. Let $ p\in C_{a}\cap C_{b} $ and let the corresponding sequences of $ \eps $-close points be $ (a,z_{1},z_{2},\ldots,z_{n}, p) $, $ (b,w_{1},w_{2},\ldots, w_{m}, p) $. Fix $ q\in C_{a}  $ and let $ q $ have corresponding path $ (a,u_{1},u_{2},\ldots,u_{k}, q) $. Then the concatenated path
+\[
+  (b,w_{1},\ldots,w_{m},p,z_{n},z_{n-1},\ldots, z_{1},a, u_{1},u_{2},\ldots, u_{k}, q)
+\]
+furnishes an $ \eps $-close sequence of points from $ b $ to $ q $, whence $ q\in C_{b} $. Hence $ C_{a}\sub C_{b} $, so by the symmetry of $ a $ and $ b $ it follows that $ C_{a}= C_{b} $. So the sets $ \{C_{a}\}_{a\in F} $ partition $ F $. Suppose, for the sake of contradiction, that $ |\{C_{a}\}_{a\in F}| >1 $. Pick $ a\in F $ and set \[ D=C_{a},\quad  E=\bigcup_{\substack{b\in F\\C_{b}\neq C_{a}}}C_{b}. \]
+These sets are clopen in the subspace topology as they are open, disjoint, and have $ D\cup E = F $, which contradicts the connectedness of $ F $. Thus $ F = C_{a} = C_{b} $ for all $ b\in F $, whence any two points may be reached by an $ \eps $-bounded sequence.\\
+
+
+\underline{(Closedness)}: As all topological considerations dealt with the subspace topology for $ F $, the closedness is not necessary.\\
+
+\underline{(Counterexample for connectedness)}: The connectedness assumption is not implied. Consider $ F:=\{(x, \frac{1}{x^{2}}): x\in \R\setminus \{(0,0)\}\} $. Points on both sides of the graph become arbitrarily close, so eventually given any $ \eps $ a ball will intersect both sides of the curve furnishing the required paths.
+
+\end{proof}
+
+\end{homeworkProblem}
+
+
+
+\end{document}
+
+
+

@@ -1,0 +1,62 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+    We then note that
+    \begin{equation}\begin{split}
+        \sum_{r=1}^{\delta n} \frac{1}{r} {(s+1)r-2 \choose r-1} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r} = \\
+        \sum_{r=1}^{\delta n} \frac{1}{(s+1)r-1} {(s+1)r-1 \choose r} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r} = \\
+        1 + \sum_{r=0}^{\delta n} \frac{1}{(s+1)r-1} {(s+1)r-1 \choose r} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r} = \\
+        1 - \sum_{r=0}^{\delta n} \frac{-1}{(s+1)r-1} {(s+1)r-1 \choose r} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r}
+    \end{split}\end{equation}
+    
+    Let us note that if we apply Lemma \ref{lem:polya_szego} with $a = -1$, $b = s+1$, and $k = r$, we have
+    \begin{equation}\begin{split}
+        \sum_{r=0}^{\infty} \frac{-1}{(s+1)r-1} {(s+1)r - 1 \choose r} z^r = \frac{1}{x}
+    \end{split}\end{equation}
+
+    Provided that we meet the conditions
+    \begin{align}
+        z = \frac{x - 1}{x^{(s+1)}} && |z| < \frac{s^s}{(s+1)^{(s+1)}}
+    \end{align}
+    
+    We then note that for $1 - \frac{2}{s} < \gamma < 1$, if we set $x = \frac{1}{\gamma} \frac{s+1}{s}$, then
+    \begin{equation}\begin{split}
+        |z| = \abs{\frac{\frac{1}{\gamma} \frac{s+1}{s} - 1}{(\frac{1}{\gamma} \frac{s+1}{s})^{(s+1)}}} = \gamma^{s} \cdot \abs{1 - (1 - \gamma)s} \cdot \frac{s^s}{(s+1)^{(s+1)}} = \\ \gamma^s \cdot (1 - s (1 - \gamma)) \cdot \frac{s^s}{(s+1)^{(s+1)}} < \frac{s^s}{(s+1)^{(s+1)}}
+    \end{split}\end{equation}
+    
+    Therefore, if $x = \frac{1}{\gamma} \frac{s+1}{s}$ and $z = \frac{x - 1}{x^{(s+1)}}$, then we have
+    \begin{equation}\begin{split}
+        \sum_{r=0}^{\infty} \frac{-1}{(s+1)r-1} {(s+1)r - 1 \choose r} z^r = \gamma \frac{s}{s+1}
+    \end{split}\end{equation}
+
+
+
+Set $$ z_{n} = \frac{\frac{1}{\eps_{n}} \frac{s+1}{s} - 1}{\left(\frac{1}{\eps_{n}} \frac{s+1}{s}\right)^{(s+1)}} = \eps_{n}^s \cdot (1 - s (1 - \eps_{n})) \cdot \frac{s^s}{(s+1)^{(s+1)}} $$
+
+Consider the function $ F:(0,+\infty)\to \R $ given by  $ F() = \frac{1}{\gamma}\cdot \frac{s+1}{s} $. 
+\[
+F(x) = \frac{\frac{1}{x} \frac{s+1}{s} - 1}{\left(\frac{1}{x} \frac{s+1}{s}\right)^{(s+1)}} = x^s \cdot (1 - s (1 - x)) \cdot \frac{s^s}{(s+1)^{(s+1)}
+\]
+
+
+
+
+  Equivalently (plugging in $z$), we have
+    \begin{equation}\begin{split}
+        \sum_{r=0}^{\infty} \frac{-1}{(s+1)r-1} {(s+1)r - 1 \choose r} \cdot \left( \frac{s^s}{(s+1)^{(s+1)}} \right)^r \cdot \left( \gamma^{s} \cdot (1 - s (1 - \gamma)) \right)^r = \gamma \frac{s}{s+1}
+    \end{split}\end{equation}
+
+
+    
+    \textbf{TODO: insert justification for why this converges at the radius}
+
+
+    
+    We then have
+    \begin{equation}\begin{split}
+        1 - \sum_{r=0}^{\delta n} \frac{-1}{(s+1)r-1} {(s+1)r-1 \choose r} \cdot \lr{\frac{s^s}{(s+1)^{(s+1)}}}^{r} \sim \frac{1}{s+1}
+    \end{split}\end{equation}
+
+\end{document}

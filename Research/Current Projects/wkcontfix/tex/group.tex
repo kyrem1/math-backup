@@ -1,0 +1,85 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Mixing, Group Setting}
+
+\begin{definition}
+    A representation $ \pi:G\to U(\H) $ of a countable group $ G $ is said to be \textit{mixing} or $ c_{0} $ if for all $ \xi,\eta\in \H $, the function $ g\mapsto \inp{\pi(g) \xi}{\eta} $ is in $ c_{0}(G) $.
+\end{definition}
+
+Given a group representation $ \pi $, we form the $ L(G)-L(G) $ bimodule $ \H_{\pi}:= \H \otimes l^{2}(G) $ with module action given by 
+\[
+    au_{g} \cdot ( \xi \otimes \eta) \cdot y = \pi(g) \xi \otimes au_{g} \eta y.
+\]
+
+
+\begin{lemma}
+    Let $ \phi:G\to \C $ be a positive definite function on $ G $. Then the map on $ \C[G] $ given by
+    \[
+        P(\sum_{g} a_{g} u_{g}) := \sum_{g}a_{g} \phi(g) u_{g}
+    \]
+    extends to a completely positive map on $ L(G) $. Moreover, if $ \phi $ is $ c_{0} $, then $ P $ extends to a compact operator in $ B(l^{2}(G)) $.
+\end{lemma}
+
+\begin{theorem}
+    The bimodule $ \H_{\pi} $ is mixing relative to $ \C1\sub L(G) $ if and only if the representation $ \pi $ is mixing.
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+
+\section{Hoff Fullness Patch}
+
+\begin{lemma}
+    Let $\rG$ be a discrete measured groupoid which is strongly ergodic with no amenable direct summand and which admits an unbounded 1-cocycle into a mixing orthogonal representation weakly contained in the left-regular representation. Let $ N $ be a tracial von Neumann algebra, $ M_{0}=L{\rG} $, $ \widetilde{M_{0}} = L(\widetilde{\rG}) $, $ M = M_{0} \cls{\otimes} N  $, and $ \widetilde{M} = \widetilde{M}_{0} \cls{\otimes } N $. Suppose that $ P\sub pMp $ is a von Neumann subalgebra that is strongly nonamenable relative to $ 1 \otimes N $. Then $ \alpha_{t}\to id $ uniformly on $ (P^{\prime}\cap pMp)_{1} $. Furthermore, if $ (P^{\prime}\cap pMp)\prec_{M} A \otimes N $, then $ (P^{\prime}\cap pMp) \prec_{M} 1 \otimes N$. 
+\end{lemma}
+
+\begin{proof}
+    Following the proof of Theorem \ref{prime}, we see that the amenability of $ A $ implies that 
+    \begin{align*}
+        \prescript{}{M}{L^{2}(\widetilde{M})\ominus L^{2}(M)}_{M} \cong \,_{M_{0}\otimes N}\left[[L^{2}(\widetilde{M_{0}})\ominus L^{2}(M_{0})] \cls{\otimes } L^{2}(N)\right]_{M_{0}\otimes N}\prec \,\prescript{}{M}{L^{2}(M)\otimes_{N} L^{2}(M)_{M}}\\
+    \end{align*}
+    \[
+        \prescript{}{M}{L^{2}(\widetilde{M})\ominus L^{2}(M)}_{M} \prec \prescript{}{M}{L^{2}(M)\otimes L^{2}(M)}
+    \]
+    Since $ P $ has is strongly nonamenable relative to $ N $, for any nonzero central projection $ z\in \mathcal{Z}(P^{\prime}\cap pMp) $ we have that 
+   $ _M L^{2}(M)_{Pz} $ is not weakly contained $ _M L^{2}(M) \otimes_{N} L^{2}(M)_{Pz} $, and thus is not weakly contained in $ _M L^{2}(\widetilde{M}) \ominus L^{2}(M)_{Pz} $.\\
+   % \[
+   %     \prescript{}{M}{L^{2}(M)}_{Pz} \not\prec  \prescript{}{M}{L^{2}(M)\otimes L^{2}(M)}_{M}
+   % \]
+   % and thus
+   % \[
+   %     \prescript{}{M}{L^{2}(M)}_{Pz} \not\prec \prescript{}{M}{L^{2}(\widetilde{M})\ominus L^{2}(M)}_{M}
+   % \]
+
+   Let $ \eps>0 $. By Lemma \ref{lem:gapweakcont}, there exist elements $ a_{1}, \ldots, a_{n}\in P $ and $ \delta>0 $ such that, for $ x\in (p \widetilde{M} p)_{1} $,
+   \[
+   \left[\norm{[x,a_{i}]}_{2} <\delta \text{ for all }1\leq i \leq n\right] \implies \norm{x-\E_{M}(x)}_{2}<\eps.
+   \]
+   Since $ \alpha_{t} $ is $ s $-malleable, there is a $ t_{0}>0 $ such that
+   \[
+       \norm{\alpha_{t}(a_{i})-a_{i}}_{2} < \delta/2\quad\text{for all }|t|<t_{0}, \text{ and }1\leq i \leq n
+   \]
+   For $ t\in (-t_{0},t_{0}) $ and $ x\in (P^{\prime}\cap pMp)_{1} $, we use the semigroup structure of the deformation to compute
+   \begin{align*}
+       \norm{a_{i}\alpha_{t}(x) - \alpha_{t}(x) a_{i}}_{2} &= \norm{\alpha_{-t}( a_{i} \alpha_{t}(x) - \alpha_{t}(x)a_{i})}_{2}= \norm{\alpha_{-t}(a_{i}) x - x \alpha_{-t}(a_{i})}_{2} \\
+       &\leq\norm{\alpha_{-t}(a_{i}) x - x \alpha_{-t}(a_{i})}_{2} \\
+       &\leq\norm{\alpha_{-t}(a_{i}) x -a_{i}x}_{2}+ \norm{xa_{i} -x \alpha_{-t}(a_{i})}_{2} \\
+       &\leq 2 \norm{a_{i}-\alpha_{-t}(a_{i})}_{2} < \delta. \\
+   \end{align*}
+   By Popa's Transversality Inequality (TODO CITE CITE), we obtain that
+   \[
+       \norm{\alpha_{t}(x)-x}_{2}\leq \sqrt{2} \eps.
+   \]
+   as desired. 
+
+
+   Now suppose that $ P^{\prime}\cap pMp \prec_{M} A $.
+    
+\ end{proof}
+
+\end{document}

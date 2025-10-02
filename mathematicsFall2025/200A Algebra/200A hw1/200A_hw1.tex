@@ -1,0 +1,208 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{200A Homework 2}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}
+  Suppose $G$ is a simple group and it has a subgroup $H$ of index $n$ where $n$ is an integer more than $1$. Prove that $G$ can be embedded into the symmetric group $S_n$.
+
+  \begin{proof}
+    Let $ G $ act by left multiplication on the set $ X $ of left cosets of $ H $ in $ G $. This furnishes a homomorphism $ \theta: G\to \Sym(X)\cong S_{n} $. Then $ \ker(\theta) $ is a normal subgroup of $ G $. As $ [G:H] >1 $, $ G $ acts nontrivially on $ X $ whence $ \ker(\theta)\neq G $. Thus by simplicity of $ G $, $ \ker(\theta)=\{e\} $ so $ \theta $ is an embedding.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+ For a group $G$, let $\operatorname{Aut}(G)$ be the group of automorphisms of $G$. Let
+\[
+  c : G \to \operatorname{Aut}(G),\qquad c(g) := c_g,\ \ \text{where } c_g(x) := gxg^{-1}\ \text{ for every } x \in G.
+\]
+\underline{\textbf{(a)}}: Prove that $c_g$ is an automorphism of $G$ and $c$ is a group homomorphism.
+
+\begin{proof}
+  Fix $ g\in G $. Let $ x,y\in G $. Then $$ c_{g}(xy) = gxyg^{-1} = gxg^{-1}gyg^{-1} = c_{g}(x)c_{g}(y), $$ so $ c_{g} $ is a group homomorphism.\\
+
+  For $ h\in G $, $ c_{g}(g^{-1}hg) = h $, so $ c_{g} $ is surjective. If $ ghg^{-1} = c_{g}(h) = e $, then $ h=e $, so $ \ker(c_{g}) = \{e\} $ whence $ c_{g} $ is injective. Thus $ c_{g}\in Aut(G) $.\\
+
+  Fix $ g,h\in G $ and $ x\in G $. Then 
+  \[
+    c_{g}c_{h}(x) = c_{g}(hxh^{-1}) = ghxh^{-1}g^{-1} = ghx(gh)^{-1} = c_{gh}(x),
+  \]
+  So $ c_{gh}= c_{g}c_{h} $, whence $ c $ is a group homomorphism.
+\end{proof}
+
+
+\underline{\textbf{(b)}}: Prove that $\ker c$ is the center $Z(G)$ of $G$.
+
+\begin{proof}
+  Suppose $ g\in\ker(c) $ so $ c_{g} = id_{G} $. Then for all $ x\in G $, $ x = c_{g}(x) = gxg^{-1} $, so $ g\in Z(G) $. Now suppose $ g\in Z(G) $. Then for $ x\in G $, $ c_{g}(x) = gxg^{-1}=xgg^{-1} = x $, so $ c_{g}=id_{G} $ whence $ g\in \ker(c) $.
+\end{proof}
+
+
+\underline{\textbf{(c)}}: The image of $c$ is called the group of inner automorphisms of $G$, and it is denoted by $\operatorname{Inn}(G)$. Prove that $\operatorname{Inn}(G)$ is a normal subgroup of $\operatorname{Aut}(G)$.
+
+\begin{proof}
+ Fix $ \phi\in \Aut(G) $ and let $ g\in G $. Set $ h:=\phi(g) $. For $ x\in G $
+ \[
+   \phi c_{g} \phi^{-1}(x) = \phi c_{g}(\phi^{-1}(x)) = \phi(\phi^{-1}(h) \phi^{-1}(x) \phi^{-1}(h^{-1})) = \phi(\phi^{-1}(hxh^{-1})) = hxh^{-1} = c_{\phi(g)}(x),
+ \]
+ so $ \phi c_{g} \phi^{-1} = c_{\phi(g)} \in \Inn(G)$. Thus $ \Inn(G)\triangleleft \Aut(G) $.
+\end{proof}
+
+
+
+\underline{\textbf{(d)}}: Prove that $\lvert Z(\operatorname{Aut}(G))\rvert \le \lvert \operatorname{Hom}(G, Z(G))\rvert$; in particular, if either $Z(G)=1$ or $G$ is perfect (that is, $G=[G,G]$), then $Z(\operatorname{Aut}(G))=\{1\}$.
+
+\begin{proof}
+As the function $ c $  is a homomorphism with image $ \Inn(G) $, it follows that $ G/Z(G) \cong \Inn(G) $. For $ \phi\in Z(\Aut(G)) $ and $ g\in G $, we have that $ c_{g} = c_{\phi(g)} $, so under the isomorphism we infer $ gZ(g) = \phi(g)Z(g) $. Hence there is some $ \eta(g)\in Z(G) $ such that $ \phi(g) = g \eta(g) $. 
+
+For $ g,h\in G $,
+\[
+  gh \eta(gh) = \phi(gh) = \phi(g) \phi(h) = g\eta(g) h \eta(h) = gh\eta(g)\eta(h)
+\]
+whence $ \eta(gh) = \eta(g)\eta(h) $, so $ \eta $ is a group homomorphism.
+
+Now for $ \phi\in Z(\Aut(G)) $, let $ \eta_{\phi} $ be the corresponding homomorphism obtained above. Suppose $ \phi,\psi\in Z(\Aut(G)) $ are such that $ \eta_{\phi} = \eta_{\psi} $. Then for $ g\in G $,
+\[
+  \phi(g) = g \eta_{\phi}(g) = g \eta_{\psi}(g) = \psi(g),
+\]
+so $ \phi=\psi $. Hence the assignment $ \phi\mapsto \eta_{\phi} $ is injective, whence $ |Z(\Aut(G))|=|\{\eta_{\phi}: \phi\in Z(\Aut(G))\}|\leq |\Hom(G,Z(G))| $.
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+Let $SL_2(\mathbb{R})$ be the set of real $2\times 2$ matrices with determinant $1$. For
+$\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\mathbb{R})$ and $z \in \mathbb{H} := \{ z \in \mathbb{C} \mid \operatorname{Im}(z) > 0\}$, let
+\[
+  \begin{pmatrix} a & b \\ c & d \end{pmatrix} \cdot z := \frac{az + b}{cz + d}.
+\]
+\underline{\textbf{(a)}}: Prove that
+  \[
+    \operatorname{Im}\!\left( \begin{pmatrix} a & b \\ c & d \end{pmatrix} \cdot z \right)
+    \;=\; \frac{\operatorname{Im}(z)}{\lvert cz + d\rvert^{2}}.
+  \]
+
+
+\underline{\textbf{(b)}}: Prove that $\cdot$ is an action of $SL_2(\mathbb{R})$ on $\mathbb{H}$.
+
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+Suppose $G$ is a finite group, $C \subseteq \mathbb{R}^n$ is a convex subset (that is, for all two points $P,Q$ in $C$, the segment $PQ$ is a subset of $C$). Suppose $G$ acts on $C$ by affine transformations; that means
+\[
+  \forall P,Q \in C,\ \forall t \in [0,1],\ \forall g \in G,\qquad g\cdot (tP+(1-t)Q)=t\,g\cdot P + (1-t)\,g\cdot Q.
+\]
+Prove that $G$ has a fixed point; that is, there exists $x \in C$ such that for all $g \in G$, $g\cdot x = x$.
+
+\begin{proof}
+  By definition, for $ c_{1},c_{2}\in C $, we have that $ \frac{c_{1}+c_{2}}{2}\in C $. Suppose that we have shown that for any $ c_{1},\ldots, c_{n}\in C $, we have $ \frac{c_{1}+\cdots+c_{n}}{n}\in C $. Observe that then
+  \[
+    \frac{c_{1}+ \cdots + c_{n+1}}{n+1} = \frac{n}{n+1}\lr{\frac{c_{1}+\cdots + c_{n}}{n}} + \lr{1-\frac{n}{n+1}} c_{n+1}\in C.
+  \]
+  Fix $ y\in C $. Then $ A_{G}(y) = \frac{1}{|G|}\sum_{h\in G}h\cdot y\in C $. For $ g\in G $, we have 
+  \[
+    g\cdot A_{G}(y) = \frac{1}{|G|}\sum_{h\in G} gh\cdot y = \frac{1}{|G|}\sum_{h\in G} h\cdot y = A_{G}(y),
+  \]
+  so $ A_{G}(y) $ is a fixed point of the affine action $ G\acts C $.
+
+\end{proof}
+
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+Suppose $G$ is a finite subgroup of the group $GL_n(\mathbb{R})$ of $n\times n$ invertible real matrices. Prove that there is a $G$-invariant inner product on $\mathbb{R}^n$.
+
+\begin{proof}
+  Define 
+  \[
+    \inp{v}{w}_{G}:=\frac{1}{|G|}\sum_{g\in G}\inp{g\cdot v}{g\cdot w}
+  \]
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Suppose $H$ is a subgroup of $G$. Let
+  \[
+    C_G(H) := \{\, x \in G \mid \forall h \in H,\ xh = hx \,\}
+  \]
+  be the centralizer of $H$ in $G$, and
+  \[
+    N_G(H) := \{\, x \in G \mid xHx^{-1} = H \,\}
+  \]
+  be the normalizer of $H$ in $G$. Both of these are subgroups of $G$ and clearly $C_G(H) \subseteq N_G(H)$. Prove that $N_G(H)/C_G(H)$ can be embedded into $\operatorname{Aut}(H)$.
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+Suppose $N$ is a finite cyclic normal subgroup of $G$. Prove that every subgroup of $N$ is normal in $G$.
+
+\begin{proof}
+  Let $ K\leq N $ have order $ k $. Then for $ g\in G $, $ gKg^{-1}\leq N $ has order k, but cyclic groups have unique subgroups of each given order, so $ gKg^{-1}=K $.
+\end{proof}
+\end{homeworkProblem}
+
+\end{document}

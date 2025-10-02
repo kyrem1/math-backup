@@ -4,3 +4,4 @@
 \contentsline {subsection}{\numberline {3.1}Non-recursive Summands}{6}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}Recursive Summands}{8}{subsection.3.2}%
 \contentsline {section}{\numberline {4}Asymptotics}{10}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Total Area Using Touchpoints}{11}{subsection.4.1}%

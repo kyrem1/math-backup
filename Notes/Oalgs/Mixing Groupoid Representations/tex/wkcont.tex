@@ -1,0 +1,112 @@
+%! TEX root = ../main.tex
+\documentclass[../main.tex]{subfiles}
+
+
+\begin{document}
+
+\section{Weak Containment Arguments}
+
+
+\subsection{Ben Stuff, i.e. preliminary lemmas}
+
+For $ \pi:A\to B(\H) $ a $ * $-representation of a $ C^{*} $-algebra $ A $ and $ \xi\in \H $, define $ \omega_{\xi}\in A^{*} $ by $ \omega_{\xi}(a) = \inp{\pi(a) \xi}{\xi} $.
+
+\begin{theorem}
+    Let $ \pi_{j}:A\to B(\H_{j}) $ , $ j=1,2 $ be nondegenerate $ * $-representations of a $ C^{*} $-algebra $ A $. Then the following are equivalent:
+    \begin{enumerate}
+        \item $ \pi_{1}\prec \pi_{2} $,
+        \item $ \ker(\pi_{2})\sub \ker(\pi_{1}) $,
+        \item For all $ \xi\in \H_{1} $ with $ \norm{\xi} = 1 $, we have 
+            \[
+                \omega_{\xi}\in \cls{\text{co}}^{\text{wk}^{*}}\{ \omega_{\eta}: \eta\in \H_{2},\, \norm{\eta}=1\},
+            \]
+        \item For all $ \xi\in \H_{1} $,
+            \[
+                \omega_{\xi}\in \cls{\Span}^{\text{wk}^{*}}\{ \omega_{\eta}: \eta\in \H_{2}\}.
+            \]
+    \end{enumerate}
+
+\end{theorem}
+hello there
+
+
+\subsection{Main Argument}
+
+\begin{proposition}
+    Consider two representations $ \pi, \rho$ of $ \rG $ on bundles $ \H = \{\H_{x}\}_{x\in X} $ and $ \K = \{\K_{x}\}_{x\in X} $ respectively. Then $ \pi \prec \rho $ implies that $ B(\pi) \prec B( \rho) $.
+\end{proposition}
+% TODO see if can take unit sections in both sides of definition of weak containment
+
+% TODO au_\sigma, y case + simple tensor + m\in M
+% TODO x,y\in (M)_1 case 
+% TODO x,y\in M case
+% TODO not simple tensors in B(\pi)
+NOTE BELOW ASSUMING UNIT SECTION
+Hello there
+
+
+
+
+
+
+Fix $ \eps>0 $, $ a\in A $, $ \sigma\in [\rG] $, $ y\in (M)_{1} $, $ \xi\in S_{1}(X\ast \H) $, and $ m\in M $.
+\begin{align*}
+    \inp{au_{\sigma}\cdot ( \xi \otimes \widehat{m}) \cdot y}{ \xi \otimes  \widehat{m}} &= \inp{\widetilde{\pi}(\sigma) \xi \otimes  au_{\sigma} \widehat{m} y}{ \xi \otimes \widehat{m}}\\
+    &= \inp{\widetilde{\pi}(\sigma) \xi}{ \xi \cdot\, _A \inp{au_{\sigma} \widehat{m}y}{\widehat{m}}}\\
+    &= \inp{\widetilde{\pi}(\sigma) \xi}{ \xi \cdot \E_{A}(au_{\sigma} mym^{*})}\\
+    &= \int_{X}\E_{A}(au_{\sigma} mym^{*})(x) \cdot \inp{(\widetilde{\pi}(\sigma) \xi)_{x}}{\xi_{x}}\dd{\mu(x)}
+\end{align*}
+NOTE BELOW I AM ASSUMING CAN TAKE AS UNIT SECTION\\
+We have $ \cls{\mu}(\sigma) =1 <+\infty $, so by assumption there exists $ \{\eta^{i}\}_{i=1}^{m}\sub S_{1}(X \ast \K) $ such that the set  
+\[
+    A^{\sigma}_{\eps} \coloneqq \{g\in \sigma\sub \rG : |\inp{\pi(g) \xi_{d(g)}}{\xi_{r(g)}} - \sum_{i}\inp{\rho(g) \eta^{i}_{d(g)}}{\eta^{i}_{r(g)}}|\geq \eps\}.
+\]
+has measure $ \cls{\mu}(A^{\sigma}_{\eps})<\eps $. Taking the range of this set in the unit space $ X $, we see
+\begin{align*}
+    r(A^{\sigma}_{\eps}) &= \{r(g)\in X : g\in A^{\sigma}_{\eps}\sub \sigma\}= \{x\in X: x \sigma \in A^{\sigma}_{\eps}\}\\
+    %&=\{x\in X: \left|\inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{r(x \sigma)}} - \sum_{i}\inp{\rho( x \sigma) \eta^{i}_{d( x \sigma)}}{\eta^{i}_{r( x \sigma)}}\right|\geq \eps\}\\
+    &=\{x\in X: \left|\inp{\pi(x \sigma) \xi_{d(x \sigma)}}{\xi_{x}} - \sum_{i}\inp{\rho( x \sigma) \eta^{i}_{d( x \sigma)}}{\eta^{i}_{x}}\right|\geq \eps\}
+\end{align*}
+and compute that 
+\begin{align*}
+    \cls{\mu}(A^{\sigma}_{\eps}) &= \int_{X}  \#\{g\in A^{\sigma}_{\eps}: d(g) = x\} \dd{\mu(x)}\\
+    &=\int_{X} 1_{d(A^{\sigma}_{\eps})}(x) \dd{\mu(x)} = \mu(d(A^{\sigma}_{\eps})) = \mu(r(A^{\sigma}_{\eps})).
+\end{align*}
+For brevity, write $ \phi\coloneqq \E_{A}(au_{\sigma}mym^{*})\in L^{\infty}(X) $. Observe that
+\begin{align*}
+    | & \inp{au_{\sigma}(\xi \otimes \widehat{m}) y}{\xi \otimes \widehat{m}} - \sum_{i}\inp{au_{\sigma} (\eta^{i}\otimes \widehat{m})y}{\eta^{i} \otimes \widehat{m}}|  \\ 
+    &=\left|\int_{X}\E_{A}(au_{\sigma} mym^{*})(x) \cdot \inp{(\widetilde{\pi}(\sigma) \xi)_{x}}{\xi_{x}}\dd{\mu(x)} - \sum_{i} \int_{X}\E_{A}(au_{\sigma} mym^{*})(x) \cdot \inp{(\widetilde{\rho}(\sigma) \eta^{i})_{x}}{\eta^{i}_{x}}\dd{\mu(x)} \right|\\
+    &=\int_{X}| \phi(x)| \cdot\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle - \sum_{i}  \left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)} 
+\end{align*}
+On the set $ r(A^{\sigma}_{\eps}) $, we use the polarization identity for a crude bound. Observe that
+\[
+    \int_{r(A_{\eps}^{\sigma})} \norm{\pi (x \sigma) \xi_{d(x \sigma)}\pm \xi_{x}}^{2}_{\H_{x}} \dd{\mu(x)} \leq \int_{r(A_{\eps}^{\sigma})} 2 \dd{\mu(x)} < 2 \eps,
+\]
+whence
+\[
+    \int_{r(A_{\eps}^{\sigma})} \inp{\pi (x \sigma) \xi_{d(x \sigma)}}{\xi_{x}} \dd{\mu(x)} \leq \int_{r(A_{\eps}^{\sigma})} \frac{1}{4}(8) \dd{\mu(x)} < 2 \eps.
+\]
+The same bound also follows for the $ \rho $ inner products, thus 
+\begin{align*}
+    \int_{r(A^{\sigma}_{\eps})}&| \phi(x)| \cdot\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle - \sum_{i=1}^{m}  \left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)} \\
+    &\leq  \norm{\phi}_{\infty} \left[\int_{r(A^{\sigma}_{\eps})}\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle\right| + \sum_{i=1}^{m}\int_{r(A_{\eps}^{\sigma})}  \left|\left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)}\right] \\
+    &\leq  2\eps(m+1)\norm{\phi}_{\infty} 
+\end{align*}
+
+
+Substituting this bound back into BLANK, we compute
+\begin{align*}
+    \int_{X}| \phi(x)|& \cdot\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle - \sum_{i}  \left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)} \\
+    &< 2 \eps(m+1) \norm{\phi}_{\infty} + \int_{X\setminus r(A_{\eps}^{\sigma})}| \phi(x)| \cdot\left| \left\langle\pi(x \sigma) \xi_{d(x \sigma)},\,\xi_{x}\right\rangle - \sum_{i}  \left\langle\rho(x \sigma) \eta^{i}_{d(x \sigma)},\,\eta^{i}_{x}\right\rangle\right|\dd{\mu(x)} \\
+    &< 2 \eps(m+1) \norm{\phi}_{\infty} + \norm{\phi}_{\infty} \int_{X\setminus r(A_{\eps}^{\sigma})} \eps\dd{\mu(x)}  \leq \eps\cdot\left[2(m+1)+1\right]\cdot \norm{\phi}_{\infty}.
+\end{align*}
+
+For \emph{(ii)}, we take $x_n=a_n\sigma_n$ with $a_n\in A $ and $ \sigma_n\in [\rG] $. Let also $ y\in (M)_{1} $, $ \xi,\eta\in S_{1}(X\ast \H) $, and $ w,z\in M $. \textcolor{red}{Is this setting enough?}
+\begin{align*}
+    \inp{x_n ( \xi \otimes \widehat{x})  y}{ \eta \otimes  \widehat{z}} &= \inp{\widetilde{\pi}(\sigma_n) \xi \otimes  a_n u_{\sigma_n} \widehat{x} y}{ \eta \otimes \widehat{z}}\\
+    &= \inp{\widetilde{\pi}(\sigma_n) \xi}{ \eta \cdot\, _A \inp{a_n u_{\sigma_n} \widehat{x} y}{\widehat{z}}}\\
+    &= \inp{\widetilde{\pi}(\sigma) \xi}{ \xi \cdot \E_{A}(au_{\sigma} mym^{*})}\\
+    &= \int_{X}\E_{A}(au_{\sigma} mym^{*})(x) \cdot \inp{(\widetilde{\pi}(\sigma) \xi)_{x}}{\xi_{x}}\dd{\mu(x)}
+\end{align*}
+
+\end{document}
