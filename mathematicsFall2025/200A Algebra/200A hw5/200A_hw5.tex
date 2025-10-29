@@ -1,0 +1,343 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{200A Homework 5}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+\begin{homeworkProblem}
+  Suppose $n$ is a positive integer. Prove that every group of order $n$ is cyclic if and only if $\gcd(n, \varphi(n)) = 1$.  
+
+  \textit{Hint.} One of the fundamental results in finite group theory is the following result of Burnside.
+
+  \begin{theorem}[Burnside’s Normal $p$-Complement]
+    Suppose $G$ is a finite group, $P$ is a Sylow $p$-subgroup, and $P \subseteq Z(N_G(P))$. Then there exists a normal subgroup $N$ of $G$ such that $\lvert N \rvert = \lvert G / P \rvert$.
+  \end{theorem}
+
+  You may use this theorem without proof. Use strong induction on $n$ to show that every group of order $n$ is cyclic if $\gcd(n, \varphi(n)) = 1$.  
+  Observe that $\gcd(n, \varphi(n)) = 1$ implies that $n$ is square-free.  
+  Notice that if $m \mid n$, then $\gcd(m, \varphi(m)) = 1$.  
+  By the strong induction hypothesis, deduce that every proper subgroup of $G$ is cyclic.  
+  Deduce that if a Sylow $p$-subgroup is not normal, then $N_G(P)$ is cyclic.  
+  Use Burnside’s normal complement.
+
+\begin{proof}
+  We induct strongly on $ n\in \N $  in the statement that $ \gcd(n,\varphi(n)) = 1 $ implies every group of order $ n $ is cyclic.
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  In this problem, you prove that $\operatorname{Aut}(S_n) = \operatorname{Inn}(S_n)$ if $n \ge 7$.\\
+
+  \underline{\textbf{(a)}}: Suppose $\varphi$ is an automorphism of $S_n$ which sends transpositions to transpositions; that means $\varphi((a\, b))$ is a 2-cycle for every $1 \le a < b \le n$.  
+  Prove that $\varphi$ is an inner automorphism. (For this part it is enough to assume that $n \ge 5$.)\\
+
+  \begin{proof}
+    Let $ K_{n} $ denote the complete, undirected graph on $ n $ vertices and label the vertices $ 1,2,\ldots, n $. Let $ T_{1}\sub S_{n} $ denote the set of transpositions in $ S_{n} $. Note that we have a bijection $ T_{1}\to E(K_{n}) $ given by $ \tau=(i\,j ) \mapsto \supp(\tau) = \{i,j\}$, so we identify the two sets.\\
+
+    As $ \phi $ is an automorphism, $ | \phi(T_{1})| = |T_{1}| $, whence the assumption that $ \phi(T_{1})\sub T_{1} $ implies $ \phi(T_{1}) = T_{1} $. Hence, under the identification of $ T_{1} $ with $ E(K_{n}) $, the function $ \phi\vert_{T_{1}} $ furnishes a bijection $ \phi\vert_{T_{1}}: E(K_{n})\to E(K_{n}) $. We will show that this bijection is induced from a graph isomorphism of $ K_{n} $.\\
+  
+
+    
+    Fix $ i\in \{1,\ldots,n\} $ and suppose that $ \tau, \tau^{\prime}\in T_{1} $ with $ \tau\neq \tau^{\prime} $ and $ i\in \supp(\tau)\cap \supp(\tau^{\prime}) $. Then there are $ j,k \in \{1,\ldots,n\}\setminus\{\} $ with $ j\neq k $such that $ \tau = (i\, j ) $ and $ \tau^{\prime} = (i\, k) $. 
+    \[
+       3 = o(\phi((i\,k\,j))) =  o(\phi(\tau \tau^{\prime})) = o(\phi(\tau) \phi(\tau^{\prime}))
+    \]
+    Note that $ \phi(\tau) $ and $ \phi(\tau^{\prime}) $ are transpositions. If $ \supp(\phi(\tau))\cap \supp(\phi(\tau^{\prime})) = \emptyset $, then $ o(\phi(\tau) \phi(\tau^{\prime})) = 4 $ which contradicts the above equation. Thus $ \supp(\phi(\tau))\cap \supp(\phi(\tau^{\prime})) \neq \emptyset$. If $ |\supp(\phi(\tau))\cap \supp(\phi(\tau^{\prime}))| = 2 $ , then $ \phi(\tau) = \phi(\tau^{\prime}) $ contradicting that $ \phi $ is injective. Thus $ |\supp(\phi(\tau))\cap \supp(\phi(\tau^{\prime}))| = 1 $. \\
+
+    Put simply, the above explanation shows that for any two distinct transpositions $ \tau, \tau^{\prime} $ which share an element, it follows that $ \phi(\tau) $ and $ \phi(\tau^{\prime}) $ also share exactly one element. Rephrasing this inside of $ E(K_{n}) $, for any two distinct edges $ e,e^{\prime} $ which share a vertex, it follows that $ \phi(e) $ and $ \phi(e^{\prime}) $ also share exactly one vertex.\\
+
+
+%    Fix a vertex $ i\in V(K_{n}) $. Then the set $ \mathcal{F}\sub E(K_{n}) $ given by 
+%    \[
+%      \mathcal{F}:= \{\phi(e) : e\in E(K_{n}),\, i\in e\}
+%    \]
+%    is a collection of two element subsets of $ V(K_{n}) $ such that any two distinct elements of $ \mathcal{F} $ have intersection of size $ 1 $ (so nonempty). As $ n\geq 5 > 4 = 2\cdot 2 $ and $ |\mathcal{F}| = n-1  = \binom{n-1}{2-1}$, by the boundary case of Erdos-Ko-Rado theorem it follows that there is some unique $ j \in\bigcap_{e\in \mathcal{F}}e \neq \emptyset$.\\
+%
+%    Another (elementary) way to see this is as follows. 
+%
+    Let $ \mathcal{F}:= \{e\in E(K_{n}): i \text{ is incident with e}\} = \{(i\,j)\in S_{n}: j\in\{1,\ldots, n\}\setminus\{i\})\} $. Then for any distinct $ \tau,\tau^{\prime}\in \mathcal{F} $, $ |\supp(\phi(\tau))\cap \supp(\phi(\tau^{\prime}))| = 1 $. Fix distinct $ e,e^{\prime}\in \mathcal{F} $ and write $ e = (i\,\alpha) $, $ e^{\prime} = (i\, \beta) $ with $i\neq \alpha\neq \beta $. As 
+    \[
+      |\supp(\phi((i\,\alpha))) \cap \supp(\phi((i\,\beta)))| = 1,
+    \]
+    there are $ a\neq b_{1}\neq b_{2} $ in $ \{1,\ldots, n\} $ such that $ \phi((i\,\alpha)) = (a\, b_{1}) $ and $ \phi((i\,\beta)) = (a\, b_{2}) $. Suppose $ f\in \mathcal{F} $ is any other edge/transposition with $ f\neq e,e^{\prime} $. Write $ f = (i\,\gamma) $ where $ \gamma\neq \alpha, \beta, i $. Suppose, for the sake of contradiction, that $ a\not\in \supp(\phi((1\,\gamma))) $.
+    As 
+    \begin{align*}
+      |\supp(\phi((i\,\gamma))) \cap \supp(\phi((i\,\beta)))| &= 1,\\
+      |\supp(\phi((i\, \gamma))) \cap \supp(\phi((i\,\alpha)))| &= 1,
+    \end{align*}
+    it follows that $ \phi((i\,\gamma)) = (b_{1}\,b_{2}) $. Then we may write
+    \[
+      \phi((\alpha\,\beta)) = \phi((i\,\alpha)(i\,\beta)(i\,\alpha)) = (a\,b_{1})(a\,b_{2})(a\,b_{1}) = (b_{1}\, b_{2}) = \phi((i\,\gamma))
+    \]
+    which contradicts the injectivity of $ \phi $. Thus we have shown
+    \[
+      \left|\bigcap_{e\in \mathcal{F}} \phi(e)\right| = 1,
+    \]
+    whence we may define a map $ \Phi: K_{n} \to K_{n} $ by 
+    \[
+      \Phi(i):= \widehat{i} \quad \text{where }\widehat{i}\in\bigcap_{\substack{e\in E(K_{n})\\i\in e}} \phi(e).
+    \]
+    We claim that $ \Phi $ is a graph automorphism. We show injectivity first. Suppose $ 1\neq i\in \{1,\ldots, n\} $. We will show that $ \Phi(1)\neq \Phi(i) $, whence injectivity follows without loss of generality.
+
+    Let $ k = \Phi(1) $ and suppose, for the sake of contradiction, that $ k = \Phi(i) $. Choose $ j\in \{1,\ldots, n\} $ such that $ j\neq 1,i $. Then using the same logic with supports as above, we may write 
+    \begin{align*}
+      \phi((i\,1)) &= (k\,a)\\
+      \phi((i\,j)) &= (k\,b)\\
+      \phi((1\,j)) &= (k\,c)
+    \end{align*}
+    with $ a\neq b\neq c $. Then observe that 
+    \[
+      (k\,b) = \phi((i\,j)) = \phi((i\,1)(1\,j)(i\,1)) = (k\,a)(k\,c)(k\,a) = (a\,c),
+    \]
+    whence $ a\neq b $ implies that $ a = k $, contradicting that $ \phi $ sends transpositions to transpositions. Thus $ \Phi $ is injective, whence size considerations give that $ \Phi $ is bijective.
+
+
+    Fix $ i\neq j\in \{1,\ldots,n\} $. Then as $ i,j \in (i\,j) $, it follows that 
+    \[
+      \Phi(i)=\bigcap_{\substack{e\in E(K_{n})\\i\in e}} \phi(e)\in \phi((i\,j))\quad \text{and}\quad \Phi(j) = \bigcap_{\substack{e\in E(K_{n})\\i\in e}} \phi(e) \in \phi((i\,j)).
+    \]
+    Using the injectivity of $ \Phi $, we see that
+    \begin{align*}
+    \phi((i\,j)) =  (\Phi(i), \Phi(j))  \in E(K_{n}).
+    \end{align*}
+    As $ \phi $ is a bijection on $ E(K_{n}) $, it follows that $ \Phi $ is an automorphism of $ K_{n} $ whence it induces a permutation $ \Phi\in S_{n} $ by considering only the map on vertices. But then, inside $ S_{n} $,
+    \[
+      \phi((i\,j)) = (\Phi(i)\,\Phi(j)) = \Phi (i\,j) \Phi^{-1}
+    \]
+    for all $ i\neq j $, whence $ \phi $ is inner as transpositions generate $ S_{n} $.
+  \end{proof}
+
+  \underline{\textbf{(b)}}: Suppose $\varphi$ is an automorphism. Prove that for all $\sigma_1, \sigma_2 \in S_n$, $\varphi(\sigma_1)$ and $\varphi(\sigma_2)$ are conjugate if and only if $\sigma_1$ and $\sigma_2$ are conjugate.  
+  (This is true for an automorphism of any group.)\\
+
+  \begin{proof}
+    Let $ G $ be any group and $ \phi\in \Aut(G) $. Suppose that $ g_{1},g_{2}\in G $ are conjugate, so there is some $ x\in G $ such that $ g_{1}= xg_{2}x^{-1} $. Then 
+    \begin{align*}
+      \phi(g_{1}) = \phi(xg_{2}x^{-1}) = \phi(x) \phi(g_{2}) \phi(x)^{-1},
+    \end{align*}
+    whence $ \phi(g_{1}) $ and $ \phi(g_{2}) $ are conjugate.\\
+
+    On the other hand, suppose that $ g_{1},g_{2}\in G $ are such that $ \phi(g_{1}) $ and $ \phi(g_{2}) $ are conjugate. Then there is some $ y\in G $ such that $ \phi(g_{1}) = y \phi(g_{2}) y^{-1} $. As $ \phi $ is an automorphism, there is some $ x \in G $ such that $ y = \phi(x) $. Then 
+    \begin{align*}
+      \phi(g_{1}) = y \phi(g_{2}) y^{-1} = \phi(x) \phi(g_{2}) \phi(x)^{-1} = \phi(xg_{2}x^{-1}),
+    \end{align*}
+    whence as $ \phi $ is an automorphism it follows that $ g_{1} = xg_{2}x^{-1} $, so $ g_{1} $ and $ g_{2} $ are conjugate.
+  \end{proof}
+
+  \underline{\textbf{(c)}}: Let $T_k$ be the set of permutations with cycle type
+  \[
+    (2, \dots, 2\ \text{$k$ times},\ 1, \dots, 1\ \text{$n - 2k$ times}).
+  \]
+  For instance, $T_1$ is the set of 2-cycles. Prove that
+  \[
+    \lvert T_k \rvert = \frac{n(n-1)\cdots (n - 2k + 1)}{k! 2^k}
+    \ge \frac{n(n-1)}{2} \cdot \frac{(2k - 2)!}{k! 2^{k-1}},
+  \]
+  for a positive integer $k \le n/2$.\\
+
+  \begin{proof}
+    First choosing the $ n-2k $ 1-cycles gives $ \binom{n}{n-2k} $ choices. Then out of the remaining $ 2k $ elements, we iteratively choose pairs for each cycle, which after correcting for the fact that we do not care about the ordering of the $ k $ pairs we have chosen, gives $ \frac{1}{k!}\binom{2k}{2}\binom{2k-2}{2}\ldots \binom{2k-(2k-2)}{2} $ choices. Hence, in total
+    \begin{align*}
+      |T_{k}| &= \binom{n}{2k} \cdot \frac{1}{k!}\binom{2k}{2}\binom{2k-2}{2}\ldots \binom{2k-(2k-2)}{2}\\
+      &= \frac{n(n-1)\cdots(n-2k+1)}{k!(2k)!} \cdot \frac{2k(2k-1)}{2}\cdot \frac{(2k-2)(2k-3)}{2} \cdots \frac{3\cdot 2}{2} \\
+      &= \frac{n(n-1)\cdots(n-2k+1)}{k!2^{k}}.
+    \end{align*}
+    Now, using that $ k\leq n/2 $ or equivalently $ n\geq 2k $, we estimate
+    \begin{align*}
+      \frac{n(n-1)\cdots(n-2k+1)}{k!2^{k}} &= \frac{n(n-1)}{2}\cdot  \frac{(n-2)(n-3)\cdots (n-2k+1)}{k!2^{k-1}}\\
+      &\geq \frac{n(n-1)}{2} \cdot\frac{(2k-2)(2k-3)\cdots (2k-2k+1)}{k!2^{k-1}} = \frac{n(n-1)}{2}\cdot \frac{(2k-2)!}{k!2^{k-1}}.
+    \end{align*}
+  
+  \end{proof}
+
+  \underline{\textbf{(d)}}: Prove that for every $\varphi \in \operatorname{Aut}(S_n)$, there exists an integer $k$ such that $\varphi(T_1) = T_k$.
+
+  \begin{proof}
+    Fix $ \phi\in \Aut(S_{n}) $ Let $ \sigma\in T_{1}$ and suppose that $ \phi(\sigma) $ has cycle type $ l_{1}\leq l_{2}\leq \cdots\leq l_{m} $. Then, as $ \phi $ is an automorphism, 
+    \[
+      2 = o(\sigma) = o(\phi(\sigma)) = \lcm(l_{1},l_{2},\ldots, l_{m}),
+    \]
+    whence each $ l_{i}\in \{1,2\} $ and at least one $ l_{i} $ is equal to 2. Thus, $ \phi(\sigma)\in T_{k} $ for some $ k\in \N $. As every element in $ T_{1} $  is conjugate, it follows by part (b) that every element in $ \phi(T_{1}) $  is conjugate. Thus, every element in $ \phi(T_{1}) $ has the same cycle type, namely that of $ \sigma $, so $ \phi(T_{1})\sub T_{k} $.\\
+
+    Now fix $ \sigma\not \in T_{1} $. Suppose, for the sake of contradiction, that $ \phi(\sigma)\in T_{k} $. Fix $ \tau\in T_{1} $. As $ T_{k} $ is a conjugacy class, $ \phi(\sigma) $ is conjugate to $ \phi(\tau) $, whence $ \sigma $ is conjugate to $ \tau $. As $ T_{1} $ is a conjugacy class, it follows that $ \sigma\in T_{1} $, which is a contradiction. Thus $ \sigma\not \in T_{k} $.
+
+  \end{proof}
+
+  \underline{\textbf{(e)}}: Prove that for every $\varphi \in \operatorname{Aut}(S_n)$, $\varphi(T_1) = T_1$.  
+  Deduce that $\operatorname{Aut}(S_n) = \operatorname{Inn}(S_n)$.
+
+  \begin{proof}
+    Fix $ \phi\in \Aut(S_{n}) $. Then there is some $ k\in \N $ such that $ \phi(T_{1}) = T_{k} $. Then, we compute
+    \begin{align*}
+      |T_{1}| = | \phi(T_{1})| = |T_{k}| &\geq \frac{n(n-1)}{2} \cdot \frac{(2k-2)!}{k! 2^{k-1}}\\
+      &= |T_{1}| \cdot\frac{(2k-2)!}{k! 2^{k-1}}
+    \end{align*}
+    whence it must hold that
+    \begin{align*}
+      1 \geq \frac{(2k-2)!}{k! 2^{k-1}}.
+    \end{align*}
+    Suppose, for the sake of contradiction, that $ k>1 $. Then 
+    \begin{align*}
+      1 \geq \frac{(2k-2)!}{k! 2^{k-1}} &= \frac{2(k-1)(2k-3)2(k-2)(2k-5)\cdots2(2)\cdot 3\cdot 2(1) \cdot 1}{k!2^{k-1}}\\
+      &=\frac{2^{k-1}(k-1)! (2k-3)(2k-5)\cdots5\cdot3\cdot1}{2^{k-1}k!} \\
+      &=\frac{(2k-3)(2k-5)\cdots5\cdot3\cdot1}{k} \\
+      &=\left(2-\frac{3}{k}\right)(2k-5)\cdots5\cdot3 \\
+      &\geq\lr{2-\frac{6}{n}}(2k-5)\cdots5\cdot3 \\
+    \end{align*}
+    which is absurd as $ n\geq 7 $ implies that $ \lr{2-\frac{6}{n}} >1 $. \\
+
+    Thus we have shown $ \phi(T_{1}) = T_{1} $. Hence, by part (a), $ \phi\in Inn(S_{n}) $.
+  \end{proof}
+
+  \textit{Hint.} Consider the complete graph with $n$ vertices. Notice that there is a bijection between 2-cycles and edges of this graph.  
+  If an automorphism $\varphi$ sends 2-cycles to 2-cycles, then it induces a bijection on the edges of this graph.  
+  Observe that two 2-cycles $\tau_1$ and $\tau_2$ do not commute if and only if the corresponding edges of $\tau_1$ and $\tau_2$ have a vertex in common.  
+  Use this property to show that the induced map on edges gives an automorphism of the graph, and hence a permutation $\sigma$ on the set of vertices.  
+  Prove that $\varphi$ is conjugation by $\sigma$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  For every group $G$, the group of outer automorphisms is
+  \[
+    \operatorname{Out}(G) := \frac{\operatorname{Aut}(G)}{\operatorname{Inn}(G)}.
+  \]
+  Let $\operatorname{Cl}(G)$ be the set of conjugacy classes of $G$.  
+
+  \underline{\textbf{(a)}}: Prove that
+  \[
+    (\theta \operatorname{Inn}(G)) \cdot [a] := [\theta(a)]
+  \]
+  is a well-defined action of $\operatorname{Out}(G)$ on $\operatorname{Cl}(G)$, where $[g]$ denotes the conjugacy class of $g$ in $G$.\\
+
+  \underline{\textbf{(b)}}: Argue why
+  \[
+    f : \operatorname{Cl}(G) \to \mathbb{Z} \times \mathbb{Z}, \quad f([g]) := (o(g), \lvert [g] \rvert)
+  \]
+  is fixed along an $\operatorname{Out}(G)$-orbit.\\
+
+  \underline{\textbf{(c)}}: Prove that $\operatorname{Aut}(S_n) \cong \operatorname{Inn}(S_n)$ if $n \ne 6$.\\
+
+  \underline{\textbf{(d)}}: Prove that $\operatorname{Aut}(S_n) \cong S_n$ if $n \ne 2, 6$.
+
+  \textit{Hint.} Use an argument similar to part (a) of Problem 2.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Suppose $n$ is an integer at least $2$.
+
+  \underline{\textbf{(a)}}: Prove that $S_n = \langle (1\,2), (1\,2\,\cdots\,n) \rangle$.  
+  (This means the smallest subgroup of $S_n$ containing $(1\,2)$ and $(1\,2\,\cdots\,n)$ is $S_n$.)\\
+
+  \underline{\textbf{(b)}}: Suppose $p$ is prime, $\tau \in S_p$ is a 2-cycle, and $\sigma \in S_p$ is an element of order $p$.  
+  Prove that $S_p = \langle \tau, \sigma \rangle$.
+
+  \textit{Hint.} Let $\gamma := (1\,2)(1\,2\,\cdots\,n) = (2\,3\,\cdots\,n)$.  
+  Consider $\gamma^i (1\,2) \gamma^{-i}$ and use this to show that all 2-cycles are in the group generated by these elements.  
+
+  For the second part, think of permutations of $\mathbb{Z}/p\mathbb{Z} = \{0, \dots, p-1\}$.  
+  Notice that an element of order $p$ is a $p$-cycle. After relabelling, assume that
+  \[
+    \sigma : \mathbb{Z}/p\mathbb{Z} \to \mathbb{Z}/p\mathbb{Z}, \quad \sigma(x) := x + 1.
+  \]
+  After another relabelling, assume $\tau = (0\, a)$ for some $a \ne 0$.  
+  Consider $\sigma^i \tau \sigma^{-i} = (i\, a+i)$. Use this to obtain that $(ka, (k+1)a)$ is in the group for every $k \in (\mathbb{Z}/p\mathbb{Z})^\times$.  
+  Inductively show that $(0, ka)$ is in this group for every $k \in (\mathbb{Z}/p\mathbb{Z})^\times$.  
+  Deduce that $(0\,1)$ is in this group. Use the first part.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  \textbf{(15-puzzle)}  
+  In a 15-puzzle, a player can rearrange the numbers 1–15 by sliding the numbers into the empty spot.  
+
+  Starting with the position
+  \[
+  \begin{matrix}
+  1 & 2 & 3 & 4\\
+  5 & 6 & 7 & 8\\
+  9 & 10 & 11 & 12\\
+  13 & 14 & 15 & \, 
+  \end{matrix}
+  \]
+  can we get to the following position?
+  \[
+  \begin{matrix}
+  2 & 1 & 3 & 4\\
+  5 & 6 & 7 & 8\\
+  9 & 10 & 11 & 12\\
+  13 & 14 & 15 & \,
+  \end{matrix}
+  \]
+
+  \textit{Hint.} Think about each position in the 15-puzzle as a permutation in $S_{16}$.  
+  Every sliding move is a 2-cycle. Argue why we need an even number of sliding moves to go from the initial position to the second given position.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Suppose $G$ is a finite group of order $2^k m$ where $k$ is a positive integer and $m$ is odd.  
+  Suppose $G$ has a cyclic Sylow 2-subgroup. Prove that $G$ has a characteristic subgroup of order $m$.  
+
+  \textit{You are not allowed to use Burnside’s $p$-complement theorem for this problem.}
+
+  \textit{Hint.} Suppose $\varphi : G \to S_G$ is the embedding given by the action of $G$ on itself by left translations.  
+  Prove that $\varepsilon \circ \varphi : G \to \{\pm 1\}$ is not trivial.  
+  Show that $\ker(\varepsilon \circ \varphi)$ is a characteristic subgroup of index $2$.  
+  By induction, prove that for every integer $1 \le i \le k$, $G$ has a characteristic subgroup of index $2^i$.
+\end{homeworkProblem}
+
+\end{document}

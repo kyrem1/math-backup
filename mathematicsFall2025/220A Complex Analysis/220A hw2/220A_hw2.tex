@@ -1,0 +1,249 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{220A Homework 2}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+% Conway Ch.II.3:1, 4, 8; II.4:1, 4, 6; II.5:5.
+
+
+\begin{homeworkProblem}
+  Prove the following statements.\ \\
+  \underline{\textbf{(a)}}: A set is closed if and only if it contains all its limit points.
+
+  \begin{proof}
+    Here we use the definition of closedness as being the complement of an open set.\\
+
+    \underline{($ \implies $)}: Suppose that $ A\sub X $ is closed, so $ X\setminus A $ is open. Suppose, for the sake of contradiction, that $ x\in X\setminus A $ is a limit point of $ A $. Then for all $ \eps>0 $, $ (B_{\eps}(x)\setminus\{x\})\cap A \neq \emptyset $, whence $ B_{\eps}(x)\not\sub X\setminus A $. Thus no ball around $ x $ can be contained in $ X\setminus A $, contradicting that $ X\setminus A $ is open.\\
+
+    \underline{($ \impliedby $)}:  We proceed by contraposition. Suppose that $ A\sub X $ is not closed. Then by definition $ X\setminus A $ is not open, so there exists some $ x\in X\setminus A $ such that $ B_{\eps}(x)\not \sub X\setminus A $ for all $ \eps>0 $. So for all $ \eps>0 $, there is some $ x_{\eps}\in B_{\eps}(x) $ with $ x_{\eps}\not \in X\setminus A $, i.e. $ x_{\eps}\in A $. Thus $ x\in X\setminus A $ is a limit point of $ A $ by definition, whence we have found a limit point of $ A $ which is not in $ A $.
+  \end{proof}
+
+  \underline{\textbf{(b)}}: If $ A\sub X $ then $ \cls{A} = A\cup\{x:x\text{ is a limit point of }A\} $.
+
+  \begin{proof}
+    By definition
+    \[
+      \cls{A} = \bigcap_{\substack{C\,\supseteq A\\C\text{ closed}}}C.
+    \]
+    As this family is nonempty (since $ X $ is closed and $ X\supseteq A $), it follows that $ A\sub \cls{A} $. Suppose that $ x $ is a limit point of $ A $. Let $ C\sub X $ be a closed set such that $ A\sub C $. As $ x $ is a limit point of $ A $, it is also a limit point of $ C $, whence by part (a) we have that $ x\in C $. As $ C $ was arbitrary, it follows that $ x\in \cls{A} $. Thus $ A\cup \{x: x \text{ is a limit point of }A\}\sub \cls{A} $.\\
+
+    On the other hand suppose $ x\in \cls{A}\setminus A $. We wish to show that $ x $ is a limit point of $ A $. Let $ \eps>0 $. It suffices to show that $ A\cap (B_{\eps}(x)\setminus \{x\}) \neq \emptyset $. As $ x\not \in A $, this is equivalent to showing that $ A\cap B_{\eps}(x) \neq \emptyset $.\\
+
+    Suppose, for the sake of contradiction, that $ A\cap B_{\eps}(x) = \emptyset $. Then $ A\sub X\setminus B_{\eps}(x) $, which is a closed subset of $ X $, so by definition $ \cls{A}\sub X\setminus B_{\eps}(x) $. By assumption, $ x\in \cls{A} $, but $ x\not\in X\setminus B_{\eps}(x) $, which gives a contradiction.
+  \end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Let $z_n, z$ be points in $\mathbb{C}$ and let $d$ be the metric on $\mathbb{C}_\infty$.  
+  Show that $\lvert z_n - z \rvert \to 0$ if and only if $d(z_n, z) \to 0$.  
+  Also show that if $\lvert z_n \rvert \to \infty$ then $\{z_n\}$ is Cauchy in $\mathbb{C}_\infty$.  
+  (Must $\{z_n\}$ converge in $\mathbb{C}_\infty$?)
+
+  \begin{proof}
+    \[
+      d(z_{n},z) = \frac{2|z_{n}-z|}{\sqrt{(1+|z_{n}|^{2})(1+|z|^{2})}}
+    \]
+    Suppose that $ |z_{n}-z|\xrightarrow{n\to \infty}0 $. Noting that for all $ w\in \C $, $ \sqrt{1+|w|^{2}}\geq 1 $, it follows that 
+    \begin{align*}
+      d(z_{n},z) = \frac{2|z_{n}-z|}{\sqrt{(1+|z_{n}|^{2})(1+|z|^{2})}} \leq 2|z_{n}-z|\xrightarrow{n\to\infty}0.
+    \end{align*}
+    Now suppose that $ d(z_{n},z) \xrightarrow{n\to\infty}0 $. Let $ Z_{n}, Z\in \R^{3} $ be the points in the Riemann sphere corresponding to $ z_{n},z $ respectively. Then 
+    \[
+      \norm{Z_{n}-Z}_{2} = d(z_{n},z)\xrightarrow{n\to\infty}0.
+    \]
+    Letting $ N=(0,0,1) $ be the north pole in the Riemann sphere,  as $ z\in \C $ we have $ \norm{Z-N}_{2} >0 $. Choose $ M\in \N $ such that for $ n\geq M $, we have $ \norm{Z_{n}-Z}_{2} < \frac{1}{2}\norm{Z-N} $. Then for $ n\geq M $, by the reverse triangle inequality we have
+    \[
+      \norm{Z_{n}-N}_{2} \geq \norm{Z-N}_{2}- \norm{Z_{n}-Z}_{2} > \frac{1}{2}\norm{Z-N}_{2} >0.
+    \]
+    Let $ b:= \frac{1}{2}\norm{Z-N}_{2}>0 $. Then observe that for $ n\geq M $, 
+    \[
+      b< \norm{Z_{n}-N}_{2} = d(z_{n},\infty) = \frac{2}{\sqrt{1+|z_{n}|^2}},
+    \]
+    whence it follows that 
+    \begin{align*}
+      d(z_{n},z) = \frac{2|z_{n}-z|}{\sqrt{1+|z_{n}|^{2}}\sqrt{1+|z|^{2}}} &= \frac{2}{\sqrt{1+|z_{n}|^{2}}}\cdot \frac{1}{\sqrt{1+|z|^{2}}} \cdot |z_{n}-z|\\
+      &>\frac{b}{\sqrt{1+|z|^{2}}}\cdot |z_{n}-z|
+    \end{align*}
+    Fix $ \eps>0 $ and choose $ L\in\N $ such that for all $ n\geq L $, 
+    \[
+      d(z_{n},z) < \frac{b \eps}{\sqrt{1+|z|^{2}}}.
+    \]
+    Then for $ n\geq \max\{M,L\} $, we have 
+    \[
+      |z_{n}-z| < \frac{\sqrt{1+|z|^{2}}}{b}\cdot d(z_{n},z) < \eps,
+    \]
+    thus $ |z_{n}-z|\xrightarrow{n\to \infty}0 $.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Suppose $\{x_n\}$ is a Cauchy sequence and $\{x_{n_k}\}$ is a subsequence that is convergent.  
+  Show that $\{x_n\}$ must be convergent.
+
+\begin{proof}
+  Let $ x_{n_{k}}\xrightarrow{k\to\infty}x $ in the metric $ d $. Fix $ \eps>0 $. Choose $ N\in\N $ such that for all $ r,s\geq N $, $ d(x_{r},x_{s})<\eps/2 $. Chooes $ M\in \N $ such that for all $ m\geq M $, $ d(x_{n_{m}},x) <\eps/2 $. Then for all $ k\geq N $, choosing $ r $ such that $ r\geq M $ and $ n_{r}\geq N $, we have
+  \begin{align*}
+    d(x_{k},x) \leq d(x_{k},x_{n_{r}}) + d(x_{n_{r}},x) < \eps/2+\eps/2 =\eps.
+  \end{align*}
+  Thus $ x_{n}\xrightarrow{n\to\infty}x $ in the metric $ d $.
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Prove the converse direction in the following statement. A set $ K\sub X $ is compact if and only if every collection $ \mathscr{F} $ of closed subsets of $ K $ with the finite intersection property has $ \bigcap \{F: F\in \mathscr{F}\} \neq \emptyset $.
+
+\begin{proof}
+  Suppose that every collection of closed subsets of $ K $ with the finite intersection property has nonempty total intersection. Let $ \{U_{i}\}_{i\in I} $ be an open cover of $ K $ where $ I $ is some index set. Suppose, for the sake of contradiction, that for every $ J\sub I $ finite, we have $ K \not \sub \bigcup_{j\in J}U_{j} $.\\
+
+  Consider the collection $ \mathscr{F}:=\{F_{i}\}_{i\in I} $ where $ F_{i}:= K\cap (X\setminus U_{i}) $. Each $ F_{i} $ is a closed subset of $ K $. For any subset $ J\sub I $, using De Morgan's law we compute
+  \begin{align*}
+    \bigcap_{j\in J} F_{j} &= \bigcap_{j\in J} K\cap (X\setminus U_{j}) \\
+    &= K\cap \bigcap_{j\in J} (X\setminus U_{j}) = K\cap \left(X\setminus \bigcap_{j\in J}U_{j} \right).
+  \end{align*}
+  For finite subsets $ J\sub I $, by assumption we have $ K\not\sub \bigcup_{j\in J}  U_{j}$ which is equivalent to the statement that $\bigcap_{j\in J}F_{j} = K\cap \left(X\setminus \bigcap_{j\in J}U_{j} \right)\neq \emptyset$. Thus the collection $ \mathscr{F} $ has the finite intersection property, whence by assumption
+  \begin{align*}
+    \emptyset \neq \bigcap_{i\in I} F_{i} = K\cap \left(X\setminus \bigcap_{i\in I}U_{i} \right),
+  \end{align*}
+  which is equivalent to the statement that $ K\not\sub\bigcup_{i\in I}U_{i} $, contradicting the assumption that $ \{U_{i}\}_{i\in I} $ is an open cover of $ K $. Thus $ \{U_{i}\}_{i\in I} $ has a finite subcover of $ K $. As the choice of cover was arbitrary, it follows by definition that $ K $ is compact.
+\end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Show that the union of a finite number of compact sets is compact.
+
+\begin{proof}
+  Suppose $ K_{1},\ldots, K_{n} $ are compact subsets of $ X $ and consider the set $ K:=\bigcup_{r=1}^{n}K_{r} $. Let $ \mathcal{U} $ be an open cover of $ K $. For $ 1\leq i\leq n $, we have that $ \mathcal{U} $ is also an open cover of $ K_{i} $, so there is some finite subcover $ \widetilde{\mathcal{U}}^{(i)}\sub \mathcal{U} $ of $ K_{i} $.\\
+
+  Consider the collection $ \widetilde{\mathcal{U}} := \bigcup_{i=1}^{n} \widetilde{\mathcal{U}}^{(i)}$. Note that 
+  \[
+    |\widetilde{\mathcal{U}}| \leq \sum_{i=1}^{n} |\widetilde{\mathcal{U}}^{(i)}| <+\infty
+  \]
+  so $ \widetilde{\mathcal{U}} $ is a finite subcollection of $ \mathcal{U} $. Moreover, we note that
+  \[
+    \bigcup_{U\in\, \widetilde{\mathcal{U}}} U = \bigcup_{i=1}^{n}\bigcup_{U\in\, \widetilde{\mathcal{U}}^{(i)}} U \supseteq \bigcup_{i=1}^{n} K_{i} = K,
+  \]
+  whence $ \widetilde{\mathcal{U}}\sub \mathcal{U} $ is in fact a finite subcover of $ K $.
+\end{proof}
+  
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Show that the closure of a totally bounded set is totally bounded.
+
+\begin{proof}
+  Recall that a set $ A\sub X $ is \emph{totally bounded} if for every $ \eps>0 $, there is some $ n\in \N $ and points $ x_{1},\ldots, x_{n}\in X $ such that $ A\sub \bigcup_{i=1}^{n}B_{\eps}(x_{i}) $.\\
+
+  Suppose that $ A\sub X $ is totally bounded, and fix $ \eps>0 $. Let $ x_{1},\ldots, x_{n}\in X $ be such that $ A\sub \bigcup_{i=1}^{n}B_{\eps/2}(x_{i}) $. Let $ p\in \cls{A} $. If $ p\in A $, then we are done, so suppose that $ p\not\in A $. Then by problem 1(b), $ p $ is a limit point of $ A $, whence by definition $A\cap (B_{\eps/2}(p)\setminus \{p\}) \neq \emptyset $.\\
+
+  Let $ x\in A\cap (B_{\eps/2}(p)\setminus\{p\}) $. As $ x\in A $, there is some $ 1\leq k\leq n $ such that $ x\in B_{\eps/2}(x_{k}) $. Finally, we estimate
+  \begin{align*}
+    d(p , x_{k}) \leq d(p,x) + d(x,x_{k}) < \frac{\eps}{2}+ \frac{\eps}{2} = \eps,
+  \end{align*}
+  so $ p\in B_{\eps}(x_{k}) $. Hence \[ \{p:p \text{ is a limit point of }A\}\sub \bigcup_{i=1}^{n}B_{\eps}(x_{i}).\] By assumption, 
+  \[
+    A\sub \bigcup_{i=1}^{n} B_{\eps/2}(x_{i}) \sub \bigcup_{i=1}^{n}B_{\eps}(x_{i}),
+  \] 
+  whence by problem 1(b),
+  \[
+    \cls{A} = A\cup \{p:p \text{ is a limit point of }A\} \sub \bigcup_{i=1}^{n} B_{\eps}(x_{i}).
+  \]
+
+
+
+\end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Suppose that $ f:X\to \Omega $ is uniformly continuous; show that if $ \{x_{n}\} $ is a Cauchy sequence in $ X $ then $ \{f(x_{n})\} $ is a Cauchy sequence in $ \Omega $. Is this still true if we only assume $ f $ is continuous?
+
+\begin{proof}
+  Let $ d,\rho $ be the metrics topologizing $ X $ and $ \Omega $ respectively.
+  Suppose that $ (x_{n})_{n=1}^{\infty} $ is a Cauchy sequence in $ X $. Fix $ \eps>0 $. By uniform continuity, there is some $ \delta>0 $ such that, for $ x,y\in X $, we have $ \rho(f(x),f(y))<\eps $ whenever $ d(x,y)<\delta $.\\
+
+  As $ (x_{n})_{n=1}^{\infty} $ is Cauchy in $ X $, there is some $ N\in \N $ such that for $ r,s\geq N $, we have $ d(x_{r},x_{s})< \delta $. Hence, it follows that for $ r,s\geq N $, we have $ \rho(f(x_{r}), f(x_{s}))<\eps $. Hence $ (f(x_{n}))_{n=1}^{\infty} $ is a Cauchy sequence in $ \Omega $.\\
+
+  \underline{(Counterexample for just continuity)}: We claim that this is not necessarily true when $ f $ is just continuous. Let $ X = (0,\infty) $ with the restriction of the absolute value metric on $ \R $, and $ \Omega = \R $ with the absolute value metric.\\
+
+  Let $ f:(0,\infty)\to \R $ be given by $ f(x) = \frac{1}{x^{2}} $. This function is continuous. Consider $ x_{n} := \frac{1}{n} $ for $ n\in \N $. To see that this sequence is Cauchy, fix $ \eps>0 $. By the archimedean principle, there is some $ N\in \N $ such that $ \frac{1}{N} <\frac{\eps}{2} $. Then  for $ n,m \geq N $, we have 
+  \[
+    |x_{n}-x_{m}| = \left|\frac{1}{n} - \frac{1}{m}\right| \leq \left|\frac{1}{n}\right| + \left|\frac{1}{m}\right| \leq 2\left|\frac{1}{N}\right| < \eps.
+  \]
+
+  Now note that $ f(x_{n}) = n^{2} $. For $ n\in \N $, observe that
+  \begin{align*}
+    |f(x_{n+1})-f(x_{n})| = |(n+1)^{2}- n^{2}| = |2n+1| \geq 1,
+  \end{align*}
+  so $ (f(x_{n}))_{n=1}^{\infty} $ cannot be Cauchy.
+\end{proof}
+
+\end{homeworkProblem}
+
+
+\end{document}
+
+
+

@@ -1,0 +1,408 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{220A Homework 3}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+% Conway, Ch: II.5:7; II.6:1; III.1:5, 7; III.2:1, 3, 19.
+\begin{homeworkProblem}
+ Let $ G $ be an open subset of $ \C $ and $ P $ a polygon in $ G $ from $ a $ to $ b $. Use Theorems 5.15 and 5.17 to show that there is a polygon $ Q\sub G $ from $ a $ to $ b $ which is composed of line segments which are parallel to either the real or imaginary axes.
+
+ \begin{proof}
+   Without loss of generality, assume that $ P $ is non self-intersecting (removing violating portions still results in a polygon from $ a $ to $ b $). Write $ P = \bigcup_{k=0}^{n-1} [a_{k}, a_{k+1}] $ where $ a_{0} = a $ and $ a_{n} = 0 $. Let $ p_{k}:[0,1] \to \C $ be given by $ p_{k}(t) := (1-t)a_{k} + ta_{k+1} $, so $ p_{k}([0,1]) = [a_{k},a_{k+1}] \sub G $.  By theorem  5.15, as $ [0,1] $  is compact, $ p_{k } $ is uniformly continuous. \\
+
+   As $ [0,1] $ is compact, each $ p_{k}([0,1]) = [a_{k}, a_{k+1}] $ is compact whence $ P $ is compact. As $ G $ is open, $ G^{c} $ is closed and $ G^{c}\cap P = \emptyset $ by assumption, so theorem 5.17 implies 
+   \[
+     \eps := d(G^{c},P) >0.
+   \]
+   Fix $ k\in \{0,\ldots, n-1\} $, and for brevity write $ p=p_{k} $. As $ p $ is uniformly continuous, there is some $ \delta>0 $ such that $ |t-s| < \delta $ implies $ |p(t) - p(s)| < \eps $. Now choose $ m\in \N $  and $ 0 = t_{0}< t_{1} < \cdots < t_{m} = 1  $ such that $ |t_{l+1}- t_{l}| < \delta $ for all $ l\in \{0, \ldots, m-1\} $, whence 
+   \[
+     [0,1] = \bigcup_{l=0}^{m-1} [t_{l},t_{l+1}].
+   \]
+   %Fix $ l\in \{0,\ldots, m-1\} $, and set $ z_{l}:= \Re(p(t_{l+1}) + i\Im(p(t_{l})) $. Then observe that
+   %\begin{align*}
+   %  |z_{l} - p(t_{l})| = |\Re(p(t_{l+1} - p(t_{l}))| \leq |p(t_{l+1}) - p(t_{l})| < \eps,\\
+   %  |z_{l} - p(t_{l+1})| = |\Im(p(t_{l+1} - p(t_{l}))| \leq |p(t_{l+1}) - p(t_{l})| < \eps.
+   %\end{align*}
+   %As $ \eps = d(G^{c},P) $ and $ p(t_{l}), p(t_{l+1}) \in P $, it follows that $ z_{l}\not \in G^{c} $ or equivalently that $ z_{l}\in \C $.
+
+   Fix $ l\in \{0,\ldots, m-1\} $, and set $ z_{l}:= \Re(p(t_{l+1}) + i\Im(p(t_{l})) $. Let $ t\in [0,1] $ and observe that both 
+   \begin{align*}
+     |(1-t)p(t_{l}) +t z_{l} - p(t_{l})| &= |t\cdot(z_{l} - p(t_{l})) | \\
+     &= t\cdot|\Re(p(t_{l+1})-p(t_{l}))| \\
+     &\leq t\cdot|p(t_{l+1})-p(t_{l})|  < t \eps \leq \eps,
+   \end{align*}
+   and 
+    \begin{align*}
+     |(1-t)p(t_{l+1}) +t z_{l} - p(t_{l+1})| &= |t\cdot(z_{l} - p(t_{l+1})) | \\
+     &= t\cdot|i\Im(p(t_{l}-p(t_{l+1})| \\
+     &\leq t\cdot|p(t_{l})-p(t_{l+1})|  < t \eps \leq \eps.
+   \end{align*}
+   As $ \eps = d(G^{c},P) $ and $ p(t_{l}), p(t_{l+1}) \in P $, it follows for $ t\in [0,1] $ that $ (1-t)p(t_{l}) + tz_{l} \in G $ and $ (1-t)p(t_{l+1}) + tz_{l} \in G $, or equivalently that
+   \[
+     [p(t_{l}), z_{l}],\,[z_{l}, p(t_{l+1})] \sub G .
+   \]
+   Noting that these paths are parallel to the real and imaginary axes respectively, and their union is a polygon from $ p(t_{l}) $ to $ p(t_{l+1}) $, it follows that we may replace each segment $ [a_{k},a_{k+1}] $  with a finite sequence of horizontal and vertical paths inside $ G $, whence we may do the same for the whole path $ P $.
+ \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+Let $ (f_{n}) $ be a sequence of uniformly continuous functions from $ (X,d) $ into $ (\Omega, \rho) $ and suppose that $ f = \text{unif-}\lim f_{n} $ exists. Prove that $ f $ is uniformly continuous. If each $ f_{n} $ is Lipschitz with constant $ M_{n} $ and $ \sup_{n\in \N}M_{n} <+\infty $, show that $ f $ is a Lipschitz function. If $ \sup_{n\in \N}M_{n} = +\infty $, show that $ f $ may fail to be Lipschitz.
+
+\begin{proof}
+  Let $ \eps>0 $. As $ f_{n}\to f $ uniformly, there is some $ N\in \N $ such that for all $ n\geq N $,
+  \[
+    \sup_{x\in X} \rho(f(x), f_{n}(x)) < \frac{\eps}{3}.
+  \]
+  Fix $ n\geq N $, and note that as $ f_{n} $ is uniformly continuous, there is some $ \delta>0 $ such that for all $ x,y\in X $ with $ d(x,y)<\delta $, we have $ \rho(f_{n}(x), f_{n}(y)) < \frac{\eps}{3}$. Then for any $ x,y\in X $ with $ d(x,y)<\delta $, we have 
+  \begin{align*}
+   \rho(f(x), f(y)) \leq \rho(f(x), f_{n}(x)) + \rho(f_{n}(x), f_{n}(y)) + \rho(f_{n}(y), f(y))  < \frac{\eps}{3}+ \frac{\eps}{3} + \frac{\eps}{3} = \eps.
+  \end{align*}
+  Thus $ f $ is uniformly continuous.\\
+
+  Now suppose that each $ f_{n} $ is also Lipschitz with constant $ M_{n} $ and $ M:=\sup_{n\in\N}M_{n}< +\infty $. Fix $ \eps>0 $ and choose $ N\in \N $ such that for all $ n\geq N $ we have
+  \[
+    \sup_{x\in X} \rho(f(x), f_{n}(x)) < \frac{\eps}{2}.
+  \]
+
+  Fixing $ x,y\in X $ and $ n\geq N $, then we have 
+  \begin{align*}
+    \rho(f(x), f(y)) &\leq \rho(f(x), f_{n}(x)) + \rho(f_{n}(x), f_{n}(y)) + \rho(f_{n}(y), f(y))  \\
+    &\leq \frac{\eps}{2}+   M_{n}d(x,y) +\frac{\eps}{2} < \eps + Md(x,y).
+  \end{align*}
+  As $ \eps>0 $ was arbitrary, it follows that 
+  \[
+    \rho(f(x), f(y)) \leq M d(x,y),
+  \]
+  so $ f $ is Lipschitz. \\
+
+
+  \underline{\emph{Unbounded Lipschitz constant counterexample}}:
+  Write $ L(f) $ for the Lipschitz constant of $ f $, namely
+  \[
+    L(f) = \sup_{x\neq y} \frac{\rho(f(x),f(y))}{d(x,y)}.
+  \]
+
+  Let $ (X,d) = ([0,1] ,|\cdot|) $ and $ (\Omega,\rho) = (\R, |\cdot|) $. So we are considering the Banach space $ B:= C([0,1]) $ with the supremum norm. Note that as $ [0,1] $ is compact, all elements of $ B $ are uniformly continuous. Let $ f\in B $ be given by $ f(x) = \sqrt{x} $.  \\
+
+  Suppose, for the sake of contradiction, that $ L(f) <+\infty $. Then, for all $ x\in (0,1] $, we have 
+  \begin{align*}
+    \frac{1}{\sqrt{x}} = \frac{|\sqrt{x}-0|}{|x-0|}  \leq L(f),
+  \end{align*}
+  which is absurd as $ \frac{1}{\sqrt{x}}\to +\infty $  as $ x\to 0 $. Thus $ f $ is not Lipschitz continuous, but is uniformly continuous as $ [0,1] $ is compact.\\
+
+  Let $ P\sub B $ be the set of polynomial functions on $ [0,1] $. By the Weierstrass approximation theorem, $ \cls{P}^{\norm{\cdot}_{\sup}} = B $, so there is a sequence of polynomial functions $ f_{n}\in B $ such that $ \norm{f_{n}-f}_{\sup} \xrightarrow{n\to\infty}0 $, i.e. $ f_{n}\to f $ uniformly.\\
+
+  As polynomial functions are Lipschitz on bounded subsets of $ \R $, each $ f_{n} $ is Lipschitz. Suppose, for the sake of contradiction, that $ \sup_{n\in \N} L(f_{n}) <+\infty $. Then by the statement we have proven above, noting that each $ f_{n} $  is uniformly continuous, we have $ L(f)<+\infty $, which contradicts what we have shown. Thus $ \sup_{n\in \N} L(f_{n}) = +\infty $
+\end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+If $ (a_{n}) $ is a convergent sequence in $ \R $ and $ a = \lim_{n\to\infty} a_{n} $, show that $ \liminf a_{n} = \limsup a_{n} $.
+\begin{proof}
+  We will show that $ \limsup a_{n} = a $ and $ \liminf a_{n} = a$. We are operating under the definitions
+  \begin{align*}
+    \limsup_{n\to \infty} a_{n} := \lim_{n\to \infty}\left(\sup_{k\geq n} a_{k}\right)\\
+    \liminf_{n\to \infty} a_{n} := \lim_{n\to \infty}\left(\inf_{k\geq n} a_{k}\right).
+  \end{align*}
+  %(which is a bad definition as $ \limsup $ and $ \liminf $ functionals are required to define the $ \lim $ functional, but whatever).\\
+
+  Fix $ \eps > 0 $. As $a = \lim_{n\to \infty} a_{n}$, there is some $ N\in \N $ such that for $ n\geq N $ we have 
+  \[
+    |a_{n}-a| < \eps.
+  \]
+  Equivalently, we may write this for $ n\geq N $ as 
+  \begin{align*}
+    a-\eps < a_{n} < a+ \eps.
+  \end{align*}
+  Fixing $ n\geq N $ for the moment, $ k\geq n $ implies $ k\geq N $, whence by definitions of $ \sup $ and $ \inf $ we have that
+  \begin{align*}
+    a-\eps < &\sup_{k\geq n} a_{k} \leq a+ \eps\\
+    a-\eps \leq &\inf_{k\geq n} a_{k} < a+ \eps.
+  \end{align*}
+  Equivalently, we may write these inequalities as 
+  \begin{align*}
+    \left|a - \sup_{k\geq n} a_{k}\right| \leq \eps\\
+    \left|a - \inf_{k\geq n} a_{k}\right| \leq \eps
+  \end{align*}
+  whence, as $ \eps>0 $ was arbitrary, $$\limsup_{n\to \infty} a_{n} = \lim_{n\to\infty}\lr{\sup_{k\geq n}a_{k}} = a = \lim_{n\to\infty }\lr{\inf_{k\geq n}a_{k}} = \liminf_{n\to\infty}a_{n}. $$
+
+\end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+ Show that the radius of convergence of the power series 
+ \[
+   \sum_{n=1}^{\infty}\frac{(-1)^{n}}{n} z^{n(n+1)}
+ \]
+ is $ 1 $, and discuss convergence for $ z= 1 $, $ -1 $, and $ i $.
+
+\begin{proof}[Solution]
+  \begin{align*}
+    \sum_{n=1}^{\infty} \frac{(-1)^{n}}{n} z^{n^{2}+n}
+  \end{align*}  
+  \[
+    a_{n}= \begin{cases}\end{cases}
+  \] 
+  Symbolically (i.e. inside $\C\Brackets{x}$), there is some $ (a_{n})_{n=0}^{\infty} $ such that 
+  \begin{align*}
+    \sum_{k=0}^{\infty} a_{k}z^{k} = \sum_{n=1}^{\infty} \frac{(-1)^{n}}{n} z^{n^{2}+n}.
+  \end{align*}
+  As no $ z^{0} $ term appears in the latter series, $ a_{0}= 0 $. Fix $ k\in \N $. If there exists some $ n\in \N $ such that $ k = n^{2}+n $, then such an $ n $ is unique as the function $ x\mapsto x^{2}+x $ is monotone increasing on $ x>0 $, whence $ a_{k} = \frac{(-1)^{n}}{n} $. If there is no such $ n\in \N $, then $ a_{k} = 0 $. Concisely, we have 
+
+  \[
+    a_{k} = \begin{cases}
+      \frac{(-1)^{n}}{n} &\quad \text{if $ k = n^{2}+n $ for some $ n\in \N $}\\
+        0 &\quad \text{otherwise}.
+    \end{cases}
+  \]
+
+  Let $ 0\leq R \leq \infty $ be the radius of convergence of the given power series. Then by definition,
+  \[
+    \frac{1}{R} = \limsup_{k\to \infty}|a_{k}|^{\frac{1}{k}}.
+  \]
+  To show that $ R=1 $, it suffices to show $ \frac{1}{R} = 1 $, so we shall show the corresponding quantity is $ 1 $. Consider the subsequence $ (k_{n})_{n=1}^{\infty} $ given by $ k_{n}:= n^{2}+n $. Then observe that
+  \begin{align*}
+    \lim_{n\to\infty} |a_{k_{n}}|^{\frac{1}{k_{n}}} = \lim_{n\to \infty} \lr{\frac{1}{n}}^{\frac{1}{k_{n}}}.
+  \end{align*}
+  We have shown in problem 6 that $ \lim_{n\to \infty}n^{\frac{1}{n}} = 1 $. By continuity of $ x\mapsto \log(x) $ on $ (0,\infty) $, it follows that 
+  \[
+    0 = \log(1) = \lim_{n\to\infty} \log\lr{n^{\frac{1}{n}}} = \lim_{n\to\infty} \frac{1}{n} \log(n).
+  \]
+  Noting that $ \lim_{n\to\infty} \frac{1}{n+1} = 0 $ and the sequence $ \lr{\frac{1}{n+1}}_{n=1}^{\infty} $ is bounded, it follows that 
+  \begin{align*}
+    0 = \lim_{n\to\infty}\lr{\frac{1}{n+1}}\cdot\lr{\frac{1}{n}\log(n)} = \lim_{n\to\infty} \frac{1}{n^{2}+n} \log(n) = \lim_{n\to\infty} \log\lr{n^{\frac{1}{n^{2}+n}}}.
+  \end{align*}
+  Now appealing to the continuity of $x\mapsto e^{x} $, it follows that 
+  \[
+    1 = e^{0} = \lim_{n\to\infty} e^{\log\lr{n^{\frac{1}{n^{2}+n}}}} = \lim_{n\to\infty} n^{\frac{1}{n^{2}+n}}.
+  \]
+  Thus, as $ k_{n}=n^{2}+n > n $ for all $ n\in\N $, it follows that
+  \begin{align*}
+    \limsup_{n\to\infty}|a_{n}|^{\frac{1}{n}} = \lim_{n\to\infty} \lr{\sup_{k\geq n} |a_{k}|^{\frac{1}{k}} }\geq \lim_{n\to\infty} |a_{k_{n}}|^{\frac{1}{k_{n}}} = 1.
+  \end{align*}
+
+  Suppose, for the sake of contradiction, that there is some $ \eps>0 $ such that $ \limsup_{n\to\infty} |a_{n}|^{\frac{1}{n}} > 1+\eps $. Then, there is some $ N\in \N $ such that for all $ n\geq N $, we have 
+  \[
+    \sup_{k\geq n} |a_{k}|^{\frac{1}{k}} > 1+\eps.
+  \]
+  Hence, for $ n\geq N $, there is some $ k_{n} \geq n $ such that $ |a_{k_{n}}|^{\frac{1}{k_{n}}} > 1+\eps $. This implies that $ a_{k_{n}}\neq 0 $, whence by definition there is some $ m_{n}\in \N $ such that $ k_{n} = m_{n}^{2}+m_{n} $ and 
+  \[
+    \lr{\frac{1}{m_{n}}}^{\frac{1}{m_{n}^{2}+ m_{n}}}=|a_{k_{n}}|^{\frac{1}{k_{n}}}  > 1+\eps.
+  \]
+  Applying the quadratic formula and recalling that $ k_{n}\geq n $, we see
+  \[
+    m_{n} = \frac{-1+ \sqrt{1+4k_{n}}}{2} \geq \frac{-1+ \sqrt{1+4n}}{2} \xrightarrow{n\to\infty} \infty.
+  \]
+  Thus $ (m_{n})_{n=1}^{\infty} $ is a monotone increasing subsequence of $ (n)_{n=1}^{\infty} $, whence 
+  \[
+    \lim_{n\to\infty} \lr{\frac{1}{m_{n}}}^{\frac{1}{m_{n}^{2}+ m_{n}}} = \lim_{n\to\infty} \lr{\frac{1}{n}}^{\frac{1}{n^{2}+n}} = 1,
+  \]
+  which contradicts that $  \lr{\frac{1}{m_{n}}}^{\frac{1}{m_{n}^{2}+ m_{n}}} > 1+\eps$ for all $ n\geq N $.\\
+  
+  Thus we have shown that $ \frac{1}{R} = \limsup_{n\to\infty} |a_{n}|^{\frac{1}{n}} = 1$, so the radius of convergence of the series is $ 1 $.\\
+
+
+  \underline{($ z=1 $ Case)}: If $ z=1 $, then we have the series
+  \[
+    \sum_{n=1}^{\infty} \frac{(-1)^{n}}{n}
+  \]
+  which converges by the alternating series test as $ \lr{\frac{1}{n}}_{n=1}^{\infty} $ is a monotone decreasing sequence. Note however that this convergence is only conditional as the harmonic series diverges.\\
+
+  \underline{($ z=-1 $ Case)}: If $ z=-1 $, then we have the series
+  \[
+    \sum_{n=1}^{\infty} \frac{(-1)^{n}}{n}(-1)^{n^{2}+n} = \sum_{n=1}^{\infty} \frac{(-1)^{2n+n^{2}}}{n} = \sum_{n=1}^{\infty} \frac{(-1)^{n^{2}}}{n}.
+  \]
+  As $ n^{2} \equiv n \tmod 2 $, $ (-1)^{n^{2}} = (-1)^{n} $ for all $ n\in \N $, whence we have the same series as in the $ z=1 $ case.\\
+
+  \underline{($ z=i $ Case)}: If $ z=i $, then we have the series
+  \[
+    \sum_{n=1}^{\infty} \frac{(-1)^{n}}{n}(i)^{n^{2}+n} = \sum_{n=1}^{\infty} \frac{1}{n}(i)^{n^{2}+3n}.
+  \]
+  We have the following congruences:
+  \begin{align*}
+    n\equiv 0\tmod 4 \quad&\implies \quad n(n+3) \equiv 0 \tmod 4 \implies i^{n(n+3)} = 1\\
+    n\equiv 1\tmod 4 \quad&\implies \quad n(n+3) \equiv 0 \tmod 4\implies i^{n(n+3)} = 1\\
+    n\equiv 2\tmod 4 \quad&\implies \quad n(n+3) \equiv 2 \tmod 4\implies i^{n(n+3)} = -1\\
+    n\equiv 3\tmod 4 \quad&\implies \quad n(n+3) \equiv 2 \tmod 4\implies i^{n(n+3)} = -1.
+  \end{align*}
+  So we may reindex our series (without reordering) to observe
+  \begin{align*}
+    \sum_{n=1}^{\infty} \frac{1}{n}(i)^{n^{2}+3n} = 1+\sum_{k=1}^{\infty}\lr{ \frac{1}{2k}+\frac{1}{2k+1}}\cdot(-1)^{k}.
+  \end{align*}
+  Noting that the sequence $ \lr{\frac{1}{2k}+ \frac{1}{2k+1}}_{k=1}^{\infty} $ is monotone decreasing, it follows by the alternating series test that the above series converges.
+
+
+\end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Show that $ f(z) = |z|^{2} = x^{2}+y^{2} $  has a derivative only at the origin.
+\begin{proof}
+  First we show that the derivative at the origin exists. Fix $ \eps>0 $. Using $ \delta:=\eps $, for $ z\in \C $ with $ |z| < \delta $, we have 
+  \begin{align*}
+    \left|\frac{f(z) - f(0)}{ z - 0} - 0\right| = \left|\frac{|z|^{2}}{z}\right| = |z| < \delta = \eps.
+  \end{align*}
+  As $ \eps>0 $, it follows that $ f^{\prime}(0) $ exists and is equal to $ 0 $.\\
+
+  Now we show that the derivative away from the origin does not exist. Fix $ z\in \C\setminus \{0\} $, and considering $ h\in \C\setminus \{0\} $ we compute
+  \begin{align*}
+    \frac{f(z+h)-f(z)}{h} = \frac{\cls{(z+h)}(z+h) - \cls{z}z}{h} &= \frac{\cls{z}z +\cls{h}z + h \cls{z} + \cls{h}h -\cls{z}z}{h}\\
+    &= \frac{\cls{h}z + h \cls{z} + \cls{h}h}{h} = \frac{\cls{h}}{h}z + \cls{z} + \cls{h}.
+  \end{align*}
+  Noting that $ \lim_{h\to 0} \cls{h} = 0$ and $ z\neq 0 $ is a fixed constant, the above computation shows that the limit as $ h\to 0 $ of $  \frac{f(z+h)-f(z)}{h}$ exists if and only the limit as $ h \to 0$ of $ \frac{\cls{h}}{h} $ exists. Suppose, for the sake of contradiction, that there is some $ w\in \C $ such that $ \lim_{h\to 0} \frac{\cls{h}}{h} = w$.
+
+  Fix $ \eps>0 $. Then there is some $ \delta_{0}>0 $ such that $ 0<|h|<\delta_{0} $ implies $ \left|\frac{\cls{h}}{h} - w\right| < \eps $. Fix $ \delta >0 $ such that $ \delta < \delta_{0} $. Then $ |i \delta| < \delta_{0} $ and $ | \delta| < \delta_{0} $, whence
+  \begin{align*}
+    \eps &> \left| \frac{\cls{\delta}}{\delta} - w\right| = |1-w|\\
+    \eps &> \left| \frac{\cls{i\delta}}{i\delta} - w\right| = |-1-w| = |1+w|.
+  \end{align*}
+  As $ \eps>0 $ was arbitrary, it follows that $ |1-w| = 0 = |1+w| $, whence $ 1 = w = -1 $, which is absurd. Thus, the proposed limit does not exist, whence the proposed derivative does not exist.
+
+
+ % Suppose that $ a\in \C\setminus \{0\} $. Suppose, for the sake of contradiction, that $ f $ is differentiable at $ a $ and let $ w = f^{\prime}(a) $. For $ \eps>0 $, there is some $ \delta_{\eps} > 0 $ such that for any $ z\in B_{\delta_{\eps}}(a) $, we have 
+ % \[
+ %   \left|\frac{f(z)-f(a)}{z-a} - w\right| < \eps.
+ % \]
+\end{proof}
+ 
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+ Show that $ \lim_{n\to \infty} n^{1/n}  = 1$ .
+
+\begin{proof}
+Note first that for all $ n\in\N $, $ \log(n) \geq 0 $, whence 
+\[
+  \log(n^{\frac{1}{n}}) = \frac{1}{n}\log(n) \geq 0  \quad \implies \quad n^{\frac{1}{n}} \geq 1.
+\]
+Fix $ \eps > 0$. We will show that there is some $ N\in \N $ such that for all $ n\geq N $, $ n^{\frac{1}{n}} < 1 + \eps$.
+\begin{align*}
+  n^\frac{1}{n} < 1+ \eps\quad &\iff\quad n< (1+\eps)^{n} = \sum_{k=0}^{n} \binom{n}{k} \eps^{k}\\
+  &\iff\quad 1< \frac{1}{n}(1+\eps)^{n} = \frac{1}{n}\sum_{k=0}^{n} \binom{n}{k} \eps^{k}
+\end{align*}
+As all terms present are positive, it suffices to show that a single term is greater than $ 1 $, so consider the third term. Then we must show that 
+\begin{align*}
+  1 < \frac{1}{n}\cdot\binom{n}{2} \eps^{2} = \frac{n-1}{2} \eps^{2}.
+\end{align*}
+
+Now we begin the proof itself. By the Archimedean principle, there is some $ N\in \N $ such that $ 0< \sqrt{\frac{2}{N-1}} < \eps $. As the function $ x\mapsto \sqrt{\frac{2}{x-1}} $ is monotone decreasing for $ x>1 $, it follows that for all $ n\geq N $, 
+\[
+  0 < \sqrt{\frac{2}{n-1}} < \eps.
+\]
+Then for $ n\geq N $, 
+\begin{align*}
+  \eps > \sqrt{\frac{2}{n-1}} \quad &\implies \quad 1 <  \frac{n-1}{2} \eps^{2}= \frac{1}{n}\cdot \binom{n}{2} \eps^{2},
+\end{align*}
+whence we note that
+\begin{align*}
+  \frac{1}{n}(1+\eps)^{n} = \frac{1}{n}\sum_{k=0}^{n} \binom{n}{k} \eps^{k} \geq \frac{1}{n} \binom{n}{2} \eps^{2} > 1.
+\end{align*}
+Upon rearranging the above inequality, we see
+\begin{align*}
+  (1+\eps)^{n} > n \quad \implies \quad 1+\eps > n^{\frac{1}{n}}.
+\end{align*}
+Thus for $ n\geq N $, as $ n^{\frac{1}{n}}\geq 1 $, we have
+\begin{align*}
+  |n^{\frac{1}{n}}-1| = n^{\frac{1}{n}}-1 < \eps.
+\end{align*}
+Hence $ \lim_{n\to \infty}n^{\frac{1}{n}} = 1 $ as desired.
+\end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Let $ G $ be a region and define $ G^{*} := \{z: \cls{z}\in G\} $. If $ f:G\to \C $ is analytic, show that $ f^{*}:G^{*}\to \C $, defined by $ f^{*}(z) = \cls{f(\cls{z})} $, is also analytic.
+
+\begin{proof}
+  The definition of analytic we are assuming in this course is continuously differentiable, i.e. $ f^{\prime} $ exists for all points in the region and is continuous.\\
+
+  Fix $ z\in G^{*} $ and $ \eps>0 $. Fix $ \gamma>0 $ small enough such that $ B_{\gamma}(z) \sub G^{*} $. By definition, $ \cls{z}\in G $, whence $ f^{\prime}(\cls{z}) $ exists. Thus, there is some $ \delta >0 $ such that $ 0< |k| < \delta $ implies that $ \cls{z}+ k \in G $ and 
+  \[
+    \left|\frac{f(\cls{z} + k) - f(\cls{z})}{k} - f^{\prime}(\cls{z})\right | < \eps.
+  \]
+  Suppose that $ 0< |h| < \min\{\delta, \gamma\} $, so $ z + h\in G^{*} $. Then $ \cls{z}+ \cls{h} = \cls{z+h} \in G $, $ |\cls{h}| < \delta $, and $ \cls{z}+ \cls{h}\in G $, so 
+  \begin{align*}
+    \eps &> \left|\frac{f(\cls{z} + \cls{h}) - f(\cls{z})}{\cls{h}} - f^{\prime}(\cls{z})\right |  \\
+    &=\left|\frac{f(\cls{z+h}) - f(\cls{z})}{\cls{h}} - f^{\prime}(\cls{z})\right |  \\ 
+    &=\left|\frac{\cls{f(\cls{z+h})} - \cls{f(\cls{z})}}{h} - \cls{f^{\prime}(\cls{z})}\right |=\left|\frac{f^{*}(z+h) - f^{*}(z)}{h} - \cls{f^{\prime}(\cls{z})}\right |.  \\ 
+  \end{align*}
+  As $ \eps>0 $ was arbitrary, it follows that $ f^{*} $ is differentiable at $ z $ and $(f^{*})^{\prime}(z) = \cls{f^{\prime}(\cls{z})} $.\\
+
+  Now for analyticity, it remains to show continuity of $ \dv{f^{\prime}}{z} $. Suppose that $ z\in G^{*} $ and $ (z_{n})_{n=1}^{\infty}$ is a sequence (suffices to show for sequences and not nets as $ \C $ is a metric space) in $ G^{\prime} $ such that $ |z_{n}- z| \xrightarrow{n\to \infty}0 $. Noting that $ \cls{z}\in G $ and $ \cls{z_{n}}\in G $ for all $ n\in \N $ and 
+  \[
+    |\cls{z_{n}} - \cls{z} | = |z_{n}- z| \xrightarrow{n\to\infty}0,
+  \]
+  it follows by analyticity of $ f^{\prime} $ that $ |f^{\prime}(\cls{z_{n}}) - f^{\prime}(\cls{z})|\to 0 $. Then, observe that
+  \[
+    |(f^{*})^{\prime}(z_{n}) - (f^{*})^{\prime}(z)| = |\cls{f^{\prime}(\cls{z_{n}})} - \cls{f^{\prime}(\cls{z})}| = |f^{\prime}(\cls{z_{n}}) - f^{\prime}(\cls{z})|\xrightarrow{n\to \infty} 0,
+  \]
+  whence $ (f^{*})^{\prime} $ is continuous and thus $ f^{*} $ is analytic. 
+\end{proof}
+\end{homeworkProblem}
+
+
+\end{document}
+
+
+

@@ -1,0 +1,499 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{200A Homework 4}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+\begin{homeworkProblem}
+  Suppose $D_{2n}$ is a dihedral group. Prove that there exists a splitting short exact sequence of the form
+  \[
+    1 \to C_n \to D_{2n} \to C_2 \to 1,
+  \]
+  where $C_k$ is the cyclic group of order $k$.
+
+  \begin{proof}
+    Consider the group presentation 
+    \[
+      D_{2n} = \langle \sigma, \tau |\, \tau\sigma \tau^{-1} = \sigma^{-1}, \tau^{2}=1 = \sigma^{n} \rangle.
+    \]
+    Let $ C = \cyclic{\sigma}\cong C_{n} $. As $ \tau \sigma \tau^{-1} = \sigma^{-1}\in C $, it follows that $ C $ is normal in $ D_{2n} $. Moreover, $ D_{2n}/C \cong C_{2} $, so we have a short exact sequence of the above form. It suffices to show now that this sequence splits. To this end we define a map $ \psi: D_{2n}/C \to D_{2n} $ by $ \psi( \tau C) = \tau $ and $ \psi(C) = 1 $.  This map is a homomorphism and a section of the projection map, so the aforementioned sequence splits.
+  \end{proof}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Suppose $G$ is a group.\\
+
+  \underline{\textbf{(a)}}: Show that if $N_1$ and $N_2$ are normal subgroups of $G$ and $N_1 \cap N_2 = \{1\}$, then for all $x_1 \in N_1$ and $x_2 \in N_2$, $x_1x_2 = x_2x_1$.
+
+  \begin{proof}
+    Let $ x_{1}\in N_{1}, x_{2}\in N_{2} $. Then $ x_{2}^{-1}\in N_{2} $, whence $ x_{1}^{-1}x_{2}^{-1}x_{1}\in N_{2}  $ and consequently $ x_{1}^{-1}x_{2}^{-1}x_{1}x_{2}\in N_{2} $. On the other hand, $ x_{2}^{-1}x_{1}x_{2}\in N_{1} $ whence $ x_{1}^{-1}(x_{2}^{-1}x_{1}x_{2}) \in N_{1} $. Hence, $ x_{1}^{-1}x_{2}^{-1}x_{1}x_{2} = 1 $, so $ x_{1}x_{2}= x_{2}x_{1} $.
+  \end{proof}
+
+  \underline{\textbf{(b)}}: Suppose $N_1, \dots, N_k$ are normal subgroups of $G$ and $N_i \cap N_j = \{1\}$ for all $i \neq j$. Prove that
+  \[
+    f : \prod_{i=1}^{k} N_i \to N_1 \cdots N_k, \qquad f(x_1, \dots, x_k) := x_1 \cdots x_k
+  \]
+  is a group homomorphism.
+
+  \begin{proof}
+    Note that by part (a), $ N_{i} $ commutes with $ N_{j} $ for $ i\neq j $. Thus, we compute
+     \[
+       f(x_{1},\ldots, x_{k})f(y_{1},\ldots, y_{k}) = x_{1}\cdots x_{k} y_{1}\cdots y_{k} = x_{1}y_{1} x_{2}x_{3} \cdots x_{k} y_{2}\cdots y_{k} = \cdots = x_{1}y_{1}\cdots x_{k}y_{k} = f(x_{1}y_{1},\ldots, x_{k}y_{k}),
+     \]
+     so $ f $ is a group homomorphism.
+  \end{proof}
+
+  \underline{\textbf{(c)}}: Suppose $N_1, \dots, N_k$ are normal subgroups of $G$, and for all $i$,
+  \[
+    N_i \cap N_1 \cdots N_{i-1} N_{i+1} \cdots N_k = \{1\}.
+  \]
+  Prove that
+  \[
+    f : \prod_{i=1}^{k} N_i \to N_1 \cdots N_k, \qquad f(x_1, \dots, x_k) := x_1 \cdots x_k
+  \]
+  is a group isomorphism.
+
+  \begin{proof}
+    It is clear that $ f $ is surjective, so it suffices to show the kernel is trivial. Let $ x_{1},\ldots, x_{k} $ be such that $ f(x_{1},\ldots, x_{k})= 1 $. Then $ x_{1}\cdots x_{k}= 1 $, whence $ x_{2}\cdots x_{k} = x_{1}^{-1}\in N_{1}\cap N_{2}N_{3}\cdots N_{k} = \{1\} $  and consequently $ x_{1}= 1 $. Thus $ x_{2}x_{3}\cdots x_{k} = 1 $. Continuing in this way, we obtain that $ x_{2} = 1 $, $ x_{3}= 1 $, and so on until $ x_{k}=1 $. Thus $ (x_{1},\ldots, x_{k}) = (1,1,\ldots 1) $ is trivial.
+  \end{proof}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Suppose in a finite group $G$ every proper subgroup $H$ satisfies $H \subsetneq N_G(H)$.\\
+
+  \underline{\textbf{(a)}}: Prove that all the Sylow subgroups of $G$ are normal. Deduce that for all prime divisors of $\lvert G\rvert$, $G$ has a unique Sylow $p$-subgroup.
+
+  \begin{proof}
+    Suppose that $ p $ is a prime divisor of $ |G| $ and $ P\in \Syl_{p}(G) $. Then noting that $ N_{G}(N_{G}(P)) = N_{G}(P) $, it follows that $ N_{G}(P) $ is not a proper subgroup of $ G $, so $ N_{G}(P) = G $ whence $ P\triangleleft G $. Thus $ |\Syl_{p}(G)| = 1 $ for $ p $ a prime divisor of $ |G| $.
+  \end{proof}
+
+  \underline{\textbf{(b)}}: Prove that
+  \[
+    G \cong \prod_{p \text{ prime factor of } \lvert G\rvert} P_p,
+  \]
+  where $P_p$ is the unique Sylow $p$-subgroup of $G$.
+
+  \begin{proof}
+    Suffices to show \[ P_{p}\cap \prod_{\substack{q \text{ prime factor of }|G|\\q\neq p}} P_{q} = 1\quad \text{for all $ q $ prime divisor of $ |G| $}.\] 
+    If $ x\neq 1 $ and $ x $ is in this intersection, then $ o(x) = p^{k} $ for some $ k\in\N $. On the other hand, $ o(x) $ divides $ \prod_{q\neq p}q^{\nu_{q}(|G|)} $, whence by Euclid's lemma $ p $ divides $ q $ for some $ q\neq p $, which is absurd. Thus by 2(c), we have a group isomorphism 
+    $P_{p_{1}}\cdots P_{p_{s}} \cong \prod_{p \text{ prime factor of } \lvert G\rvert} P_p$. It suffices to show that the left side of this isomorphism is all of $ G $; however, this follows from size considerations in the direct product on the right hand side of this isomorphism.
+  \end{proof}
+
+  %\textit{Hint. Use $N_G(N_G(P)) = N_G(P)$ for every Sylow subgroup $P$, and the previous problem.}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Suppose $G$ is a finite group and $A$ is a normal abelian subgroup of $G$.  
+  Let $s : G/A \to G$ be a section of the natural projection map; that means for all $h \in G/A$, we choose an element $s(h)$ from the coset $h$. Alternatively, we can say that $s(h)A = h$.  
+
+  Notice that if $s$ is a group homomorphism, then the standard short exact sequence
+  \[
+    1 \to A \to G \to G/A \to 1
+  \]
+  splits.  
+  The goal of this exercise is to modify $s$ and make it into a group homomorphism under suitable assumptions.  
+
+  Let $H := G/A$ and define the function
+  \[
+    c : H \times H \to A, \qquad c(h_1, h_2) := s(h_1)s(h_2)s(h_1h_2)^{-1}.
+  \]
+  Notice that since $s(h_1h_2)A = h_1h_2 = s(h_1)As(h_2)A = s(h_1)s(h_2)A$, the image of $c$ is indeed in $A$.  
+  Function $c$ gives us an insight into how far $s$ is from being a group homomorphism.  
+
+  Since $A$ is abelian, the conjugation action of $G$ on $A$ factors through an action of $H$. More precisely, for all $h \in H$ and $a \in A$, let
+  \[
+    h \cdot a := s(h) a s(h)^{-1},
+  \]
+  and notice that this is a well-defined group action.\\
+
+  \underline{\textbf{(a)}}: Prove that, for all $h_1, h_2, h_3 \in H$, we have
+  \[
+    c(h_1, h_2)c(h_1h_2, h_3) = (h_1 \cdot c(h_2, h_3)) c(h_1, h_2h_3).
+  \]
+  (Since $A$ is abelian, it is more customary to write this in additive notation:
+  \[
+    c(h_1, h_2) + c(h_1h_2, h_3) = h_1 \cdot c(h_2, h_3) + c(h_1, h_2h_3),
+  \]
+  and this is called the \emph{2-cocycle relation}.)\\
+
+  \begin{proof}
+    For any $ h_{1},h_{2}\in H $, we may rewrite the definition of $ c(h_{1},h_{2}) $ as 
+    \[
+       s(h_{1})s(h_{2})= c(h_{1},h_{2}) s(h_{1}h_{2}).
+    \]
+    Then for $ h_{1},h_{2},h_{3}\in H $, we compute
+    \begin{align*}
+      (s(h_{1})s(h_{2})) s(h_{3}) &= c(h_{1},h_{2}) s(h_{1}h_{2})s(h_{3}) \\
+      &= c(h_{1},h_{2}) c(h_{1}h_{2},h_{3})s(h_{1}h_{2}h_{3}).
+    \end{align*}
+    On the other hand, grouping differently we observe
+    \begin{align*}
+      s(h_{1})(s(h_{2})s(h_{3}))  &= s(h_{1}) c(h_{2},h_{3})s(h_{2}h_{3})\\ 
+      &= (s(h_{1}) c(h_{2},h_{3})s(h_{1})^{-1})s(h_{1})s(h_{2}h_{3})\\
+      &=  (h_{1}\cdot c(h_{2},h_{3}))s(h_{1})s(h_{2}h_{3})\\
+      &=  (h_{1}\cdot c(h_{2},h_{3}))c(h_{1},h_{2}h_{3})s(h_{1}h_{2}h_{3}).
+    \end{align*}
+    These two results are equal, so we obtain
+    \begin{align*}
+     c(h_{1},h_{2}) c(h_{1}h_{2},h_{3})s(h_{1}h_{2}h_{3}) =(h_{1}\cdot c(h_{2},h_{3}))c(h_{1},h_{2}h_{3})s(h_{1}h_{2}h_{3}),
+    \end{align*}
+    whence cancelling the $ s(h_{1}h_{2}h_{3}) $ terms gives
+    \[
+      c(h_{1},h_{2}) c(h_{1}h_{2},h_{3}) = (h_{1}\cdot c(h_{2},h_{3}))c(h_{1},h_{2}h_{3}),
+    \]
+    as desired.
+  \end{proof}
+
+  \underline{\textbf{(b)}}: Prove that the standard short exact sequence
+  \[
+    1 \to A \to G \to H \to 1
+  \]
+  splits if and only if there exists a function $b : H \to A$ such that
+  \[
+    c(h_1, h_2) = b(h_1)(h_1 \cdot b(h_2))b(h_1h_2)^{-1}.
+  \]
+  (In additive notation:
+  \[
+    c(h_1, h_2) = b(h_1) + h_1 \cdot b(h_2) - b(h_1h_2),
+  \]
+  called a \emph{2-coboundary}.)\\
+
+  \begin{proof}
+    We first show that splitting is equivalent to there existing a function $ b:H\to A $ such that $ \psi(h):=b(h)^{-1}s(h) $ is a group homomorphism.\\
+
+    Suppose that the sequence splits. Then there is some group homomorphism $ f:H\to G $ such that $ f(h)A = h $. But then taking inverses, we have $ f(h)^{-1}A = h^{-1} = s(h)^{-1} A $. Let $ b:H\to A $ be given by $b(h):= s(h)f(h)^{-1} $. Then $ f(h) = b(h)^{-1}s(h) $ which is a group homomorphism by assumption.\\
+
+    On the other hand, suppose that there is some function $ b: H\to A$ such that $ \psi(h):=b(h)^{-1}s(h) $ is a group homomorphism. Then we compute
+    \[
+      \psi(h)^{-1}A = s(h)^{-1}b(h) A = s(h)^{-1} A = (s(h)A)^{-1} = h^{-1},
+    \]
+    whence $ \psi(h) A = h$, so $ \psi $ is also a section of the projection map from $ G $ to $ H $, thus the short exact sequence splits.\\
+
+    Now we compute 
+    \begin{align*}
+      \psi(h_{1}) \psi(h_{2}) \psi(h_{1}h_{2})^{-1} &= b(h_{1})^{-1}s(h_{1}) b(h_{2})^{-1}s(h_{2}) s(h_{1}h_{2})^{-1}b(h_{1}h_{2})\\
+      &=b(h_{1})^{-1}(s(h_{1}) b(h_{2})^{-1}s(h_{1})^{-1})s(h_{1})s(h_{2}) s(h_{1}h_{2})^{-1}b(h_{1}h_{2})\\
+      &=b(h_{1})^{-1}(h_{1}\cdot b(h_{2}))^{-1}c(h_{1},h_{2})b(h_{1}h_{2})\\
+    \end{align*}
+    Thus, $ \psi $ is a group homomorphism if and only if
+    \[
+      1 = \psi(h_{1}) \psi(h_{2}) \psi(h_{1}h_{2})^{-1} = b(h_{1})^{-1}(h_{1}\cdot b(h_{2}))^{-1}c(h_{1},h_{2})b(h_{1}h_{2})
+    \]
+    which holds if and only if 
+    \[
+      c(h_{1},h_{2}) = (h\cdot b(h_{2})) b(h_{1}) b(h_{1}h_{2})^{-1}.
+    \]
+    Thus, the above short exact sequence splits if and only if $ c $ is a $ 2 $-coboundary.
+    
+  \end{proof}
+
+  \underline{\textbf{(c)}}: In the above setting, assume that $\gcd(\lvert A\rvert, \lvert H\rvert) = 1$.  
+  Prove that every $2$-cocycle is a $2$-coboundary. Deduce that the standard short exact sequence
+  \[
+    1 \to A \to G \to H \to 1
+  \]
+  splits.
+
+  \begin{proof}
+    By Bezout, there exist $ r,s\in\Z $  such that $ 1 = r|H|+ s|A| $. For $ a\in A $, we have 
+    \[
+      a = (r|H|+s|A|)\cdot a = r|H|\cdot a = |H|\cdot (r\cdot a),
+    \]
+    so setting $ y:=r\cdot a $ gives $ a = |H|\cdot y $. To see that $ y $ is unique, suppose that $ a\in A $ and $ x,y\in A $ are such that $ |H|\cdot x = a = |H|\cdot y $. Then $ |H|\cdot (x-y) = 0 $, whence $ o(x-y)\mid\, |H| $. By Lagrange's theorem, $ o(x-y)\mid |A| $, whence by assumption $ o(x-y)=1 $, so $ x=y $. Let this unique $ y $ be denoted $ \frac{a}{|H|} $.\\
+
+    Suppose that $ c:H\to A $ is a 2-cocycle and let 
+    \[
+    b : H \to A, \quad b(x) := \frac{1}{\lvert H\rvert} \sum_{h \in H} c(x, h).
+  \]
+  Fix $ h_{1},h_{2}\in H $. Then for $ h\in H $, we have 
+  \[
+    c(h_{1},h_{2})+ c(h_{1}h_{2},h) = h_{1}\cdot c(h_{2},h) + c(h_{1},h_{2}h).
+  \]
+  Summing this equation over $ h\in H $, we obtain
+  \begin{align*}
+    \sum_{h\in H}c(h_{1},h_{2})+ c(h_{1}h_{2},h) &= \sum_{h\in H}h_{1}\cdot c(h_{2},h) + c(h_{1},h_{2}h)   \\
+|H|c(h_{1},h_{2})+ \sum_{h\in H}c(h_{1}h_{2},h)&= h_{1}\cdot \sum_{h\in H}c(h_{2},h) + \sum_{h\in H} c(h_{1},h_{2}h)   \\
+|H| c(h_{1},h_{2})+ |H|b(h_{1}h_{2})&= |H|(h_{1}\cdot b(h_{2})) + \sum_{h\in H} c(h_{1},h_{2}h)   \\
+&= |H|(h_{1}\cdot b(h_{2})) + \sum_{h\in H} c(h_{1},h)   \\
+&= |H|(h_{1}\cdot b(h_{2})) + |H|b(h_{1})   \\
+  \end{align*}
+  Let $ x:=\lr{c(h_{1},h_{2}) +b(h_{1}h_{2}) - (h_{1}\cdot b(h_{2})) - b(h_{1})} $. Rearranging the above equation gives
+  \[
+    |H|x = |H|\lr{c(h_{1},h_{2}) +b(h_{1}h_{2}) - (h_{1}\cdot b(h_{2})) - b(h_{1})} = 0
+  \]
+  Thus the order of $ x $ has $ o(x)\mid\, |H| $. However, $ o(x)| |A| $, whence $ o(x) = 1 $ so $ x = 0 $. Consequently,
+  \[
+    c(h_{1},h_{2}) = b(h_{1})+h_{1}\cdot b(h_{2}) - b(h_{1}h_{2}),
+  \]
+  so $ c $ is a $ 2 $-coboundary. Hence by part (b), the short exact sequence $ 1\to A \to G\to H $ splits.
+
+  \end{proof}
+
+  % \textit{Hint.} Work in additive notation for $A$. Since $\gcd(\lvert A\rvert, \lvert H\rvert) = 1$, for every $a \in A$ there exists a unique $y \in A$ such that $\lvert H\rvert y = a$. Denote this element by $a / \lvert H\rvert$. Suppose $c$ is a 2-cocycle and let
+  % \[
+  %   b : H \to A, \quad b(x) := \frac{1}{\lvert H\rvert} \sum_{h \in H} c(x, h).
+  % \]
+  % Adding over the $h_3$ term in the 2-cocycle relation, deduce that
+  % \[
+  %   \lvert H\rvert c(h_1, h_2) + \lvert H\rvert b(h_1h_2)
+  %   = \lvert H\rvert (h_1 \cdot b(h_2)) + \lvert H\rvert b(h_1),
+  % \]
+  % and hence $c$ is a 2-coboundary.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  In this problem you will show that $S_6$ has an automorphism which is not an inner automorphism.\\
+
+  \underline{\textbf{(a)}}: Show that $S_5$ has $6$ Sylow $5$-subgroups.
+
+  \begin{proof}
+    By the Sylow theorems, $ n_{5}\in \{1, 2, 4, 6, 8 ,12, 24\} $. As $ n_{5 }\equiv 1 \tmod 5 $, $ n_{5}\neq 2,4,8,12,24 $. Thus $ n_{5} =1 $ or $ n_{5}= 6 $. If $ n_{5}=1 $, then we have an order $ 5 $ normal subgroup $ N\triangleleft S_{5} $, whence $ [S_{5}: N] = 12>2 $ contradicting the fact that no such subgroups exist. Thus, $ n_{5}=6 $.
+  \end{proof}
+
+  \underline{\textbf{(b)}}: Use the action of $S_5$ on $\mathrm{Syl}_5(S_5)$ and show that $S_6$ has a subgroup $H$ which is isomorphic to $S_5$ and for every $\sigma \in S_6$, $\mathrm{Fix}(\sigma H \sigma^{-1}) = \varnothing$, where $S_6$ acts on $\{1, \dots, 6\}$.
+\begin{proof}
+  Let $ S_{5}\acts \Syl_{5}(S_{5}) $ by conjugation. This furnishes a homomorphism $ \Phi:S_{5}\to \Sym(\Syl_{5}(S_{5}))\cong S_{6} $. Suppose, for the sake of contradiction, that $ \ker(\Phi) > 1 $. As the action of $ S_{5} $ on $ \Syl_{5}(S_{5}) $ is transitive and $ \Syl_{5}(S_{5)} $ is not a singleton set, it must hold that $ \ker(\Phi) \neq S_{5} $. Thus $ \ker(\Phi) = A_{5} $. Hence $ \Z/2\Z\cong S_{5}/A_{5} \cong \Phi(S_{5}) $ and $ \Phi(S_{5})\sub S_{6} $ is a transitive subgroup of $ S_{6} $, which is impossible.\\
+
+  Thus $ \ker (\Phi) = \{1\} $, so $ S_{5}\cong \Phi(S_{5}) \cong H \sub S_{6} $, where the isomorphism $ \Phi(S_{5}) \cong H $ is given by restricting the relabelling isomorphism $ \Sym(\Syl_{5}(S_{5})) \cong S_{6} $. Let $ \sigma\in S_{6} $ and suppose, for the sake of contradiction, that some $1\leq i \leq 6 $ has $ i\in \mathrm{Fix}(\sigma H \sigma^{-1})$. Letting $ S_{6}\acts \Syl_{5}(S_{5}) := \{P_{1},\ldots, P_{6}\} $ in the natural way by relabelling, it follows that $ P_{i}\in \mathrm{Fix}(\sigma \Phi(S_{5}) \sigma^{-1}) $.
+
+  Let $ x\in S_{5} $. Then 
+  \begin{align*}
+    P_{i} = (\sigma\Phi(x) \sigma^{-1}) \cdot P_{i} = (\sigma\Phi(x))\cdot P_{\sigma^{-1}(i)} = \sigma\cdot (xP_{\sigma^{-1}(i)}x^{-1})\\
+  \end{align*}
+  whence after acting on both sides by $ \sigma^{-1} $, we obtain
+  \begin{align*}
+    P_{\sigma^{-1}(i)} = \sigma^{-1}\cdot P_{i}=\sigma^{-1}\cdot\sigma\cdot( xP_{\sigma^{-1}(i)}x^{-1}) = xP_{\sigma^{-1}(i)}x^{-1}.
+  \end{align*}
+  This implies that $ P_{\sigma^{-1}(i)} $ is a normal subgroup of $ S_{5} $ of order $ 5 $, which does not exist and is thus a contradiction. Thus, for all $ \sigma\in S_{6} $, $ \mathrm{Fix}(\sigma H \sigma^{-1}) = \emptyset $.
+\end{proof}
+
+  \underline{\textbf{(c)}}: Consider the action $S_6 \curvearrowright S_6 / H$ by left translations. Argue that this action induces a group homomorphism
+  \[
+    \theta : S_6 \to S_6.
+  \]
+  Prove that $\mathrm{Fix}(\theta(H)) \neq \varnothing$.
+
+  \begin{proof}
+    The set $ S_{6}/H $ has size $ 6 $, so the left translation action $ S_{6}\acts S_{6}/H $ induces a homomorphism $ \theta: S_{6}\to \Sym(S_{6}/H)\cong S_{6} $. Noting that $ H\in S_{6}/H $, observe that for $ \rho\in H $, $ \theta(\rho)\cdot H = \rho H = H $, so $ H\in Fix(\theta(H)) $ (or at least the corresponding label in $ \{1,\ldots,6\} $.
+  \end{proof}
+
+  \underline{\textbf{(d)}}: Deduce that $\mathrm{Aut}(S_6) \neq \mathrm{Inn}(S_6)$.
+
+  \begin{proof}
+    Suppose that $ \sigma\in S_{6} $ and let $ c_{\sigma}\in \Inn(S_{6}) $ be given by $ c_{\sigma}(x) = \sigma x \sigma^{-1} $. Then by part (b), $ \mathrm{Fix}(c_{\sigma}(H)) = \mathrm{Fix}(\sigma H \sigma^{-1}) = \emptyset $. Hence, the homomorphism $ \theta $ in part (c) cannot be inner. Thus, it suffices to show that $ \theta\in \Aut(S_{6}) $.\\
+
+    Note that the action $ S_{6}\acts S_{6}/H $ is transitive and thus $ |\theta(S_{6})| >2 $. Hence, $ [S_{6}:\ker(\theta)] = |\theta(S_{6})|>2 $, whence $ \ker(\theta) = \{1\} $. As the domain and codomain of $ \theta $ are both finite and of the same size, the injectivity of $ \theta $  implies the surjectivity of $ \theta $, whence $ \theta $ is an automorphism of $ S_{6} $.
+
+  \end{proof}
+
+  %\textit{(In this problem you may use the fact that if $N$ is a normal subgroup of $S_n$, $[S_n : N] > 2$, and $n \ge 5$, then $N = \{1\}$.)}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Prove that a group of order $36$ is not simple.
+
+  \begin{proof}
+    Let $ G $ be a group of order $ 36 $. Suppose, for the sake of contradiction, that $ G $ is simple. Note that $ |G|=36 = 2^2 3^2 $. By simplicity, $ n_{2},n_{3}\neq 1 $, so Sylow's theorems give 
+    \begin{align*}
+      n_{2} \in\{3,3^2\} &\quad n_{2}\equiv 1\tmod 2\\
+      n_{3} \in\{2,2^2\} &\quad n_{3}\equiv 1\tmod 3.
+    \end{align*}
+    As $ 2\not\equiv 1\tmod 3 $, it follows that $ n_{3} = 2^{2}= 4 $. Consider the conjugation action $ G\acts \Syl_{3}(G) $. This furnishes a homomorphism $ \Phi:G\to S_{4} $. Suppose, for the sake of contradiction, that $ \ker(\Phi) = \{1\} $. Then $ G $ embeds into $ S_{4} $. Fix $ P\in \Syl_{3}(G) $. Then $ P $ embeds into $ S_{4} $, whence by Lagrange's theorem $ 9 = |P| \mid |S_{4}| = 24 $, which is a contradiction. Thus $ \ker( \Phi) \neq \{1\} $. However, as $ G $ acts transitively on $ \Syl_{3}(G) $ and $ |\Syl_{3}(G)|>1 $, it must hold that $ \ker(\Phi) $ is a proper subgroup of $ G $. Thus $ \ker(\Phi) $ is a nontrivial, proper, normal subgroup of $ G $, which contradicts simplicity.
+  \end{proof}
+
+  %\textit{Hint. Suppose $G$ is simple. Find the number of Sylow $3$-subgroups of $G$. Consider the action of $G$ on $\mathrm{Syl}_3(G)$ and prove that the kernel of this action cannot be trivial.}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+  Suppose $N$ and $H$ are two groups and $f_1, f_2 : H \to \mathrm{Aut}(N)$ are two group homomorphisms.
+
+  \underline{\textbf{(a)}}: Suppose $\theta : N \rtimes_{f_1} H \to N \rtimes_{f_2} H$ is an isomorphism such that the following diagram commutes:
+  \[
+  \begin{array}{cccccc}
+  1 & \to & N & \to & N \rtimes_{f_1} H & \to H \to 1 \\
+  1 & \to & N & \to & N \rtimes_{f_2} H & \to H \to 1
+  \end{array}
+  \]
+  with vertical maps $\mathrm{id}_N$, $\theta$, and $\mathrm{id}_H$.  
+  Let $\sigma : H \to \mathrm{Aut}(N)$ be defined by $\sigma(h) := f_2(h) \circ f_1(h)^{-1}$.  
+  Prove that $\sigma(h)$ is an inner automorphism of $N$ for all $h \in H$.\\
+
+  \begin{proof}
+    Multiplication in $ N\rtimes_{f} H $
+    \[
+      (n, h)(n^{\prime}, h^{\prime}) = (n f(h)(n^{\prime}), h h^{\prime})
+    \]
+    Let $ \pi_{j}:N\rtimes_{f_{j}}H\to H $ denote the projection homomorphisms in the above diagram for $ j=1,2 $. Then by commutativity we note that $id_{H}\circ \pi^{1}_{H} = \pi^{2}_{H}\circ \theta$, whence for $ h\in H $ we have 
+    \begin{align*}
+      h = id_H(\pi^{1}_{H}(1,h)) = \pi^{2}_{H}(\theta(1,h)).
+    \end{align*} 
+    For $ h\in H $, there exists some $ n(h)\in N $ such that $ \theta(1,h) = (n(h),h) $. This gives a function $ n:H\to N $.\\
+
+    Let $ \iota^{j}_{N}:N\to N\rtimes_{f_{j}}H  $ denote the inclusion maps in the above diagram for $ j=1,2 $. Then by commutativity, we note that $ \theta\circ \iota^{1}_{N} = \iota^{2}_{N}\circ id_{N} $, whence for $ n\in N $ we have 
+    \begin{align*}
+      \theta(n,1) = \theta\circ\iota^{1}_{N}(n) = \iota_{N}^{2}\circ id_{N}(n) = (n,1) \in N\rtimes_{f_{2}}H,
+    \end{align*}
+    whence we see
+    \[
+      \theta(n,h) = \theta((n,1)\cdot(1,h)) = \theta(n,1) \cdot \theta(1,h) = (n,1)\cdot (n(h),h) = (n\cdot n(h), h).
+    \]
+
+    Note that $ (n,h)^{-1} = (f_{j}(h)^{-1}(n^{-1}), h^{-1}) $ inside $ N\rtimes_{f_{j}}H $. Now we compute the quantity $  \theta((1,h)\cdot(n,1)\cdot(1,h)^{-1})  $ two separate ways. On one hand, we have
+    \begin{align*}
+      \theta((1,h)\cdot(n,1)\cdot(1,h)^{-1}) &= \theta(1,h) \theta(n,1) \theta(1,h)^{-1} \\
+      &= (n(h), h)\cdot (n,1)\cdot (n(h),h)^{-1}\\
+      &= (n(h)f_{2}(h)(n), h)\cdot (f_{2}(h)^{-1}(n(h)^{-1}),h^{-1})\\
+      &= (n(h)f_{2}(h)(n)f_{2}(h)(f_{2}(h)^{-1}(n(h)^{-1})), 1)\\
+      &= (n(h)f_{2}(h)(n)n(h)^{-1}, 1).
+    \end{align*}
+    On the other hand, performing multipication inside $ \theta $ first, we see that
+    \begin{align*}
+      \theta((1,h)\cdot(n,1)\cdot(1,h)^{-1}) &= \theta((f_{1}(h)(n), h)\cdot(1,h^{-1})) \\
+      &= \theta((f_{1}(h)(n), 1)) \\
+      &= (f_{1}(h)(n),1).
+    \end{align*}
+    Thus, as we computed the same quantities, we must have
+    \begin{align*}
+      f_{1}(h)(n) = n(h)f_{2}(h)(n) n(h)^{-1}.
+    \end{align*}
+    For $ g\in N $, let $ c_{g}\in Inn(N) $ denote the inner automorphism given by $ c_{g}(x) = gxg^{-1} $. Then, observe that
+    \begin{align*}
+      \sigma(h)^{-1}(n) = f_{1}(h)(f_{2}(h)^{-1}(n)) &= n(h)f_{2}(h)(f_{2}(h)^{-1}(n)) n(h)^{-1} = n(h)\cdot n \cdot n(h)^{-1} = c_{n(h)}(n),
+    \end{align*}
+    whence $ \sigma(h)^{-1} = c_{n(h)} $ and consequently $ \sigma(h) = (c_{n(h)})^{-1} = c_{n(h)^{-1}} $ is an inner automorphism.
+   % By commutativity, $  $
+   % Let $ n:H\to N $ be given by
+   % \begin{align*}
+   %   n(h):= \pi_{N} (\theta(1,h)).
+   % \end{align*}
+   % Then 
+   % \[
+   %   \theta(1,h) = (\pi_{N}(\theta(1,h)), \pi_{H}(\theta(1,h))) = (n(h), h).
+   % \]
+  \end{proof}
+
+  \underline{\textbf{(b)}}: In the setting of part (a), prove that
+  \[
+    \sigma(h_1h_2) = \sigma(h_1) \circ f_1(h_1) \circ \sigma(h_2) \circ f_1(h_1)^{-1}.
+  \]\\
+
+  \begin{proof}
+    Noting that the maps $ f_{j}:H\to \Aut(N)  $ are group homomorphisms, we compute
+    \begin{align*}
+      \sigma(h_1) \circ f_1(h_1) \circ \sigma(h_2) \circ f_1(h_1)^{-1} &= f_{2}(h_{1})\circ f_{1}(h_{1})^{-1} \circ f_1(h_1) \circ f_{2}(h_{2})\circ f_{1}(h_{2})^{-1} \circ f_1(h_1)^{-1} \\
+      &= f_{2}(h_{1})  \circ f_{2}(h_{2})\circ f_{1}(h_{2})^{-1} \circ f_1(h_1)^{-1} \\
+      &= f_{2}(h_{1}h_{2}\circ (f_{1}(h_{1}) \circ f_1(h_2))^{-1} \\
+      &= f_{2}(h_{1}h_{2}\circ f_{1}(h_{1}h_2)^{-1} \\
+      &= \sigma(h_{1}h_{2}).
+    \end{align*}
+  \end{proof}
+
+  \underline{\textbf{(c)}}: Suppose there exists $\theta \in \mathrm{Aut}(H)$ such that $f_1 = f_2 \circ \theta$.  
+  Prove that there exists an isomorphism $\Theta : N \rtimes_{f_1} H \cong N \rtimes_{f_2} H$ such that the following diagram commutes:
+  \[
+  \begin{array}{cccccc}
+  1 & \to & N & \to & N \rtimes_{f_1} H & \to H \to 1 \\
+  1 & \to & N & \to & N \rtimes_{f_2} H & \to H \to 1
+  \end{array}
+  \]
+  with vertical maps $\mathrm{id}_N$, $\Theta$, and $\theta$.
+
+  \begin{proof}
+    Define $ \cls{\theta}(n,h):= (n,\theta(h)) $.
+    \begin{align*}
+      \cls{\theta}((n_{1},h_{1})(n_{2},h_{2})) &= \cls{\theta}(n_{1}f_{1}(h_{1})(n_{2}), h_{1}h_{2})  \\
+      &= (n_{1}f_{1}(h_{1})(n_{2}), \theta(h_{1}h_{2}))  \\
+    \end{align*}
+    On the other hand, using that $ f_{1} = f_{2}\circ \theta $, we see
+    \begin{align*}
+      \cls{\theta}(n_{1},h_{1})\cls{\theta}(n_{2},h_{2}) &= (n_{1}, \theta(h_{1})) \cdot (n_{2}, \theta(h_{2})) \\
+      &= (n_{1}f_{2}(\theta(h_{1})(n_{2}), \theta(h_{1}) \theta(h_{2}))\\
+      &= (n_{1}f_{1}(h_{1})(n_{2}), \theta(h_{1}h_{2})),
+    \end{align*}
+    whence it follows that $ \cls{\theta} $ is indeed a group homomorphism.\\
+
+     Suppose that $ (n,h)\in N\rtimes_{f_{2}} H $. As $ \theta $ is an automorphism, we have $$ \cls{\theta}(n, \theta^{-1}(h)) = (n, \theta\circ \theta^{-1}(h)) = (n,h),  $$
+    whence $ \cls{\theta} $  is surjective.\\
+
+    Now suppose that $ (n,h)\in \ker(\cls{\theta}) $. Then 
+    \begin{align*}
+      (1_N, 1_H) = \cls{\theta}(n,h) = (n, \theta(h)),
+    \end{align*}
+    whence $ n = 1_N  $ and $ h\in \ker(\theta) = \{1_H\} $, so $ h=1_H $. Thus $ \cls{\theta} $ is also injective, and is consequently an isomorphism.\\
+
+
+    For $ n\in N $, we see that
+    \begin{align*}
+      \cls{\theta}\circ \iota_{N}^{1}(n) = \cls{\theta}(n,1) = (n,1) = \iota_{N}^{2}\circ id_{N}(n)
+    \end{align*}
+    so $ \cls{\theta}\circ \iota_{N}^{1} = \iota_{N}^{2} \circ id_{N} $. For $ (n,h)\in N\rtimes_{f_{1}}H $, we compute
+    \begin{align*}
+      \pi_{H}^{2}\circ \cls{\theta}(n,h) = \pi_{H}^{2}(n,\theta(h)) = \theta(h) = \theta(\pi_{H}^{1}(n,h)),
+    \end{align*}
+    whence $ \pi_{H}^{2}\circ \cls{\theta} = \theta\circ \pi_{H}^{1} $. Thus we have shown that the above diagram commutes.
+   
+  \end{proof}
+
+  %\textit{Hint.} For parts (a) and (b), argue that there exists a function $n : H \to N$ such that $\theta(1,h) = (n(h), h)$.  
+  %Consider $\theta((1,h)(n,1)(1,h)^{-1})$.  
+  %For part (c), define
+  %\[
+  %  \Theta : N \rtimes_{f_1} H \to N \rtimes_{f_2} H, \quad \Theta(n,h) := (n, \theta(h)).
+  %\]
+\end{homeworkProblem}
+
+\end{document}

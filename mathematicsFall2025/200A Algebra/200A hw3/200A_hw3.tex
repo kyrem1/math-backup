@@ -1,0 +1,329 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{200A Homework 3}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+\begin{homeworkProblem}
+  Suppose $p < q < \ell$ are three primes, $G$ is a group, and $\lvert G\rvert = pq\ell$.  
+  Prove that $G$ has a normal Sylow $\ell$-subgroup.  
+
+  \begin{lemma}
+    Suppose $ p<q $ are primes and $ G $ is a group of order $ pq $. Further assume $ q>3 $. Then $ G $ has a normal Sylow $ q $-subgroup.
+  \end{lemma}
+  \begin{proof}[Proof of Lemma]
+    Sylow's theorems give the restrictions $ n_{p}\in \{1, q\} $ and $ n_{q}\in\{1,p\} $. As $ n_{q}\equiv 1\tmod q $, $ q\mid (n_{q}-1) $, whence the inequality $ p<q $ forces $ n_{q}=1 $. Thus $ G $ has a normal Sylow $ q $-subgroup.
+  \end{proof}
+  \begin{proof}[Proof of Problem 1]
+
+    Note first that $ \ell >3 $. Sylow's theorems give the following restrictions
+    \begin{align*}
+      n_{p} &\in \{1,q,\ell,q\ell\}, \quad n_{p} \equiv 1\tmod p\\
+      n_{q} &\in \{1,p,\ell, p\ell\},\quad n_{q} \equiv  1\tmod q\\
+      n_{\ell} &\in \{1, p, q, pq\},\quad n_{\ell} \equiv 1 \tmod \ell
+    \end{align*}
+    The congruence $ \ell \mid (n_{\ell}-1) $ forces $ n_{\ell}\neq p,q $. The congruence $ q\mid(n_{q}-1) $ forces $ n_{q}\neq p $. This gives the further restrictions
+    \begin{align*}
+      n_{p} &\in \{1,q,\ell,q\ell\}\\
+      n_{q} &\in \{1,\ell, p\ell\}\\
+      n_{\ell} &\in \{1,  pq\}
+    \end{align*}
+
+    Let $ r\in \{p,q,\ell\} $. Suppose that $ R_{1},R_{2}\in \Syl_{r}(G) $. If $ R_{1}\cap R_{2} > {1} $, then $ R_{1}\cap R_{2} $ would itself be a Sylow $ r $-subgroup of $ G $ whence $R_{2} = R_{1}\cap R_{2} = R_{1} $. Thus Sylow $ r $-subgroups are either equal or have trivial intersection. Hence by element counting, choices of $ n_{p}, n_{q},n_{\ell} $ yield the following lower bound
+    \begin{align*}
+      pql = |G| \geq 1+n_{p}(p-1) + n_{q}(q-1) + n_{\ell}(\ell-1).
+    \end{align*}
+    Suppose, for the sake of contradiction, that $ n_{p},n_{q},n_{l}\neq 1 $. Then $ n_{p}\geq q $, $ n_{q}\geq \ell $, and $ n_{\ell}=pq $, so the above bound gives
+    \begin{align*}
+      &pql \geq 1+ q(p-1) + \ell(q-1) + pq(\ell-1) = 1-q+q\ell-\ell+pq\ell \\
+      \implies& 0\geq q(\ell-1)-1(\ell-1) = (q-1)(\ell-1) 
+    \end{align*}
+    which is absurd. Thus, at least one of $ n_{p} $, $ n_{q} $, or $ n_{\ell} $ is equal to 1. If $ n_{\ell}=1 $, then we are done as this implies that the unique Sylow $ \ell $-subgroup is normal in $ G $. Thus, suppose $ n_{\ell}\neq 1 $, whence $ n_{\ell}=pq $. Then $ n_{p}=1 $ or $ n_{q}=1 $. \\
+
+    Suppose, without loss of generality (the other case is entirely analagous), that $ n_{p}=1 $, and let $ P\in \Syl_{p}(G) $, so $ P\triangleleft G $. Set $ \cls{G}:=G/P $, so $ |\cls{G}| = q\ell $. By the previous lemma, $ \cls{G} $ has a normal Sylow $ \ell $-subgroup $ \widetilde{N}\triangleleft \cls{G}$. By the isomorphism theorems, there exists a normal subgroup $ N\triangleleft G $ with $ P\sub N $ such that $ N/P \cong \widetilde{N} $. Then $ |N| = |P|\cdot|\widetilde{N}| = p\ell $, so by applying the above lemma again, we obtain a Sylow $ \ell $-subgroup $ K $ of $ N $ with $ K\triangleleft N $. Note that then $|\Syl_{\ell}(N)|=1  $
+
+    We claim that $ K\triangleleft G $. To see this, fix $ g\in G $. Note that as $ N\triangleleft G $, we have $ gKg^{-1}\sub gNg^{-1}= N $. However $ gKg^{-1} $ is then also a Sylow $ \ell $-subgroup of $ N $, whence uniquness gives $ gKg^{-1} = K $. Thus $ K\triangleleft G $ and $ |K|=\ell $, so $ K $ is a normal Sylow $ \ell $-subgroup of $ G $.
+    
+  \end{proof}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Suppose $G$ is a finite group, $N$ is a normal subgroup of $G$, and $P \in \mathrm{Syl}_p(N)$.  
+  Prove that $G = N_G(P)N$.  
+
+  %\textit{Hint. For every $g \in G$, argue that $gPg^{-1}$ is a Sylow $p$-subgroup of $N$. Use the fact that every two Sylow $p$-subgroups of $N$ are conjugate in $N$.}
+
+  \begin{proof}
+    Fix $ g\in G $ and observe that $ gPg^{-1}\sub gNg^{-1}= N $. Noting that conjugation does not change the size of the group, it follows that $ gPg^{-1} \in \Syl_{p}(N)$. Then, for $ g\in G $, as $ gPg^{-1} $ and $ P $ are both Sylow $ p $-subgroups of $ N $, by the Sylow theorems they are conjugate in $ N $, i.e. there is some $ n\in N $ such that 
+    \[
+       gPg^{-1} = n^{-1}Pn \implies g^{-1}n^{-1}Png = P
+    \]
+    So $ g^{-1}n^{-1}\in N_{G}(P) $, whence $ g^{-1}\in N_{G}(P)n\sub N_{G}(P)N $. As $ g\in G $ was arbitrary, it follows that $ G = N_{G}(P)N $.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Suppose $G$ is a finite group and $H$ is a subgroup. Suppose for all $x \in H \setminus \{1\}$,  
+  $C_G(x) \subseteq H$. Prove that $\gcd(\lvert H\rvert, [G : H]) = 1$.  
+
+  \textit{Hint. Suppose $p$ is a prime which divides $\gcd(\lvert H\rvert, [G : H])$. Suppose $Q \in \mathrm{Syl}_p(H)$. Argue that there exists $P \in \mathrm{Syl}_p(G)$ such that $Q \subseteq P$. Argue that there exists $y \in Z(Q)\setminus \{1\}$. Considering $C_G(y)$, show that $Z(P) \subseteq Q$. Suppose $x \in Z(P)\setminus \{1\}$, consider $C_G(x)$ to obtain that $P \subseteq H$. Argue why this is a contradiction.}
+
+  \begin{proof}
+    Suppose, for the sake of contradiction, that there is some prime $ p $ which divides $ \gcd(|H|, [G:H]) $. Let $ Q\in \Syl_{p}(H) $. As $ Q $ is a $ p $-subgroup of $ G $, there is some $ P\in\Syl_{p}(G) $ such that $ Q\sub P $. Moreover, $ Q $ being a $ p $-group implies that $ Z(P)>1 $, so there is some $ y\in Z(Q)\setminus \{1\} $. By assumption, $ C_{G}(y)\sub H $\\
+
+    Take $ x\in Z(P) $. Then $ xy=yx $, so $ x\in C_{G}(y)\sub H $, whence $ Z(P)\sub C_{G}(y)\sub H $.
+
+    As $ P $ is a $ p $-group, we again have $ Z(P)>1 $, so let $ x\in Z(P)\setminus \{1\} $. Then for $ z\in P $, we have that $ xz = zx $, whence $ z\in C_{G}(x) \sub H  $ and thus $ P\sub H $.\\
+
+    Writing $ |G| = p^{k}a $ with $ p\not\mid a $, by assumption we have that $ p\mid [G:H] $. But then $ [G:H]\mid [G:P] = a $, whence $ p\mid a $, which is a contradiction.
+  \end{proof}
+\end{homeworkProblem}
+ 
+
+\begin{homeworkProblem}
+  Suppose $G$ is a finite group, $N$ is a normal subgroup, and $p$ is a prime factor of $\lvert N\rvert$.  \ \\
+
+  \underline{\textbf{(a)}}: Suppose $P \in \mathrm{Syl}_p(G)$ and $Q \in \mathrm{Syl}_p(N)$. Prove that there exists $g \in G$ such that $Q = gPg^{-1} \cap N$. \\
+
+  \begin{proof}
+    As $ P\cap N $ is a $ p $-subgroup of $ N $, Sylow's conjugation theorem implies that there is some $ g\in N $ such that $ gPg^{-1}\cap N = g(P\cap N)g^{-1} \sub Q $. Noting now that $ Q $ is a $ p $-subgroup of $ N $, there is some $ x\in G $ such that $ xQx^{-1}\sub P $ whence $ Q\sub x^{-1}Px $. As $ Q\sub N $, it follows by normality of $ N $ that $ Q\sub x^{-1}Px \cap N = x^{-1}(P\cap N)x $. Now, we observe
+    \begin{align*}
+      |P\cap N| =|gPg^{-1}\cap N| \leq |Q| \leq |x^{-1}Px\cap N| = |x^{-1}(P\cap N)x| = |P\cap N|,
+    \end{align*}
+    whence $ |Q| = |P\cap N| = |gPg^{-1}\cap N| $, so $ Q = gPg^{-1}\cap N $.
+  \end{proof}
+
+
+  \underline{\textbf{(b)}}: Prove that the following is a well-defined surjective function
+  \[
+    \Phi : \mathrm{Syl}_p(G) \to \mathrm{Syl}_p(N), \qquad \Phi(P) := P \cap N.
+  \]
+
+  \begin{proof}
+    Fix $ P\in \Syl_{p}(G) $. Then $ P\cap N $ is a $ p $-subgroup of $ N $ so there is some $ Q\in \Syl_{p}(N) $ such that $ P\cap N\sub Q $. Now by part (a), there is some $ g\in G $ such that $ gPg^{-1}\cap N = Q $. But $ P\cap N\sub Q $ and $ |Q| = |gPg^{-1}\cap N| = |P\cap N| $, so $ P\cap N = Q $. Thus $ \Phi(P) = P\cap N\in \Syl_{p}(N) $, so $ \Phi $ is well-defined.\\
+
+    Now suppose $ Q\in \Syl_{p}(N) $. Then by the Sylow theorems, as $ Q $ is a $ p $-subgroup of $ G $, there is some $ P\in \Syl_{p}(G) $ such that $ Q\sub P $. Then $ Q\sub P\cap N = \Phi(P)\in \Syl_{p}(N) $, whence by size considerations it follows that $ Q = P\cap N $. Thus $ \Phi $ is a surjective function.
+  \end{proof}
+
+  \underline{\textbf{(c)}}: For $P \in \mathrm{Syl}_p(G)$, prove that $N_G(P) \subseteq N_G(\Phi(P))$ and
+  \[
+    \lvert \Phi^{-1}(\Phi(P)) \rvert = [N_G(\Phi(P)) : N_G(P)].
+  \]
+
+  \begin{proof}
+
+    Suppose that $ g P g^{-1} = P $. Then $$ g \Phi(P) g^{-1} = g(P\cap N)g^{-1} = gPg^{-1}\cap N = P\cap N = \Phi(P), $$ whence $ N_{G}(P)\sub N_{G}( \Phi(P)) $.\\
+
+
+   % \[
+   %   \Phi^{-1}(\Phi(P)) = \{\widetilde{P}\in \Syl_{p}(G): \widetilde{P}\cap N =\Phi(P) =  P\cap N\}.
+   % \]
+    Fix $ P\in \Syl_{p}(G) $. \\
+   % For $ g\in G $, $ P_{0}:= gPg^{-1} $.
+   % \begin{align*}
+   %   \Phi^{-1}(\Phi(P_{0})) = \Phi^{-1}(g \Phi(P)g^{-1}) = \{\widetilde{P}\in \Syl_{p}(G): \widetilde{P}\cap N = g \Phi(P) g^{-1} = gPg^{-1}\cap N = g(P\cap N)g^{-1}\}.
+   % \end{align*}
+    Define a map $ F:N_{G}( \Phi(P))/N_{G}(P) \to \Phi^{-1}( \Phi(P)) $ by $ F(gN_{G}(P)):=gPg^{-1} $. We claim that this a well-defined bijection.\\
+
+    If $ g\in N_{G}(\Phi(P)) $, then $ gPg^{-1}\cap N = g(P\cap N)g^{-1} = P\cap N $, so $ gPg^{-1}\in \Phi^{-1}(\Phi(P)) $. Moreover, suppose that $ g,h\in N_{G}(\Phi(P)) $ and there is some $ x\in N_{G}(P) $ such that $ g= hx $. Then by definition of $ N_{G}(P) $,
+    \[
+      gPg^{-1} = hx P x^{-1}h^{-1} = hPh^{-1}.
+    \]
+    Thus $ F $ is a well-defined function on $ N_{G}(\Phi(P))/N_{G}(P) $.\\
+
+    To see that $ F $ is injective, suppose that $ g,h\in N_{G}(\Phi(P)) $ are such that $ F(gN_{G}(P)) = F(hN_{G}(P)) $. Then $$ gPg^{-1}= hPh^{-1} \implies h^{-1}gP g^{-1}h = P \implies h^{-1}g \in N_{G}(P) $$
+    whence $ gN_{G}(P) = hN_{G}(P) $.\\
+
+    To see that $ F $ is surjective, suppose that $ \widetilde{P}\in \Phi^{-1}(\Phi(P)) $. Then by definition $ \widetilde{P}\cap N = P\cap N $. Applying Sylow's conjugation theorem, there is some $ g\in G $ such that $ \widetilde{P} = gPg^{-1} $. Then we observe that 
+    \[
+      g(P\cap N)g^{-1} = gPg^{-1} \cap N = \widetilde{P}\cap N = P\cap N,
+    \]
+    so $ g\in N_{G}(\Phi(P)) $, whence $ F(gN_{G}(P)) = gPg^{-1} = \widetilde{P} $. \\
+
+    Thus $ F $ is a bijection, so $ [N_{G}(\Phi(P)) : N_{G}(P)] = | \Phi^{-1}(\Phi(P))| $. 
+  \end{proof}
+
+  \underline{\textbf{(d)}}: Prove that $\lvert \mathrm{Syl}_p(N)\rvert$ divides $\lvert \mathrm{Syl}_p(G)\rvert$.  
+  
+  \begin{proof}
+ For $ g\in G $ and $ P\in \Syl_{p}(G) $, observe that
+\[
+  \Phi(gPg^{-1}) = gPg^{-1}\cap N = g(P\cap N)g^{-1} = g \Phi(P) g^{-1}.
+\]
+
+
+
+    Note that if $ K\sub G $ is a subgroup and $ x\in G $, then $ N_{G}(xKx^{-1}) = xN_{G}(K)x^{-1} $. 
+    Fix $ P,P_{0}\in \Syl_{p}(G) $ and choose $ x\in G $ such that $ xPx^{-1}= P_{0} $. Then we compute,
+    \begin{align*}
+      [N_{G}(\Phi(P_{0})): N_{G}(P_{0})] &= [N_{G}( \Phi(xPx^{-1})): N_{G}(xPx^{-1})] \\
+      &= [N_{G}( x\Phi(P)x^{-1}): xN_{G}(P)x^{-1}] \\
+      &= [xN_{G}( \Phi(P))x^{-1}: xN_{G}(P)x^{-1}] \\
+      &= \frac{|xN_{G}(\Phi(P))x^{-1}|}{|xN_{G}(P)x^{-1}|} = \frac{|N_{G}(\Phi(P))|}{|N_{G}(P)|} = [N_{G}(\Phi(P)): N_{G}(P)].
+    \end{align*}
+    We have thus shown that the index in question is independent of the choice of Sylow $ p $-subgroup $ P\in \Syl_{p}(G) $.
+
+    Fix $ P\in \Syl_{p}(G) $. Write $ \Syl_{p}(N):=\{Q_{1},\ldots, Q_{s}\} $ and choose $ P_{1},\ldots, P_{s}\in \Syl_{p}(G) $ such that $ Q_{j} = \Phi(P_{j}) $ for all $1\leq j \leq s$.
+    Then 
+    \[\Syl_{p}(G) = \bigsqcup_{j=1}^{s} \Phi^{-1}(Q_{j}) = \bigsqcup_{j=1}^{s} \Phi^{-1}(\Phi(P_{j})).\]
+    Now we compute,
+    \begin{align*}
+      |\Syl_{p}(G)| = \left|\bigsqcup_{j=1}^{s} \Phi^{-1}(\Phi(P_{j}))\right| &= \sum_{j=1}^{s}| \Phi^{-1}(\Phi(P_{j}))|\\
+      &= \sum_{j=1}^{s} [N_{G}(\Phi(P_{j})): N_{G}(P_{j})] = s\cdot [N_{G}(\Phi(P)): N_{G}(P)],
+    \end{align*}
+    which shows that $ |\Syl_{p}(N)|=s$ divides $|\Syl_{p}(G)| $ as desired.
+  \end{proof}
+
+  %\textit{Hint. Notice that we have $\Phi(gPg^{-1}) = g\Phi(P)g^{-1}$ for every $g \in G$ and $P \in \mathrm{Syl}_p(G)$. Use this to obtain that $[N_G(\Phi(P)) : N_G(P)]$ does not depend on the choice of $P$.}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Suppose $p$ is an odd prime and $G$ is a group of order $p(p+1)$ which does not have a normal subgroup of order $p$. Prove that $p$ is a Mersenne prime; that is, $p = 2^n - 1$ for some positive integer $n$.  
+
+  %\textit{Hint. Go through the proof in the lecture note.}
+
+  \begin{proof}
+    As $ G  $ does not have a normal subgroup of order $ p $, it follows that $ n_{p}(G) = p+1 $. Let $ \Syl_{p}(G) = \{P_{1},\ldots,P_{p+1}\} $. Then as each $ P_{i} $ is cyclic of order $ p $, they intersect trivially, whence 
+    \[
+      S:=\bigcup_{i=1}^{p+1}P_{i}\setminus \{1\}
+    \]
+    has size $ (p+1)(p-1) = p^{2}-1 $. Let $ H:=G\setminus S $, whence $ |H|=p+1 $. In the lecture notes we have shown that $ g\in G\setminus H \implies o(g)=p $. We have also shown that $ H $ is a subgroup where $ H \setminus \{1\} = Cl(h) $ for any $ h\in H\setminus \{1\} $.\\
+
+    Let $ q $ be a prime dividing $ p+1 $. As $ p $ is an odd prime, $ q\neq p $. By Cauchy's theorem there is some $ x\in G $ such that $ o(x) = q $. Hence, $ o(x)\neq p $, so $ x\not\in G\setminus H $. Equivalently, this implies that $ x\in H $. As $ x\neq 1 $, $ x\in H\setminus \{1\} $, whence $ H\setminus \{1\} = Cl(x) $. Thus every element of $ H\setminus\{1\} $ has order $ o(x) = q $, whence $ H $ is a $ q $-group.\\
+
+    As $ H $ is a finite $ q $-group, there is some $ m\geq 1 $ such that $ |H| = q^{m} $. But $ |H| = p+1 $, so $ p+1=q^{m} $. Suppose first that $ m=1 $. Then $ q=p+1 $ is prime and $ p $ is prime, whence $ p=2 $ which contradicts that $ p $ is an odd prime. Thus $ m\geq 2 $, so we may write
+    \[
+      p = q^{m}-1 = (q-1)(q^{m-1}+q^{m-2}+\cdots + q +1)
+    \]
+    whence $ p $ being prime forces $ q-1=1\implies q = 2 $. In conclusion, $ p = 2^{m}-1 $ is a Mersenne prime.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Suppose $p$ and $q$ are prime numbers and $G$ is a group of order $p^2q$. Prove that $G$ is not simple.
+
+\begin{proof}
+  Sylow's theorems give the following initial restrictions on $ n_{p} $,$ n_{q} $.
+  \begin{align*}
+      n_{p} &\in \{1,q\}, \quad n_{p} \equiv 1\tmod p\\
+      n_{q} &\in \{1,p,p^{2}\},\quad n_{q} \equiv  1\tmod q\\
+    \end{align*}
+    If $ n_{q}=1 $, then we are done, so assume $ n_{q}\neq 1 $. If $ p=q $, then Sylow's theorems force $ n_{q}=n_{p}=1 $, so it must hold that $ p\neq q $. Suppose first that $ n_{q} = p $. Then as $ q\mid(p-1) $, it follows that $ q<p $. Thus the restriction $ p\mid (n_{p}-1) $ forces $ n_{p} = 1  $, whence $ G $ has a normal Sylow $ p $-subgroup.\\
+
+    Now suppose that $ n_{q}=p^{2} $. Note that nonequal Sylow $ q $-subgroups must intersect trivially, so we may count the set
+    \[
+      S := \bigsqcup_{Q\in\Syl_{q}(G)} Q\setminus\{1\} \implies |S| = n_{q}(q-1) = p^{2}q-p^{2}.
+    \]
+    Every element in $ S $ has order $ q $.
+    The remaining room inside of $ G $, namely $ G\setminus S $, has size $ p^{2} $. Let $ P\in \Syl_{p}(G) $. We claim that $ P\sub G\setminus S $. Suppose $ g\in P $. Then by Lagrange, $ o(g) \in \{1,p,p^{2}\} $, whence $ o(g)\neq q $ so $ g\not\in S $. Thus $ P\sub G\setminus S$, whence $ |P|=p^{2}=|G\setminus S| $ implies that $ P=G\setminus S $. Hence $ n_{p}=1 $, so $ G $ has a normal Sylow $ p $-subgroup.
+\end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  A subgroup $K$ of $G$ is called a \emph{characteristic subgroup} if for all $\theta \in \mathrm{Aut}(G)$, $\theta(K) = K$. Notice that every characteristic subgroup is normal.  
+
+  \underline{\textbf{(a)}}: Suppose $N$ is a normal subgroup of $G$ and $K$ is a characteristic subgroup of $N$. Prove that $K$ is a normal subgroup of $G$.  
+  
+  \begin{proof}
+    Let $ g\in G $. Consider the inner automorphism $ \sigma_{g}\in Aut(G) $ given by $ \sigma_{g}(x) = gxg^{-1} $. As $ N\triangleleft G $, we have that $ \sigma_{g}(N) = gNg^{-1} = N $, whence $ \sigma_{g}\vert_{N}\in \Aut(N) $. As $ K $ is characteristic in $ N $, it follows that $ K = \sigma_{g}\vert_{N}(K) = gKg^{-1} $, so $ K $ is a normal subgroup of $ G $.
+  \end{proof}
+
+  \underline{\textbf{(b)}}: We say a group $H$ is \emph{characteristically simple} if the only characteristic subgroups of $H$ are $\{1\}$ and $H$. Suppose $N$ is a minimal normal subgroup of $G$; that is, if $M \leq N$ and $M \trianglelefteq G$, then either $M = \{1\}$ or $M = N$. Then $N$ is characteristically simple.
+
+  \begin{proof}
+    Suppose, for the sake of contradiction, that $ N $ is not characteristically simple. Then there is some subgroup $ K\sub N $ with $ K\neq 1, N $ such that $ K $ is characteristic in $ N $. As $ N $ is normal in $ G $, part (a) implies that $ K \triangleleft G$, contradicting the minimality of $ N $.
+  \end{proof}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+  Suppose $G$ is a finite group.  
+
+  \underline{\textbf{(a)}}: Prove that a normal Sylow $p$-subgroup is a characteristic subgroup.  
+  \begin{proof}
+    Let $ N $ be a normal Sylow $ p $-subgroup of $ G $, so $ |\Syl_{p}(G)| = 1 $. Fix $ \theta\in \Aut(G) $. Then $ | \theta(N)| = |N| $, whence $ \theta(N) $ is also a Sylow $ p $-subgroup of $ G $. Now, as $ |\Syl_{p}(G)| = 1 $, it follows that $ \theta(N) = N $.
+  \end{proof}
+
+  \underline{\textbf{(b)}}: Suppose $H$ is a normal subgroup of $G$ and $\gcd(\lvert H\rvert, [G:H]) = 1$. Prove that $H$ is a characteristic subgroup.  
+
+  \begin{proof}
+    Suppose, for the sake of contradiction, that there is some $ \theta\in \Aut(G)$ such that $ \theta(H)\neq H $. As $ G $ is a finite group, it follows that $ \theta(H)\cap H < H $.\\
+
+    On one hand, observe that 
+    \[
+      \left|\frac{\theta(H)H}{H}\right|\cdot [G: \theta(H)H] = [G:H],
+    \]
+    so $ \left|\frac{\theta(H)H}{H}\right| $ divides $ [G:H] $.
+
+    On the other hand, by the diamond isomorphism theorem we have 
+    \[
+      \left|\frac{\theta(H)H}{H}\right| = \frac{| \theta(H)|}{| \theta(H)\cap H|} = \frac{| H|}{| \theta(H)\cap H|},
+    \]
+    which divides $ |H| $. Thus by assumption we have that $ | \theta(H)H/H| = 1 $, whence $ H = \theta(H)H $. This implies that $ \theta(H) \sub H $, but $ \theta $ is an automorphism so it preserves size, whence $ \theta(H)= H $ which is a contradiction.
+  \end{proof}
+
+  %\textit{Hint. These parts are not related to each other. For the second part, suppose $\theta(H) \neq H$ for some $\theta \in \mathrm{Aut}(G)$. Show that $\lvert \theta(H)H/H \rvert$ divides $\lvert \theta(H)\rvert$ and $\lvert G/H\rvert$.}
+\end{homeworkProblem}
+
+
+\end{document}

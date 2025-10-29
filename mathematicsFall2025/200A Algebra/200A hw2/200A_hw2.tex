@@ -140,10 +140,33 @@ $\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\mathbb{R})$ and $z \in \
     \;=\; \frac{\operatorname{Im}(z)}{\lvert cz + d\rvert^{2}}.
   \]
 
+\begin{proof}
+  \begin{align*}
+    \Im\lr{ \frac{az+b}{cz+d} }= \Im\lr{\frac{(az+b)(c \cls{z}+d)}{|cz+d|^{2}}} &= \frac{1}{|cz+d|^{2}}\Im(ac|z|^{2}+adz+bcz+bd)\\
+    &=\frac{1}{|cz+d|^{2}}\Im(adz+bc \cls{z}) = \frac{1}{|cz+d|^{2}}(ad-bc)\Im(z) = \frac{\Im(z)}{|cd+d|^{2}}\\
+  \end{align*}
+\end{proof}
 
 \underline{\textbf{(b)}}: Prove that $\cdot$ is an action of $SL_2(\mathbb{R})$ on $\mathbb{H}$.
 
+\begin{proof}
+  Let $ z\in \mathbb{H} $. Then for $\begin{pmatrix} a & b \\ c & d \end{pmatrix} \in SL_2(\mathbb{R})$, 
+  \[
+    \operatorname{Im}\!\left( \begin{pmatrix} a & b \\ c & d \end{pmatrix} \cdot z \right)
+    \;=\; \frac{\operatorname{Im}(z)}{\lvert cz + d\rvert^{2}} >0
+  \]
+  so $ \frac{az+b}{cz+d}\in \mathbb{H} $. Now let $\begin{pmatrix} a & b \\ c & d \end{pmatrix}, \begin{pmatrix} p & q \\ r & s \end{pmatrix}\in SL_{2}(\R)$. Then 
 
+  \[\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} p & q \\ r & s \end{pmatrix} = \begin{pmatrix} ap+br & aq+bs \\ cp+dr & cq+ds \end{pmatrix}\]
+  and the action computes to
+  \begin{align*}
+    \begin{pmatrix} a & b \\ c & d \end{pmatrix}\cdot\lr{ \begin{pmatrix} p & q \\ r & s \end{pmatrix}\cdot z} &= \frac{a \frac{pz+q}{rz+s}+b}{c\frac{pz+q}{rz+s}+d}\\
+    &= \frac{a(pz+q)+b(rz+s)}{c(pz+q)+d(rz+s)} = \frac{(ap+br)z+ (aq+bs))}{(cp+dr)z + (cq+ds)}\\
+    &=\begin{pmatrix} ap+br & aq+bs \\ cp+dr & cq+ds \end{pmatrix}\cdot z\\
+  &=\lr{\begin{pmatrix} a & b \\ c & d \end{pmatrix} \begin{pmatrix} p & q \\ r & s \end{pmatrix}}\cdot z,
+  \end{align*}
+  so we indeed have an action on the upper half plane.
+\end{proof}
 \end{homeworkProblem}
 
 
@@ -179,6 +202,28 @@ Suppose $G$ is a finite subgroup of the group $GL_n(\mathbb{R})$ of $n\times n$ 
   \[
     \inp{v}{w}_{G}:=\frac{1}{|G|}\sum_{g\in G}\inp{g\cdot v}{g\cdot w}
   \]
+  where $ \inp{\cdot}{\cdot} $ denotes the usual dot product in $ \R^{n} $. Note that this form is symmetric as 
+  \[
+    \inp{v}{w}_{G} = \frac{1}{|G|}\sum_{g\in G}\inp{g\cdot v}{g\cdot w} =\frac{1}{|G|}\sum_{g\in G}\inp{g\cdot w}{g\cdot v}  = \inp{w}{v}_{G}.
+  \]
+  Moreover,
+  \begin{align*}
+    \inp{av_{1}+bv_{2}}{w}_{G} &= \frac{1}{|G|} \sum_{g\in G}\inp{g\cdot(av_{1}+bv_{2})}{g\cdot w} \\
+    &= \frac{1}{|G|} \sum_{g\in G}\inp{a(g\cdot v_{1})+b(g\cdot v_{2})}{g\cdot w}\\
+    &= \frac{1}{|G|} \sum_{g\in G} a\inp{g\cdot v_{1}}{g\cdot w} + b\inp{g\cdot v_{2}}{g\cdot w}\\&= a\inp{v_{1}}{w}_{G}+b \inp{v_{2}}{w}_{G}.\\
+  \end{align*}
+  Symmetry gives linearity in the other coordinate, so it suffices to show positive definiteness. Noting that $ \inp{\cdot}{\cdot} $ is positive definite, for $ v\neq 0 $ we have
+  \begin{align*}
+    \inp{v}{v}_{G} = \frac{1}{|G|}\sum_{g\in G} \inp{g\cdot v}{g\cdot v} = \frac{1}{|G|} \sum_{g\in G} |g\cdot v|^{2} \geq \frac{|v|^{2}}{|G|}  >0.
+  \end{align*}
+  Lastly, for fixed $ h\in G $, noting that summation over $ gh $ is the same as summation over $ g $ since left multiplication is a bijection, we have 
+  \begin{align*}
+    \inp{h\cdot v}{h\cdot w}_{G} &= \frac{1}{|G|}\sum_{g\in G} \inp{g\cdot (h\cdot v)}{g\cdot (h\cdot w)} \\
+    &= \frac{1}{|G|}\sum_{g\in G} \inp{(gh)\cdot v)}{(gh)\cdot w)} \\
+    &= \frac{1}{|G|}\sum_{g\in G} \inp{g\cdot v}{g\cdot w} = \inp{v}{w}_{G}. 
+  \end{align*}
+  Thus $ \inp{\cdot}{\cdot}_{G} $ is a $ G $-invariant inner product.
+
 \end{proof}
 
 \end{homeworkProblem}
@@ -194,6 +239,18 @@ Suppose $G$ is a finite subgroup of the group $GL_n(\mathbb{R})$ of $n\times n$ 
     N_G(H) := \{\, x \in G \mid xHx^{-1} = H \,\}
   \]
   be the normalizer of $H$ in $G$. Both of these are subgroups of $G$ and clearly $C_G(H) \subseteq N_G(H)$. Prove that $N_G(H)/C_G(H)$ can be embedded into $\operatorname{Aut}(H)$.
+
+  \begin{proof}
+    Let $ N_{G}(H)\acts H $ by conjugation. This action furnishes a homomorphism $ \Phi:N_{G}(H)\to \Aut(H) $. The kernel of this action is 
+    \[
+      \ker(\Phi) = \{x\in N_{G}(H): \Phi(x)= id_{H}\}.
+    \]
+    Suppose $ x\in C_{G}(H) $. Then for all $ h\in H $, $ \Phi(x)(h) = xhx^{-1} = h $ whence $ \Phi(x) = id_{H} $ so $ x\in \ker(\Phi)$. On the other hand suppose $ x\in N_{G} $ is such that $ \Phi(x) = id_{H} $. For $ h\in H $, we have 
+    \[
+      xhx^{-1} = \Phi(x)(h) = id_{H}(h) = h 
+    \]
+    whence $ x\in C_{G}(H) $. Hence $ \ker(\Phi) = C_{G}(H) $, so $ N_{G}(H)/C_{G}(H)\cong \Phi(N_{G}(H))\sub \Aut(H) $.
+  \end{proof}
 
 \end{homeworkProblem}
 

@@ -1,0 +1,265 @@
+%! TEX root = ./main.tex
+\documentclass[12pt]{article}
+
+%--------Packages-------------
+\usepackage{kyrem1sty}
+%----------------------------
+
+
+%--------Bibliography---------
+%\usepackage[backend=biber,style=alphabetic,doi=false,isbn=false,url=false,eprint=false]{biblatex}
+%\addbibresource{INSERT .BIB PATH}
+%----------------------------
+
+
+%--------Hyper Setup-------
+\hypersetup{%
+  colorlinks=true,%
+  linkcolor=blue,%
+  citecolor=blue,%
+  filecolor=blue,%
+  menucolor=blue,%
+  urlcolor=blue,%
+  pdfnewwindow=true,%
+  pdfstartview=FitBH
+}   
+%----------------------------
+
+
+%--------Subfiles Setup-------
+%\usepackage{subfiles}
+%----------------------------
+
+
+%--------Page Setup-----------
+%\usepackage{geometry}\geometry{margin=1in}
+\pagestyle{empty}%
+
+\setlength{\hoffset}{-1.54cm}
+\setlength{\voffset}{-1.54cm}
+
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{0pt}
+\setlength{\headheight}{0pt}
+
+\setlength{\oddsidemargin}{0pt}
+
+\setlength{\textwidth}{195mm}
+\setlength{\textheight}{250mm}
+%----------------------------
+
+
+%--------Metadata------------
+\title{220A Homework 5}
+\author{James Harbour}
+%----------------------------
+
+
+%--------Content-------------
+\begin{document}
+\maketitle
+
+% Conway , Ch. IV.1: 10, 12, 22; IV.2: 2, 3 (piecewise smooth curve only) , 4, 9.
+
+\begin{homeworkProblem}
+  Define $ \gamma(t) = e^{it} $ for $ 0\leq t\leq 2\pi $ and find $ \int_{\gamma} z^{n}\dd{z} $ for every integer $ n\in \Z $.
+
+  \begin{proof}[Solution]
+    Suppose first that $ n\neq -1 $.
+    Note that $ \gamma^{\prime}(t) = ie^{it} $, so 
+    \begin{align*}
+      \int_{\gamma} z^{n} \dd{z} = \int_{0}^{2\pi} (e^{it})^{n} ie^{it}\dd{t} &= i\int_{0}^{2\pi}e^{it(n+1)} \dd{t} \\
+      &=\frac{i}{i(n+1)}e^{it(n+1)}\bigg\rvert_{0}^{2\pi} = 0.
+    \end{align*}
+    On the other hand, suppose that $ n=-1 $. Then 
+    \begin{align*}
+      \int_{\gamma}\frac{1}{z}\dd{z} = \int_{0}^{2\pi} \frac{1}{e^{it}}ie^{it} \dd{t} = \int_{0}^{2\pi} i \dd{t} = 2\pi i.
+    \end{align*}
+  \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+  Let $ I(r) = \displaystyle\int_{\gamma}\frac{e^{iz}}{z}\dd{z} $ where $ \gamma:[0,\pi]\to \C $ is defined by $ \gamma(t) = re^{it} $. Show that $ \displaystyle\lim_{r\to\infty}I(r) = 0 $.
+
+  \begin{proof}
+    For $ z\in\C $, observe that
+    \begin{align*}
+      |e^{iz}| = |e^{i(\Re(z)+i\Im(z))}| = |e^{i\Re(z)}|\cdot|e^{-\Im(z)}| = |e^{-\Im(z)}|.
+    \end{align*} 
+    Hence, for $ z\in \gamma $, we have that $ z = re^{it} $ for some $ t\in [0,\pi] $, whence 
+    \begin{align*}
+      |e^{iz}| = |e^{-\Im(z)}| = |e^{-r\sin(t)}|
+    \end{align*}
+
+
+    Combining this with $ z\in \gamma $ implying that $ |z| = r $, we estimate
+    \begin{align*}
+      \left|\int_{\gamma}\frac{e^{iz}}{z}\dd{z}\right| \leq \int_{\gamma} \left|\frac{e^{iz}}{z}\right|\, |\dd{z}|&=\int_{\gamma}\frac{e^{-\Im(z)}}{r}\, |\dd{z}|\\ 
+      &=\int_{0}^{\pi} e^{-r\sin(t)} \dd{t}.
+    \end{align*}
+    As $ x\mapsto\sin(x) $ is symmetric in $ [0,\pi] $ about the line $ x = \pi/2 $, it follows that 
+    \[
+       \int_{0}^{\pi} e^{-r\sin(t)} \dd{t} = 2\int_{0}^{\pi/2} e^{-r\sin(t)} \dd{t}.
+    \]
+
+    On $ [0,\pi/2] $, the function $ x\mapsto\sin(x) $ is concave down, whence it lies entirely above the secant line between its endpoints, namely $ (0,0) $ and $ (\pi/2, 1) $. This line is given by $ y=\frac{2}{\pi}x $, so for $ x\in [0,\pi/2] $ we have $ \sin(x)\geq \frac{2}{\pi}x $. Hence $ e^{-r\sin(x)}\leq e^{-r\cdot \frac{2}{\pi}x} $, so 
+    \begin{align*}
+      I(r) = 2\int_{0}^{\pi/2} e^{-r\sin(t)} \dd{t} \leq 2\int_{0}^{\pi/2} e^{-\frac{2r}{\pi}x} \dd{t}  &= 2\lr{-\frac{\pi}{2r}\cdot e^{-r} + \frac{\pi}{2r}\cdot 1}\\
+      &= \frac{\pi}{r} (1-e^{-r}) \xrightarrow{r\to\infty}0
+    \end{align*}
+    as  desired
+  \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+  Show that if $ F_{1} $ and $ F_{2} $ are primitives for $ f:G\to \C $ and $ G $ is connected, then there is a constant $ c $ such that $ F_{1}(z) = c+ F_{2}(z) $ for each $ z\in G $.
+
+  \begin{proof}
+    The question is not clear whether we assume $ G $ to be open (I believe so since we cannot define the derivatives of $ F_{1} $ and $ F_{2} $ otherwise, but such is Conway).
+
+    Suppose we are assuming $ G $ is open. Define $ F:G\to \C $ by $ F:= F_{1}-F_{2} $. Then $ F $ is analytic as $ F_{1} $ and $ F_{2} $ are, and $ F^{\prime} = F_{1}^{\prime}- F_{2}^{\prime} = f-f = 0 $ on all of $ G $. Thus $ F^{\prime(z)}=0 $ for all $ z\in G $ where $ G $ is an open, connected set, whence by Proposition 2.10 in Conway, $ F $ is constant.\\
+
+      Thus there is some $ c\in \C $ such that $ F = c $, whence $ F_{1}= c+ F_{2} $.
+
+      TODO maybe see if $ G $ not open still works (idk how).
+  \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+  Prove the following analogue of Leibniz's rule. Let $ G $ be an open set and $ \gamma $ a rectifiable curve in $ \C $. Suppose that $ \phi:\{\gamma\}\times G \to \C $ is a continuous function and define $ g:G\to \C $ by
+  \[
+    g(z):= \int_{\gamma} \phi(w,z) \dd{w}.
+  \]
+  Prove that $ g $ is continuous. If $ \pdv{\phi}{z}  $ exists for each $ (w,z) \in \{\gamma\} \times G$  and is continuous, prove that $ g $ is analytic and 
+  \[
+    g^{\prime}(z) = \int_{\gamma}\pdv{\phi}{z}\, (w,z)\dd{w}.
+  \]
+
+  \begin{proof}
+    As $ \gamma $ is a continuous function on a compact set (namely an interval), it follows that the trace $ \{\gamma\}\sub \C $ is compact. Suppose that $ (z_{n})_{n=1}^{\infty} $ is a sequence in $ G $, $ z\in G $, and that $ z_{n}\xrightarrow{n\to\infty}z $. Without loss of generality, assume that $ z_{n}\in B_{r}(z) $ for all $ n\in \N $ where $ r>0 $ is chosen so that $ \cls{B_{r}(z)}\sub B_{2r}(z)\sub G $.\\ 
+
+    As $ \{\gamma\} $ is compact, it follows that $ \{\gamma\}\times \cls{B_{r}(z)} $ is compact in the product topology. Thus $ \phi\vert_{\{\gamma\}\times \cls{B_{r}(z)}} $ is uniformly continuous. Fixing $ \eps>0 $, it follows that there is some $ \delta>0 $ such that if $ |w-w^{\prime}|<\delta $ and $ |u-u^{\prime}|<\delta $ for some $ w,w^{\prime}\in \{\gamma\} $ and $ \xi,\xi^{\prime}\in \cls{B_{r}(z)}$, then 
+    \[
+      |\phi(w,\xi) - \phi(w^{\prime},\xi^{\prime})|< \frac{\eps}{V(\gamma)+1}.
+    \]
+    Choose $ N\in \N $ such that for all $ n\geq N $, we have $ |z-z_{n}| < \delta $. Then, for all $ n\geq N $,
+    \begin{align*}
+      |g(z)-g(z_{n})| &\leq \int_{\gamma} | \phi(w,z) - \phi(w,z_{n})|\cdot |\dd{z}| \\
+      &\leq V(\gamma)\cdot \sup_{w\in \{\gamma\}} | \phi(w,z) - \phi(w,z_{n})|\\
+      &\leq \frac{V(\gamma)}{V(\gamma)+1} \eps < \eps.
+    \end{align*}
+    Thus $ g(z_{n})\xrightarrow{n\to\infty} g(z) $, whence $ g $ is continuous.\\
+
+    Now suppose that $ \pdv{\phi}{z}  $ exists for each point in $ \{\gamma\}\times G $  and is continuous. Fix $ z_{0}\in G $ and $ r>0 $ small enough such that $ \cls{B_{r}(z_{0})}\sub G $. Then for $ 0<|h|<r $, we have 
+    \begin{align*}
+      \frac{g(z_{0}+h) - g(z_{0})}{h} = \frac{1}{h}\int_{\gamma}  \lr{\phi(w,z_{0}+h) - \phi(w,z_{0})} \dd{w}
+    \end{align*}
+
+    As $ \pdv{\phi}{z}  $ is continuous, it follows by compactness that $ \pdv{\phi}{z}\vert_{\{\gamma\}\times \cls{B_{r}(z)}} $ is uniformly continuous.  Fix $ \eps>0 $, and choose $ 0<\delta<r $ such that if $ |w-w^{\prime}|< \delta $ and $ |\xi-\xi^{\prime}|<\delta $ for $ w,w^{\prime}\in \{\gamma\} $ and $ \xi,\xi^{\prime}\in \cls{B_{r}(z_{0})} $, then 
+    \[
+      \left|\pdv{\phi}{z}\, (w,\xi) - \pdv{\phi}{z}\, (w^{\prime},\xi^{\prime})\right| <\frac{\eps}{V(\gamma)+1}.
+    \]
+    Note also that for fixed $ w\in \{\gamma\}$, letting $ \sigma_{h}:=[z_{0},z_{0}+h] $ denote the line segment between the two points, we have that 
+    \[
+      \frac{1}{h}\int_{\sigma_{h}} \pdv{\phi}{z}\,(w,z_{0})\dd{z} = \pdv{\phi}{z}\, (w,z_{0})
+    \]
+    as we are simply integrating a constant. On the other hand, we see that for fixed $ w\in \{\gamma\} $,
+    \[
+      \phi(w,z_{0}+h) - \phi(w,z_{0}) = \int_{\sigma_{h}} \pdv{\phi}{z}\, (w,z) \dd{z}.
+    \]
+    Then, we estimate for $ 0<|h|<\delta<r $,
+    \begin{align*}
+      \left| \frac{g(z_{0}+h)-g(z_{0})}{h} - \int_{\gamma}\pdv{\phi}{z}\,(w,z_{0})\dd{w} \right| &= \left|\int_{\gamma}\frac{1}{h} \int_{\sigma_{h}} \pdv{\phi}{z} \,(w,z)\dd{z}\dd{w}- \int_{\gamma}\frac{1}{h}\int_{\sigma_{h}}\pdv{\phi}{z}\,(w,z_{0})\dd{z}\dd{w} \right|\\
+      &= \left|\frac{1}{h}\int_{\gamma}\int_{\sigma_{h}} \pdv{\phi}{z} \,(w,z) - \pdv{\phi}{z}\,(w,z_{0})\dd{z}\dd{w}\right|\\
+      &\leq \frac{1}{|h|}\int_{\gamma}\int_{\sigma_{h}} \left|\pdv{\phi}{z} \,(w,z) - \pdv{\phi}{z}\,(w,z_{0})\right|\,|\dd{z}|\,|\dd{w}|\\
+      &\leq \frac{1}{|h|}\int_{\gamma}\int_{\sigma_{h}} \frac{\eps}{V(\gamma)+1}\,|\dd{z}|\,|\dd{w}|\\
+      &\leq \frac{1}{|h|}\cdot|h|\cdot \frac{V(\gamma)}{V(\gamma)+1} \eps < \eps.
+    \end{align*}
+    Thus $ g^{\prime} $ exists at $ z_{0} $ and is given by the desired expression. To see that $ g $ is analytic, it remains to show that $ g^{\prime} $ is continuous on $ G $. Let $ (z_{n})_{n=1}^{\infty} $ be a sequence in $ G $ and $ z\in G $ such that $ z_{n}\xrightarrow{n\to\infty}z $. Without loss of generality, assume there is some $ r>0 $ such that $ z_{n}\in B_{r}(z) $ for all $ n\in \N $ and that $ \cls{B_{r}(z)}\sub G $. Then by compactness $ \pdv{\phi}{z}\vert_{\{\gamma\}\times \cls{B_{r}(z)}} $  is uniformly continuous, whence for $ \eps>0 $ there is some $ 0<\delta<r $ such that
+    \[
+      \left|\pdv{\phi}{z}\, (w,\xi) - \pdv{\phi}{z}\, (w,\xi^{\prime})\right| <\frac{\eps}{V(\gamma)+1}
+    \]
+    for all $ w\in \{\gamma\} $ and $ \xi,\xi^{\prime}\in \cls{B_{r}(z)} $ with $ | \xi-\xi^{\prime}| < \delta $. Choose $ N\in \N $ such that for $ n\geq N $ we have $ |z_{n}-z| < \delta $. Then for $ n\geq N $,
+    \begin{align*}
+      |g^{\prime}(z_{n})- g^{\prime}(z)| \leq V(\gamma) \cdot\sup_{w\in \{\gamma\}}\left|\pdv{\phi}{z}\, (w,z_{n}) - \pdv{\phi}{z}\, (w,z)\right| <\frac{V(\gamma}{V(\gamma)+1} \eps < \eps.
+    \end{align*}
+    As $ \eps>0 $ was arbitrary, it follows that $ g^{\prime}(z_{n})\xrightarrow{n\to\infty}g^{\prime}(z) $, so $ g $ is analytic.
+  \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+  Suppose that $ \gamma $ is a piecewise smooth curve in $ \C $ and $ \phi $ is defined and continuous on $ \{\gamma\} $. Use the previous exercise to show that 
+  \[
+    g(z) := \int_{\gamma}\frac{\phi(w)}{w-z}\dd{w}
+  \]
+  is analytic on $ \C\setminus\{\gamma\} $ and 
+  \[
+    g^{(n)}(z) = n!\int_{\gamma}\frac{\phi(w)}{(w-z)^{n+1}}\dd{w}.
+  \]
+
+  \begin{proof}
+    
+  \end{proof}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+  \underline{\textbf{(a)}}: The following is Abel's Theorem. Let $ \sum a_{n}(z-a)^{n} $ have radius of convergence $ 1 $ and suppose that $ \sum a_{n} $ converges to $ A $. Prove that 
+  \[
+    \lim_{r\to1^{-}} \sum_{n=0}^{\infty} a_{n}r^{n} = A.
+  \]
+
+  \underline{\textbf{(b)}}: Use  Abel's Theorem to prove that $ \log(2) = 1-\frac{1}{2}+\frac{1}{3} - \frac{1}{4}+\cdots$.
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+  Use Corollary 2.13 to evaluate the following integrals:
+
+  \underline{\textbf{(a)}}:
+  \[
+    \int_{\gamma} \frac{e^{z} - e^{-z}}{z^n}\,dz
+  \]
+  where $n$ is a positive integer and $\gamma(t) = e^{it}$, $0 \le t \le 2\pi$.
+
+  \underline{\textbf{(b)}}:
+  \[
+    \int_{\gamma} \frac{dz}{\left(z - \tfrac{1}{2}\right)^n}
+  \]
+  where $n$ is a positive integer and $\gamma(t) = \tfrac{1}{2} + e^{it}$, $0 \le t \le 2\pi$.
+
+  \underline{\textbf{(c)}}:
+  \[
+    \int_{\gamma} \frac{dz}{z^2 + 1}
+  \]
+  where $\gamma(t) = 2e^{it}$, $0 \le t \le 2\pi$.  
+  \textit{Hint.} Expand $(z^2 + 1)^{-1}$ by means of partial fractions.
+
+  \underline{\textbf{(d)}}:
+  \[
+    \int_{\gamma} \frac{\sin z}{z}\,dz
+  \]
+  where $\gamma(t) = e^{it}$, $0 \le t \le 2\pi$.
+
+  \underline{\textbf{(e)}}:
+  \[
+    \int_{\gamma} \frac{z^{1/m}}{(z - 1)^n}\,dz
+  \]
+  where $\gamma(t) = 1 + \tfrac{1}{2}e^{it}$, $0 \le t \le 2\pi$.
+\end{homeworkProblem}
+
+
+\end{document}
+
+
+
